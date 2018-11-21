@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace GymAPI.Models
@@ -11,5 +9,6 @@ namespace GymAPI.Models
         { }
         
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Exercise> Exercises { get; set; }
     }
 }
