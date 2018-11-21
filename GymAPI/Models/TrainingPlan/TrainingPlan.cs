@@ -5,7 +5,7 @@ namespace GymAPI.Models
 {
     public class TrainingPlan
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public List<Exercise> MondayExercises { get; set; } = new List<Exercise>();
         public List<Exercise> TuesdayExercises { get; set; } = new List<Exercise>();
         public List<Exercise> WednesdayExercises { get; set; } = new List<Exercise>();
