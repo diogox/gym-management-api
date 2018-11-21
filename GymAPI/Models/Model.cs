@@ -12,5 +12,6 @@ namespace GymAPI.Models
         public DbSet<Exercise> Exercises { get; set; }
         public DbSet<TrainingPlan> Plans { get; set; }
         public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<StaffMember> Staff { get; set; }
     }
 }

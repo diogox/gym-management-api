@@ -13,7 +13,6 @@ namespace GymAPI.Models
         public List<Exercise> FridayExercises { get; set; } = new List<Exercise>();
         public List<Exercise> SaturdayExercises { get; set; } = new List<Exercise>();
         public List<Exercise> SundayExercises { get; set; } = new List<Exercise>();
-        
-        //public Staff SupervisingTrainer { get; set; }
+        public StaffMember SupervisingTrainer { get; set; }
     }
 }
