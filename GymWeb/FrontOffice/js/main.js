@@ -11,4 +11,16 @@ app.config(function($routeProvider) {
     .when("/equipamentos", {
         templateUrl : "template/equipamentos.htm"
     })
+    .when("/suporte", {
+        templateUrl : "template/suporte.htm"
+    })
+    .when("/ticket", {
+        templateUrl : "template/ticket.htm"
+    })
+    .when('/novoticket', {
+        templateUrl : "template/novoTicket.htm"
+    })
+    .otherwise({
+        templateUrl : "template/404.htm"
+    })
 });
