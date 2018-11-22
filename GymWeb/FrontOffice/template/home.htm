@@ -1,0 +1,80 @@
+<div ng-controller="homeCtrl">
+
+        <!-- Warnings de pagamento de mensalidades -->
+        <div class="row">
+    
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width:100%">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Atenção!</strong> Necessário efetuar o pagamento deste mês. <a href="#" class="alert-link">Clique para gerar dados de pagamento</a>.
+            </div>
+    
+            <div class="alert alert-danger" role="alert" style="width:100%">
+                    <strong>Atenção!</strong> Pagamento em falta do mês anterior <a href="#" class="alert-link">leia esta notificação</a>.
+            </div>
+
+        </div>
+    
+        <!-- Tabelas -->
+        <div class="row">
+
+            <!-- Tabela de ultimas entradas -->
+            <div class="col-6">
+                <button type="button" class="btn btn-primary" ng-click="checkin()">Check in</button>
+                <h2>Ultimas entradas</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10-11-2018</td>
+                            <td>15:00</td>
+                        </tr>
+                        <tr>
+                            <td>11-11-2019</td>
+                            <td>14:58</td>
+                        </tr>
+                        <tr>
+                            <td>13-11-2018</td>
+                            <td>19:01</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <!-- Tabela de ultimos pagamentos -->
+            <div class="col-6">
+                <button type="button" class="btn btn-primary invisible">Primary</button>
+                <h2>Ultimos pagamentos</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10-11-2018</td>
+                            <td>25€</td>
+                        </tr>
+                        <tr>
+                            <td>11-11-2019</td>
+                            <td>25€</td>
+                        </tr>
+                        <tr>
+                            <td>13-11-2018</td>
+                            <td>25€</td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </div>
+    </div>
