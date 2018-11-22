@@ -5,15 +5,12 @@ app.config(function($routeProvider) {
     .when("/", {
         templateUrl : "template/home.htm"
     })
+    .when("/exercicios", {
+        templateUrl : "template/exercicios.htm"
+    })
 });
 
 
-app.controller('homeCtrl', function($scope, $http) {
 
-    //alert("home");
 
-    $scope.checkin = function() {
-        alert("Checked in")
-    };
 
-});
