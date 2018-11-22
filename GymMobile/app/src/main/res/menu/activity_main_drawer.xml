@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="A minha aplicação">
+        <menu>
+            <item
+                android:id="@+id/nav_my_work_plan"
+                android:icon="@drawable/work_plan_icon"
+                android:title="Meu plano de treino" />
+            <item
+                android:id="@+id/nav_exercises"
+                android:icon="@drawable/exercises_icon"
+                android:title="Exercicios" />
+            <item
+                android:id="@+id/nav_equipments"
+                android:icon="@drawable/equipment_icon"
+                android:title="Equipamentos" />
+            <item
+                android:id="@+id/nav_support_ticket"
+                android:icon="@drawable/ticket_icon"
+                android:title="Tickets de suporte" />
+            <item
+                android:id="@+id/nav_notifications"
+                android:icon="@drawable/baseline_notification_important_black_24dp"
+                android:title="Notificações" />
+            <item
+                android:id="@+id/nav_reports"
+                android:icon="@drawable/record_icon"
+                android:title="Relatórios" />
+        </menu>
+    </item>
+
+    <item android:title="Comunicação">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>
