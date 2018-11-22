@@ -2,23 +2,27 @@
 
     <h1>Lista de exercicios</h1>
 
+    <br/>
+    <input type="text" class="form-control" placeholder="Pesquise por nome de exercicio, grupo muscular, etc..." ng-model="filtro_exercicios">
+    <br/>
+
     <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-group-item" ng-repeat="x in exercicios | filter : filtro_exercicios">
 
-            <a><p data-toggle="collapse" data-target="#ex1"> Exercicio 1</p></a>
+            <a><p data-toggle="collapse" data-target="#ex{{x.id}}">{{x.name}}</p></a>
 
-            <div id="ex1" class="collapse">
-                <p>Lorem ipsum dolor text....</p>
-            </div> 
+            <div id="ex{{x.id}}" class="collapse">
+                <dt>Descrição:</dt>
+                <dd>- {{x.description}}</dd>
 
-        </li>
+                <dt>Grupo muscular</dt>
+                <dd>- {{x.muscle}}</dd>
 
-        <li class="list-group-item">
+                <dt>Dificuldade</dt>
+                <dd>- {{x.difficulty}}</dd>
 
-            <a><p data-toggle="collapse" data-target="#ex2"> Exercicio 2</p></a>
-
-            <div id="ex2" class="collapse">
-                <p>Lorem ipsum dolor text....</p>
+                <dt>Equipamento</dt>
+                <dd>- {{x.equipmentToUse}}</dd>
             </div> 
 
         </li>
