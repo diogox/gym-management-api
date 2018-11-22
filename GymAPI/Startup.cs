@@ -46,6 +46,7 @@ namespace GymAPI
             
             services.AddScoped<IClientsService, ClientsService>();
             services.AddScoped<IEquipmentService, EquipmentService>();
+            services.AddScoped<IExercisesService, ExercisesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,7 +64,7 @@ namespace GymAPI
             app.UseHttpsRedirection();
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
-                .AllowAnyHeader()
+                .WithHeaders("content-type")
                 .WithMethods("GET", "POST", "PUT", "DELETE")
             );
             app.UseMvc();
