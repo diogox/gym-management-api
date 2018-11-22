@@ -8,10 +8,8 @@
     "heightInMeters": 1.5,
     "weightInKg": 120,
     "trainingPlan": {
-      "id": 1,
       "mondayExercises": [
         {
-          "id": 1,
           "name": "Salto à vara",
           "description": null,
           "imageUrl": null,

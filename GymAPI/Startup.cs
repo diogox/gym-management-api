@@ -62,8 +62,8 @@ namespace GymAPI
             app.UseHttpsRedirection();
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
-                .AllowAnyMethod()
                 .AllowAnyHeader()
+                .WithMethods("GET", "POST", "PUT", "DELETE")
             );
             app.UseMvc();
         }
