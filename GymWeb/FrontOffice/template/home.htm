@@ -3,14 +3,24 @@
         <!-- Warnings de pagamento de mensalidades -->
         <div class="row">
     
-            <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width:100%">
+            <div class="alert alert-success alert-dismissible fade show" style="width:100%" ng-hide="check_in_sucesso">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Success!</strong> Check-in com sucesso.
+            </div>
+
+            <div class="alert alert-danger alert-dismissible fade show" style="width:100%" ng-hide="check_in_sem_sucesso">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Warning!</strong> Check-in sem sucesso. Verifique a sua situação com o responsável.
+            </div>
+
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width:100%" ng-hide="warning_pagamento">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <strong>Atenção!</strong> Necessário efetuar o pagamento deste mês. <a href="#" class="alert-link">Clique para gerar dados de pagamento</a>.
             </div>
     
-            <div class="alert alert-danger" role="alert" style="width:100%">
+            <div class="alert alert-danger" role="alert" style="width:100%" ng-hide="alert_pagamento">
                     <strong>Atenção!</strong> Pagamento em falta do mês anterior <a href="#" class="alert-link">leia esta notificação</a>.
             </div>
 
@@ -31,17 +41,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>10-11-2018</td>
-                            <td>15:00</td>
-                        </tr>
-                        <tr>
-                            <td>11-11-2019</td>
-                            <td>14:58</td>
-                        </tr>
-                        <tr>
-                            <td>13-11-2018</td>
-                            <td>19:01</td>
+                        <tr ng-repeat="x in entradas">
+                            <td>{{x.data}}</td>
+                            <td>{{x.hora}}</td>
                         </tr>
                     </tbody>
                 </table>
