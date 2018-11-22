@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
+
+    <!-- Css internos -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/home.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/exercicios.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/equipamentos.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+</head>
+
+<body ng-app="myApp">
+        <img class="imgbg" src="https://images.wallpaperscraft.com/image/dumbbells_fitness_gym_113149_1920x1080.jpg" alt="Error: Image Not Loaded!">
+            
+    <header class="row">
+        <nav class="navbar navbar-dark bg-dark navbar-inverse col-12">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Awesome Gym</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sem treinador atribuido</a></li>
+                    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Cliente</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!--This the side nav bar-->
+    <div class="row" style="height:100vh">
+        <div class="left col-2">
+            <ul>
+                <a href="index.html">
+                    <li class="item-menu">
+                        <span class="glyphicon glyphicon-home"></span>
+                        <span class="menu">Home</span>
+                    </li>
+                </a>
+                <a href="#!plano">
+                    <li class="item-menu">
+                        <span class="glyphicon glyphicon-tasks"></span>
+                        <span class="menu">Meu plano</span>
+                    </li>
+                </a>
+                <a href="#!exercicios">
+                    <li class="item-menu">
+                        <span class="glyphicon glyphicon-book"></span>
+                        <span class="menu">Lista de exercicios</span>
+                    </li>
+                </a>
+                <a href="#!equipamentos">
+                    <li class="item-menu">
+                        <span class="glyphicon glyphicon-list"></span>
+                        <span class="menu">Lista de Equipamento</span>
+                    </li>
+                </a>
+                <a href="#!suporte">
+                    <li class="item-menu">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <span class="menu">Enviar Tickets</span>
+                    </li>
+                </a>
+                <a href="#!relatorios.html">
+                    <li class="item-menu">
+                        <span class="glyphicon glyphicon-align-left"></span>
+                        <span class="menu">Relatórios</span>
+                    </li>
+                </a>
+                <a href="#!notificacoes.html">
+                    <li class="item-menu">
+                        <span class="glyphicon glyphicon-bell"></span>
+                        <span class="menu">Notificações</span>
+                    </li>
+                </a>
+                <a href="#!logout.html">
+                    <li class="item-menu">
+                        <span class="glyphicon glyphicon-credit-card"></span>
+                        <span class="menu">Logout</span>
+                    </li>
+                </a>
+            </ul>
+        </div>
+
+        <!--This the content-->
+        <div class="col-10 content">
+
+            <div ng-view></div>
+            
+        </div>
+
+    </div>
+
+</body>
+<script src="js/main.js"></script>
+<script src="js/homeController.js"></script>
+<script src="js/exerciciosController.js"></script>
+<script src="js/equipamentosController.js"></script>
+
+</html>
