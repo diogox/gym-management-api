@@ -1,0 +1,9 @@
+{
+    "name": "Ergómetro",
+    "brandName": "Concept2",
+    "imageUrl": "https://singularwod-44af.kxcdn.com/media/catalog/product/cache/6/thumbnail/1000x668.57142857143/9df78eab33525d08d6e5fb8d27136e95/r/e/remoindoor-modelod-pm5-7.jpg",
+    "quantity": 4,
+    "priceInEuro": 800.0,
+    "supplierName": "ErgometrosLda",
+    "description": "An ergometer is a machine used to simulate the action of watercraft rowing for the purpose of exercise or training for rowing."
+}

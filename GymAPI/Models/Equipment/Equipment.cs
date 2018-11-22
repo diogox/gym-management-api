@@ -11,5 +11,6 @@ namespace GymAPI.Models
         public int Quantity { get; set; }
         public float PriceInEuro { get; set; }
         public string SupplierName { get; set; }
+        public string Description { get; set; }
     }
 }

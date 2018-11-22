@@ -45,6 +45,7 @@ namespace GymAPI
                 (options => options.UseSqlite(connection));
             
             services.AddScoped<IClientsService, ClientsService>();
+            services.AddScoped<IEquipmentService, EquipmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
