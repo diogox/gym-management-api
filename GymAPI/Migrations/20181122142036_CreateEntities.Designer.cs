@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymAPI.Migrations
 {
     [DbContext(typeof(GymContext))]
-    [Migration("20181121232244_AddEquipment")]
-    partial class AddEquipment
+    [Migration("20181122142036_CreateEntities")]
+    partial class CreateEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,7 +29,9 @@ namespace GymAPI.Migrations
 
                     b.Property<string>("FirstName");
 
-                    b.Property<float>("HeightInMeters");
+                    b.Property<double>("HeightInMeters");
+
+                    b.Property<string>("ImageUrl");
 
                     b.Property<string>("LastName");
 
@@ -156,12 +158,46 @@ namespace GymAPI.Migrations
                     b.ToTable("Exercises");
                 });
 
+            modelBuilder.Entity("GymAPI.Models.StaffMember", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Age");
+
+                    b.Property<DateTime>("BirthDate");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<bool>("HasBeenPaidThisMonth");
+
+                    b.Property<string>("ImageUrl");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<long>("Nif");
+
+                    b.Property<int>("Rank");
+
+                    b.Property<float>("Salary");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Staff");
+                });
+
             modelBuilder.Entity("GymAPI.Models.TrainingPlan", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<long?>("SupervisingTrainerId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("SupervisingTrainerId");
 
                     b.ToTable("Plans");
                 });
@@ -223,6 +259,13 @@ namespace GymAPI.Migrations
                     b.HasOne("GymAPI.Models.TrainingPlan")
                         .WithMany("WednesdayExercises")
                         .HasForeignKey("TrainingPlanId6");
+                });
+
+            modelBuilder.Entity("GymAPI.Models.TrainingPlan", b =>
+                {
+                    b.HasOne("GymAPI.Models.StaffMember", "SupervisingTrainer")
+                        .WithMany()
+                        .HasForeignKey("SupervisingTrainerId");
                 });
 #pragma warning restore 612, 618
         }

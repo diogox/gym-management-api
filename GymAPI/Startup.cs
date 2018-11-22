@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GymAPI.Models;
+using GymAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,11 +28,22 @@ namespace GymAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(options =>
+                {
+                    // Makes the enum fields show up as text instead of integers
+                    options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+                    
+                    // Makes the fields with null values not show up in the JSON
+                    //options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                });
             
             var connection = "Data Source=gym.db";
             services.AddDbContext<GymContext>
                 (options => options.UseSqlite(connection));
+            
+            services.AddScoped<IClientsService, ClientsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

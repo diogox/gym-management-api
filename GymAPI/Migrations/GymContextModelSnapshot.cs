@@ -27,7 +27,7 @@ namespace GymAPI.Migrations
 
                     b.Property<string>("FirstName");
 
-                    b.Property<float>("HeightInMeters");
+                    b.Property<double>("HeightInMeters");
 
                     b.Property<string>("ImageUrl");
 
