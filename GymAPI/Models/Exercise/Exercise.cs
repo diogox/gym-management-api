@@ -10,6 +10,6 @@ namespace GymAPI.Models
         public string ImageUrl { get; set; }
         public MuscleGroups TargetMuscleGroup { get; set; }
         public DifficultyLevels DifficultyLevel { get; set; }
-        public List<Equipment> EquipmentToUse { get; set; }
+        public List<Equipment> EquipmentToUse { get; set; } = new List<Equipment>();
     }
 }
