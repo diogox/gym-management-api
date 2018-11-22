@@ -20,6 +20,9 @@ app.config(function($routeProvider) {
     .when('/novoticket', {
         templateUrl : "template/novoTicket.htm"
     })
+    .when("/planotreino", {
+        templateUrl : "template/planoTreino.htm"
+    })
     .otherwise({
         templateUrl : "template/404.htm"
     })
