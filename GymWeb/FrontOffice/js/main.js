@@ -8,9 +8,7 @@ app.config(function($routeProvider) {
     .when("/exercicios", {
         templateUrl : "template/exercicios.htm"
     })
+    .when("/equipamentos", {
+        templateUrl : "template/equipamentos.htm"
+    })
 });
-
-
-
-
-
