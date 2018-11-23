@@ -1,16 +1,4 @@
 {
     "message": "Uma das elipticas está estragada.",
-    "client": {
-      "nif": 0,
-      "firstName": "Inês",
-      "lastName": null,
-      "imageUrl": null,
-      "birthDate": "0001-01-01T00:00:00",
-      "age": 0,
-      "heightInMeters": 0,
-      "weightInKg": 0,
-      "trainingPlan": null,
-      "checkInHistory": [],
-      "notifications": []
-    }
+    "clientId": 1
 }

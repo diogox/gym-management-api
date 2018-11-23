@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GymAPI.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
 namespace GymAPI.Services
@@ -43,13 +44,19 @@ namespace GymAPI.Services
 
         public void Create(SupportTicket ticket)
         {
+            if (ticket.ClientId > 0)
+            {
+                ticket.Client = null;
+            }
+            
             _context.SupportTickets.Add(ticket);
             _context.SaveChanges();
         }
 
         public void Update(SupportTicket oldTicket, SupportTicket ticket)
         {
-            oldTicket.Id = ticket.Id;
+            oldTicket.Message = ticket.Message;
+            oldTicket.ClientId = ticket.ClientId;
             
             _context.SupportTickets.Update(oldTicket);
             _context.SaveChanges();

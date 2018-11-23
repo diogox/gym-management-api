@@ -5,5 +5,6 @@ namespace GymAPI.Models
         public long Id { get; set; }
         public string Message { get; set; }
         public Client Client { get; set; }
+        public long ClientId { get; set; }
     }
 }
