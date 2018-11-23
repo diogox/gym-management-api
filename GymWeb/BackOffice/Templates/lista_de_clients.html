@@ -50,23 +50,22 @@
                         <h4>Preenche os seguintes cabeçalhos:</h4>
                         <div class="form-group">
                             <label for="pnome">Primeiro Nome:</label>
-                            <input class="form-control" type="text" ng-model="user.firstName" name="pnome" id="pnome"  required />
+                            <input class="form-control" type="text" ng-model="user.firstName" name="pnome" id="pnome"
+                                required />
                         </div>
                         <div class="form-group">
                             <lable for="unome">Ultimo Nome:</lable>
-                            <input class="form-control" type="text" ng-model="user.lastName" name="unome" id="unome"  required />
-                        </div>
-                        <div class="form-group">
-                            <lable for="idade">Idade:</lable>
-                            <input class="form-control" type="number" ng-model="user.age" name="idade" id="idade" min="0" required />
+                            <input class="form-control" type="text" ng-model="user.lastName" name="unome" id="unome"
+                                required />
                         </div>
                         <div class="form-group">
                             <lable for="ddn">Data de Nascimento(yyyy-mm-dd):</lable>
-                            <input class="form-control" type="text" ng-model="user.birthDate" name="ddn" id="ddn"  required />
+                            <input class="form-control" type="text" ng-model="user.birthDate" name="ddn" id="ddn"
+                                required />
                         </div>
                         <div class="form-group">
                             <lable for="nif">NIF:</lable>
-                            <input class="form-control" type="text" ng-model="user.nif" name="nif" id="nif"  required />
+                            <input class="form-control" type="text" ng-model="user.nif" name="nif" id="nif" required />
                         </div>
                         <div class="form-group">
                             <lable for="altura">Altura(m):</lable>
@@ -75,15 +74,16 @@
                         </div>
                         <div class="form-group">
                             <lable for="peso">Peso(kg):</lable>
-                            <input class="form-control" type="number" step="0.01" ng-model="user.weightInKg" name="peso" min="0"
-                                id="peso"  required />
+                            <input class="form-control" type="number" step="0.01" ng-model="user.weightInKg" name="peso"
+                                min="0" id="peso" required />
                         </div>
                         <div class="form-group">
                             <lable for="imgurl">Imagem:(URL)</lable>
-                            <input class="form-control" type="url" ng-model="user.imageUrl" name="imgurl" id="imgurl"  required />
+                            <input class="form-control" type="url" ng-model="user.imageUrl" name="imgurl" id="imgurl"
+                                required />
                         </div>
                         <p></p>
-                        <input class="btn btn-default btn-block" type="submit" id="submit" value="Submit"/>
+                        <button class="btn btn-default btn-block" type="submit" id="submit" value="Submit">Submit</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -105,41 +105,41 @@
                     <form ng-submit="edsubmit()" ng-controller="editarCliente">
                         <h4>Preenche os seguintes cabeçalhos:</h4>
                         <div class="form-group">
-                                <label for="pnome">Primeiro Nome:</label>
-                                <input class="form-control" type="text" ng-model="user.firstName" name="pnome" id="pnome"  required />
-                            </div>
-                            <div class="form-group">
-                                <lable for="unome">Ultimo Nome:</lable>
-                                <input class="form-control" type="text" ng-model="user.lastName" name="unome" id="unome"  required />
-                            </div>
-                            <div class="form-group">
-                                <lable for="idade">Idade:</lable>
-                                <input class="form-control" type="number" ng-model="user.age" name="idade" id="idade" min="0" required />
-                            </div>
-                            <div class="form-group">
-                                <lable for="ddn">Data de Nascimento(yyyy-mm-dd):</lable>
-                                <input class="form-control" type="text" ng-model="user.birthDate" name="ddn" id="ddn"  required />
-                            </div>
-                            <div class="form-group">
-                                <lable for="nif">NIF:</lable>
-                                <input class="form-control" type="text" ng-model="user.nif" name="nif" id="nif"  required />
-                            </div>
-                            <div class="form-group">
-                                <lable for="altura">Altura(m):</lable>
-                                <input class="form-control" type="number" step="0.01" ng-model="user.heightInMeters" name="altura"
-                                    id="altura" min="0" required />
-                            </div>
-                            <div class="form-group">
-                                <lable for="peso">Peso(kg):</lable>
-                                <input class="form-control" type="number" step="0.01" ng-model="user.weightInKg" name="peso" min="0"
-                                    id="peso"  required />
-                            </div>
-                            <div class="form-group">
-                                <lable for="imgurl">Imagem:(URL)</lable>
-                                <input class="form-control" type="url" ng-model="user.imageUrl" name="imgurl" id="imgurl"  required />
-                            </div>
-                            <p></p>
-                        <input class="btn btn-default btn-block" type="submit" id="submit" value="Submit" />
+                            <label for="pnome">Primeiro Nome:</label>
+                            <input class="form-control" type="text" ng-model="user.firstName" name="pnome" id="pnome"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="unome">Ultimo Nome:</lable>
+                            <input class="form-control" type="text" ng-model="user.lastName" name="unome" id="unome"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="ddn">Data de Nascimento(yyyy-mm-dd):</lable>
+                            <input class="form-control" type="text" ng-model="user.birthDate" name="ddn" id="ddn"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="nif">NIF:</lable>
+                            <input class="form-control" type="text" ng-model="user.nif" name="nif" id="nif" required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="altura">Altura(m):</lable>
+                            <input class="form-control" type="number" step="0.01" ng-model="user.heightInMeters" name="altura"
+                                id="altura" min="0" required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="peso">Peso(kg):</lable>
+                            <input class="form-control" type="number" step="0.01" ng-model="user.weightInKg" name="peso"
+                                min="0" id="peso" required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="imgurl">Imagem:(URL)</lable>
+                            <input class="form-control" type="url" ng-model="user.imageUrl" name="imgurl" id="imgurl"
+                                required />
+                        </div>
+                        <p></p>
+                        <button class="btn btn-default btn-block" type="submit" id="submit" value="Submit">Submit</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -148,5 +148,4 @@
             </div>
         </div>
     </modal>
-
 </div>
