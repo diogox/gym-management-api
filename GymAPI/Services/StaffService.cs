@@ -22,21 +22,6 @@ namespace GymAPI.Services
         public StaffService(GymContext context)
         {
             _context = context;
-
-            _context.Staff.Add(new StaffMember
-            {
-                FirstName = "Gustavo",
-                LastName = "Oliveira",
-                Age = 0,
-                BirthDate = DateTime.Now,
-                Email = "gustavinho19@gmail.com",
-                Nif = 122423423,
-                Rank = StaffMemberRank.Trainer,
-                HasBeenPaidThisMonth = false,
-                Salary = (float) 100.50,
-                ImageUrl = "https://scontent.flis7-1.fna.fbcdn.net/v/t1.0-9/16387190_703190483191434_8195178389931928488_n.jpg?_nc_cat=101&_nc_ht=scontent.flis7-1.fna&oh=40f37c49e42e023b8b6fec681274e20e&oe=5CAB61CA"
-            });
-            _context.SaveChanges();
         }
         
         public List<StaffMember> GetAll()
@@ -51,7 +36,7 @@ namespace GymAPI.Services
 
         public void Create(StaffMember member)
         {
-            _context.Add(member);
+            _context.Staff.Add(member);
             _context.SaveChanges();
         }
 

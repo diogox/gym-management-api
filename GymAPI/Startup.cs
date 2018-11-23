@@ -50,6 +50,7 @@ namespace GymAPI
             services.AddScoped<ITrainingPlansService, TrainingPlansService>();
             services.AddScoped<IStaffService, StaffService>();
             services.AddScoped<ITrainersStaffService, TrainersStaffService>();
+            services.AddScoped<ISupportTicketsService, SupportTicketsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

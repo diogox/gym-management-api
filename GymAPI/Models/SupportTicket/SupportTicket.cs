@@ -1,5 +1,3 @@
-using System;
-
 namespace GymAPI.Models
 {
     public class SupportTicket
