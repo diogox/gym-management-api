@@ -1,0 +1,12 @@
+{
+  "nif": 122423423,
+  "email": "gustavinho19@gmail.com",
+  "firstName": "Gustavo",
+  "lastName": "Oliveira",
+  "imageUrl": "https://scontent.flis7-1.fna.fbcdn.net/v/t1.0-9/16387190_703190483191434_8195178389931928488_n.jpg?_nc_cat=101&_nc_ht=scontent.flis7-1.fna&oh=40f37c49e42e023b8b6fec681274e20e&oe=5CAB61CA",
+  "age": 0,
+  "birthDate": "2018-11-23T17:41:20.2413085",
+  "rank": "Trainer",
+  "salary": 100.5,
+  "hasBeenPaidThisMonth": false,
+}

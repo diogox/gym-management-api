@@ -26,7 +26,7 @@ namespace GymAPI
 
         // GET api/plans/{id}
         [HttpGet("{id}", Name = "GetTrainingPlan")]
-        public ActionResult<TrainingPlan> GetTrainingPlan(int id)
+        public ActionResult<TrainingPlan> GetTrainingPlan(long id)
         {
             var plan = _trainingPlansService.GetById(id);
             if (plan == null)
@@ -47,7 +47,7 @@ namespace GymAPI
 
         // PUT api/plans/{id}
         [HttpPut("{id}")]
-        public ActionResult UpdateTrainingPlan(int id,[FromBody] TrainingPlan plan)
+        public ActionResult UpdateTrainingPlan(long id,[FromBody] TrainingPlan plan)
         {
             var oldPlan= _trainingPlansService.GetById(id);
             if (oldPlan== null)
@@ -61,7 +61,7 @@ namespace GymAPI
 
         // DELETE api/plans/{id}
         [HttpDelete("{id}")]
-        public ActionResult DeleteTrainingPlan(int id)
+        public ActionResult DeleteTrainingPlan(long id)
         {
             var plan = _trainingPlansService.GetById(id);
             if (plan == null)

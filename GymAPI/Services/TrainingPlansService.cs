@@ -8,7 +8,7 @@ namespace GymAPI.Services
     public interface ITrainingPlansService
     {
         List<TrainingPlan> GetAll();
-        TrainingPlan GetById(int id);
+        TrainingPlan GetById(long id);
         void Create(TrainingPlan plan);
         void Update(TrainingPlan oldPlan, TrainingPlan plan);
         void Delete(TrainingPlan plan);
@@ -21,99 +21,6 @@ namespace GymAPI.Services
         public TrainingPlansService(GymContext context)
         {
             _context = context;
-
-            _context.Plans.Add(new TrainingPlan
-            {
-                MondayExercises = new List<Exercise>
-                {
-                    new Exercise
-                    {
-                        Description = "O exercício consiste em fazer o máximo de repetições possivel.",
-                        Name = "Abdominais",
-                        DifficultyLevel = DifficultyLevels.Easy,
-                        ImageUrl = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjT_87z6-reAhVGQRoKHbh_AhwQjRx6BAgBEAU&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3O3qQUkGluE&psig=AOvVaw3ikUApMbJe0VL-gKBvASin&ust=1543073771942809",
-                        EquipmentToUse = new List<Equipment>(),
-                        TargetMuscleGroup = MuscleGroups.Abs,
-                    }
-                },
-                TuesdayExercises = new List<Exercise>
-                {
-                    new Exercise
-                    {
-                        Description = "O exercício consiste em fazer o máximo de repetições possivel.",
-                        Name = "Abdominais",
-                        DifficultyLevel = DifficultyLevels.Easy,
-                        ImageUrl = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjT_87z6-reAhVGQRoKHbh_AhwQjRx6BAgBEAU&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3O3qQUkGluE&psig=AOvVaw3ikUApMbJe0VL-gKBvASin&ust=1543073771942809",
-                        EquipmentToUse = new List<Equipment>(),
-                        TargetMuscleGroup = MuscleGroups.Abs,
-                    }
-                },
-                WednesdayExercises = new List<Exercise>
-                {
-                    new Exercise
-                    {
-                        Description = "O exercício consiste em fazer o máximo de repetições possivel.",
-                        Name = "Abdominais",
-                        DifficultyLevel = DifficultyLevels.Easy,
-                        ImageUrl = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjT_87z6-reAhVGQRoKHbh_AhwQjRx6BAgBEAU&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3O3qQUkGluE&psig=AOvVaw3ikUApMbJe0VL-gKBvASin&ust=1543073771942809",
-                        EquipmentToUse = new List<Equipment>(),
-                        TargetMuscleGroup = MuscleGroups.Abs,
-                    },
-                },
-                ThursdayExercises = new List<Exercise>
-                {
-                    new Exercise
-                    {
-                        Description = "O exercício consiste em fazer o máximo de repetições possivel.",
-                        Name = "Abdominais",
-                        DifficultyLevel = DifficultyLevels.Easy,
-                        ImageUrl = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjT_87z6-reAhVGQRoKHbh_AhwQjRx6BAgBEAU&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3O3qQUkGluE&psig=AOvVaw3ikUApMbJe0VL-gKBvASin&ust=1543073771942809",
-                        EquipmentToUse = new List<Equipment>(),
-                        TargetMuscleGroup = MuscleGroups.Abs,
-                    },
-                },
-                FridayExercises = new List<Exercise>
-                {
-                    new Exercise
-                    {
-                        Description = "O exercício consiste em fazer o máximo de repetições possivel.",
-                        Name = "Abdominais",
-                        DifficultyLevel = DifficultyLevels.Easy,
-                        ImageUrl = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjT_87z6-reAhVGQRoKHbh_AhwQjRx6BAgBEAU&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3O3qQUkGluE&psig=AOvVaw3ikUApMbJe0VL-gKBvASin&ust=1543073771942809",
-                        EquipmentToUse = new List<Equipment>(),
-                        TargetMuscleGroup = MuscleGroups.Abs,
-                    },
-                },
-                SaturdayExercises = new List<Exercise>
-                {
-                    new Exercise
-                    {
-                        Description = "O exercício consiste em fazer o máximo de repetições possivel.",
-                        Name = "Abdominais",
-                        DifficultyLevel = DifficultyLevels.Easy,
-                        ImageUrl = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjT_87z6-reAhVGQRoKHbh_AhwQjRx6BAgBEAU&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3O3qQUkGluE&psig=AOvVaw3ikUApMbJe0VL-gKBvASin&ust=1543073771942809",
-                        EquipmentToUse = new List<Equipment>(),
-                        TargetMuscleGroup = MuscleGroups.Abs,
-                    },
-                },
-                SundayExercises = new List<Exercise>
-                {
-                    new Exercise
-                    {
-                        Description = "O exercício consiste em fazer o máximo de repetições possivel.",
-                        Name = "Abdominais",
-                        DifficultyLevel = DifficultyLevels.Easy,
-                        ImageUrl = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjT_87z6-reAhVGQRoKHbh_AhwQjRx6BAgBEAU&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3O3qQUkGluE&psig=AOvVaw3ikUApMbJe0VL-gKBvASin&ust=1543073771942809",
-                        EquipmentToUse = new List<Equipment>(),
-                        TargetMuscleGroup = MuscleGroups.Abs,
-                    },
-                },
-                SupervisingTrainer = new StaffMember()
-                {
-                    Rank = StaffMemberRank.Trainer
-                }
-            });
-            _context.SaveChanges();
         }
 
 
@@ -122,7 +29,7 @@ namespace GymAPI.Services
             return _IncludeAllInfo().ToList();
         }
 
-        public TrainingPlan GetById(int id)
+        public TrainingPlan GetById(long id)
         {
             return _IncludeAllInfo().Single(plan => plan.Id == id);
         }
