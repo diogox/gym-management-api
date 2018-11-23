@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GymAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GymAPI.Services
 {
@@ -22,26 +23,22 @@ namespace GymAPI.Services
         public SupportTicketsService(GymContext context)
         {
             _context = context;
-            
-            _context.SupportTickets.Add(new SupportTicket
-            {
-                Message = "Uma das elipticas está estragada.",
-                Client = new Client
-                {
-                    FirstName = "Inês",
-                }
-            });
-            _context.SaveChanges();
         }
         
         public List<SupportTicket> GetAll()
         {
-            return _context.SupportTickets.ToList();
+            return _IncludeAllInfo().ToList();
         }
 
         public SupportTicket GetById(long id)
         {
-            return _context.SupportTickets.Find(id);
+            return _IncludeAllInfo().Single(ticket => ticket.Id == id);
+        }
+
+        private IQueryable<SupportTicket> _IncludeAllInfo()
+        {
+            return _context.SupportTickets
+                .Include(ticket => ticket.Client);
         }
 
         public void Create(SupportTicket ticket)
