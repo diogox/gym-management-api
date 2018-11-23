@@ -1,0 +1,98 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="CSS/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
+    <!--AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <!--Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--Boostrap-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <img class="imgbg" src="https://images.wallpaperscraft.com/image/dumbbells_fitness_gym_113149_1920x1080.jpg" alt="Error: Image Not Loaded!">
+    <header>
+        <nav class="navbar navbar-inverse" style="border-radius: 0">
+            <div class="container-fluid" style="border-radius: 0">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">Awesome Gym</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!--This is the side nav bar-->
+    <div class="left">
+        <ul>
+            <a href="index.html">
+                <li class="item-menu">
+                    <span class="glyphicon glyphicon-home"></span>
+                    <span class="menu">Home</span>
+                </li>
+            </a>
+            <a href="#!listadefuncionarios">
+                <li class="item-menu">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="menu">Lista de Funcionários</span>
+                </li>
+            </a>
+            <a href="#!listadeclientes">
+                <li class="item-menu">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="menu">Lista de Clientes</span>
+                </li>
+            </a>
+            <a href="#!listadeequipamentos">
+                <li class="item-menu">
+                    <span class="glyphicon glyphicon-scale"></span>
+                    <span class="menu">Lista de Equipamento</span>
+                </li>
+            </a>
+            <a href="#!listadetickets">
+                <li class="item-menu">
+                    <span class="glyphicon glyphicon-comment"></span>
+                    <span class="menu">lista de Tickets</span>
+                </li>
+            </a>
+            <a href="#!logout">
+                <li class="item-menu">
+                    <span class="glyphicon glyphicon-off"></span>
+                    <span class="menu">Log OUT</span>
+                </li>
+            </a>
+        </ul>
+    </div>
+    <!------------------------->
+
+
+    <!--Content-->
+    <div class="ng-view"></div>
+    <!------------------------->
+
+
+
+
+
+    <footer>
+        <p>Created by: Quarteto_dos_cinco</p>
+    </footer>
+</body>
+<!--Controllers and Routes-->
+<script src="Angular/routes.js"></script>
+<script src="Angular/lista_de_clientes_controller.js"></script>
+<script src="Angular/submissions.js"></script>
+
+</html>
