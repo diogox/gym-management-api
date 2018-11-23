@@ -2,13 +2,32 @@
 
     <h1>Lista de equipamentos</h1>
 
+    <br/>
+    <input type="text" class="form-control" placeholder="Pesquise por nome do equipamento, marca, etc..." ng-model="filtro_equipamentos">
+    <br/>
+
     <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-group-item" ng-repeat="x in equipamentos | filter : filtro_equipamentos">
 
-            <a><p data-toggle="collapse" data-target="#ex1"> Equipamento 1</p></a>
+            <a><p data-toggle="collapse" data-target="#eq{{x.id}}">{{x.name}}</p></a>
 
-            <div id="ex1" class="collapse">
-                <p>Lorem ipsum dolor text....</p>
+            <div id="eq{{x.id}}" class="collapse">
+                <dt>Descrição:</dt>
+                <dd>- {{x.description}}</dd>
+
+                <dt>Marca:</dt>
+                <dd>- {{x.bandName}}</dd>
+
+                <dt>Quantidade:</dt>
+                <dd>- {{x.quantity}}</dd>
+
+                <div class="card" style="width:350px; display:inline-block; margin: 20px">
+                    <div class="card-body">
+                        <img class="img" src="{{x.url}}" alt="Something went wrong, it's not possible to display the image" style="width:100%;height:100%"/>
+                        <figcaption>{{x.name}}</figcaption>
+                    </div>
+                </div>
+
             </div> 
 
         </li>
