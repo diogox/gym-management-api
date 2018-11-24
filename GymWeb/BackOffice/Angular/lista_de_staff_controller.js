@@ -11,22 +11,22 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-//lista_de_clientes
-app.controller("clientesCtrl", function ($scope, $http) {
-    //Listar todos os Clientes
+//Lista de Staff
+app.controller("staffCtrl", function ($scope, $http) {
+    //Listar todos os Funcionários
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/clients/"
+        url: "https://localhost:5001/api/staff/"
     }).then(function mySuccess(response) {
         //console.log(response.data);
 
-        //Formata a BirthDate dos Clientes para yyyy-mm-dd
+        //Formata a BirthDate dos Funcionários para yyyy-mm-dd
         for(let i=0;i<response.data.length;i++){
             response.data[i].birthDate = formatDate(response.data[i].birthDate);  
             //console.log(response.data[i].birthDate);
-       }
+        }
 
-        $scope.Clientes = response.data;
+        $scope.funcionarios = response.data;
 
     }, function myError(response) {
         console.log("Falha ao Carregar a Tabela!");
@@ -34,55 +34,45 @@ app.controller("clientesCtrl", function ($scope, $http) {
 
 
 
-        
+
         //Gestão de Erros
         //Validações
     });
 
-
-    //Remove o cliente da Base de Dados
-    $scope.rmCliente = function (id) {
-        //console.log($scope.Clientes);
+    //Remove o Staff da Base de Dados
+    $scope.rmStaff = function (id) {
+        //console.log($scope.funcionarios);
         //console.log(id);
         $http({
             method: "DELETE",
-            url: "https://localhost:5001/api/clients/" + id
+            url: "https://localhost:5001/api/staff/" + id
         }).then(function mySuccess() {
             console.log("Removido com Sucesso!");
-            $scope.Clientes = $.grep($scope.Clientes, function (e) {
+            $scope.funcionarios = $.grep($scope.funcionarios, function (e) {
                 return e.id != id;
-            });
-            
+            }); 
+
             //Dá close no Modal from
-            $('#removercliente').modal('toggle');
+            $('#removerfunc').modal('toggle');
 
         }, function myError(response) {
-            console.log("Erro ao remover Cliente");
+            console.log("Erro ao remover Funcionário");
 
             //Dá close no Modal from
-            $('#removercliente').modal('toggle');
-
+            $('#removerfunc').modal('toggle');
 
             //Gestão de Erros
             //Validações
         });
-    };
-
-    //Abre um popup para colocar nova informação do Cliente
-    $scope.edCliente = function (id) {
-        $scope.idclienteedit = id;
     }
 
-    //Abre um popup para confirmar a remoção do Cliente
-    $scope.removeClient = function (id){
-        $scope.idclienteremove = id;
+    //Abre um popup para colocar nova informação do Funcionário
+    $scope.edStaff = function (id) {
+        $scope.idstaffedit = id;
     }
 
-
-
+    //Abre um popup para confirmar a remoção do Funcionário
+      $scope.removeFunc = function (id){
+        $scope.idfuncremove = id;
+    }
 });
-
-
-
-
-

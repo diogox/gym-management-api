@@ -1,0 +1,190 @@
+<div class="container" style="margin-left: 100px" ng-controller="staffCtrl">
+    <button type="button" class="btn btn-secondary glyphicon glyphicon-plus" data-toggle="modal" data-target="#addFunc">ADICIONAR
+        FUNCIONÁRIO</button>
+    <table class="content table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imagem</th>
+                <th>Primeiro Nome</th>
+                <th>Último Nome</th>
+                <th>Idade</th>
+                <th>Data de Nascimento</th>
+                <th>NIF</th>
+                <th>Email</th>
+                <th>Rank</th>
+                <th>Salário(€)</th>
+                <th>Pago</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="func in funcionarios">
+                <td>{{func.id}}</td>
+                <td><img src="{{func.imageUrl}}" alt="Image not Loaded" width="30px"></img></td>
+                <td>{{func.firstName}}</td>
+                <td>{{func.lastName}}</td>
+                <td>{{func.age}}</td>
+                <td>{{func.birthDate}}</td>
+                <td>{{func.nif}}</td>
+                <td>{{func.email}}</td>
+                <td>{{func.rank}}</td>
+                <td>{{func.salary}}</td>
+                <td>{{func.hasBeenPaidThisMonth }}</td>
+                <td class="options">
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"
+                        data-target="#removerfunc" ng-click="removeFunc(func.id)">
+                    </button>
+                    <button type="button" class="edt btn btn-success glyphicon glyphicon-pencil" data-toggle="modal"
+                        data-target="#editarStaff" ng-click="edStaff(func.id)">
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--Modal Remover Staff-->
+    <modal class="modal fade" id="removerfunc" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Remover Funcionário {{idfuncremove}}</h3>
+                </div>
+                <div class="modal-body"> 
+                    <h4>Pretende remover este funcionário?</h4>
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" ng-click="rmStaff(idfuncremove)">
+                        Confirm
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </modal>
+    
+    <!--Modal Adicionar Staff-->
+    <modal class="modal fade" id="addFunc" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Adicionar Funcionário</h3>
+                </div>
+                <div class="modal-body">
+                    <!--Form para adicionar um novo Funcionário-->
+                    <form ng-submit="submit()" ng-controller="adicionarStaff">
+                        <h4>Preenche os seguintes cabeçalhos:</h4>
+                        <div class="form-group">
+                            <label for="pnome">Primeiro Nome:</label>
+                            <input class="form-control" type="text" ng-model="staff.firstName" name="pnome" id="pnome"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="unome">Ultimo Nome:</lable>
+                            <input class="form-control" type="text" ng-model="staff.lastName" name="unome" id="unome"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="ddn">Data de Nascimento(yyyy-mm-dd):</lable>
+                            <input class="form-control" type="text" ng-model="staff.birthDate" name="ddn" id="ddn"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="nif">NIF:</lable>
+                            <input class="form-control" type="text" ng-model="staff.nif" name="nif" id="nif" required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="email">Email:</lable>
+                            <input class="form-control" type="email" ng-model="staff.email" name="email" id="email"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <label for="sel1">Rank:</label>
+                            <select class="form-control" ng-model="staff.rank" >
+                                <option ng-repeat="x in franks" value="{{x}}">{{x}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <lable for="salary">Salário(mês):</lable>
+                            <input class="form-control" type="number" step="0.01" ng-model="staff.salary" name="salary" id="salary" min="0" required />
+                        </div>
+                        <div class="form-group">
+                                <lable for="imgurl">Imagem:(URL)</lable>
+                                <input class="form-control" type="url" ng-model="staff.imageUrl" name="imgurl" id="imgurl" required />
+                        </div>
+                        <p></p>
+                        <button class="btn btn-default btn-block" type="submit" id="submit" value="Submit">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </modal>
+
+    <!--Modal Editar Staff-->
+    <modal class="modal fade" id="editarStaff" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Editar Funcionário {{idstaffedit}}</h3>
+                </div>
+                <div class="modal-body">
+                    <!--Form para Editar um Funcionário-->
+                    <form ng-submit="edsubmit()" ng-controller="editarStaff">
+                            <h4>Preenche os seguintes cabeçalhos:</h4>
+                            <div class="form-group">
+                                <label for="pnome">Primeiro Nome:</label>
+                                <input class="form-control" type="text" ng-model="staff.firstName" name="pnome" id="pnome"
+                                    required />
+                            </div>
+                            <div class="form-group">
+                                <lable for="unome">Ultimo Nome:</lable>
+                                <input class="form-control" type="text" ng-model="staff.lastName" name="unome" id="unome"
+                                    required />
+                            </div>
+                            <div class="form-group">
+                                <lable for="ddn">Data de Nascimento(yyyy-mm-dd):</lable>
+                                <input class="form-control" type="text" ng-model="staff.birthDate" name="ddn" id="ddn"
+                                    required />
+                            </div>
+                            <div class="form-group">
+                                <lable for="nif">NIF:</lable>
+                                <input class="form-control" type="text" ng-model="staff.nif" name="nif" id="nif" required />
+                            </div>
+                            <div class="form-group">
+                                <lable for="email">Email:</lable>
+                                <input class="form-control" type="email" ng-model="staff.email" name="email" id="email"
+                                    required />
+                            </div>
+                            <div class="form-group">
+                                <label for="sel1">Rank:</label>
+                                <select class="form-control" ng-model="staff.rank" >
+                                    <option ng-repeat="x in franks" value="{{x}}">{{x}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sel1">Pago:</label>
+                                <select class="form-control" ng-model="staff.hasBeenPaidThisMonth" >
+                                    <option ng-repeat="x in paid" value="{{x}}">{{x}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <lable for="salary">Salário(mês):</lable>
+                                <input class="form-control" type="number" step="0.01" ng-model="staff.salary" name="salary" id="salary" min="0" required />
+                            </div>
+                            <div class="form-group">
+                                    <lable for="imgurl">Imagem:(URL)</lable>
+                                    <input class="form-control" type="url" ng-model="staff.imageUrl" name="imgurl" id="imgurl" required />
+                            </div>
+                        <p></p>
+                        <button class="btn btn-default btn-block" type="submit" id="submit" value="Submit">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </modal>
+</div>

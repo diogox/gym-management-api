@@ -4,7 +4,7 @@
     <table class="content table">
         <thead>
             <tr>
-                <th>Client ID</th>
+                <th>ID</th>
                 <th>Imagem</th>
                 <th>Primeiro Nome</th>
                 <th>Último Nome</th>
@@ -27,15 +27,36 @@
                 <td>{{cliente.heightInMeters}}</td>
                 <td>{{cliente.weightInKg}}</td>
                 <td>
-                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" ng-click="rmCliente(cliente.id)">
-                        Remover</button>
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"
+                        data-target="#removercliente" ng-click="removeClient(cliente.id)">
+                        Remover
+                    </button>
                     <button type="button" class="edt btn btn-success glyphicon glyphicon-pencil" data-toggle="modal"
                         data-target="#editarClient" ng-click="edCliente(cliente.id)">
-                        Editar</button>
+                        Editar
+                    </button>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <!--Modal Remover Cliente-->
+    <modal class="modal fade" id="removercliente" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Remover Cliente {{idclienteremove}}</h3>
+                </div>
+                <div class="modal-body"> 
+                    <h4>Pretende remover este cliente?</h4>
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" ng-click="rmCliente(idclienteremove)">
+                                Confirm
+                    </button>
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </modal>
 
     <!--Modal Adicionar Cliente-->
     <modal class="modal fade" id="addClient" role="dialog">

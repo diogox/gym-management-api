@@ -8,6 +8,9 @@ app.config(function($routeProvider) {
     .when("/listadeclientes", {
         templateUrl : "Templates/lista_de_clients.html"
     })
+    .when("/listadestaff", {
+        templateUrl : "Templates/lista_de_staff.html"
+    })
     .otherwise({
         templateUrl : "Templates/404.htm"
     })
