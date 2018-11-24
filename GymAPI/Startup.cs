@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace GymAPI
 {
@@ -39,6 +40,15 @@ namespace GymAPI
                     // Makes the fields with null values not show up in the JSON
                     //options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
                 });
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Info
+                {
+                    Title = "Gym API",
+                    Description = "A REST API for Gym Management."
+                });
+            });
             
             var connection = "Data Source=gym.db";
             services.AddDbContext<GymContext>
@@ -73,6 +83,12 @@ namespace GymAPI
                 .WithMethods("GET", "POST", "PUT", "DELETE")
             );
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Gym API");
+            });
         }
     }
 }
