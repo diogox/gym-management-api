@@ -1,18 +1,18 @@
-using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GymAPI.Models
 {
     public class TrainingPlan
     {
         public long Id { get; set; }
-        public List<Exercise> MondayExercises { get; set; } = new List<Exercise>();
-        public List<Exercise> TuesdayExercises { get; set; } = new List<Exercise>();
-        public List<Exercise> WednesdayExercises { get; set; } = new List<Exercise>();
-        public List<Exercise> ThursdayExercises { get; set; } = new List<Exercise>();
-        public List<Exercise> FridayExercises { get; set; } = new List<Exercise>();
-        public List<Exercise> SaturdayExercises { get; set; } = new List<Exercise>();
-        public List<Exercise> SundayExercises { get; set; } = new List<Exercise>();
+        
+        [Required]
+        public string Name { get; set; }
+        public List<TrainingPlanBlock> ExerciseBlocks { get; set; } = new List<TrainingPlanBlock>();
+        
+        [Required]
+        public long SupervisingTrainerId { get; set; }
         public StaffMember SupervisingTrainer { get; set; }
     }
 }

@@ -44,11 +44,7 @@ namespace GymAPI.Services
 
         public void Create(SupportTicket ticket)
         {
-            if (ticket.ClientId > 0)
-            {
-                ticket.Client = null;
-            }
-            
+            ticket.Client = null; // ClientId initializes this field   
             _context.SupportTickets.Add(ticket);
             _context.SaveChanges();
         }
@@ -58,7 +54,6 @@ namespace GymAPI.Services
             oldTicket.Message = ticket.Message;
             oldTicket.ClientId = ticket.ClientId;
             
-            _context.SupportTickets.Update(oldTicket);
             _context.SaveChanges();
         }
 

@@ -48,6 +48,7 @@ namespace GymAPI
             services.AddScoped<IEquipmentService, EquipmentService>();
             services.AddScoped<IExercisesService, ExercisesService>();
             services.AddScoped<ITrainingPlansService, TrainingPlansService>();
+            services.AddScoped<ITrainingPlanBlocksService, TrainingPlanBlocksService>();
             services.AddScoped<IStaffService, StaffService>();
             services.AddScoped<ITrainersStaffService, TrainersStaffService>();
             services.AddScoped<ISupportTicketsService, SupportTicketsService>();

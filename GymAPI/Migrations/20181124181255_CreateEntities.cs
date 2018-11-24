@@ -8,6 +8,23 @@ namespace GymAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Exercises",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    ImageUrl = table.Column<string>(nullable: true),
+                    TargetMuscleGroup = table.Column<int>(nullable: false),
+                    DifficultyLevel = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Exercises", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Staff",
                 columns: table => new
                 {
@@ -30,12 +47,39 @@ namespace GymAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Equipment",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: false),
+                    BrandName = table.Column<string>(nullable: true),
+                    ImageUrl = table.Column<string>(nullable: true),
+                    Quantity = table.Column<int>(nullable: false),
+                    PriceInEuro = table.Column<float>(nullable: false),
+                    SupplierName = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    ExerciseId = table.Column<long>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Equipment", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Equipment_Exercises_ExerciseId",
+                        column: x => x.ExerciseId,
+                        principalTable: "Exercises",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Plans",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    SupervisingTrainerId = table.Column<long>(nullable: true)
+                    Name = table.Column<string>(nullable: false),
+                    SupervisingTrainerId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,7 +89,7 @@ namespace GymAPI.Migrations
                         column: x => x.SupervisingTrainerId,
                         principalTable: "Staff",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,69 +120,30 @@ namespace GymAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Exercises",
+                name: "TrainingPlanBlock",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: true),
-                    TargetMuscleGroup = table.Column<int>(nullable: false),
-                    DifficultyLevel = table.Column<int>(nullable: false),
-                    TrainingPlanId = table.Column<long>(nullable: true),
-                    TrainingPlanId1 = table.Column<long>(nullable: true),
-                    TrainingPlanId2 = table.Column<long>(nullable: true),
-                    TrainingPlanId3 = table.Column<long>(nullable: true),
-                    TrainingPlanId4 = table.Column<long>(nullable: true),
-                    TrainingPlanId5 = table.Column<long>(nullable: true),
-                    TrainingPlanId6 = table.Column<long>(nullable: true)
+                    PlanId = table.Column<long>(nullable: false),
+                    ExerciseId = table.Column<long>(nullable: false),
+                    NumberOfRepetitions = table.Column<int>(nullable: false),
+                    NumberOfSeries = table.Column<int>(nullable: false),
+                    DayOfTheWeek = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Exercises", x => x.Id);
+                    table.PrimaryKey("PK_TrainingPlanBlock", x => new { x.PlanId, x.ExerciseId, x.DayOfTheWeek, x.NumberOfRepetitions, x.NumberOfSeries });
                     table.ForeignKey(
-                        name: "FK_Exercises_Plans_TrainingPlanId",
-                        column: x => x.TrainingPlanId,
+                        name: "FK_TrainingPlanBlock_Exercises_ExerciseId",
+                        column: x => x.ExerciseId,
+                        principalTable: "Exercises",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TrainingPlanBlock_Plans_PlanId",
+                        column: x => x.PlanId,
                         principalTable: "Plans",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Exercises_Plans_TrainingPlanId1",
-                        column: x => x.TrainingPlanId1,
-                        principalTable: "Plans",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Exercises_Plans_TrainingPlanId2",
-                        column: x => x.TrainingPlanId2,
-                        principalTable: "Plans",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Exercises_Plans_TrainingPlanId3",
-                        column: x => x.TrainingPlanId3,
-                        principalTable: "Plans",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Exercises_Plans_TrainingPlanId4",
-                        column: x => x.TrainingPlanId4,
-                        principalTable: "Plans",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Exercises_Plans_TrainingPlanId5",
-                        column: x => x.TrainingPlanId5,
-                        principalTable: "Plans",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Exercises_Plans_TrainingPlanId6",
-                        column: x => x.TrainingPlanId6,
-                        principalTable: "Plans",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -184,28 +189,23 @@ namespace GymAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Equipment",
+                name: "SupportTickets",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
-                    BrandName = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: true),
-                    Quantity = table.Column<int>(nullable: false),
-                    PriceInEuro = table.Column<float>(nullable: false),
-                    SupplierName = table.Column<string>(nullable: true),
-                    ExerciseId = table.Column<long>(nullable: true)
+                    Message = table.Column<string>(nullable: false),
+                    ClientId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Equipment", x => x.Id);
+                    table.PrimaryKey("PK_SupportTickets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Equipment_Exercises_ExerciseId",
-                        column: x => x.ExerciseId,
-                        principalTable: "Exercises",
+                        name: "FK_SupportTickets_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -229,44 +229,19 @@ namespace GymAPI.Migrations
                 column: "ExerciseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Exercises_TrainingPlanId",
-                table: "Exercises",
-                column: "TrainingPlanId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Exercises_TrainingPlanId1",
-                table: "Exercises",
-                column: "TrainingPlanId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Exercises_TrainingPlanId2",
-                table: "Exercises",
-                column: "TrainingPlanId2");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Exercises_TrainingPlanId3",
-                table: "Exercises",
-                column: "TrainingPlanId3");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Exercises_TrainingPlanId4",
-                table: "Exercises",
-                column: "TrainingPlanId4");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Exercises_TrainingPlanId5",
-                table: "Exercises",
-                column: "TrainingPlanId5");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Exercises_TrainingPlanId6",
-                table: "Exercises",
-                column: "TrainingPlanId6");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Plans_SupervisingTrainerId",
                 table: "Plans",
                 column: "SupervisingTrainerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupportTickets_ClientId",
+                table: "SupportTickets",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TrainingPlanBlock_ExerciseId",
+                table: "TrainingPlanBlock",
+                column: "ExerciseId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -279,6 +254,12 @@ namespace GymAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Equipment");
+
+            migrationBuilder.DropTable(
+                name: "SupportTickets");
+
+            migrationBuilder.DropTable(
+                name: "TrainingPlanBlock");
 
             migrationBuilder.DropTable(
                 name: "Clients");

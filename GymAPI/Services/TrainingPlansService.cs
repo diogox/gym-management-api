@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using GymAPI.Models;
@@ -9,6 +10,8 @@ namespace GymAPI.Services
     {
         List<TrainingPlan> GetAll();
         TrainingPlan GetById(long id);
+        List<Exercise> GetExercises(TrainingPlan plan);
+        Exercise AddExerciseToPlan(TrainingPlan plan, TrainingPlanBlock block);
         void Create(TrainingPlan plan);
         void Update(TrainingPlan oldPlan, TrainingPlan plan);
         void Delete(TrainingPlan plan);
@@ -33,39 +36,43 @@ namespace GymAPI.Services
         {
             return _IncludeAllInfo().Single(plan => plan.Id == id);
         }
+
+        public List<Exercise> GetExercises(TrainingPlan plan)
+        {
+            return _context.Exercises.Where(
+                exercise => plan.ExerciseBlocks.Exists(block => block.ExerciseId == exercise.Id)
+            ).ToList();
+        }
+
+        public Exercise AddExerciseToPlan(TrainingPlan plan, TrainingPlanBlock block)
+        {
+            block.PlanId = plan.Id;
+            plan.ExerciseBlocks.Add(block);
+            
+            _context.SaveChanges();
+            return _context.Exercises.SingleOrDefault(exercise => exercise.Id == block.ExerciseId);
+        }
         
         private IQueryable<TrainingPlan> _IncludeAllInfo()
         {
             return _context.Plans
-                .Include(client => client.MondayExercises)
-                .Include(client => client.TuesdayExercises)
-                .Include(client => client.WednesdayExercises)
-                .Include(client => client.ThursdayExercises)
-                .Include(client => client.FridayExercises)
-                .Include(client => client.SaturdayExercises)
-                .Include(client => client.SundayExercises)
-                .Include(client => client.SupervisingTrainer);
+                .Include(plan => plan.SupervisingTrainer)
+                .Include(plan => plan.ExerciseBlocks);
         }
 
         public void Create(TrainingPlan plan)
         {
+            plan.SupervisingTrainer = null; // SupervisingTrainerId initializes this field
             _context.Plans.Add(plan);
             _context.SaveChanges();
         }
 
         public void Update(TrainingPlan oldPlan, TrainingPlan plan)
         {
-            oldPlan.Id = plan.Id;
-            oldPlan.MondayExercises = plan.MondayExercises;
-            oldPlan.TuesdayExercises = plan.TuesdayExercises;
-            oldPlan.WednesdayExercises= plan.WednesdayExercises;
-            oldPlan.ThursdayExercises= plan.ThursdayExercises;
-            oldPlan.FridayExercises = plan.FridayExercises;
-            oldPlan.SaturdayExercises = plan.SaturdayExercises;
-            oldPlan.SundayExercises = plan.SundayExercises;
-            oldPlan.SupervisingTrainer = plan.SupervisingTrainer;
-
-            _context.Plans.Update(oldPlan);
+            oldPlan.Name = plan.Name;
+            oldPlan.ExerciseBlocks = plan.ExerciseBlocks;
+            oldPlan.SupervisingTrainerId = plan.SupervisingTrainerId;
+            
             _context.SaveChanges();
         }
 

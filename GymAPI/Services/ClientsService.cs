@@ -43,13 +43,6 @@ namespace GymAPI.Services
         {
             return _context.Clients
                 .Include(client => client.TrainingPlan)
-                .Include(client => client.TrainingPlan.MondayExercises)
-                .Include(client => client.TrainingPlan.TuesdayExercises)
-                .Include(client => client.TrainingPlan.WednesdayExercises)
-                .Include(client => client.TrainingPlan.ThursdayExercises)
-                .Include(client => client.TrainingPlan.FridayExercises)
-                .Include(client => client.TrainingPlan.SaturdayExercises)
-                .Include(client => client.TrainingPlan.SundayExercises)
                 .Include(client => client.CheckInHistory)
                 .Include(client => client.Notifications);
         }

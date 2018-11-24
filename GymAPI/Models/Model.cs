@@ -14,5 +14,32 @@ namespace GymAPI.Models
         public DbSet<Equipment> Equipment { get; set; }
         public DbSet<StaffMember> Staff { get; set; }
         public DbSet<SupportTicket> SupportTickets { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<TrainingPlanBlock>()
+                .HasKey(tpb => new
+                {
+                    tpb.PlanId,
+                    tpb.ExerciseId,
+                    tpb.DayOfTheWeek,
+                    tpb.NumberOfRepetitions,
+                    tpb.NumberOfSeries,
+                });
+            /*
+            modelBuilder.Entity<TrainingPlanExercise>()
+                .HasKey(pe => new { pe.PlanId, pe.ExerciseId });
+            modelBuilder.Entity<TrainingPlanExercise>()
+                .HasOne(pe => pe.Plan)
+                .WithMany(p => p.Exercises)
+                .HasForeignKey(pe => pe.ExerciseId);
+            modelBuilder.Entity<TrainingPlanExercise>()
+                .HasOne(pe => pe.Exercise)
+                .WithMany(e => e.UsedByPlans)
+                .HasForeignKey(pe => pe.PlanId);
+            */
+        }
     }
 }

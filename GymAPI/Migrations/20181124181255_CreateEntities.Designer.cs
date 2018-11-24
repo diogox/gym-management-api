@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymAPI.Migrations
 {
     [DbContext(typeof(GymContext))]
-    [Migration("20181122180919_UpdateEquipment")]
-    partial class UpdateEquipment
+    [Migration("20181124181255_CreateEntities")]
+    partial class CreateEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -97,7 +97,8 @@ namespace GymAPI.Migrations
 
                     b.Property<string>("ImageUrl");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<float>("PriceInEuro");
 
@@ -127,35 +128,7 @@ namespace GymAPI.Migrations
 
                     b.Property<int>("TargetMuscleGroup");
 
-                    b.Property<long?>("TrainingPlanId");
-
-                    b.Property<long?>("TrainingPlanId1");
-
-                    b.Property<long?>("TrainingPlanId2");
-
-                    b.Property<long?>("TrainingPlanId3");
-
-                    b.Property<long?>("TrainingPlanId4");
-
-                    b.Property<long?>("TrainingPlanId5");
-
-                    b.Property<long?>("TrainingPlanId6");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TrainingPlanId");
-
-                    b.HasIndex("TrainingPlanId1");
-
-                    b.HasIndex("TrainingPlanId2");
-
-                    b.HasIndex("TrainingPlanId3");
-
-                    b.HasIndex("TrainingPlanId4");
-
-                    b.HasIndex("TrainingPlanId5");
-
-                    b.HasIndex("TrainingPlanId6");
 
                     b.ToTable("Exercises");
                 });
@@ -190,18 +163,57 @@ namespace GymAPI.Migrations
                     b.ToTable("Staff");
                 });
 
+            modelBuilder.Entity("GymAPI.Models.SupportTicket", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("ClientId");
+
+                    b.Property<string>("Message")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("SupportTickets");
+                });
+
             modelBuilder.Entity("GymAPI.Models.TrainingPlan", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long?>("SupervisingTrainerId");
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<long>("SupervisingTrainerId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("SupervisingTrainerId");
 
                     b.ToTable("Plans");
+                });
+
+            modelBuilder.Entity("GymAPI.Models.TrainingPlanBlock", b =>
+                {
+                    b.Property<long>("PlanId");
+
+                    b.Property<long>("ExerciseId");
+
+                    b.Property<int>("DayOfTheWeek");
+
+                    b.Property<int>("NumberOfRepetitions");
+
+                    b.Property<int>("NumberOfSeries");
+
+                    b.HasKey("PlanId", "ExerciseId", "DayOfTheWeek", "NumberOfRepetitions", "NumberOfSeries");
+
+                    b.HasIndex("ExerciseId");
+
+                    b.ToTable("TrainingPlanBlock");
                 });
 
             modelBuilder.Entity("GymAPI.Models.Client", b =>
@@ -232,42 +244,33 @@ namespace GymAPI.Migrations
                         .HasForeignKey("ExerciseId");
                 });
 
-            modelBuilder.Entity("GymAPI.Models.Exercise", b =>
+            modelBuilder.Entity("GymAPI.Models.SupportTicket", b =>
                 {
-                    b.HasOne("GymAPI.Models.TrainingPlan")
-                        .WithMany("FridayExercises")
-                        .HasForeignKey("TrainingPlanId");
-
-                    b.HasOne("GymAPI.Models.TrainingPlan")
-                        .WithMany("MondayExercises")
-                        .HasForeignKey("TrainingPlanId1");
-
-                    b.HasOne("GymAPI.Models.TrainingPlan")
-                        .WithMany("SaturdayExercises")
-                        .HasForeignKey("TrainingPlanId2");
-
-                    b.HasOne("GymAPI.Models.TrainingPlan")
-                        .WithMany("SundayExercises")
-                        .HasForeignKey("TrainingPlanId3");
-
-                    b.HasOne("GymAPI.Models.TrainingPlan")
-                        .WithMany("ThursdayExercises")
-                        .HasForeignKey("TrainingPlanId4");
-
-                    b.HasOne("GymAPI.Models.TrainingPlan")
-                        .WithMany("TuesdayExercises")
-                        .HasForeignKey("TrainingPlanId5");
-
-                    b.HasOne("GymAPI.Models.TrainingPlan")
-                        .WithMany("WednesdayExercises")
-                        .HasForeignKey("TrainingPlanId6");
+                    b.HasOne("GymAPI.Models.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GymAPI.Models.TrainingPlan", b =>
                 {
                     b.HasOne("GymAPI.Models.StaffMember", "SupervisingTrainer")
                         .WithMany()
-                        .HasForeignKey("SupervisingTrainerId");
+                        .HasForeignKey("SupervisingTrainerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GymAPI.Models.TrainingPlanBlock", b =>
+                {
+                    b.HasOne("GymAPI.Models.Exercise", "Exercise")
+                        .WithMany("UsedByPlans")
+                        .HasForeignKey("ExerciseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GymAPI.Models.TrainingPlan", "Plan")
+                        .WithMany("ExerciseBlocks")
+                        .HasForeignKey("PlanId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
