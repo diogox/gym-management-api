@@ -78,7 +78,7 @@ namespace GymAPI.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     SupervisingTrainerId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -153,7 +153,7 @@ namespace GymAPI.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     At = table.Column<DateTime>(nullable: false),
-                    ClientId = table.Column<long>(nullable: true)
+                    ClientId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -163,7 +163,7 @@ namespace GymAPI.Migrations
                         column: x => x.ClientId,
                         principalTable: "Clients",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -175,7 +175,7 @@ namespace GymAPI.Migrations
                     Message = table.Column<string>(nullable: true),
                     Timestamp = table.Column<DateTime>(nullable: false),
                     IsUnread = table.Column<bool>(nullable: false),
-                    ClientId = table.Column<long>(nullable: true)
+                    ClientId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -185,7 +185,7 @@ namespace GymAPI.Migrations
                         column: x => x.ClientId,
                         principalTable: "Clients",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -194,7 +194,8 @@ namespace GymAPI.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Message = table.Column<string>(nullable: false),
+                    OpenedAt = table.Column<DateTime>(nullable: false),
+                    State = table.Column<int>(nullable: false),
                     ClientId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -204,6 +205,41 @@ namespace GymAPI.Migrations
                         name: "FK_SupportTickets_Clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "Clients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SupportTicketMessage",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Message = table.Column<string>(nullable: true),
+                    At = table.Column<DateTime>(nullable: false),
+                    SupportTicketId = table.Column<long>(nullable: false),
+                    FromClientId = table.Column<long>(nullable: false),
+                    FromStaffId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SupportTicketMessage", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SupportTicketMessage_Clients_FromClientId",
+                        column: x => x.FromClientId,
+                        principalTable: "Clients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SupportTicketMessage_Staff_FromStaffId",
+                        column: x => x.FromStaffId,
+                        principalTable: "Staff",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SupportTicketMessage_SupportTickets_SupportTicketId",
+                        column: x => x.SupportTicketId,
+                        principalTable: "SupportTickets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -234,6 +270,21 @@ namespace GymAPI.Migrations
                 column: "SupervisingTrainerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SupportTicketMessage_FromClientId",
+                table: "SupportTicketMessage",
+                column: "FromClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupportTicketMessage_FromStaffId",
+                table: "SupportTicketMessage",
+                column: "FromStaffId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupportTicketMessage_SupportTicketId",
+                table: "SupportTicketMessage",
+                column: "SupportTicketId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SupportTickets_ClientId",
                 table: "SupportTickets",
                 column: "ClientId");
@@ -256,16 +307,19 @@ namespace GymAPI.Migrations
                 name: "Equipment");
 
             migrationBuilder.DropTable(
-                name: "SupportTickets");
+                name: "SupportTicketMessage");
 
             migrationBuilder.DropTable(
                 name: "TrainingPlanBlock");
 
             migrationBuilder.DropTable(
-                name: "Clients");
+                name: "SupportTickets");
 
             migrationBuilder.DropTable(
                 name: "Exercises");
+
+            migrationBuilder.DropTable(
+                name: "Clients");
 
             migrationBuilder.DropTable(
                 name: "Plans");

@@ -83,6 +83,8 @@ namespace GymAPI.Services
 
         public void Create(Client client)
         {
+            client.CheckInHistory = new List<ClientCheckIn>();
+            client.Notifications = new List<ClientNotification>();
             _context.Clients.Add(client);
             _context.SaveChanges();
         }
@@ -101,6 +103,7 @@ namespace GymAPI.Services
             oldClient.TrainingPlan = client.TrainingPlan;
             oldClient.CheckInHistory = client.CheckInHistory;
             oldClient.Notifications = client.Notifications;
+            oldClient.SupportTickets = client.SupportTickets;
 
             _context.Clients.Update(oldClient);
             _context.SaveChanges();

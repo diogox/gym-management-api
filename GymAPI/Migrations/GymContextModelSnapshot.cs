@@ -53,7 +53,7 @@ namespace GymAPI.Migrations
 
                     b.Property<DateTime>("At");
 
-                    b.Property<long?>("ClientId");
+                    b.Property<long>("ClientId");
 
                     b.HasKey("Id");
 
@@ -67,7 +67,7 @@ namespace GymAPI.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long?>("ClientId");
+                    b.Property<long>("ClientId");
 
                     b.Property<bool>("IsUnread");
 
@@ -168,8 +168,9 @@ namespace GymAPI.Migrations
 
                     b.Property<long>("ClientId");
 
-                    b.Property<string>("Message")
-                        .IsRequired();
+                    b.Property<DateTime>("OpenedAt");
+
+                    b.Property<int>("State");
 
                     b.HasKey("Id");
 
@@ -178,13 +179,38 @@ namespace GymAPI.Migrations
                     b.ToTable("SupportTickets");
                 });
 
+            modelBuilder.Entity("GymAPI.Models.SupportTicketMessage", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("At");
+
+                    b.Property<long>("FromClientId");
+
+                    b.Property<long>("FromStaffId");
+
+                    b.Property<string>("Message");
+
+                    b.Property<long>("SupportTicketId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FromClientId");
+
+                    b.HasIndex("FromStaffId");
+
+                    b.HasIndex("SupportTicketId");
+
+                    b.ToTable("SupportTicketMessage");
+                });
+
             modelBuilder.Entity("GymAPI.Models.TrainingPlan", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.Property<long>("SupervisingTrainerId");
 
@@ -223,16 +249,18 @@ namespace GymAPI.Migrations
 
             modelBuilder.Entity("GymAPI.Models.ClientCheckIn", b =>
                 {
-                    b.HasOne("GymAPI.Models.Client")
+                    b.HasOne("GymAPI.Models.Client", "Client")
                         .WithMany("CheckInHistory")
-                        .HasForeignKey("ClientId");
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GymAPI.Models.ClientNotification", b =>
                 {
-                    b.HasOne("GymAPI.Models.Client")
+                    b.HasOne("GymAPI.Models.Client", "Client")
                         .WithMany("Notifications")
-                        .HasForeignKey("ClientId");
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GymAPI.Models.Equipment", b =>
@@ -245,8 +273,26 @@ namespace GymAPI.Migrations
             modelBuilder.Entity("GymAPI.Models.SupportTicket", b =>
                 {
                     b.HasOne("GymAPI.Models.Client", "Client")
-                        .WithMany()
+                        .WithMany("SupportTickets")
                         .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GymAPI.Models.SupportTicketMessage", b =>
+                {
+                    b.HasOne("GymAPI.Models.Client", "FromClient")
+                        .WithMany()
+                        .HasForeignKey("FromClientId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GymAPI.Models.StaffMember", "FromStaff")
+                        .WithMany()
+                        .HasForeignKey("FromStaffId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GymAPI.Models.SupportTicket", "SupportTicket")
+                        .WithMany("Messages")
+                        .HasForeignKey("SupportTicketId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -261,7 +307,7 @@ namespace GymAPI.Migrations
             modelBuilder.Entity("GymAPI.Models.TrainingPlanBlock", b =>
                 {
                     b.HasOne("GymAPI.Models.Exercise", "Exercise")
-                        .WithMany("UsedByPlans")
+                        .WithMany()
                         .HasForeignKey("ExerciseId")
                         .OnDelete(DeleteBehavior.Cascade);
 

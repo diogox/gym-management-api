@@ -36,6 +36,38 @@ namespace GymAPI
             return Ok(ticket);
         }
 
+        // GET api/tickets/{id}/messages
+        [HttpGet("{id}/messages")]
+        public ActionResult<SupportTicketMessage> GetTicketMessages(long id)
+        {
+            var ticket = _supportTicketService.GetById(id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+            var messages = _supportTicketService.GetMessages(ticket);
+            if (messages == null)
+            {
+                return NoContent();
+            }
+            return Ok(messages);
+        }
+        
+        // GET api/tickets/{id}/messages/{messageId}
+        [HttpGet("{id}/messages/{messageId}", Name = "GetSupportTicketMessage")]
+        public ActionResult<SupportTicketMessage> GetTicketMessages(long id, long messageId)
+        {
+            var ticket = _supportTicketService.GetById(id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+            var message = _supportTicketService.GetMessageById(ticket, messageId);
+            return Ok(message);
+        }
+        
         // POST api/tickets
         [HttpPost]
         public ActionResult CreateTicket([FromBody] SupportTicket ticket)
@@ -44,10 +76,24 @@ namespace GymAPI
             
             return CreatedAtRoute("GetSupportTicket", new { id = ticket.Id }, ticket);
         }
+        
+        // POST api/tickets/{id}/messages
+        [HttpPost("{id}/messages")]
+        public ActionResult AddMessageToTicket(long id,[FromBody] SupportTicketMessage message)
+        {
+            var ticket= _supportTicketService.GetById(id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+            
+            _supportTicketService.AddMessage(ticket, message);
+            return CreatedAtRoute("GetSupportTicketMessage", new { id = message.Id, messageId = message.Id }, message);
+        }
 
         // PUT api/tickets/{id}
         [HttpPut("{id}")]
-        public ActionResult UpdateTicket(int id,[FromBody] SupportTicket ticket)
+        public ActionResult UpdateTicket(long id,[FromBody] SupportTicket ticket)
         {
             var oldTicket= _supportTicketService.GetById(id);
             if (oldTicket == null)
@@ -61,7 +107,7 @@ namespace GymAPI
 
         // DELETE api/tickets/{id}
         [HttpDelete("{id}")]
-        public ActionResult DeleteTicket(int id)
+        public ActionResult DeleteTicket(long id)
         {
             var ticket = _supportTicketService.GetById(id);
             if (ticket == null)

@@ -12,6 +12,9 @@ namespace GymAPI.Services
     {
         List<SupportTicket> GetAll();
         SupportTicket GetById(long id);
+        void AddMessage(SupportTicket ticket, SupportTicketMessage message);
+        List<SupportTicketMessage> GetMessages(SupportTicket ticket);
+        SupportTicketMessage GetMessageById(SupportTicket ticket, long messageId);
         void Create(SupportTicket ticket);
         void Update(SupportTicket oldTicket, SupportTicket ticket);
         void Delete(SupportTicket ticket);
@@ -33,15 +36,34 @@ namespace GymAPI.Services
 
         public SupportTicket GetById(long id)
         {
-            return _IncludeAllInfo().Single(ticket => ticket.Id == id);
+            return _IncludeAllInfo().SingleOrDefault(ticket => ticket.Id == id);
         }
 
         private IQueryable<SupportTicket> _IncludeAllInfo()
         {
             return _context.SupportTickets
-                .Include(ticket => ticket.Client);
+                .Include(ticket => ticket.Client)
+                .Include(ticket => ticket.Messages);
         }
 
+        public void AddMessage(SupportTicket ticket, SupportTicketMessage message)
+        {
+            message.At = DateTime.Now;
+            
+            ticket.Messages.Add(message);
+            _context.SaveChanges();
+        }
+
+        public List<SupportTicketMessage> GetMessages(SupportTicket ticket)
+        {
+            return ticket.Messages.ToList();
+        }
+        
+        public SupportTicketMessage GetMessageById(SupportTicket ticket, long messageId)
+        {
+            return ticket.Messages.SingleOrDefault(message => message.Id == messageId);
+        }
+        
         public void Create(SupportTicket ticket)
         {
             ticket.Client = null; // ClientId initializes this field   
@@ -51,7 +73,7 @@ namespace GymAPI.Services
 
         public void Update(SupportTicket oldTicket, SupportTicket ticket)
         {
-            oldTicket.Message = ticket.Message;
+            oldTicket.Messages = ticket.Messages;
             oldTicket.ClientId = ticket.ClientId;
             
             _context.SaveChanges();

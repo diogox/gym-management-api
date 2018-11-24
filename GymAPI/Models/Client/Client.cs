@@ -25,5 +25,10 @@ namespace GymAPI.Models
         /// Contains a list of notifications for the user.
         /// </summary>
         public List<ClientNotification> Notifications { get; set; } = new List<ClientNotification>();
+        
+        /// <summary>
+        /// Contains a list of support tickets associated with the user.
+        /// </summary>
+        public List<SupportTicket> SupportTickets { get; set; } = new List<SupportTicket>();
     }
 }
