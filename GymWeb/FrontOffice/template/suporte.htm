@@ -15,20 +15,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>exemplar</td>
-                <td>21-11-2018 21:03</td>
-                <td>22-11-2018 09:11</td>
-                <td>Aberto</td>
-                <td><a href="#!ticket" class="btn btn-success" role="button">Ver</a></td>
+            <tr ng-repeat="x in tickets">
+                <td>{{x.message}}</td>
+                <td>21-11-2018 21:03 (static)</td>
+                <td>22-11-2018 09:11 (static)</td>
+                <td>Aberto (static)</td>
+                <td><a href="#!ticket/{{x.ticketId}}" class="btn btn-success" role="button">Ver</a></td>
                 
-            </tr>
-            <tr>
-                <td>yes</td>
-                <td>10-11-2018 20:03</td>
-                <td>11-11-2018 02:11</td>
-                <td>Fechado</td>
-                <td><a href="#!ticket" class="btn btn-success" role="button">Ver</a></td>
             </tr>
         </tbody>
     </table>

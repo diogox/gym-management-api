@@ -14,7 +14,7 @@ app.config(function($routeProvider) {
     .when("/suporte", {
         templateUrl : "template/suporte.htm"
     })
-    .when("/ticket", {
+    .when("/ticket/:id", {
         templateUrl : "template/ticket.htm"
     })
     .when('/novoticket', {
