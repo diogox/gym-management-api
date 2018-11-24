@@ -49,7 +49,11 @@ namespace GymAPI
                 return NotFound();
             }
 
-            _clientsService.CheckIn(client);
+            var success = _clientsService.CheckIn(client);
+            if (!success)
+            {
+                return BadRequest("The client has already checked in today!");
+            }
             return Ok(client);
         }
         

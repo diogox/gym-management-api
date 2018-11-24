@@ -7,25 +7,7 @@
     "age": 0,
     "heightInMeters": 1.5,
     "weightInKg": 120,
-    "trainingPlan": {
-      "mondayExercises": [
-        {
-          "name": "Salto à vara",
-          "description": null,
-          "imageUrl": null,
-          "targetMuscleGroup": "Chest",
-          "difficultyLevel": "Easy",
-          "equipmentToUse": null
-        }
-      ],
-      "tuesdayExercises": [],
-      "wednesdayExercises": [],
-      "thursdayExercises": [],
-      "fridayExercises": [],
-      "saturdayExercises": [],
-      "sundayExercises": [],
-      "supervisingTrainer": null
-    },
+    "trainingPlan": null,
     "checkInHistory": [],
     "notifications": []
 }

@@ -11,7 +11,7 @@ namespace GymAPI.Services
         //Staff Authenticate(string username, string password);
         List<Client> GetAll();
         Client GetById(long id);
-        void CheckIn(Client client);
+        bool CheckIn(Client client);
         void Create(Client client);
         void Update(Client oldClient, Client client);
         void Delete(Client client);
@@ -47,7 +47,7 @@ namespace GymAPI.Services
                 .Include(client => client.Notifications);
         }
 
-        public void CheckIn(Client client)
+        public bool CheckIn(Client client)
         {
             if (client.CheckInHistory.Count == 0)
             {
@@ -62,7 +62,10 @@ namespace GymAPI.Services
             if ( lastEntryDateTime.Date != today.Date )
             {
                 _CheckIn(client);
+                return true;
             }
+
+            return false;
         }
 
         private void _CheckIn(Client client)
