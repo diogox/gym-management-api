@@ -16,6 +16,6 @@ namespace GymAPI.Models
         [Required]
         public DifficultyLevels DifficultyLevel { get; set; }
         public List<Equipment> EquipmentToUse { get; set; } = new List<Equipment>();
-        public List<TrainingPlanBlock> UsedByPlans { get; set; } = new List<TrainingPlanBlock>();
+        //public List<TrainingPlanBlock> UsedByPlans { get; set; } = new List<TrainingPlanBlock>();
     }
 }

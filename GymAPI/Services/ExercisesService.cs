@@ -43,6 +43,7 @@ namespace GymAPI.Services
         
         public void Create(Exercise exercise)
         {
+            _context.Equipment.AttachRange(exercise.EquipmentToUse);
             _context.Exercises.Add(exercise);
             _context.SaveChanges();
         }
@@ -58,7 +59,6 @@ namespace GymAPI.Services
             oldExercise.EquipmentToUse = exercise.EquipmentToUse;
             //oldExercise.UsedByPlans = exercise.UsedByPlans;
 
-            _context.Exercises.Update(oldExercise);
             _context.SaveChanges();
         }
 

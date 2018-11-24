@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 namespace GymAPI.Models
 {
@@ -8,5 +9,9 @@ namespace GymAPI.Models
         public string Message { get; set; }
         public DateTime Timestamp { get; set; }
         public bool IsUnread { get; set; }
+        
+        [JsonIgnore]
+        public Client Client { get; set; }
+        public long ClientId { get; set; }
     }
 }
