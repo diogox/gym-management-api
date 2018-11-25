@@ -52,6 +52,7 @@ namespace GymAPI.Services
             if (client.CheckInHistory.Count == 0)
             {
                 _CheckIn(client);
+                return true;
             }
             
             var today = DateTime.Now;
