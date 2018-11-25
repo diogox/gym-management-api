@@ -67,7 +67,7 @@
                 </div>
                 <div class="modal-body">
                     <!--Form para adicionar um novo Cliente-->
-                    <form ng-submit="submit()" ng-controller="adicionarCliente">
+                    <form name="myForm" ng-submit="submit()" ng-controller="adicionarCliente">
                         <h4>Preenche os seguintes cabeçalhos:</h4>
                         <div class="form-group">
                             <label for="pnome">Primeiro Nome:</label>
@@ -104,7 +104,7 @@
                                 required />
                         </div>
                         <p></p>
-                        <button class="btn btn-default btn-block" type="submit" id="submit" value="Submit">Submit</button>
+                        <button class="btn btn-default btn-block" ng-disabled="myForm.$invalid" type="submit" id="submit" value="Submit">Submit</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -123,7 +123,7 @@
                 </div>
                 <div class="modal-body">
                     <!--Form para Editar um Cliente-->
-                    <form ng-submit="edsubmit()" ng-controller="editarCliente">
+                    <form name="myForm" ng-submit="edsubmit()" ng-controller="editarCliente">
                         <h4>Preenche os seguintes cabeçalhos:</h4>
                         <div class="form-group">
                             <label for="pnome">Primeiro Nome:</label>
@@ -160,7 +160,7 @@
                                 required />
                         </div>
                         <p></p>
-                        <button class="btn btn-default btn-block" type="submit" id="submit" value="Submit">Submit</button>
+                        <button class="btn btn-default btn-block" ng-disabled="myForm.$invalid" type="submit" id="submit" value="Submit">Submit</button>
                     </form>
                 </div>
                 <div class="modal-footer">
