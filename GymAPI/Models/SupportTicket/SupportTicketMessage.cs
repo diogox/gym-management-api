@@ -15,10 +15,6 @@ namespace GymAPI.Models
         [JsonIgnore]
         public SupportTicket SupportTicket { get; set; }
         
-        [JsonIgnore]
-        public Client FromClient { get; set; }
-        
-        [JsonIgnore]
-        public StaffMember FromStaff { get; set; }
+        public SupportTicketMessageSender From { get; set; }
     }
 }
