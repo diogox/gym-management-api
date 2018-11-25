@@ -1,15 +1,18 @@
 <div ng-controller="novoTicketCtrl">
 
+    <!-- Alerta de ticket enviado com sucesso -->
     <div class="alert alert-success alert-dismissible fade show" style="width:100%" ng-hide="novo_ticket_sucesso">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Success!</strong> Ticket enviado com sucesso, Se não for redirecionado em breve clique <a href="#!suporte">aqui</a>.
     </div>
 
+    <!-- Alerta de ticket enviado sem sucesso -->
     <div class="alert alert-danger alert-dismissible fade show" style="width:100%" ng-hide="novo_ticket_sem_sucesso">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Alert!</strong> Ticket enviado sem sucesso.
     </div>
 
+    <!-- Alerta de formulário preenchido incorretamente -->
     <div class="alert alert-warning alert-dismissible fade show" style="width:100%" ng-hide="novo_ticket_sem_sucesso_dados">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Warning!</strong> Formulário preenchido incorretamente.
@@ -17,11 +20,13 @@
 
     <h1>Novo ticket</h1>
 
+    <!-- Assunto do ticket -->
     <div class="form-group">
         <label for="assunto">Assunto:</label>
         <input type="text" class="form-control" id="assunto" ng-model="assunto" required>
       </div>
 
+    <!-- Comentário do ticket -->
     <form >
         <div class="form-group">
           <label for="comment">Comentário:</label>

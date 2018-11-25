@@ -2,6 +2,7 @@
 
     <h1>Plano de treino</h1>
 
+    <!-- Selecionar o dia -->
     <div class="form-group">
         <label for="sel1">Escolha o dia:</label>
         <select class="form-control" id="sel1">
@@ -15,11 +16,13 @@
         </select>
     </div> 
 
+    <!-- Filtrar a pesquisa -->
     <br/>
     <label for="fil">Filtre a sua pesquisa:</label>
     <input id="fil" type="text" class="form-control" placeholder="Pesquise por nome de exercicio, grupo muscular, dificuldade..." ng-model="filtro_plano">
     <br/>
 
+    <!-- Lista dos exercicios -->
     <table class="table table-bordered">
         <thead>
             <tr>

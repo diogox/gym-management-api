@@ -1,47 +1,52 @@
-app.controller('suporteCtrl', function($scope, $http) {
+import { getTickets } from "./pedidos.js";
 
-    $http({
+// Controller da página de suporte
+app.controller('suporteCtrl', function ($scope, $http) {
 
-        method : "GET",
-        url : "https://localhost:5001/api/tickets"
+    // ::TODO:: Atualizar quando a API estiver a funcionar corretamente
 
-    }).then(function mySuccess(response) {
+    // Pede os tickets à API
+    getTickets($http, (response) => {
 
-        let tickets = [];
+        // Se a API respondeu da forma correta
+        if (response) {
+            let tickets = [];
 
-        for(let i=0; i<response.data.length; i++) {
+            for (let i = 0; i < response.data.length; i++) {
 
-            let ticketId = response.data[i].id;
-            let message = response.data[i].message;
-            
-            let openedAt = response.data[i].openedAt;
-            let year = openedAt.substring(0,4);
-            let month = openedAt.substring(5,7);
-            let day = openedAt.substring(8,10);
-            let hour = openedAt.substring(11,13);
-            let minute = openedAt.substring(14,16);
-            openedAt = day + "-" + month + "-" + year + " " + hour + ":" + minute;
+                let ticketId = response.data[i].id;
+                let message = response.data[i].message;
 
-            let state = response.data[i].state;
+                let openedAt = response.data[i].openedAt;
+                let year = openedAt.substring(0, 4);
+                let month = openedAt.substring(5, 7);
+                let day = openedAt.substring(8, 10);
+                let hour = openedAt.substring(11, 13);
+                let minute = openedAt.substring(14, 16);
+                openedAt = day + "-" + month + "-" + year + " " + hour + ":" + minute;
 
-            let lastMessageDate = response.data[i].messages[response.data[i].messages.length-1].at;
-            let yearLast = lastMessageDate.substring(0,4);
-            let monthLast = lastMessageDate.substring(5,7);
-            let dayLast = lastMessageDate.substring(8,10);
-            let hourLast = lastMessageDate.substring(11,13);
-            let minuteLast = lastMessageDate.substring(14,16);
-            lastMessageDate = day + "-" + month + "-" + year + " " + hour + ":" + minute;
+                let state = response.data[i].state;
 
-            let ticket = {ticketId, message, openedAt, state, lastMessageDate};
+                let lastMessageDate = response.data[i].messages[response.data[i].messages.length - 1].at;
+                let yearLast = lastMessageDate.substring(0, 4);
+                let monthLast = lastMessageDate.substring(5, 7);
+                let dayLast = lastMessageDate.substring(8, 10);
+                let hourLast = lastMessageDate.substring(11, 13);
+                let minuteLast = lastMessageDate.substring(14, 16);
+                lastMessageDate = day + "-" + month + "-" + year + " " + hour + ":" + minute;
 
-            tickets.push(ticket);
+                let ticket = { ticketId, message, openedAt, state, lastMessageDate };
+
+                tickets.push(ticket);
+
+            }
+
+            $scope.tickets = tickets;
+
+        // Se a API não respondeu da forma correta
+        } else {
 
         }
-
-        $scope.tickets = tickets;
-
-    }, function myError(response) {
-
     });
 
 });

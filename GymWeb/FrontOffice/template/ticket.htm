@@ -2,6 +2,7 @@
 
     <h1>Ver ticket</h1>
 
+    <!-- Lista de mensagens do ticket -->
     <div class="media border p-3" ng-repeat="x in ticket.messages">
         <img src="img_avatar3.png" alt="" class="mr-3 mt-3 rounded-circle" style="width:60px;">
         <div class="media-body">
@@ -13,21 +14,25 @@
     <br/>
     <td><a href="#!suporte" class="btn btn-danger" role="button">Fechar ticket</a></td>
 
+    <!-- Alerta de resposta enviada com sucesso -->
     <div class="alert alert-success alert-dismissible fade show" style="width:100%" ng-hide="nova_resposta_sucesso">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Success!</strong> Resposta enviada com sucesso, Se não for redirecionado em breve clique <a href="#!suporte">aqui</a>.
     </div>
 
+    <!-- Alerta de resposta enviada sem sucesso -->
     <div class="alert alert-danger alert-dismissible fade show" style="width:100%" ng-hide="nova_resposta_sem_sucesso">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Alert!</strong> Resposta enviada sem sucesso.
     </div>
 
+    <!-- Alerta de adicionar resposta insucesso  -->
     <div class="alert alert-warning alert-dismissible fade show" style="width:100%" ng-hide="nova_resposta_sem_sucesso_dados">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Warning!</strong> Formulário preenchido incorretamente.
     </div>
 
+    <!-- Adicionar resposta ao ticket -->
     <h2>Adicionar resposta</h2>
     <form>
         <div class="form-group">
