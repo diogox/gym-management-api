@@ -11,6 +11,9 @@ app.config(function($routeProvider) {
     .when("/listadestaff", {
         templateUrl : "Templates/lista_de_staff.html"
     })
+    .when("/listadeequipamentos", {
+        templateUrl : "Templates/lista_de_equipamento.html"
+    })
     .otherwise({
         templateUrl : "Templates/404.htm"
     })
