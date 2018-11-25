@@ -91,12 +91,9 @@ namespace GymAPI.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<long?>("ExerciseId");
-
                     b.Property<string>("ImageUrl");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.Property<float>("PriceInEuro");
 
@@ -105,8 +102,6 @@ namespace GymAPI.Migrations
                     b.Property<string>("SupplierName");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ExerciseId");
 
                     b.ToTable("Equipment");
                 });
@@ -120,6 +115,8 @@ namespace GymAPI.Migrations
 
                     b.Property<int>("DifficultyLevel");
 
+                    b.Property<long>("EquipmentId");
+
                     b.Property<string>("ImageUrl");
 
                     b.Property<string>("Name");
@@ -127,6 +124,8 @@ namespace GymAPI.Migrations
                     b.Property<int>("TargetMuscleGroup");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EquipmentId");
 
                     b.ToTable("Exercises");
                 });
@@ -268,11 +267,12 @@ namespace GymAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("GymAPI.Models.Equipment", b =>
+            modelBuilder.Entity("GymAPI.Models.Exercise", b =>
                 {
-                    b.HasOne("GymAPI.Models.Exercise")
-                        .WithMany("EquipmentToUse")
-                        .HasForeignKey("ExerciseId");
+                    b.HasOne("GymAPI.Models.Equipment", "Equipment")
+                        .WithMany()
+                        .HasForeignKey("EquipmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GymAPI.Models.SupportTicket", b =>

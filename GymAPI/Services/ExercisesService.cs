@@ -37,13 +37,11 @@ namespace GymAPI.Services
 
         private IQueryable<Exercise> _IncludeAllInfo()
         {
-            return _context.Exercises
-                .Include(client => client.EquipmentToUse);
+            return _context.Exercises;
         }
         
         public void Create(Exercise exercise)
         {
-            _context.Equipment.AttachRange(exercise.EquipmentToUse);
             _context.Exercises.Add(exercise);
             _context.SaveChanges();
         }
@@ -56,7 +54,7 @@ namespace GymAPI.Services
             oldExercise.ImageUrl = exercise.ImageUrl;
             oldExercise.TargetMuscleGroup = exercise.TargetMuscleGroup;
             oldExercise.DifficultyLevel = exercise.DifficultyLevel;
-            oldExercise.EquipmentToUse = exercise.EquipmentToUse;
+            oldExercise.EquipmentId = exercise.EquipmentId;
             //oldExercise.UsedByPlans = exercise.UsedByPlans;
 
             _context.SaveChanges();

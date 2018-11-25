@@ -4,6 +4,6 @@
     "imageUrl": "https://images.fitpregnancy.mdpcdn.com/sites/fitpregnancy.com/files/styles/width_360/public/field/image/young-woman-abdominal-exercise_700x700.jpg",
     "targetMuscleGroup": "Abs",
     "difficultyLevel": "Easy",
-    "equipmentToUse": null
+    "equipmentId": 1
 }
 

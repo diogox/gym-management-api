@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace GymAPI.Models
 {
@@ -15,7 +16,10 @@ namespace GymAPI.Models
         
         [Required]
         public DifficultyLevels DifficultyLevel { get; set; }
-        public List<Equipment> EquipmentToUse { get; set; } = new List<Equipment>();
+        
+        [JsonIgnore]
+        public Equipment Equipment { get; set; }
+        public long EquipmentId { get; set; }
         //public List<TrainingPlanBlock> UsedByPlans { get; set; } = new List<TrainingPlanBlock>();
     }
 }

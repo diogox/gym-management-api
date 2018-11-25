@@ -8,20 +8,22 @@ namespace GymAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Exercises",
+                name: "Equipment",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
+                    BrandName = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
-                    TargetMuscleGroup = table.Column<int>(nullable: false),
-                    DifficultyLevel = table.Column<int>(nullable: false)
+                    Quantity = table.Column<int>(nullable: false),
+                    PriceInEuro = table.Column<float>(nullable: false),
+                    SupplierName = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Exercises", x => x.Id);
+                    table.PrimaryKey("PK_Equipment", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,29 +49,27 @@ namespace GymAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Equipment",
+                name: "Exercises",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: false),
-                    BrandName = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: true),
-                    Quantity = table.Column<int>(nullable: false),
-                    PriceInEuro = table.Column<float>(nullable: false),
-                    SupplierName = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    ExerciseId = table.Column<long>(nullable: true)
+                    ImageUrl = table.Column<string>(nullable: true),
+                    TargetMuscleGroup = table.Column<int>(nullable: false),
+                    DifficultyLevel = table.Column<int>(nullable: false),
+                    EquipmentId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Equipment", x => x.Id);
+                    table.PrimaryKey("PK_Exercises", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Equipment_Exercises_ExerciseId",
-                        column: x => x.ExerciseId,
-                        principalTable: "Exercises",
+                        name: "FK_Exercises_Equipment_EquipmentId",
+                        column: x => x.EquipmentId,
+                        principalTable: "Equipment",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -257,9 +257,9 @@ namespace GymAPI.Migrations
                 column: "TrainingPlanId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Equipment_ExerciseId",
-                table: "Equipment",
-                column: "ExerciseId");
+                name: "IX_Exercises_EquipmentId",
+                table: "Exercises",
+                column: "EquipmentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Plans_SupervisingTrainerId",
@@ -296,9 +296,6 @@ namespace GymAPI.Migrations
                 name: "ClientNotification");
 
             migrationBuilder.DropTable(
-                name: "Equipment");
-
-            migrationBuilder.DropTable(
                 name: "SupportTicketMessage");
 
             migrationBuilder.DropTable(
@@ -312,6 +309,9 @@ namespace GymAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Clients");
+
+            migrationBuilder.DropTable(
+                name: "Equipment");
 
             migrationBuilder.DropTable(
                 name: "Plans");
