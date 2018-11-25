@@ -53,13 +53,13 @@ app.controller("adicionarCliente", function ($scope, $http) {
             list.push(resposta);
             $scope.Clientes = list
 
-            //Dá reset e close no Modal from
+            //Dá reset e close no Modal form
             $('#addClient form :input').val("");
             $('#addClient').modal('toggle');
         }, function myError(response) {
             console.log("Erro ao adicionar Cliente!");
 
-            //Dá reset e close no Modal from
+            //Dá reset e close no Modal form
             $('#addClient form :input').val("");
             $('#addClient').modal('toggle');
 
@@ -106,13 +106,13 @@ app.controller("editarCliente", function ($scope, $http) {
         }).then(function mySuccess(response) {
             console.log("Cliente editado com sucesso!");
 
-            //Dá reset e close no Modal from
+            //Dá reset e close no Modal form
             $('#editarClient form :input').val("");
             $('#editarClient').modal('toggle');
         }, function myError(response) {
             console.log("Erro ao adicionar Cliente!");
 
-            //Dá reset e close no Modal from
+            //Dá reset e close no Modal form
             $('#editarClient form :input').val("");
             $('#editarClient').modal('toggle');
 
@@ -165,14 +165,14 @@ app.controller("adicionarStaff", function ($scope, $http) {
             list.push(resposta);
             $scope.funcionarios = list
 
-            //Dá reset e close no Modal from
+            //Dá reset e close no Modal form
             $('#addFunc form :input').val("");
             $('#addFunc').modal('toggle');
 
         }, function myError(response) {
             console.log("Erro ao adicionar Funcionário!");
 
-            //Dá reset e close no Modal from
+            //Dá reset e close no Modal form
             $('#addFunc form :input').val("");
             $('#addFunc').modal('toggle');
 
@@ -230,15 +230,104 @@ app.controller("editarStaff", function ($scope, $http) {
         }).then(function mySuccess(response) {
             console.log("Funcionário editado com sucesso!");
 
-            //Dá reset e close no Modal from
+            //Dá reset e close no Modal form
             $('#editarStaff form :input').val("");
             $('#editarStaff').modal('toggle');
         }, function myError(response) {
             console.log("Erro ao adicionar Funcionário!");
 
-            //Dá reset e close no Modal from
+            //Dá reset e close no Modal form
             $('#editarStaff form :input').val("");
             $('#editarStaff').modal('toggle');
+
+            //Gestão de Erros
+            //Validações
+        });
+    };
+});
+
+//Equipamentos
+//Controller que recolhe a informação do Form Equipamentos e envia para a API
+app.controller("adicionarEq", function ($scope, $http) {
+
+    $scope.submit = function () {
+
+        let data = JSON.stringify($scope.eq);
+        //console.log(data);
+        $http({
+            method: "POST",
+            data: data,
+            url: "https://localhost:5001/api/equipment",
+            headers: {
+                'content-type': "application/json"
+            }
+        }).then(function mySuccess(response) {
+            console.log("Equipamento adicionado com sucesso!");
+            let resposta = response.data;
+            
+            //Atualiza a lista sem dar refresh na pagina
+            let list = $scope.equipamentos;
+            list.push(resposta);
+            $scope.equipamentos = list
+
+            //Dá reset e close no Modal form
+            $('#addEq form :input').val("");
+            $('#addEq').modal('toggle');
+
+        }, function myError(response) {
+            console.log("Erro ao adicionar Equipamento!");
+
+            //Dá reset e close no Modal form
+            $('#addEq form :input').val("");
+            $('#addEq').modal('toggle');
+
+
+            //Gestão de Erros
+            //Validações
+        });
+    };
+});
+
+//Controller que recolhe a informação do Form Editar equipamento copia para um novo Equipamento e envia para a API para assim editar o Equipamento
+app.controller("editarEq", function ($scope, $http) {
+
+    $scope.edsubmit = function () {
+        let oldEq = $scope.equipamentos.find(x => x.id === $scope.idEqedit);
+
+        //console.log(oldEq);
+        //Copia as informações todas do oldEq para um novo Equipamento incluindo as informações inalteraveis
+        let newEq = oldEq;
+
+            //Atribui as novas informções ao newEq
+            newEq.id = $scope.idEqedit;
+            newEq.name = $scope.eq.name;
+            newEq.brandName = $scope.eq.brandName;
+            newEq.quantity = $scope.eq.quantity;
+            newEq.priceInEuro = $scope.eq.priceInEuro;
+            newEq.supplierName = $scope.eq.supplierName;
+            newEq.description = $scope.eq.description;
+            newEq.imageUrl = $scope.eq.imageUrl;
+        //console.log(newEq);
+
+        $http({
+            method: "PUT",
+            data: newEq,
+            url: "https://localhost:5001/api/equipment/" + $scope.idEqedit,
+            headers: {
+                'content-type': "application/json"
+            }
+        }).then(function mySuccess(response) {
+            console.log("Equipamento editado com sucesso!");
+
+            //Dá reset e close no Modal form
+            $('#editarEq form :input').val("");
+            $('#editarEq').modal('toggle');
+        }, function myError(response) {
+            console.log("Erro ao adicionar Equipamento!");
+
+            //Dá reset e close no Modal form
+            $('#editarEq form :input').val("");
+            $('#editarEq').modal('toggle');
 
             //Gestão de Erros
             //Validações
@@ -253,16 +342,6 @@ app.controller("editarStaff", function ($scope, $http) {
 
 
 
-
-
-
-
-
-
-
-
-
-//Equipamentos
 
 
 //Tickets
