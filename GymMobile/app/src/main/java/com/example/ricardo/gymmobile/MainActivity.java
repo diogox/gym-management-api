@@ -1,26 +1,31 @@
 package com.example.ricardo.gymmobile;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.ricardo.gymmobile.Fragments.Equipment.EquipmentFragment;
+import com.example.ricardo.gymmobile.Fragments.Exercise.ExercisesFragment;
 import com.example.ricardo.gymmobile.Fragments.MainFragment;
-import com.example.ricardo.gymmobile.Fragments.WorkPlanFragment;
+import com.example.ricardo.gymmobile.Fragments.NotificationsFragment;
+import com.example.ricardo.gymmobile.Fragments.ReportsFragment;
+import com.example.ricardo.gymmobile.Fragments.SupportTicketFragment;
+import com.example.ricardo.gymmobile.Fragments.WorkPlan.WorkPlanFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +33,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         // Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(Color.parseColor("#150901"));
         setSupportActionBar(toolbar);
 
@@ -60,29 +65,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    /**
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-    */
-
     /**
      * Opções da barra de navegação lateral
      *
@@ -94,28 +76,73 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        // Substituir o atual fragmento por um novo consoante a opção escolhida
-        if (id == R.id.nav_my_work_plan) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        if (id == R.id.nav_check_in) { // Check-In
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Confirmar check-in:")
+                   .setMessage("Deseja confirmar o check-in de entrada?")
+                   .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(MainActivity.this, "Checked!!!", Toast.LENGTH_SHORT).show();
+                        }
+                   })
+                   .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                   });
+            builder.show(); // Mostrar diálogo
+
+        } else if (id == R.id.nav_my_work_plan) { // Plano de treino
 
             WorkPlanFragment workPlanFragment = new WorkPlanFragment();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, workPlanFragment);
             fragmentTransaction.commit();
+            toolbar.setTitle("Planos de treino");
 
-        } else if (id == R.id.nav_exercises) {
-            Toast.makeText(this, "Exercises", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_equipments) {
-            Toast.makeText(this, "Equipments", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_support_ticket) {
-                Toast.makeText(this, "Ticket", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_notifications) {
-            Toast.makeText(this, "Notifications", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_reports) {
-            Toast.makeText(this, "Reports", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_exercises) { // Lista de Exercicios
+
+            ExercisesFragment exercisesFragment = new ExercisesFragment();
+            fragmentTransaction.replace(R.id.fragment_container, exercisesFragment);
+            fragmentTransaction.commit();
+            toolbar.setTitle("Exercicios");
+
+        } else if (id == R.id.nav_equipments) { // Lista de equipamentos
+
+            EquipmentFragment equipmentFragment = new EquipmentFragment();
+            fragmentTransaction.replace(R.id.fragment_container, equipmentFragment);
+            fragmentTransaction.commit();
+            toolbar.setTitle("Equipamentos");
+
+        } else if (id == R.id.nav_support_ticket) { // Tickets de suporte
+
+            SupportTicketFragment supportTicketFragment = new SupportTicketFragment();
+            fragmentTransaction.replace(R.id.fragment_container, supportTicketFragment);
+            fragmentTransaction.commit();
+            toolbar.setTitle("Tickets de suporte");
+
+        } else if (id == R.id.nav_notifications) { // Notificações
+
+            NotificationsFragment notificationsFragment = new NotificationsFragment();
+            fragmentTransaction.replace(R.id.fragment_container, notificationsFragment);
+            fragmentTransaction.commit();
+            toolbar.setTitle("Notificações");
+
+        } else if (id == R.id.nav_reports) { // Relatórios
+
+            ReportsFragment reportsFragment = new ReportsFragment();
+            fragmentTransaction.replace(R.id.fragment_container, reportsFragment);
+            fragmentTransaction.commit();
+            toolbar.setTitle("Relatórios");
+
         } else if (id == R.id.nav_share) {
             Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_send) {
-            Toast.makeText(this, "Send", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_settings) {
             Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
         }
