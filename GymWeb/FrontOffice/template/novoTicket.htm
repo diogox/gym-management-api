@@ -1,18 +1,33 @@
 <div ng-controller="novoTicketCtrl">
 
+    <div class="alert alert-success alert-dismissible fade show" style="width:100%" ng-hide="novo_ticket_sucesso">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Success!</strong> Ticket enviado com sucesso, Se não for redirecionado em breve clique <a href="#!suporte">aqui</a>.
+    </div>
+
+    <div class="alert alert-danger alert-dismissible fade show" style="width:100%" ng-hide="novo_ticket_sem_sucesso">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Alert!</strong> Ticket enviado sem sucesso.
+    </div>
+
+    <div class="alert alert-warning alert-dismissible fade show" style="width:100%" ng-hide="novo_ticket_sem_sucesso_dados">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Warning!</strong> Formulário preenchido incorretamente.
+    </div>
+
     <h1>Novo ticket</h1>
 
     <div class="form-group">
         <label for="assunto">Assunto:</label>
-        <input type="text" class="form-control" id="assunto">
+        <input type="text" class="form-control" id="assunto" ng-model="assunto" required>
       </div>
 
-    <form action="#!suporte">
+    <form >
         <div class="form-group">
-          <label for="comment">Comment:</label>
-          <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+          <label for="comment">Comentário:</label>
+          <textarea class="form-control" rows="5" id="comment" name="comment" ng-model="comentario" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" ng-click="submitTicket()" ng-disabled="disableSubmit">Submit</button>
     </form>
     
 

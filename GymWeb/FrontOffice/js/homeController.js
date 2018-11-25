@@ -1,3 +1,4 @@
+// Controller da  página home
 app.controller('homeCtrl', function($scope, $http) {
 
     // Função que atualiza na pagina home as entradas no ginásio
