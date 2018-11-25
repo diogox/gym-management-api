@@ -1,3 +1,4 @@
+// Controller da página de um novo ticket
 app.controller('novoTicketCtrl', function ($scope, $http, $window) {
 
     // Ocultar alertas no topo da página
@@ -26,9 +27,9 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window) {
             $scope.disableSubmit = "y";
 
             // Dados do formulário
-            let message = $scope.comentario;
             let clientId = 1;
-            let ticket = { message, clientId };
+            let openedAt = new Date();
+            let ticket = {clientId, openedAt};
 
             ticket = JSON.stringify(ticket);
 
@@ -52,6 +53,30 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window) {
                 setTimeout(function () {
                     window.location.href = "#!suporte";
                 }, 2000);
+
+                let message = $scope.comentario;
+                let fromClientId = 1;
+                let fromStaffId = 1;
+                let supportTicketId = response.data.id;
+
+                let data = {message, fromClientId, fromStaffId, supportTicketId, openedAt};
+
+                // Adiciona uma mensagem ao ticket
+                $http({
+
+                    method: "POST",
+                    data: data,
+                    url: "https://localhost:5001/api/tickets/" + supportTicketId + "/messages",
+                    headers: {
+                        'content-type': "application/json"
+                    }
+
+                }).then(function mySuccess(response) {
+
+
+                }, function myError(response) {
+
+                });
 
 
             }, function myError(response) {

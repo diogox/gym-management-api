@@ -17,9 +17,9 @@
         <tbody>
             <tr ng-repeat="x in tickets">
                 <td>{{x.message}}</td>
-                <td>21-11-2018 21:03 (static)</td>
-                <td>22-11-2018 09:11 (static)</td>
-                <td>Aberto (static)</td>
+                <td>{{x.openedAt}}</td>
+                <td>{{x.lastMessageDate}}</td>
+                <td>{{x.state}}</td>
                 <td><a href="#!ticket/{{x.ticketId}}" class="btn btn-success" role="button">Ver</a></td>
                 
             </tr>

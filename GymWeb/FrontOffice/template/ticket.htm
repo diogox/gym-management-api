@@ -2,24 +2,39 @@
 
     <h1>Ver ticket</h1>
 
-    <div class="media border p-3">
+    <div class="media border p-3" ng-repeat="x in ticket.messages">
         <img src="img_avatar3.png" alt="" class="mr-3 mt-3 rounded-circle" style="width:60px;">
         <div class="media-body">
-            <h4>{{ticket.clientName}} <small><i>Posted on February 19, 2016 21:14</i></small></h4>
-            <p>{{ticket.message}}</p>
+            <h4>{{ticket.clientName}} <small><i>Posted on {{x.at}}</i></small></h4>
+            <p>{{x.message}}</p>
         </div>
     </div>
 
     <br/>
     <td><a href="#!suporte" class="btn btn-danger" role="button">Fechar ticket</a></td>
 
+    <div class="alert alert-success alert-dismissible fade show" style="width:100%" ng-hide="nova_resposta_sucesso">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Success!</strong> Resposta enviada com sucesso, Se não for redirecionado em breve clique <a href="#!suporte">aqui</a>.
+    </div>
+
+    <div class="alert alert-danger alert-dismissible fade show" style="width:100%" ng-hide="nova_resposta_sem_sucesso">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Alert!</strong> Resposta enviada sem sucesso.
+    </div>
+
+    <div class="alert alert-warning alert-dismissible fade show" style="width:100%" ng-hide="nova_resposta_sem_sucesso_dados">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Warning!</strong> Formulário preenchido incorretamente.
+    </div>
+
     <h2>Adicionar resposta</h2>
-    <form action="#!suporte">
+    <form>
         <div class="form-group">
           <label for="comment">Comment:</label>
-          <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+          <textarea class="form-control" rows="5" id="comment" name="text" ng-model="answer" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" ng-click="addAnswer()">Submit</button>
     </form>
 
 </div>
