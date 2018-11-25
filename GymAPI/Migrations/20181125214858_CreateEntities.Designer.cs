@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymAPI.Migrations
 {
     [DbContext(typeof(GymContext))]
-    [Migration("20181125162704_UpdateSupportTicket")]
-    partial class UpdateSupportTicket
+    [Migration("20181125214858_CreateEntities")]
+    partial class CreateEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,7 +37,7 @@ namespace GymAPI.Migrations
 
                     b.Property<long>("Nif");
 
-                    b.Property<long?>("TrainingPlanId");
+                    b.Property<long>("TrainingPlanId");
 
                     b.Property<float>("WeightInKg");
 
@@ -250,7 +250,8 @@ namespace GymAPI.Migrations
                 {
                     b.HasOne("GymAPI.Models.TrainingPlan", "TrainingPlan")
                         .WithMany()
-                        .HasForeignKey("TrainingPlanId");
+                        .HasForeignKey("TrainingPlanId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GymAPI.Models.ClientCheckIn", b =>

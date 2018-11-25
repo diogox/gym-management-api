@@ -35,7 +35,7 @@ namespace GymAPI.Migrations
 
                     b.Property<long>("Nif");
 
-                    b.Property<long?>("TrainingPlanId");
+                    b.Property<long>("TrainingPlanId");
 
                     b.Property<float>("WeightInKg");
 
@@ -248,7 +248,8 @@ namespace GymAPI.Migrations
                 {
                     b.HasOne("GymAPI.Models.TrainingPlan", "TrainingPlan")
                         .WithMany()
-                        .HasForeignKey("TrainingPlanId");
+                        .HasForeignKey("TrainingPlanId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GymAPI.Models.ClientCheckIn", b =>

@@ -84,6 +84,7 @@ namespace GymAPI.Services
 
         public void Create(Client client)
         {
+            client.TrainingPlan = null;
             client.CheckInHistory = new List<ClientCheckIn>();
             client.Notifications = new List<ClientNotification>();
             _context.Clients.Add(client);
@@ -101,7 +102,7 @@ namespace GymAPI.Services
             oldClient.Age = client.Age;
             oldClient.HeightInMeters = client.HeightInMeters;
             oldClient.WeightInKg = client.WeightInKg;
-            oldClient.TrainingPlan = client.TrainingPlan;
+            oldClient.TrainingPlanId = client.TrainingPlanId;
             oldClient.CheckInHistory = client.CheckInHistory;
             oldClient.Notifications = client.Notifications;
             oldClient.SupportTickets = client.SupportTickets;

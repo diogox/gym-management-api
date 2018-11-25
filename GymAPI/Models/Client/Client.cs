@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace GymAPI.Models
 {
@@ -14,7 +15,10 @@ namespace GymAPI.Models
         public int Age { get; set; }
         public double HeightInMeters { get; set; }
         public float WeightInKg { get; set; }
+        
+        [JsonIgnore]
         public TrainingPlan TrainingPlan { get; set; }
+        public long TrainingPlanId { get; set; }
 
         /// <summary>
         /// Contains a list of times and dates the client checked-in at the gym.

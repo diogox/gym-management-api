@@ -106,7 +106,7 @@ namespace GymAPI.Migrations
                     Age = table.Column<int>(nullable: false),
                     HeightInMeters = table.Column<double>(nullable: false),
                     WeightInKg = table.Column<float>(nullable: false),
-                    TrainingPlanId = table.Column<long>(nullable: true)
+                    TrainingPlanId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -116,7 +116,7 @@ namespace GymAPI.Migrations
                         column: x => x.TrainingPlanId,
                         principalTable: "Plans",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -194,9 +194,11 @@ namespace GymAPI.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(nullable: true),
                     OpenedAt = table.Column<DateTime>(nullable: false),
                     State = table.Column<int>(nullable: false),
-                    ClientId = table.Column<long>(nullable: false)
+                    ClientId = table.Column<long>(nullable: false),
+                    StaffMemberId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -205,6 +207,12 @@ namespace GymAPI.Migrations
                         name: "FK_SupportTickets_Clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "Clients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SupportTickets_Staff_StaffMemberId",
+                        column: x => x.StaffMemberId,
+                        principalTable: "Staff",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -219,23 +227,12 @@ namespace GymAPI.Migrations
                     At = table.Column<DateTime>(nullable: false),
                     SupportTicketId = table.Column<long>(nullable: false),
                     FromClientId = table.Column<long>(nullable: false),
-                    FromStaffId = table.Column<long>(nullable: false)
+                    FromStaffId = table.Column<long>(nullable: false),
+                    From = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SupportTicketMessage", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SupportTicketMessage_Clients_FromClientId",
-                        column: x => x.FromClientId,
-                        principalTable: "Clients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_SupportTicketMessage_Staff_FromStaffId",
-                        column: x => x.FromStaffId,
-                        principalTable: "Staff",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_SupportTicketMessage_SupportTickets_SupportTicketId",
                         column: x => x.SupportTicketId,
@@ -270,16 +267,6 @@ namespace GymAPI.Migrations
                 column: "SupervisingTrainerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SupportTicketMessage_FromClientId",
-                table: "SupportTicketMessage",
-                column: "FromClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SupportTicketMessage_FromStaffId",
-                table: "SupportTicketMessage",
-                column: "FromStaffId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_SupportTicketMessage_SupportTicketId",
                 table: "SupportTicketMessage",
                 column: "SupportTicketId");
@@ -288,6 +275,11 @@ namespace GymAPI.Migrations
                 name: "IX_SupportTickets_ClientId",
                 table: "SupportTickets",
                 column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupportTickets_StaffMemberId",
+                table: "SupportTickets",
+                column: "StaffMemberId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TrainingPlanBlock_ExerciseId",
