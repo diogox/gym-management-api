@@ -7,6 +7,7 @@
     <input id="fil" type="text" class="form-control" placeholder="Pesquise por nome de exercicio, grupo muscular, etc..." ng-model="filtro_exercicios">
     <br/>
 
+    <!-- Lista de exercicios -->
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="x in exercicios | filter : filtro_exercicios">
 

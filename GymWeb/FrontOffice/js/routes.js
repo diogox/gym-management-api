@@ -1,5 +1,6 @@
 var app = angular.module('myApp', ["ngRoute"]);
 
+// Rotas da aplicação web
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
@@ -22,6 +23,15 @@ app.config(function($routeProvider) {
     })
     .when("/planotreino", {
         templateUrl : "template/planoTreino.htm"
+    })
+    .when('/relatorios', {
+        templateUrl : "template/501.htm"
+    })
+    .when('/notificacoes', {
+        templateUrl : "template/501.htm"
+    })
+    .when('/logout', {
+        templateUrl : "template/501.htm"
     })
     .otherwise({
         templateUrl : "template/404.htm"

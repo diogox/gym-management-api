@@ -1,5 +1,9 @@
+import { getTicketById, addAnswerToTicket } from "./pedidos.js";
+
 // Controller página de um ticket especifico
 app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
+
+    // ::TODO:: Atualizar quando a API estiver a funcionar corretamente
 
     // Obter id do ticket
     let id = $routeParams.id;
@@ -12,51 +16,48 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
     // Botão de submit é clicável
     $scope.disableSubmit = "";
 
+    // Pede um ticket especifico à API
+    getTicketById($http, id, (response) => {
 
-    $http({
+        if (response) {
+            /*let clientFName = response.data.client.firstName;
+            let clientLName = response.data.client.lastName;
 
-        method: "GET",
-        url: "https://localhost:5001/api/tickets/" + id
+            if (clientFName === undefined || clientFName === null){
+                clientFName = "";
+            }
 
-    }).then(function mySuccess(response) {
+            if (clientLName === undefined || clientLName === null){
+                clientLName = "";
+            }*/
 
-        /*let clientFName = response.data.client.firstName;
-        let clientLName = response.data.client.lastName;
+            //let clientName = clientFName + " " + clientLName;
 
-        if (clientFName === undefined || clientFName === null){
-            clientFName = "";
+            let clientName = response.data.clientId;
+            let messages = response.data.messages;
+
+            for (let i = 0; i < messages.length; i++) {
+                let at = messages[i].at;
+                let year = at.substring(0, 4);
+                let month = at.substring(5, 7);
+                let day = at.substring(8, 10);
+                let hour = at.substring(11, 13);
+                let minute = at.substring(14, 16);
+                at = day + "-" + month + "-" + year + " " + hour + ":" + minute;
+                messages[i].at = at;
+            }
+
+            let ticket = { clientName, messages };
+
+            $scope.ticket = ticket;
+        } else {
+
         }
-
-        if (clientLName === undefined || clientLName === null){
-            clientLName = "";
-        }*/
-
-        //let clientName = clientFName + " " + clientLName;
-
-        let clientName = response.data.clientId;
-        let messages = response.data.messages;
-
-        for (let i = 0; i < messages.length; i++) {
-            let at = messages[i].at;
-            let year = at.substring(0, 4);
-            let month = at.substring(5, 7);
-            let day = at.substring(8, 10);
-            let hour = at.substring(11, 13);
-            let minute = at.substring(14, 16);
-            at = day + "-" + month + "-" + year + " " + hour + ":" + minute;
-            messages[i].at = at;
-        }
-
-        let ticket = { clientName, messages };
-
-        $scope.ticket = ticket;
-
-
-    }, function myError(response) {
 
     });
 
 
+    // Se o cliente clicar no botão de adicionar resposta
     $scope.addAnswer = function () {
 
         if ($scope.answer === "" || $scope.answer === undefined) {
@@ -79,31 +80,28 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
 
             let dataSend = { message, fromClientId, fromStaffId, supportTicketId };
 
-            $http({
-                method: "POST",
-                data: dataSend,
-                url: "https://localhost:5001/api/tickets/" + id + "/messages",
-                headers: {
-                    'content-type': "application/json"
+            // Pede à API para adicionar uma resposta a um ticket especifico
+            addAnswerToTicket($http, id, dataSend, (response) => {
+
+                // Se a API respondeu da forma correta
+                if (response) {
+
+                    // Mostra mensagem de sucesso
+                    $scope.nova_resposta_sucesso = "";
+
+                    // Se a resposta for enviado com sucesso, 
+                    // é redireionado para a página de tickets em 2 segundos
+                    setTimeout(function () {
+                        window.location.href = "#!ticket/" + id;
+                    }, 2000);
+
+                // Se a API não respondeu da forma correta
+                } else {
+
                 }
 
-            }).then(function mySuccess(response) {
-
-                // Mostra mensagem de sucesso
-                $scope.nova_resposta_sucesso = "";
-
-                // Se a resposta for enviado com sucesso, 
-                // é redireionado para a página de tickets em 2 segundos
-                setTimeout(function () {
-                    window.location.href = "#!ticket/" + id;
-                }, 2000);
-
-
-            }, function myError(response) {
-
-                alert("Oh no")
-
             });
+
         }
     }
 
