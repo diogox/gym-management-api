@@ -1,4 +1,4 @@
-import { getExercices } from './pedidos.js';
+import { getExercices, getEquipmentById } from './pedidos.js';
 
 // Controller da página de exercicios
 app.controller('exerciciosCtrl', function ($scope, $http) {
@@ -25,13 +25,32 @@ app.controller('exerciciosCtrl', function ($scope, $http) {
                 let url = response.data[i].imageUrl;
                 let muscle = response.data[i].targetMuscleGroup;
                 let difficulty = response.data[i].difficultyLevel;
-                let equipmentToUse = response.data[i].equipmentToUse;
+                let equipmentId = response.data[i].equipmentId;
+                let equipmentName = "";
 
-                // Reorganiza os atributos num objeto novo de exercicio
-                let ex = { id, name, description, url, muscle, difficulty, equipmentToUse };
+                // Pede um exercicio especifico à API
+                getEquipmentById($http, equipmentId, (response2) => {
 
-                // Adiciona o exercicio ao array de exercicios
-                exercicios.push(ex);
+                    // Se a API respondeu da forma correta
+                    if (response2) {
+
+                        equipmentName = response2.data.name;
+
+                        // Se a API não respondeu da forma correta
+                    } else {
+
+                        equipmentName = "";
+
+                    }
+
+                    // Reorganiza os atributos num objeto novo de exercicio
+                    let ex = { id, name, description, url, muscle, difficulty, equipmentName };
+
+                    // Adiciona o exercicio ao array de exercicios
+                    exercicios.push(ex);
+
+                });
+
             }
 
             // Atribui o array de exercicios para atualizar a vista

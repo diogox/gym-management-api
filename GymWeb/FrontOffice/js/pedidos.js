@@ -56,12 +56,50 @@ export function getExercices($http, callback){
 
 }
 
+export function getExerciceById($http, id, callback){
+
+    $http({
+
+        method : "GET",
+        url : "https://localhost:5001/api/exercises/" + id
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
 export function getEquipments($http, callback) {
 
     $http({
 
         method : "GET",
         url : "https://localhost:5001/api/equipment/"
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function getEquipmentById($http, id, callback) {
+
+    $http({
+
+        method : "GET",
+        url : "https://localhost:5001/api/equipment/" + id
 
     }).then(function mySuccess(response) {
 
@@ -144,6 +182,27 @@ export function createTicket($http, dataSend, callback) {
         method: "POST",
         data: ticket,
         url: "https://localhost:5001/api/tickets",
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
+export function getPlanExercisesById($http, id, callback){
+    // Pede os exercicios de um plano de treino à API
+    $http({
+
+        method: "GET",
+        url: "https://localhost:5001/api/plans/1/exercises/",
         headers: {
             'content-type': "application/json"
         }
