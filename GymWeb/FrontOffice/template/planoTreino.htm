@@ -19,7 +19,7 @@
     <!-- Filtrar a pesquisa -->
     <br/>
     <label for="fil">Filtre a sua pesquisa:</label>
-    <input id="fil" type="text" class="form-control" placeholder="Pesquise por nome de exercicio, grupo muscular, dificuldade..." ng-model="filtro_plano">
+    <input id="fil" type="text" class="form-control" placeholder="Pesquise por nome de exercicio, grupo muscular, dificuldade..." ng-model="filtro_plano"/>
     <br/>
 
     <!-- Lista dos exercicios -->
@@ -29,8 +29,8 @@
                 <th>Exercício</th>
                 <th>Descrição</th>
                 <th>Grupo muscular</th>
-                <th>Dificuldade</th>
-                <th>Equipamento</th>
+                <th>Repetições</th>
+                <th>Series</th>
             </tr>
         </thead>
         <tbody>
@@ -53,8 +53,8 @@
                     </div> 
                 </td>
                 <td>{{x.targetMuscleGroup}}</td>
-                <td>{{x.difficultyLevel}}</td>
-                <td>{{x.equipmentToUse}}</td>
+                <td>{{x.numberOfRepetitions}}</td>
+                <td>{{x.numberOfSeries}}</td>
             </tr>
         </tbody>
     </table>
