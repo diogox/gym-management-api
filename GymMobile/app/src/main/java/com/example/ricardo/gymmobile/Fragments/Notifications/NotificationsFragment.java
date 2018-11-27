@@ -50,6 +50,18 @@ public class NotificationsFragment extends Fragment implements OnItemClickListen
     public void onResume() {
         super.onResume();
 
+        clientNotifications.clear();
+        notificationAdapter.notifyItemRemoved(0);
+
+        ClientNotification clientNotification = new ClientNotification();
+        clientNotification.setId(1);
+        clientNotification.setTimestamp(new Date());
+        clientNotification.setUnread(false);
+        clientNotification.setMessage("Isto é uma notificação de teste");
+        clientNotification.setClientId(1);
+
+        clientNotifications.add(clientNotification);
+        notificationAdapter.notifyItemInserted(0);
     }
 
     @Override
