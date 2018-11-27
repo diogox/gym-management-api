@@ -51,6 +51,25 @@ public class ExercisesFragment extends Fragment implements OnItemClickListener {
     public void onResume() {
         super.onResume();
 
+        exercises.clear();
+        exerciseAdapter.notifyItemRemoved(0);
+
+        /** < TESTE > */
+        Exercise exercise = new Exercise();
+        exercise.setId(1);
+        exercise.setName("Abdominais");
+        exercise.setDescription("O exercício abdominal é um dos mais conhecidos exercícios para " +
+                "desenvolvimento e fortalecimento da musculatura abdominal, principalmente do músculo " +
+                "reto abdominal. É também um modelo pertencente ao método Hiit, que dentro deste, " +
+                "pode sofrer muitas variações, de acordo com a necessidade do praticante.");
+        exercise.setImageUrl("https://images.fitpregnancy.mdpcdn.com/sites/fitpregnancy.com/files/styles/width_360/public/field/image/young-woman-abdominal-exercise_700x700.jpg");
+        exercise.setTargetMuscleGroup(MuscleGroups.Abs);
+        exercise.setDifficultyLevel(DifficultyLevels.Easy);
+        exercise.setEquipmentToUse(null);
+
+        exercises.add(exercise);
+        exerciseAdapter.notifyItemInserted(0);
+
     }
 
     @Override
