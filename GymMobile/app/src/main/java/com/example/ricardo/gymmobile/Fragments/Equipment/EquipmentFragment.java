@@ -53,6 +53,9 @@ public class EquipmentFragment extends Fragment implements OnItemClickListener {
     public void onResume() {
         super.onResume();
 
+        equipments.clear();
+        equipmentAdapter.notifyItemRemoved(0);
+
         /** < TESTE > */
         Equipment equipment = new Equipment();
         equipment.setId(1);
