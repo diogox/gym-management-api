@@ -18,7 +18,7 @@ namespace GymAPI.Models
         
         [JsonIgnore]
         public TrainingPlan TrainingPlan { get; set; }
-        public long TrainingPlanId { get; set; }
+        public long? TrainingPlanId { get; set; }
 
         /// <summary>
         /// Contains a list of times and dates the client checked-in at the gym.

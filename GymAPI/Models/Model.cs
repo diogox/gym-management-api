@@ -28,18 +28,6 @@ namespace GymAPI.Models
                     tpb.NumberOfRepetitions,
                     tpb.NumberOfSeries,
                 });
-            /*
-            modelBuilder.Entity<TrainingPlanExercise>()
-                .HasKey(pe => new { pe.PlanId, pe.ExerciseId });
-            modelBuilder.Entity<TrainingPlanExercise>()
-                .HasOne(pe => pe.Plan)
-                .WithMany(p => p.Exercises)
-                .HasForeignKey(pe => pe.ExerciseId);
-            modelBuilder.Entity<TrainingPlanExercise>()
-                .HasOne(pe => pe.Exercise)
-                .WithMany(e => e.UsedByPlans)
-                .HasForeignKey(pe => pe.PlanId);
-            */
         }
     }
 }

@@ -106,7 +106,7 @@ namespace GymAPI.Migrations
                     Age = table.Column<int>(nullable: false),
                     HeightInMeters = table.Column<double>(nullable: false),
                     WeightInKg = table.Column<float>(nullable: false),
-                    TrainingPlanId = table.Column<long>(nullable: false)
+                    TrainingPlanId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -116,7 +116,7 @@ namespace GymAPI.Migrations
                         column: x => x.TrainingPlanId,
                         principalTable: "Plans",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -197,8 +197,7 @@ namespace GymAPI.Migrations
                     Title = table.Column<string>(nullable: true),
                     OpenedAt = table.Column<DateTime>(nullable: false),
                     State = table.Column<int>(nullable: false),
-                    ClientId = table.Column<long>(nullable: false),
-                    StaffMemberId = table.Column<long>(nullable: false)
+                    ClientId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -207,12 +206,6 @@ namespace GymAPI.Migrations
                         name: "FK_SupportTickets_Clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "Clients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_SupportTickets_Staff_StaffMemberId",
-                        column: x => x.StaffMemberId,
-                        principalTable: "Staff",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -225,9 +218,9 @@ namespace GymAPI.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Message = table.Column<string>(nullable: true),
                     At = table.Column<DateTime>(nullable: false),
-                    SupportTicketId = table.Column<long>(nullable: false),
                     FromClientId = table.Column<long>(nullable: false),
                     FromStaffId = table.Column<long>(nullable: false),
+                    SupportTicketId = table.Column<long>(nullable: false),
                     From = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -275,11 +268,6 @@ namespace GymAPI.Migrations
                 name: "IX_SupportTickets_ClientId",
                 table: "SupportTickets",
                 column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SupportTickets_StaffMemberId",
-                table: "SupportTickets",
-                column: "StaffMemberId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TrainingPlanBlock_ExerciseId",

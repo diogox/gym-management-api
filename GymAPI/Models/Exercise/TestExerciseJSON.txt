@@ -6,4 +6,3 @@
     "difficultyLevel": "Easy",
     "equipmentId": 1
 }
-

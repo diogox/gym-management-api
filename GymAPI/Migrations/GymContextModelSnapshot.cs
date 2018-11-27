@@ -35,7 +35,7 @@ namespace GymAPI.Migrations
 
                     b.Property<long>("Nif");
 
-                    b.Property<long>("TrainingPlanId");
+                    b.Property<long?>("TrainingPlanId");
 
                     b.Property<float>("WeightInKg");
 
@@ -169,8 +169,6 @@ namespace GymAPI.Migrations
 
                     b.Property<DateTime>("OpenedAt");
 
-                    b.Property<long>("StaffMemberId");
-
                     b.Property<int>("State");
 
                     b.Property<string>("Title");
@@ -178,8 +176,6 @@ namespace GymAPI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
-
-                    b.HasIndex("StaffMemberId");
 
                     b.ToTable("SupportTickets");
                 });
@@ -247,8 +243,7 @@ namespace GymAPI.Migrations
                 {
                     b.HasOne("GymAPI.Models.TrainingPlan", "TrainingPlan")
                         .WithMany()
-                        .HasForeignKey("TrainingPlanId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TrainingPlanId");
                 });
 
             modelBuilder.Entity("GymAPI.Models.ClientCheckIn", b =>
@@ -280,11 +275,6 @@ namespace GymAPI.Migrations
                     b.HasOne("GymAPI.Models.Client", "Client")
                         .WithMany("SupportTickets")
                         .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GymAPI.Models.StaffMember", "StaffMember")
-                        .WithMany()
-                        .HasForeignKey("StaffMemberId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

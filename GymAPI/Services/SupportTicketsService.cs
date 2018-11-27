@@ -67,7 +67,6 @@ namespace GymAPI.Services
         public void Create(SupportTicket ticket)
         {
             ticket.Client = null; // ClientId initializes this field
-            ticket.StaffMember = null; // StaffMemberId initializes this field
             ticket.OpenedAt = DateTime.Now;
             
             _context.SupportTickets.Add(ticket);
@@ -79,7 +78,6 @@ namespace GymAPI.Services
             oldTicket.Title = ticket.Title;
             oldTicket.Messages = ticket.Messages;
             oldTicket.ClientId = ticket.ClientId;
-            oldTicket.StaffMemberId = ticket.StaffMemberId;
             oldTicket.State = ticket.State;
             
             _context.SaveChanges();

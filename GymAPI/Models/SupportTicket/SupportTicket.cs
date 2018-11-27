@@ -17,9 +17,5 @@ namespace GymAPI.Models
         public long ClientId { get; set; }
         [JsonIgnore]
         public Client Client { get; set; }
-        
-        public long StaffMemberId { get; set; }
-        [JsonIgnore]
-        public StaffMember StaffMember { get; set; }
     }
 }
