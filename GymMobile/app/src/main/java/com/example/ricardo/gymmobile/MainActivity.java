@@ -12,12 +12,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ricardo.gymmobile.Fragments.Equipment.EquipmentFragment;
 import com.example.ricardo.gymmobile.Fragments.Exercise.ExercisesFragment;
 import com.example.ricardo.gymmobile.Fragments.MainFragment;
-import com.example.ricardo.gymmobile.Fragments.NotificationsFragment;
+import com.example.ricardo.gymmobile.Fragments.Notifications.NotificationsFragment;
 import com.example.ricardo.gymmobile.Fragments.ReportsFragment;
 import com.example.ricardo.gymmobile.Fragments.SupportTicketFragment;
 import com.example.ricardo.gymmobile.Fragments.WorkPlan.WorkPlanFragment;
@@ -46,6 +48,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+
+        TextView nameClient = headerView.findViewById(R.id.client_name);
+        nameClient.setText("Ricardo");
+
+        TextView emailClient = headerView.findViewById(R.id.client_email);
+        emailClient.setText("ricardofernandes_1998@hotmail.com");
 
         // MainFragment
         MainFragment mainFragment = new MainFragment();

@@ -44,6 +44,7 @@ public class LoadImages extends AsyncTask<Integer, Integer, Integer> {
         this.activity   = activity;
         this.urlToImage = urlToImage;
         this.imageView  = imageView;
+        this.execute();
     }
 
     @Override
