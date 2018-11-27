@@ -36,7 +36,7 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window) {
             let title = $scope.assunto;
             let message = $scope.comentario;
             let openedAt = new Date();
-            let messages = [{"message": message, "at": openedAt, "from": "Client"}]
+            let messages = [{ "message": message, "at": openedAt, "from": "Client" }]
             let state = "Open";
 
             let ticket = { title, clientId, openedAt, messages, state };

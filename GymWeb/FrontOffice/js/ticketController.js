@@ -20,31 +20,39 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
     // Pede um ticket especifico à API
     getTicketById($http, id, (response) => {
 
+        // Se a API respondeu da forma correta
         if (response) {
 
-
+            // Obtem o id do cliente deste ticket
             let clientId = response.data.clientId;
 
+            // Obtem os dados do cliente
             getClient($http, clientId, (response2) => {
+
+                // Se a API respondeu da forma correta
                 if (response2) {
 
+                    // Obtem o nome completo do utilizador
                     let clientFName = response2.data.firstName;
                     let clientLName = response2.data.lastName;
 
+                    // Se o primeiro nome do cliente não estiver definido, é substituido por uma string vazia
                     if (clientFName === undefined || clientFName === null) {
                         clientFName = "";
                     }
 
+                    // Se o ultimo nome do cliente não estiver definido, é substituido por uma string vazia
                     if (clientLName === undefined || clientLName === null) {
                         clientLName = "";
                     }
 
+                    // Concatnar os nomes do cliente
                     let clientName = clientFName + " " + clientLName;
 
-                    let clientId = response2.data.clientId;
-
+                    // Obtem as mensagens do ticket
                     let messages = response.data.messages;
 
+                    // Percorre as mensagens e reorganiza a data num novo formato
                     for (let i = 0; i < messages.length; i++) {
                         let at = messages[i].at;
                         let year = at.substring(0, 4);
@@ -55,8 +63,13 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
                         at = day + "-" + month + "-" + year + " " + hour + ":" + minute;
                         messages[i].at = at;
 
+                        // Se a mensagem tiver sido enviado pelo cliente, o nome que aparece
+                        // no ticket é o nome do cliente
                         if(messages[i].from === "Client"){
                             messages[i].name = clientName;
+                        
+                        // Se a mensagem tiver sido enviada pelo admin, aparece "admin" como
+                        // emissor da mensagem
                         }else{
                             messages[i].name = "Admin";
                         }
@@ -65,16 +78,23 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
                     
                     let ticket = { clientName, messages };
 
+                    // Atualizar a vista
                     $scope.ticket = ticket;
 
 
+                // Se a API não respondeu da forma correta
                 }else{
+
+                    alert("Something went wrong");
 
                 }
 
             });
 
+        // Se a API não respondeu da forma correta
         } else {
+
+            alert("Something went wrong");
 
         }
 
