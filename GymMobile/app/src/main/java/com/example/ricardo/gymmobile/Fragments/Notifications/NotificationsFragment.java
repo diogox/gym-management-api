@@ -1,4 +1,4 @@
-package com.example.ricardo.gymmobile.Fragments.WorkPlan;
+package com.example.ricardo.gymmobile.Fragments.Notifications;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,37 +11,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.ricardo.gymmobile.Entities.Enums.DayOfTheWeek;
-import com.example.ricardo.gymmobile.Entities.TrainingPlanBlock;
-import com.example.ricardo.gymmobile.Entities.WorkPlan;
+import com.example.ricardo.gymmobile.Entities.ClientNotification;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
 import com.example.ricardo.gymmobile.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class WorkPlanFragment extends Fragment implements OnItemClickListener {
+public class NotificationsFragment extends Fragment implements OnItemClickListener {
 
     /**
      * Contexto
      */
     private Context context;
     /**
-     * RecyclerView que contém a listagem dos planos de treino
+     * RecyclerView que contém a listagem das notificações
      */
     private RecyclerView recyclerView;
     /**
-     * WorkPlan adapter
+     * Notification adapter
      */
-    private WorkPlanAdapter workPlanAdapter;
+    private NotificationAdapter notificationAdapter;
     /**
-     * Lista de blocos de treino associados a um plano de treino
+     * Lista de notificações a ser adicionada na RecyclerView
      */
-    private List<TrainingPlanBlock> trainingPlanBlocks = new ArrayList<>();
-    /**
-     * Lista de planos de treino a ser adicionada na RecyclerView
-     */
-    private List<WorkPlan> workPlans = new ArrayList<>();
+    private List<ClientNotification> clientNotifications = new ArrayList<>();
 
 
     @Override
@@ -60,18 +55,18 @@ public class WorkPlanFragment extends Fragment implements OnItemClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        final View mContentView = inflater.inflate(R.layout.fragment_work_plan, container, false);
+        final View mContentView = inflater.inflate(R.layout.fragment_notifications, container, false);
 
-        workPlanAdapter = new WorkPlanAdapter(context, workPlans, getActivity());
+        notificationAdapter = new NotificationAdapter(context, clientNotifications, getActivity());
 
-        recyclerView = mContentView.findViewById(R.id.recycler_view_work_plan);
-        recyclerView.setAdapter(workPlanAdapter);
+        recyclerView = mContentView.findViewById(R.id.recycler_view_notification);
+        recyclerView.setAdapter(notificationAdapter);
 
         // Set LayoutManager
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         // Clicar num plano de treino da lista
-        workPlanAdapter.setClickListener(this);
+        notificationAdapter.setClickListener(this);
 
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
@@ -80,8 +75,8 @@ public class WorkPlanFragment extends Fragment implements OnItemClickListener {
     }
 
     /**
-     * Método que permite clicar num plano de treino da RecycleView para
-     * poder visualizar a informação
+     * Método que permite clicar numa notificação da RecycleView para
+     * poder visualizar a informação e marcar a notificação como lida
      */
     @Override
     public void onItemClick(View view, int position) {
