@@ -32,9 +32,14 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window) {
             $scope.disableSubmit = "y";
 
             // Dados do formulário
-            let clientId = 1;
+            let clientId = 2;
+            let title = $scope.assunto;
+            let message = $scope.comentario;
             let openedAt = new Date();
-            let ticket = { clientId, openedAt };
+            let messages = [{ "message": message, "at": openedAt, "from": "Client" }]
+            let state = "Open";
+
+            let ticket = { title, clientId, openedAt, messages, state };
 
             ticket = JSON.stringify(ticket);
 
@@ -52,24 +57,6 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window) {
                     setTimeout(function () {
                         window.location.href = "#!suporte";
                     }, 2000);
-
-                    let message = $scope.comentario;
-                    let fromClientId = 1;
-                    let fromStaffId = 1;
-                    let supportTicketId = response.data.id;
-
-                    let data = { message, fromClientId, fromStaffId, supportTicketId, openedAt };
-
-                    // Pede à API para adicionar a primeira resposta ao ticket
-                    addAnswerToTicket($http, supportTicketId, data, (response2) => {
-
-                        if (response2) {
-
-                        } else {
-
-                        }
-
-                    })
 
                     // Se a API não respondeu da forma correta
                 } else {

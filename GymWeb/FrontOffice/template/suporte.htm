@@ -11,16 +11,14 @@
             <tr>
                 <th>Titulo</th>
                 <th>Data abertura</th>
-                <th>Data ultima resposta</th>
                 <th>Estado</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="x in tickets">
-                <td>{{x.message}}</td>
+                <td>{{x.title}}</td>
                 <td>{{x.openedAt}}</td>
-                <td>{{x.lastMessageDate}}</td>
                 <td>{{x.state}}</td>
                 <td><a href="#!ticket/{{x.ticketId}}" class="btn btn-success" role="button">Ver</a></td>
                 

@@ -180,7 +180,7 @@ export function createTicket($http, dataSend, callback) {
     $http({
 
         method: "POST",
-        data: ticket,
+        data: dataSend,
         url: "https://localhost:5001/api/tickets",
         headers: {
             'content-type': "application/json"
