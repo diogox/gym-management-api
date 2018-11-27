@@ -1,9 +1,7 @@
-import { getTicketById, addAnswerToTicket } from "./pedidos.js";
+import { getTicketById, addAnswerToTicket, getClient } from "./pedidos.js";
 
 // Controller página de um ticket especifico
 app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
-
-    // ::TODO:: Atualizar quando a API estiver a funcionar corretamente
 
     // Obter id do ticket
     let id = $routeParams.id;
@@ -20,36 +18,54 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
     getTicketById($http, id, (response) => {
 
         if (response) {
-            /*let clientFName = response.data.client.firstName;
-            let clientLName = response.data.client.lastName;
 
-            if (clientFName === undefined || clientFName === null){
-                clientFName = "";
-            }
 
-            if (clientLName === undefined || clientLName === null){
-                clientLName = "";
-            }*/
+            let clientId = response.data.clientId;
 
-            //let clientName = clientFName + " " + clientLName;
+            getClient($http, clientId, (response2) => {
+                if (response2) {
 
-            let clientName = response.data.clientId;
-            let messages = response.data.messages;
+                    let clientFName = response2.data.firstName;
+                    let clientLName = response2.data.lastName;
 
-            for (let i = 0; i < messages.length; i++) {
-                let at = messages[i].at;
-                let year = at.substring(0, 4);
-                let month = at.substring(5, 7);
-                let day = at.substring(8, 10);
-                let hour = at.substring(11, 13);
-                let minute = at.substring(14, 16);
-                at = day + "-" + month + "-" + year + " " + hour + ":" + minute;
-                messages[i].at = at;
-            }
+                    if (clientFName === undefined || clientFName === null) {
+                        clientFName = "";
+                    }
 
-            let ticket = { clientName, messages };
+                    if (clientLName === undefined || clientLName === null) {
+                        clientLName = "";
+                    }
 
-            $scope.ticket = ticket;
+                    let clientName = clientFName + " " + clientLName;
+
+                    let clientId = response2.data.clientId;
+
+                    let messages = response.data.messages;
+
+                    for (let i = 0; i < messages.length; i++) {
+                        let at = messages[i].at;
+                        let year = at.substring(0, 4);
+                        let month = at.substring(5, 7);
+                        let day = at.substring(8, 10);
+                        let hour = at.substring(11, 13);
+                        let minute = at.substring(14, 16);
+                        at = day + "-" + month + "-" + year + " " + hour + ":" + minute;
+                        messages[i].at = at;
+                    }
+
+                    let ticket = { clientName, messages };
+
+                    console.log(ticket)
+
+                    $scope.ticket = ticket;
+
+
+                }else{
+
+                }
+
+            });
+
         } else {
 
         }
@@ -95,7 +111,7 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
                         window.location.href = "#!ticket/" + id;
                     }, 2000);
 
-                // Se a API não respondeu da forma correta
+                    // Se a API não respondeu da forma correta
                 } else {
 
                 }
