@@ -3,6 +3,9 @@ import { getTicketById, addAnswerToTicket, getClient } from "./pedidos.js";
 // Controller página de um ticket especifico
 app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
 
+    // Botão de submit nova resposta é clicável
+    $scope.disableSubmit = "";
+
     // Obter id do ticket
     let id = $routeParams.id;
 
@@ -51,11 +54,16 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
                         let minute = at.substring(14, 16);
                         at = day + "-" + month + "-" + year + " " + hour + ":" + minute;
                         messages[i].at = at;
+
+                        if(messages[i].from === "Client"){
+                            messages[i].name = clientName;
+                        }else{
+                            messages[i].name = "Admin";
+                        }
+
                     }
-
+                    
                     let ticket = { clientName, messages };
-
-                    console.log(ticket)
 
                     $scope.ticket = ticket;
 
@@ -76,6 +84,9 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
     // Se o cliente clicar no botão de adicionar resposta
     $scope.addAnswer = function () {
 
+        // Disable do botão de submit para evitar enviar a mesma resposta várias vezes
+        $scope.disableSubmit = "y";
+
         if ($scope.answer === "" || $scope.answer === undefined) {
 
             // Mostra alerta de que os dados foram preenchidos sem sucesso
@@ -90,11 +101,10 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
             $scope.disableSubmit = "y";
 
             let message = $scope.answer;
-            let fromClientId = 1;
-            let fromStaffId = 1;
             let supportTicketId = id;
+            let from = "Client";
 
-            let dataSend = { message, fromClientId, fromStaffId, supportTicketId };
+            let dataSend = { message, from, supportTicketId };
 
             // Pede à API para adicionar uma resposta a um ticket especifico
             addAnswerToTicket($http, id, dataSend, (response) => {
@@ -114,6 +124,8 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
                     // Se a API não respondeu da forma correta
                 } else {
 
+                    // Mostra mensagem de insucesso
+                    $scope.nova_resposta_sem_sucesso = "";
                 }
 
             });

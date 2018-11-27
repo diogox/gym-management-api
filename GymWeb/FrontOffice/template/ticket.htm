@@ -6,7 +6,7 @@
     <div class="media border p-3" ng-repeat="x in ticket.messages">
         <img src="img_avatar3.png" alt="" class="mr-3 mt-3 rounded-circle" style="width:60px;"/>
         <div class="media-body">
-            <h4>{{ticket.clientName}} <small><i>Posted on {{x.at}}</i></small></h4>
+            <h4>{{x.name}} <small><i>Posted on {{x.at}}</i></small></h4>
             <p>{{x.message}}</p>
         </div>
     </div>
@@ -39,7 +39,7 @@
           <label for="comment">Comment:</label>
           <textarea class="form-control" rows="5" id="comment" name="text" ng-model="answer" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" ng-click="addAnswer()">Submit</button>
+        <button type="submit" class="btn btn-primary" ng-click="addAnswer()" ng-disabled="disableSubmit">Submit</button>
     </form>
 
 </div>
