@@ -10,11 +10,11 @@ public class WorkPlan {
     /**
      * Número de identificação do plano de treino
      */
-    public long id;
+    private long id;
     /**
      * Nome do plano de treino
      */
-    public String name;
+    private String name;
     /**
      * Lista de blocos de treino
      */

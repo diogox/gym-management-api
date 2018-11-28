@@ -10,23 +10,23 @@ public class ClientNotification {
     /**
      * Número de identificação da notificação
      */
-    public long id;
+    private long id;
     /**
      * Mensagem da notificação
      */
-    public String message;
+    private String message;
     /**
      * Data da notificação
      */
-    public Date timestamp;
+    private Date timestamp;
     /**
      * Sinalizar se a notificação já foi lida
      */
-    public boolean isUnread;
+    private boolean isUnread;
     /**
      * Número de identificação do cliente a que está associada a notificação
      */
-    public long clientId;
+    private long clientId;
 
 
     public long getId() {

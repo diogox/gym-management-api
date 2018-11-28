@@ -10,15 +10,15 @@ public class ClientCheckIn {
     /**
      * Número de identificação do check-in
      */
-    public long id;
+    private long id;
     /**
      * Data do check-in
      */
-    public Date at;
+    private Date at;
     /**
      * Número de identificação do cliente que está asociado o check-in
      */
-    public long ClientId;
+    private long ClientId;
 
 
     public long getId() {
