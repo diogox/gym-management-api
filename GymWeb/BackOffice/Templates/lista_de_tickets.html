@@ -1,0 +1,29 @@
+<div class="container" style="margin-left: 100px" ng-controller="ticketsCtrl">
+    <h2 style="color: white">Tickets:</h2>
+    <table class="content table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Aberto às</th>
+                <th>Estado</th>
+                <th>ID do Cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="ticket in Tickets" ng-click="getthisTicket(ticket)">
+                <td>{{ticket.id}}</td>
+                <td>{{ticket.title}}</td>
+                <td>{{ticket.openedAt}}</td>
+                <td>{{ticket.state}}</td>
+                <td>{{ticket.clientId}}</td>
+                <!--<td>
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"
+                        data-target="#removercliente" ng-click="removeClient(cliente.id)">
+                        Remover
+                    </button>
+                </td>-->
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,22 @@
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: white;
+    color: black;
+}
+
+.body{
+  background-color: rgba(67,67,67,0.3);
+  border: 1px;
+  border-radius: 10px;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.messagens{
+  background-color: rgba(155, 155, 155, 0.3);
+  border: 1px;
+  border-radius: 10px;
+  color: white;
+}
