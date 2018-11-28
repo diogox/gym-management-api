@@ -21,7 +21,7 @@ import com.example.ricardo.gymmobile.Fragments.Exercise.ExercisesFragment;
 import com.example.ricardo.gymmobile.Fragments.MainFragment;
 import com.example.ricardo.gymmobile.Fragments.Notifications.NotificationsFragment;
 import com.example.ricardo.gymmobile.Fragments.ReportsFragment;
-import com.example.ricardo.gymmobile.Fragments.SupportTicketFragment;
+import com.example.ricardo.gymmobile.Fragments.Support.SupportTicketFragment;
 import com.example.ricardo.gymmobile.Fragments.WorkPlan.WorkPlanFragment;
 
 public class MainActivity extends AppCompatActivity

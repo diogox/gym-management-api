@@ -10,23 +10,23 @@ public class TrainingPlanBlock {
     /**
      * Número de identificação do bloco de treino
      */
-    public long planId;
+    private long planId;
     /**
      * Número de identificação do exercicio associado ao bloco de treino
      */
-    public long exerciseId;
+    private long exerciseId;
     /**
      * Número de repetições do exercicio
      */
-    public int numberOfRepetitions;
+    private int numberOfRepetitions;
     /**
      * Número de séies do exercicio
      */
-    public int numberOfSeries;
+    private int numberOfSeries;
     /**
      * Dia da semana em que o bloco de treino é realizado
      */
-    public DayOfTheWeek dayOfTheWeek;
+    private DayOfTheWeek dayOfTheWeek;
 
 
     public long getPlanId() {

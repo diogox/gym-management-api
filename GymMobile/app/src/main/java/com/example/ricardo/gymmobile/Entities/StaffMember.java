@@ -12,47 +12,47 @@ public class StaffMember {
     /**
      * Número de identificação do funcionário
      */
-    public long id;
+    private long id;
     /**
      * Número de identificação fiscal do funcionário
      */
-    public long nif;
+    private long nif;
     /**
      * Email do funcionário
      */
-    public String email;
+    private String email;
     /**
      * Primeiro nome do funcionário
      */
-    public String firstName;
+    private String firstName;
     /**
      * Último nome do funcionário
      */
-    public String lastName;
+    private String lastName;
     /**
      * Url da imagem do funcionário
      */
-    public String imageUrl;
+    private String imageUrl;
     /**
      * Idade do funcionário
      */
-    public int age;
+    private int age;
     /**
      * Data de nascimento do funcionário
      */
-    public Date birthDate;
+    private Date birthDate;
     /**
      * Tipo do funcionário
      */
-    public StaffMemberRank rank;
+    private StaffMemberRank rank;
     /**
      * Saláriodo funcionário
      */
-    public float salary;
+    private float salary;
     /**
      * Sinalizar se já recebeu o salário deste mês
      */
-    public boolean hasBeenPaidThisMonth;
+    private boolean hasBeenPaidThisMonth;
 
 
     public long getId() {

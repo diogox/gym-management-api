@@ -30,7 +30,6 @@ public class Equipment {
      * Nome do fornecedor do equipamento
      */
     private String supplierName;
-
     /**
      * Descrição do equipamento
      */
