@@ -286,6 +286,144 @@ export function editarEquipment($http,data,id,callback){
 
 
 
+//Tickets
+//Get all Tickets
+export function getTickets($http, callback) {
+    $http({
+        method: "GET",
+        url: "https://localhost:5001/api/tickets/"
+    }).then(function mySuccess(response) {
+        //console.log(response);
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Get Ticket by ID
+export function getTicketByID($http,id, callback) {
+    $http({
+        method: "GET",
+        url: "https://localhost:5001/api/tickets/"+id
+    }).then(function mySuccess(response) {
+        //console.log(response);
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Remover Ticket pelo ID
+export function removeTicket($http, id, callback) {
+    $http({
+        method: "DELETE",
+        url: "https://localhost:5001/api/tickets/" + id
+    }).then(function mySuccess(response) {
+        //console.log(response)
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Adiciconar Ticket
+export function adicionarTicket($http, data, callback) {
+    $http({
+        method: "POST",
+        data: data,
+        url: "https://localhost:5001/api/tickets/",
+        headers: {
+            'content-type': "application/json"
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response)
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Editar Ticket
+export function editarTicket($http,data,id,callback){
+    $http({
+        method: "PUT",
+        data: data,
+        url: "https://localhost:5001/api/tickets/" + id,
+        headers: {
+            'content-type': "application/json"
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response)
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Get messages from Ticket
+export function getMSGSTicket($http,id, callback) {
+    $http({
+        method: "GET",
+        url: "https://localhost:5001/api/tickets/"+id+"/messages"
+    }).then(function mySuccess(response) {
+        //console.log(response);
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Get message from Ticket
+export function getMSGTicket($http,id,messageid, callback) {
+    $http({
+        method: "GET",
+        url: "https://localhost:5001/api/tickets/"+id+"/messages/"+messageid
+    }).then(function mySuccess(response) {
+        //console.log(response);
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Send message to Ticket
+export function sendMSGTicket($http,data,id, callback) {
+    $http({
+        method: "POST",
+        data: data,
+        url: "https://localhost:5001/api/tickets/"+id+"/messages/",
+        headers: {
+            'content-type': "application/json"
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response);
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Planos de Treino

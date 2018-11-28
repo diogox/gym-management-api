@@ -1,0 +1,31 @@
+<div class="container body" style="margin-left: 100px" ng-controller="ticketCtrl">
+    <h2>Ticket</h2>
+    <h3>ID: {{id_Ticket}}</h3>
+    <h3>Título: {{titulo_Ticket}}</h3>
+    <h3>Aberto dia: {{open_Ticket}}</h3>
+    <h3>Estado: {{state_Ticket}} </h3>
+    <h3>Cliente: {{nome_cliente}}</h4>
+
+        <h4>Messages:</h4>
+        <ul class="messagens" ng-repeat="message in Messages">
+            <div>
+                <li><!--Message ID: {{message.id}}-->From: {{message.from}} </li>
+                <li>Dia: {{message.at}}</li>
+                <li>Mensagem:<p>{{message.message}}</p>
+                </li>
+            </div>
+        </ul>
+
+        <form ng-submit="submit()" name="myForm">
+            <div class="form-group">
+                <label for="mensagem">Nova Mensagem(150 letras):</label>
+                <textarea class="form-control" type="text" ng-model="novaMensagem" name="mensagem" ng-maxlength="500"
+                    id="mensagem" value="" required></textarea>
+                <span style="color: red" ng-if="!myForm.mensagem.$valid">Atingiu o número máximo de
+                    letras!</span>
+            </div>
+            <p></p>
+            <button class="btn btn-default" ng-disabled="myForm.$invalid" type="submit" id="submit" value="Submit">Enviar
+                Mensagem</button>
+        </form>
+</div>
