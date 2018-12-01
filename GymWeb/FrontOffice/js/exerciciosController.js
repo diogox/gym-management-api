@@ -1,10 +1,10 @@
-import { getExercices, getEquipmentById } from './pedidos.js';
+import { getexercises, getEquipmentById } from './pedidos.js';
 
 // Controller da página de exercicios
 app.controller('exerciciosCtrl', function ($scope, $http) {
 
     // Pede os exercícios existentes à API
-    getExercices($http, (response) => {
+    getexercises($http, (response) => {
 
         // Se a API respondeu da forma correta
         if (response) {

@@ -1,7 +1,13 @@
-import { getPlanosTreino, getExerciceById, getExercices } from './pedidos.js'
+import { getPlanosTreino, getexerciseById, getexercises, createPlan } from './pedidos.js'
 
 // Controller da  página planos de treino
 app.controller('planosCtrl', function ($scope, $http) {
+
+
+    // Ocultar planos no topo da página
+    $scope.novo_plano_sucesso = "y";
+    $scope.novo_plano_sem_sucesso = "y";
+    $scope.novo_plano_sem_sucesso_dados = "y";
 
     // CRIAR PLANO
 
@@ -9,7 +15,7 @@ app.controller('planosCtrl', function ($scope, $http) {
     let exercises = [];
 
     // Obter lista de todos os exercicios
-    getExercices($http, (response)=>{
+    getexercises($http, (response)=>{
         if(response){
 
             for(let i=0; i<response.data.length; i++){
@@ -26,26 +32,66 @@ app.controller('planosCtrl', function ($scope, $http) {
         }
     });
 
-    // Lista de exercices que estão no modal como sendo os exercicios do plano de treino
+    // Lista de exercises que estão no modal como sendo os exercicios do plano de treino
     $scope.newExercises = [];
 
     // Adicionar um novo exercicio ao plano a ser criado
     $scope.addRow = function() {
 
         $scope.newExercises.push({
-            //repetitions : "",
-            //series : ""
         });
     
     }
 
 
     $scope.submitPlan = function() {
-        //console.log(exercises)
-        let planName = $scope.planName;
-        let exercises = $scope.newExercises;
-        let newPlan = {planName, exercises}
-        console.log(newPlan)
+
+        
+
+        if ($scope.name === "" || $scope.name === undefined) {
+
+            // Mostra alerta de que os dados foram preenchidos sem sucesso
+            $scope.nova_resposta_sem_sucesso_dados = "";
+
+        } else {
+            //console.log(exercises)
+            let name = $scope.name;
+            //let exercises = $scope.newExercises;
+
+            let exerciseBlocks = $scope.newExercises;
+
+            /*for(let i=0; i<exercises.length; i++){
+                let exercise = {dayOfTheWeek : exercises[i].dayOfTheWeek,
+                                exerciseId : exercises[i].exerciseId,
+                                numberOfRepetitions : exercises[i].numberOfRepetitions,
+                                numberOfSeries : exercises[i].numberOfSeries};
+
+                exerciseBlocks.push(exercise)
+            }*/
+
+            
+
+            let supervisingTrainerId = 1;
+            let newPlan = {name, exerciseBlocks, supervisingTrainerId}
+
+            createPlan($http, newPlan, (response)=>{
+
+                if(response){
+                    $scope.novo_plano_sucesso = "";
+                    $scope.novo_plano_sem_sucesso = "y";
+                    $scope.novo_plano_sem_sucesso_dados = "y";
+
+                    // Disable do botão de submit para evitar enviar a mesma resposta várias vezes
+                    $scope.disableSubmit = "y";
+
+                }else{
+                    $scope.novo_plano_sucesso = "y";
+                    $scope.novo_plano_sem_sucesso = "";
+                    $scope.novo_plano_sem_sucesso_dados = "y";
+                }
+
+            });
+        }
     }
 
     
@@ -56,6 +102,8 @@ app.controller('planosCtrl', function ($scope, $http) {
 
     // Obtem uma lista de planos de treino
     getPlanosTreino($http, (response)=>{
+
+        console.log(response)
 
         // Se a API respondeu da forma correta
         if(response){
@@ -73,7 +121,7 @@ app.controller('planosCtrl', function ($scope, $http) {
                 for(let j=0; j<response.data[i].exerciseBlocks.length; j++){
 
                     // Obtem as informações de cada exercicio
-                    getExerciceById($http, response.data[i].exerciseBlocks[j].exerciseId, (response2)=>{
+                    getexerciseById($http, response.data[i].exerciseBlocks[j].exerciseId, (response2)=>{
 
                         // Objeto que representa um exercicio no contexto de plano de treino
                         let exercicio = {
@@ -93,8 +141,10 @@ app.controller('planosCtrl', function ($scope, $http) {
                 // Obtem o treinador deste plano
                 let trainer = response.data[i].supervisingTrainer.firstName + " " + response.data[i].supervisingTrainer.lastName;
 
+                let name = response.data[i].name;
+
                 // Objeto que representa este plano que contem treinador e array de exercicios
-                let plan = {exercises, trainer}
+                let plan = {exercises, trainer, name};
 
                 // Adiciona este plano à lista de planos
                 plans.push(plan);

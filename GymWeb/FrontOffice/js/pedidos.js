@@ -37,7 +37,7 @@ export function checkin($http, id, callback) {
 
 }
 
-export function getExercices($http, callback){
+export function getexercises($http, callback){
 
     $http({
 
@@ -56,7 +56,7 @@ export function getExercices($http, callback){
 
 }
 
-export function getExerciceById($http, id, callback){
+export function getexerciseById($http, id, callback){
 
     $http({
 
@@ -234,4 +234,28 @@ export function getPlanosTreino($http, callback) {
         callback(false);
 
     });
+}
+
+export function createPlan($http, dataSend, callback) {
+
+    // Cria novo plano
+    $http({
+
+        method: "POST",
+        data: dataSend,
+        url: "https://localhost:5001/api/plans",
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
 }
