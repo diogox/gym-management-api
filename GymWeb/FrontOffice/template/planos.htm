@@ -1,0 +1,32 @@
+<div ng-controller="planosCtrl">
+
+    <h1>Planos de treino</h1>
+
+    <div ng-repeat="x in plans">
+
+        <p><b>Treinador:</b> {{x.trainer}}</p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Exercicio</th>
+                    <th>Dia</th>
+                    <th>Repetições</th>
+                    <th>Séries</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="y in x.exercises | orderBy:'-dayOfTheWeek'">
+                    <td>{{y.name}}</td>
+                    <td>{{y.dayOfTheWeek}}</td>
+                    <td>{{y.numberOfRepetitions}}</td>
+                    <td>{{y.numberOfSeries}}</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+        <hr/>
+        <br/>
+    </div>
+
+</div>

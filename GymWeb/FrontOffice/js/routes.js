@@ -6,6 +6,9 @@ app.config(function($routeProvider) {
     .when("/", {
         templateUrl : "template/home.htm"
     })
+    .when("/planos", {
+        templateUrl : "template/planos.htm"
+    })
     .when("/exercicios", {
         templateUrl : "template/exercicios.htm"
     })

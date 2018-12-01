@@ -217,3 +217,21 @@ export function getPlanExercisesById($http, id, callback){
 
     });
 }
+
+export function getPlanosTreino($http, callback) {
+    // Pede os exercicios de um plano de treino à API
+    $http({
+
+        method: "GET",
+        url: "https://localhost:5001/api/plans/",
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}

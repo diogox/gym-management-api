@@ -85,16 +85,12 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
                 // Se a API não respondeu da forma correta
                 }else{
 
-                    alert("Something went wrong");
-
                 }
 
             });
 
         // Se a API não respondeu da forma correta
         } else {
-
-            alert("Something went wrong");
 
         }
 

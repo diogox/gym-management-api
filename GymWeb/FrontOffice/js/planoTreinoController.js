@@ -86,7 +86,6 @@ app.controller('planoTreinoCtrl', function($scope, $http) {
 
                             // Se a API não respondeu da forma correta
                             }else{
-                                alert("Something went wrong");
                             }
 
                         });
@@ -125,14 +124,12 @@ app.controller('planoTreinoCtrl', function($scope, $http) {
 
                 // Se a API não respondeu da forma correta
                 }else{
-                    alert("Something went wrong");
                 }
 
             });
 
         // Se a API não respondeu da forma correta
         }else{
-            alert("Something went wrong");
         }
 
     });

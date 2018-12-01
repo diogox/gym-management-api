@@ -58,7 +58,6 @@ app.controller('exerciciosCtrl', function ($scope, $http) {
 
             // Se a API não respondeu da forma correta
         } else {
-            alert("Something went wrong");
         }
 
     });
