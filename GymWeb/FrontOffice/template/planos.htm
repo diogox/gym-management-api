@@ -2,6 +2,79 @@
 
     <h1>Planos de treino</h1>
 
+    <br/>
+    <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#criarPlano">Criar novo</button>
+    <br/>
+    <br/>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="criarPlano">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+      
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Novo Plano</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" name="text" ng-model="planName" required/>
+                        </div>
+
+                        <ul>
+                            <li ng-repeat="x in newExercises" style="list-style:none">
+
+                                <div class="form-group custom-control-inline" style="width:150px">
+                                    <select name="exercice" class="custom-select" ng-model="x.exercice">
+                                            <option value="" disabled selected>Exercicio</option>
+                                        <option ng-repeat="y in exercisesList" value="{{y.exerciseId}}">{{y.exerciseName}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group custom-control-inline" style="width:150px">
+                                    <select name="day" class="custom-select" ng-model="x.day">
+                                        <option value="" disabled selected>Dia</option>
+                                        <option value="Monday">Monday</option>
+                                        <option value="Tuesday">Tuesday</option>
+                                        <option value="Wednesday">Wednesday</option>
+                                        <option value="Thursday">Thursday</option>
+                                        <option value="Friday">Friday</option>
+                                        <option value="Saturday">Saturday</option>
+                                        <option value="Sunday">Sunday</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group custom-control-inline" style="width:150px">
+                                    <input type="number" min="0" class="form-control" id="numberOfRepetitions" name="numberOfRepetitions" placeholder="Repetitions" ng-model="x.repetitions" required/>
+                                </div>
+
+                                <div class="form-group custom-control-inline" style="width:150px">
+                                    <input type="number" min="0" class="form-control" id="numberOfSeries" name="numberOfSeries" placeholder="Series" ng-model="x.series" required/>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <a href="" class="button" ng-click="addRow()">Adicionar exercicio</a>
+                        <br/>
+                        <br/>
+                        <button type="submit" class="btn btn-primary" ng-click="submitPlan()" ng-disabled="disableSubmit">Submit</button>
+                    </form>
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+      
+            </div>
+        </div>
+    </div>
+
     <div ng-repeat="x in plans">
 
         <p><b>Treinador:</b> {{x.trainer}}</p>

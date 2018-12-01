@@ -1,8 +1,58 @@
-import { getPlanosTreino, getExerciceById } from './pedidos.js'
+import { getPlanosTreino, getExerciceById, getExercices } from './pedidos.js'
 
 // Controller da  página planos de treino
 app.controller('planosCtrl', function ($scope, $http) {
 
+    // CRIAR PLANO
+
+    // Lista de exercicios existentes
+    let exercises = [];
+
+    // Obter lista de todos os exercicios
+    getExercices($http, (response)=>{
+        if(response){
+
+            for(let i=0; i<response.data.length; i++){
+                let exerciseId = response.data[i].id;
+                let exerciseName = response.data[i].name;
+                let exercise = {exerciseId, exerciseName}
+                exercises.push(exercise)
+            }
+
+            $scope.exercisesList = exercises;
+
+        }else{
+
+        }
+    });
+
+    // Lista de exercices que estão no modal como sendo os exercicios do plano de treino
+    $scope.newExercises = [];
+
+    // Adicionar um novo exercicio ao plano a ser criado
+    $scope.addRow = function() {
+
+        $scope.newExercises.push({
+            //repetitions : "",
+            //series : ""
+        });
+    
+    }
+
+
+    $scope.submitPlan = function() {
+        //console.log(exercises)
+        let planName = $scope.planName;
+        let exercises = $scope.newExercises;
+        let newPlan = {planName, exercises}
+        console.log(newPlan)
+    }
+
+    
+
+    
+
+    // LISTA DE PLANOS
 
     // Obtem uma lista de planos de treino
     getPlanosTreino($http, (response)=>{
