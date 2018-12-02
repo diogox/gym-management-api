@@ -94,7 +94,11 @@
         </div>
     </div>
 
-    <div ng-repeat="x in plans">
+    <label for="fil">Filtre a sua pesquisa:</label>
+    <input id="fil" type="text" class="form-control" placeholder="Pesquise por nome do plano" ng-model="filtro_planos"/>
+    <br/>
+
+    <div ng-repeat="x in plans | filter : filtro_planos">
 
         <p><b>Treinador:</b> {{x.trainer}}</p>
         <p><b>Nome:</b> {{x.name}}</p>
