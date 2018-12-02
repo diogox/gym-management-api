@@ -1,4 +1,4 @@
-import { getTicketById, addAnswerToTicket, getClient } from "./pedidos.js";
+import { getTicketById, addAnswerToTicket, getClient, openTicket, closeTicket } from "./pedidos.js";
 
 // Controller página de um ticket especifico
 app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
@@ -9,6 +9,9 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
     // Obter id do ticket
     let id = $routeParams.id;
 
+    // Ticket currente
+    let ticket = {};
+
     // Ocultar alertas no topo da página
     $scope.nova_resposta_sucesso = "y";
     $scope.nova_resposta_sem_sucesso = "y";
@@ -16,6 +19,26 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
 
     // Botão de submit é clicável
     $scope.disableSubmit = "";
+
+    // Abre o ticket currente
+    function openTicket(){
+        $scope.close = "";
+        $scope.open = "y";
+        $scope.message = "";
+        $scope.disableSubmit = "";
+        $scope.ticket.state = "Open";
+    }
+
+
+    // Fecha o ticket currente
+    function closeTicket(){
+        $scope.close = "y";
+        $scope.open = "";
+        $scope.message = "y";
+        $scope.disableSubmit = "y";
+        $scope.ticket.state = "Close";
+    }
+
 
     // Pede um ticket especifico à API
     getTicketById($http, id, (response) => {
@@ -25,6 +48,9 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
 
             // Obtem o id do cliente deste ticket
             let clientId = response.data.clientId;
+
+            // Obtem o estado do ticket
+            let state = response.data.state;
 
             // Obtem os dados do cliente
             getClient($http, clientId, (response2) => {
@@ -76,10 +102,41 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
 
                     }
                     
-                    let ticket = { clientName, messages };
+                    // Atualiza o objeto de ticket
+                    ticket = { clientName, messages, state };
 
                     // Atualizar a vista
                     $scope.ticket = ticket;
+
+                    // Verifica o estado do ticket e executa as ações necessárias
+                    if(state === "Open"){
+                        openTicket();
+                    }else{
+                        closeTicket();
+
+                    }
+
+                    // Ações quando clica em fechar ticket
+                    $scope.closeTicket = function() {
+                        closeTicket($http, id, (response)=>{
+                            if(response){
+                                closeTicket();
+                            }else{
+                                alert("Ocorreu um erro. Não foi possível fechar o ticket.")
+                            }
+                        });
+                    }
+
+                    // Ações quando clica em abrir ticket
+                    $scope.openTicket = function() {
+                        openTicket($http, id, (response)=>{
+                            if(response){
+                                openTicket();
+                            }else{
+                                alert("Ocorreu um erro. Não foi possível re-abrir o ticket.")
+                            }
+                        });
+                    }
 
 
                 // Se a API não respondeu da forma correta

@@ -319,3 +319,41 @@ export function changeClientPlan($http, clientId, dataSend, callback) {
     });
 
 }
+
+export function openTicket($http, id, callback) {
+    
+    $http({
+
+        method: "GET",
+        url: "https://localhost:5001/api/tickets/" + id + "/open",
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function closeTicket($http, id, callback) {
+    
+    $http({
+
+        method: "GET",
+        url: "https://localhost:5001/api/tickets/" + id + "/close",
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
