@@ -15,6 +15,9 @@ namespace GymAPI.Services
         void AddMessage(SupportTicket ticket, SupportTicketMessage message);
         List<SupportTicketMessage> GetMessages(SupportTicket ticket);
         SupportTicketMessage GetMessageById(SupportTicket ticket, long messageId);
+        void Open(SupportTicket ticket);
+        void Suspend(SupportTicket ticket);
+        void Close(SupportTicket ticket);
         void Create(SupportTicket ticket);
         void Update(SupportTicket oldTicket, SupportTicket ticket);
         void Delete(SupportTicket ticket);
@@ -57,6 +60,24 @@ namespace GymAPI.Services
         public List<SupportTicketMessage> GetMessages(SupportTicket ticket)
         {
             return ticket.Messages.ToList();
+        }
+        
+        public void Open(SupportTicket ticket)
+        {
+            ticket.State = TicketState.Open;
+            _context.SaveChanges();
+        }
+        
+        public void Suspend(SupportTicket ticket)
+        {
+            ticket.State = TicketState.Suspended;
+            _context.SaveChanges();
+        }
+        
+        public void Close(SupportTicket ticket)
+        {
+            ticket.State = TicketState.Closed;
+            _context.SaveChanges();
         }
         
         public SupportTicketMessage GetMessageById(SupportTicket ticket, long messageId)

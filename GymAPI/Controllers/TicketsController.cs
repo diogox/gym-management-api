@@ -68,6 +68,48 @@ namespace GymAPI
             return Ok(message);
         }
         
+        // GET api/tickets/{id}/open
+        [HttpGet("{id}/open")]
+        public ActionResult<SupportTicketMessage> OpenTicket(long id)
+        {
+            var ticket = _supportTicketService.GetById(id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+            _supportTicketService.Open(ticket);
+            return Ok();
+        }
+        
+        // GET api/tickets/{id}/suspend
+        [HttpGet("{id}/suspend")]
+        public ActionResult<SupportTicketMessage> SuspendTicket(long id)
+        {
+            var ticket = _supportTicketService.GetById(id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+            _supportTicketService.Suspend(ticket);
+            return Ok();
+        }
+        
+        // GET api/tickets/{id}/close
+        [HttpGet("{id}/close")]
+        public ActionResult<SupportTicketMessage> CloseTicket(long id)
+        {
+            var ticket = _supportTicketService.GetById(id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+            _supportTicketService.Close(ticket);
+            return Ok();
+        }
+        
         // POST api/tickets
         [HttpPost]
         public ActionResult CreateTicket([FromBody] SupportTicket ticket)
