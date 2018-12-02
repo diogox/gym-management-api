@@ -17,6 +17,25 @@ export function getClient($http, id, callback) {
 
 }
 
+export function getAllClients($http, callback) {
+    
+    $http({
+
+        method : "GET",
+        url : "https://localhost:5001/api/clients/"
+
+    }).then(function mySuccess(response) {
+        
+        callback(response)
+
+    }, function myError(response) {
+
+        callback(false)
+
+    });
+
+}
+
 export function checkin($http, id, callback) {
 
     // Efetua pedido para realizar check-in do cliente
@@ -236,6 +255,24 @@ export function getPlanosTreino($http, callback) {
     });
 }
 
+export function getPlanosTreinoById($http, id, callback) {
+    // Pede os exercicios de um plano de treino à API
+    $http({
+
+        method: "GET",
+        url: "https://localhost:5001/api/plans/" + id,
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
 export function createPlan($http, dataSend, callback) {
 
     // Cria novo plano
@@ -244,6 +281,29 @@ export function createPlan($http, dataSend, callback) {
         method: "POST",
         data: dataSend,
         url: "https://localhost:5001/api/plans",
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function changeClientPlan($http, clientId, dataSend, callback) {
+
+    $http({
+
+        method: "PUT",
+        data: dataSend,
+        url: "https://localhost:5001/api/clients/" + clientId,
         headers: {
             'content-type': "application/json"
         }

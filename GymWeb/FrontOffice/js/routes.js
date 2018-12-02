@@ -9,6 +9,9 @@ app.config(function($routeProvider) {
     .when("/planos", {
         templateUrl : "template/planos.htm"
     })
+    .when("/atribuirPlano", {
+        templateUrl : "template/atribuirPlano.htm"
+    })
     .when("/exercicios", {
         templateUrl : "template/exercicios.htm"
     })
