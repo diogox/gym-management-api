@@ -1,4 +1,4 @@
-import { getClient, getPlanExercisesById, getExerciceById } from "./pedidos.js";
+import { getClient, getPlanExercisesById, getexerciseById } from "./pedidos.js";
 
 // Controller da página de plano de treino
 app.controller('planoTreinoCtrl', function($scope, $http) {
@@ -35,7 +35,7 @@ app.controller('planoTreinoCtrl', function($scope, $http) {
                     for(let i=0; i<listExercises.length; i++){
 
                         // Pede a descrição promonorizada de cada um dos exercícios à api
-                        getExerciceById($http, listExercises[i].exerciseId, (response3)=>{
+                        getexerciseById($http, listExercises[i].exerciseId, (response3)=>{
 
                             // Se a API respondeu da forma correta
                             if(response3){
@@ -86,7 +86,6 @@ app.controller('planoTreinoCtrl', function($scope, $http) {
 
                             // Se a API não respondeu da forma correta
                             }else{
-                                alert("Something went wrong");
                             }
 
                         });
@@ -125,14 +124,12 @@ app.controller('planoTreinoCtrl', function($scope, $http) {
 
                 // Se a API não respondeu da forma correta
                 }else{
-                    alert("Something went wrong");
                 }
 
             });
 
         // Se a API não respondeu da forma correta
         }else{
-            alert("Something went wrong");
         }
 
     });

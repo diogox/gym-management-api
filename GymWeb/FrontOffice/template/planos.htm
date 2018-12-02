@@ -1,0 +1,129 @@
+<div ng-controller="planosCtrl">
+
+    <h1>Planos de treino</h1>
+
+    <br/>
+    <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#criarPlano">Criar novo</button>
+    <br/>
+    <br/>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="criarPlano">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+      
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Novo Plano</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <!-- Alerta de ticket enviado com sucesso -->
+                <div class="alert alert-success alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sucesso">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Success!</strong> Plano criado com sucesso.
+                </div>
+            
+                <!-- Alerta de ticket enviado sem sucesso -->
+                <div class="alert alert-danger alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sem_sucesso">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Alert!</strong> Plano criado sem sucesso.
+                </div>
+
+                <!-- Alerta de ticket enviado sem sucesso -->
+                <div class="alert alert-warning alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sem_sucesso_dados">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Warning!</strong> Plano criado sem sucesso. Dados incompletos.
+                </div>
+
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" name="text" ng-model="name" required/>
+                        </div>
+
+                        <ul>
+                            <li ng-repeat="x in newExercises" style="list-style:none">
+
+                                <div class="form-group custom-control-inline" style="width:150px">
+                                    <select name="exercise" class="custom-select" ng-model="x.exerciseId">
+                                        <option value="" disabled selected>Exercicio</option>
+                                        <option ng-repeat="y in exercisesList" value="{{y.exerciseId}}">{{y.exerciseName}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group custom-control-inline" style="width:150px">
+                                    <select name="day" class="custom-select" ng-model="x.dayOfTheWeek">
+                                        <option value="" disabled selected>Dia</option>
+                                        <option value="Monday">Monday</option>
+                                        <option value="Tuesday">Tuesday</option>
+                                        <option value="Wednesday">Wednesday</option>
+                                        <option value="Thursday">Thursday</option>
+                                        <option value="Friday">Friday</option>
+                                        <option value="Saturday">Saturday</option>
+                                        <option value="Sunday">Sunday</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group custom-control-inline" style="width:150px">
+                                    <input type="number" min="0" class="form-control" id="numberOfRepetitions" name="numberOfRepetitions" placeholder="Repetitions" ng-model="x.numberOfRepetitions" required/>
+                                </div>
+
+                                <div class="form-group custom-control-inline" style="width:150px">
+                                    <input type="number" min="0" class="form-control" id="numberOfSeries" name="numberOfSeries" placeholder="Series" ng-model="x.numberOfSeries" required/>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <a href="" class="button" ng-click="addRow()">Adicionar exercicio</a>
+                        <br/>
+                        <br/>
+                        <button type="submit" class="btn btn-primary" ng-disabled="disableSubmit" ng-click="submitPlan()" ng-disabled="disableSubmit">Submit</button>
+                    </form>
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+      
+            </div>
+        </div>
+    </div>
+
+    <label for="fil">Filtre a sua pesquisa:</label>
+    <input id="fil" type="text" class="form-control" placeholder="Pesquise por nome do plano" ng-model="filtro_planos"/>
+    <br/>
+
+    <div ng-repeat="x in plans | filter : filtro_planos">
+
+        <p><b>Treinador:</b> {{x.trainer}}</p>
+        <p><b>Nome:</b> {{x.name}}</p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Exercicio</th>
+                    <th>Dia</th>
+                    <th>Repetições</th>
+                    <th>Séries</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="y in x.exercises | orderBy:'-dayOfTheWeek'">
+                    <td>{{y.name}}</td>
+                    <td>{{y.dayOfTheWeek}}</td>
+                    <td>{{y.numberOfRepetitions}}</td>
+                    <td>{{y.numberOfSeries}}</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+        <hr/>
+        <br/>
+    </div>
+
+</div>

@@ -37,7 +37,6 @@ app.controller('homeCtrl', function ($scope, $http) {
 
                 // Se a API não respondeu da forma correta
             } else {
-                alert("Something went wrong");
             }
 
         });
