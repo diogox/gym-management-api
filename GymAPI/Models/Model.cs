@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace GymAPI.Models
 {
-    public class GymContext: DbContext
+    public class GymContext: IdentityDbContext<User.User>
     {
         public GymContext(DbContextOptions<GymContext> options)
             : base(options)
