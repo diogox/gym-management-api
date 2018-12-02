@@ -1,0 +1,26 @@
+<div ng-controller="atribuirPlanoCtrl">
+
+    <h1>Atribuir Plano</h1>
+
+    <br/>
+    <label for="fil">Filtre a sua pesquisa:</label>
+    <input id="fil" type="text" class="form-control" placeholder="Pesquise por nome do cliente" ng-model="filtro_clientes"/>
+    <br/>
+
+    <!-- Lista de clientes -->
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="x in clients | filter : filtro_clientes">
+
+            {{x.firstName}} {{x.lastName}}
+
+            <select name="plan" class="custom-select">
+                <option value="" disabled selected>{{x.trainingPlan.name}}</option>
+                <option ng-click="changePlan(x.id, y.id)" ng-repeat="y in plans" value="{{y.id}}">{{y.name}}</option>
+            </select>
+
+        </li>
+    </ul> 
+
+    
+
+</div>
