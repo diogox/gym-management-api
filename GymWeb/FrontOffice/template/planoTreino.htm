@@ -35,24 +35,24 @@
         </thead>
         <tbody>
             <tr ng-repeat="x in plan | filter : filtro_plano">
-                <td>{{x.name}}</td>
+                <td>{{x.exercise.name}}</td>
                 <td>
-                    {{x.description}}
+                    {{x.exercise.description}}
 
                     <br/>
                     <br/>
-                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#plan{{x.id}}">Clique para ver/ocultar</button>
+                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#plan{{x.exercise.id}}">Clique para ver/ocultar</button>
 
-                    <div id="plan{{x.id}}" class="collapse">
+                    <div id="plan{{x.exercise.id}}" class="collapse">
                         <div class="card" style="width:350px; display:inline-block; margin: 20px">
                             <div class="card-body">
-                                <img class="img" src="{{x.imageUrl}}" alt="Something went wrong, it's not possible to display the image." style="width:100%;height:100%"/>
-                                <figcaption>{{x.name}}</figcaption>
+                                <img class="img" src="{{x.exercise.imageUrl}}" alt="Something went wrong, it's not possible to display the image." style="width:100%;height:100%"/>
+                                <figcaption>{{x.exercise.name}}</figcaption>
                             </div>
                         </div>
                     </div> 
                 </td>
-                <td>{{x.targetMuscleGroup}}</td>
+                <td>{{x.exercise.targetMuscleGroup}}</td>
                 <td>{{x.numberOfRepetitions}}</td>
                 <td>{{x.numberOfSeries}}</td>
             </tr>

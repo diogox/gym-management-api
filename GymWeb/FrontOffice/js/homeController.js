@@ -15,9 +15,6 @@ app.controller('homeCtrl', function ($scope, $http) {
                 // Obtem todo o histórico de entradas
                 let history = response.data.checkInHistory;
 
-                // Array que vai conter todas as entradas do cliente
-                let entradas = [];
-
                 // Percorre todas as entradas
                 for (let i = 0; i < history.length; i++) {
 
@@ -27,13 +24,15 @@ app.controller('homeCtrl', function ($scope, $http) {
                     // Extrai a hora da entrada
                     let hora = history[i].at.split('T')[1].split('.')[0];
 
-                    // Introduz as informações num objeto e insere o objeto num array de entradas
-                    entradas.push({ data, hora });
+                    // Cria nova entrada no objeto para adicionar hora e data separados
+                    response.data.checkInHistory[i].date = data;
+                    response.data.checkInHistory[i].time = hora;
+                    
 
                 }
-
+                
                 // Atualiza as entradas para atualizar a vista
-                $scope.entradas = entradas;
+                $scope.entradas = response.data.checkInHistory;
 
                 // Se a API não respondeu da forma correta
             } else {
