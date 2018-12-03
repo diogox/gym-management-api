@@ -9,7 +9,7 @@ namespace GymAPI
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin, Staff")]
+    [Authorize(Roles = "Admin")]
     public class TicketsController : Controller
     {
         private readonly ISupportTicketsService _supportTicketService;
@@ -35,6 +35,7 @@ namespace GymAPI
             {
                 return NotFound();
             }
+            
             return Ok(ticket);
         }
 
