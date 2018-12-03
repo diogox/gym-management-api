@@ -1,20 +1,28 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using GymAPI.DAOs;
 using GymAPI.Models;
+using GymAPI.Models.User;
 using GymAPI.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymAPI
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin, Staff")] 
     public class ClientsController : Controller
     {
+        private readonly UserManager<User> _userManager;
         private readonly IClientsService _clientsService;
 
-        public ClientsController(IClientsService clientsService)
+        public ClientsController(IClientsService clientsService, UserManager<User> userManager)
         {
             _clientsService = clientsService;
+            _userManager = userManager;
         }
 
         // GET api/clients
@@ -59,9 +67,47 @@ namespace GymAPI
         
         // POST api/clients
         [HttpPost]
-        public ActionResult RegisterClients([FromBody] Client client)
+        [AllowAnonymous]
+        public async Task<ActionResult> SignupUser([FromBody] SignupClientDAO signupInfo)
         {
+            // Check username overlap
+            var user = await _userManager.FindByNameAsync(signupInfo.Username);
+            if (user != null)
+            {
+                return BadRequest("Username already exists!");
+            }
+                
+            // Create client
+            var client = new Client()
+            {
+                Nif = signupInfo.Nif,
+                FirstName = signupInfo.FirstName,
+                LastName = signupInfo.LastName,
+                ImageUrl = signupInfo.ImageUrl,
+                BirthDate = signupInfo.BirthDate,
+                Age = signupInfo.Age,
+                HeightInMeters = signupInfo.HeightInMeters,
+                WeightInKg = signupInfo.WeightInKg,
+            };
             _clientsService.Create(client);
+            
+            // Create user
+            User newUser = new User()
+            {
+                UserName = signupInfo.Username,
+                Email = signupInfo.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                ClientId = client.Id,
+            };
+            var result = await _userManager.CreateAsync(newUser, signupInfo.Password);
+            
+            if (!result.Succeeded)
+            {
+                _clientsService.Delete(client);
+                return BadRequest("Failed to create user! Probably a password validation error!");
+            }
+            
+            await _userManager.AddToRoleAsync(newUser, "Client");
             
             return CreatedAtRoute("GetClient", new { id = client.Id}, client);
         }

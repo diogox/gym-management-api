@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace GymAPI
             _context = context;
         }
         
-        // POST auth/login
+        // POST api/auth/login
         [Route("/api/[controller]/login")]
         public async Task<ActionResult> LoginUser([FromBody] LoginDAO loginInfo)
         {
@@ -44,11 +45,14 @@ namespace GymAPI
                 
                 var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsASuperSecurePassword"));
 
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Token");
+                var roles = await _userManager.GetRolesAsync(user);
+                claimsIdentity.AddClaims(roles.Select(role => new Claim(ClaimTypes.Role, role)));
                 var token = new JwtSecurityToken(
                     issuer: "http://localhost:5001", // TODO: Change this after launching to the cloud
                     audience: "http://localhost:5001",
                     expires: DateTime.UtcNow.AddHours(1),
-                    claims: claims,
+                    claims: claimsIdentity.Claims,
                     signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
                 );
 
@@ -60,33 +64,6 @@ namespace GymAPI
             }
             
             return Unauthorized();
-        }
-        
-        // POST auth/signup
-        [Route("/api/[controller]/signup")]
-        public async Task<ActionResult> SignupUser([FromBody] SignupDAO signupInfo)
-        {
-            // Check username overlap
-            var user = await _userManager.FindByNameAsync(signupInfo.Username);
-            if (user != null)
-            {
-                return BadRequest("Username already exists!");
-            }
-            
-            // Create user
-            User newUser = new User()
-            {
-                UserName = signupInfo.Username,
-                Email = signupInfo.Email,
-                SecurityStamp = Guid.NewGuid().ToString()
-            };
-            var result = await _userManager.CreateAsync(newUser, signupInfo.Password);
-            
-            if (!result.Succeeded)
-            {
-                return BadRequest("Failed to create user! Probably a password validation error!");
-            }
-            return Ok();
         }
 
     }

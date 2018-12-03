@@ -1,19 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using GymAPI.DAOs;
 using GymAPI.Models;
+using GymAPI.Models.User;
 using GymAPI.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")] 
     public class StaffController : ControllerBase
     {
         private readonly IStaffService _staffService;
+        private readonly UserManager<User> _userManager;
         private readonly ITrainersStaffService _trainersStaffService;
 
-        public StaffController(IStaffService staffService, ITrainersStaffService trainersStaffService)
+        public StaffController(IStaffService staffService, ITrainersStaffService trainersStaffService, UserManager<User> userManager)
         {
+            _userManager = userManager;
             _staffService = staffService;
             _trainersStaffService = trainersStaffService;
         }
@@ -36,12 +45,57 @@ namespace GymAPI.Controllers
             }
             return Ok(member);
         }
-
+        
         // POST api/staff
         [HttpPost]
-        public ActionResult RegisterStaffMember([FromBody] StaffMember member)
+        public async Task<ActionResult> SignupUser([FromBody] SignupStaffMemberDAO signupInfo)
         {
+            // Check username overlap
+            var user = await _userManager.FindByNameAsync(signupInfo.Username);
+            if (user != null)
+            {
+                return BadRequest("Username already exists!");
+            }
+                
+            // Create client
+            var member = new StaffMember()
+            {
+                Nif = signupInfo.Nif,
+                FirstName = signupInfo.FirstName,
+                LastName = signupInfo.LastName,
+                Email = signupInfo.Email,
+                ImageUrl = signupInfo.ImageUrl,
+                BirthDate = signupInfo.BirthDate,
+                Age = signupInfo.Age,
+                Rank = signupInfo.Rank,
+                Salary = signupInfo.Salary,
+                HasBeenPaidThisMonth = signupInfo.HasBeenPaidThisMonth,
+            };
             _staffService.Create(member);
+            
+            // Create user
+            User newUser = new User()
+            {
+                UserName = signupInfo.Username,
+                Email = signupInfo.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                StaffMemberId = member.Id,
+            };
+            var result = await _userManager.CreateAsync(newUser, signupInfo.Password);
+            
+            if (!result.Succeeded)
+            {
+                _staffService.Delete(member);
+                return BadRequest("Failed to create staff member! Probably a password validation error!");
+            }
+            
+            if (member.Rank == StaffMemberRank.Trainer)
+            {
+                await _userManager.AddToRoleAsync(newUser, "Trainer");
+            } else
+            {
+                await _userManager.AddToRoleAsync(newUser, "Staff");
+            }
             
             return CreatedAtRoute("GetStaffMember", new { id = member.Id}, member);
         }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GymAPI.Models;
@@ -10,15 +8,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -73,6 +68,14 @@ namespace GymAPI
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = false;
+                
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+                options.Lockout.AllowedForNewUsers = true;
+  
+                // User settings
+                options.User.RequireUniqueEmail = true; 
             });
 
             services.AddAuthentication(options =>
@@ -116,7 +119,7 @@ namespace GymAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider services)
         {
             if (env.IsDevelopment())
             {
@@ -126,7 +129,7 @@ namespace GymAPI
             {
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
@@ -143,6 +146,69 @@ namespace GymAPI
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Gym API");
             });
+
+            CreateUserRoles(services).Wait();
         }
+        
+        
+        private async Task CreateUserRoles(IServiceProvider serviceProvider)
+        {
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
+  
+            IdentityResult roleResult;
+            //Adding Admin Role
+            var roleCheck = await roleManager.RoleExistsAsync("Admin");
+            User user;
+            if (!roleCheck)
+            {
+                //create the roles and seed them to the database
+                roleResult = await roleManager.CreateAsync(new IdentityRole("Admin"));
+                
+                user = new User()
+                {
+                    UserName = "admin",
+                    Email = "admin@qwerty.com",
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    Role = UserRole.Admin
+                };
+                
+                await userManager.CreateAsync(user, "Password123");
+                await userManager.AddToRoleAsync(user, "Admin");
+            }
+            
+            // creating Creating Client role     
+            roleCheck = await roleManager.RoleExistsAsync("Client");
+            if (!roleCheck)
+            {
+                var role = new IdentityRole();
+                role.Name = "Client";
+                await roleManager.CreateAsync(role);
+            }
+
+            // creating Creating Staff role     
+            roleCheck = await roleManager.RoleExistsAsync("Staff");
+            if (!roleCheck)
+            {
+                var role = new IdentityRole();
+                role.Name = "Staff";
+                await roleManager.CreateAsync(role);
+            }
+            
+            // creating Creating Trainer role     
+            roleCheck = await roleManager.RoleExistsAsync("Trainer");
+            if (!roleCheck)
+            {
+                var role = new IdentityRole();
+                role.Name = "Trainer";
+                await roleManager.CreateAsync(role);
+            }
+        }
+
+        private void CreateAdmin()
+        {
+            
+        }
+
     }
 }

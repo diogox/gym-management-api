@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymAPI.Migrations
 {
     [DbContext(typeof(GymContext))]
-    [Migration("20181202220553_AddAuth")]
-    partial class AddAuth
+    [Migration("20181203172751_CreateEntities")]
+    partial class CreateEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -248,6 +248,8 @@ namespace GymAPI.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<long?>("ClientId");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -272,7 +274,11 @@ namespace GymAPI.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
+                    b.Property<int>("Role");
+
                     b.Property<string>("SecurityStamp");
+
+                    b.Property<long?>("StaffMemberId");
 
                     b.Property<bool>("TwoFactorEnabled");
 
@@ -281,12 +287,16 @@ namespace GymAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasName("UserNameIndex");
+
+                    b.HasIndex("StaffMemberId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -464,6 +474,17 @@ namespace GymAPI.Migrations
                         .WithMany("ExerciseBlocks")
                         .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GymAPI.Models.User.User", b =>
+                {
+                    b.HasOne("GymAPI.Models.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId");
+
+                    b.HasOne("GymAPI.Models.StaffMember", "StaffMember")
+                        .WithMany()
+                        .HasForeignKey("StaffMemberId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
