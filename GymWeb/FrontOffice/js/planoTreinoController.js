@@ -79,7 +79,6 @@ app.controller('planoTreinoCtrl', function($scope, $http) {
 
                     }
 
-                    console.log(friday)
                     // Inicialmente, quando o utilizador abre a página vê o plano se segunda-feira
                     $scope.plan = monday;
 

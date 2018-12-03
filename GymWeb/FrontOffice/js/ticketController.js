@@ -101,7 +101,6 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
 
                     }
 
-
                 // Se a API não respondeu da forma correta
                 }else{
 
@@ -122,7 +121,16 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
             if(response){
                 closeTicketPage();
             }else{
-                alert("Ocorreu um erro. Não foi possível fechar o ticket.")
+                bootbox.alert({
+                    message: "Ocorreu um erro. Não foi possível fechar o ticket",
+                    backdrop: true,
+                    buttons: {
+                        ok: {
+                            label: "OK!",
+                            className: 'btn-danger'
+                        }
+                    }
+                });
             }
         });
     }
@@ -133,7 +141,16 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
             if(response){
                 openTicketPage();
             }else{
-                alert("Ocorreu um erro. Não foi possível re-abrir o ticket.")
+                bootbox.alert({
+                    message: "Ocorreu um erro. Não foi possível re-abir o ticket!",
+                    backdrop: true,
+                    buttons: {
+                        ok: {
+                            label: "OK!",
+                            className: 'btn-danger'
+                        }
+                    }
+                });
             }
         });
     }

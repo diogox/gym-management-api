@@ -423,3 +423,69 @@ export function deleteExercise($http, id, callback){
 
     });
 }
+
+export function changeEquipment($http, id, dataSend, callback) {
+
+    $http({
+
+        method: "PUT",
+        data: dataSend,
+        url: "https://localhost:5001/api/equipment/" + id,
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function createEquipment($http, dataSend, callback){
+    
+    $http({
+
+        method: "POST",
+        data: dataSend,
+        url: "https://localhost:5001/api/equipment/",
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function deleteEquipment($http, id, callback){
+    $http({
+
+        method: "DELETE",
+        url: "https://localhost:5001/api/equipment/" + id,
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
