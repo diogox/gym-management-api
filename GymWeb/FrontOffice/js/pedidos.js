@@ -489,3 +489,46 @@ export function deleteEquipment($http, id, callback){
 
     });
 }
+
+export function changePlan($http, planId, dataSend, callback) {
+
+    $http({
+
+        method: "PUT",
+        data: dataSend,
+        url: "https://localhost:5001/api/plans/" + planId,
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function deletePlan($http, id, callback){
+    $http({
+
+        method: "DELETE",
+        url: "https://localhost:5001/api/plans/" + id,
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}

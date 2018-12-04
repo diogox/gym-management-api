@@ -39,6 +39,12 @@ app.config(function($routeProvider) {
     .when('/logout', {
         templateUrl : "template/501.htm"
     })
+    .when('/501', {
+        templateUrl : "template/501.htm"
+    })
+    .when('/404',{
+        templateUrl : "template/404.htm"
+    })
     .otherwise({
         templateUrl : "template/404.htm"
     })

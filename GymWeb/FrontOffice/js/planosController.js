@@ -1,4 +1,4 @@
-import { getPlanosTreino, getexerciseById, getexercises, createPlan } from './pedidos.js'
+import { getPlanosTreino, getexerciseById, getexercises, createPlan, getPlanosTreinoById, changePlan, deletePlan } from './pedidos.js'
 
 // Controller da  página planos de treino
 app.controller('planosCtrl', function ($scope, $http) {
@@ -15,23 +15,28 @@ app.controller('planosCtrl', function ($scope, $http) {
 
     // CRIAR PLANO
 
+    $scope.create = function () {
+        // Tipo de ação a executar quando clicar em submit
+        $scope.type = "create";
+    }
+
     // Lista de exercicios existentes
     let exercises = [];
 
     // Obter lista de todos os exercicios
-    getexercises($http, (response)=>{
-        if(response){
+    getexercises($http, (response) => {
+        if (response) {
 
-            for(let i=0; i<response.data.length; i++){
+            for (let i = 0; i < response.data.length; i++) {
                 let exerciseId = response.data[i].id;
                 let exerciseName = response.data[i].name;
-                let exercise = {exerciseId, exerciseName}
+                let exercise = { exerciseId, exerciseName }
                 exercises.push(exercise)
             }
 
             $scope.exercisesList = exercises;
 
-        }else{
+        } else {
 
         }
     });
@@ -40,153 +45,274 @@ app.controller('planosCtrl', function ($scope, $http) {
     $scope.newExercises = [];
 
     // Adicionar um novo exercicio ao plano a ser criado
-    $scope.addRow = function() {
+    $scope.addRow = function () {
 
-        $scope.newExercises.push({
+        // Se o plan tiver vazio, cria um novo
+        if ($scope.plan === undefined) {
+            $scope.plan = {}
+        }
+
+        // Se o exerciseBlocks tiver vazio cria um array vazio
+        if ($scope.plan.exerciseBlocks === undefined) {
+            $scope.plan.exerciseBlocks = [];
+        }
+
+        $scope.plan.exerciseBlocks.push({
         });
-    
+
     }
 
 
     // Quando clica no botão de submeter plano
-    $scope.submitPlan = function() {
+    $scope.submitPlan = function () {
 
-        if ($scope.name === "" || $scope.name === undefined) {
+        bootbox.confirm({
+            message: "Você pretende adicionar/editar este plano?",
+            buttons: {
+                cancel: {
+                    label: '<i class="fa fa-times"></i> Cancel'
+                },
+                confirm: {
+                    label: '<i class="fa fa-check"></i> Confirm'
+                }
+            },
+            callback: function (resultConfirm) {
 
-            // Mostra alerta de que os dados foram preenchidos sem sucesso
-            $scope.nova_resposta_sem_sucesso_dados = "";
+                if (resultConfirm) {
 
-        } else {
-            //console.log(exercises)
-            let name = $scope.name;
-            //let exercises = $scope.newExercises;
+                    $scope.plan.supervisingTrainerId = 1;
 
-            let exerciseBlocks = $scope.newExercises;
+                    // Se for para criar um plano
+                    if ($scope.type === "create") {
 
-            let supervisingTrainerId = 1;
-            let newPlan = {name, exerciseBlocks, supervisingTrainerId}
+                        // Criar um novo plano
+                        createPlan($http, $scope.plan, (response) => {
 
-            // Criar um novo plano
-            createPlan($http, newPlan, (response)=>{
+                            if (response) {
 
-                if(response){
-                    $scope.novo_plano_sucesso = "";
-                    $scope.novo_plano_sem_sucesso = "y";
-                    $scope.novo_plano_sem_sucesso_dados = "y";
+                                bootbox.alert({
+                                    message: "Plano criado com sucesso!",
+                                    backdrop: true,
+                                    buttons: {
+                                        ok: {
+                                            label: "OK!",
+                                            className: 'btn-success'
+                                        }
+                                    }
+                                });
 
-                    // Disable do botão de submit para evitar enviar a mesma resposta várias vezes
-                    $scope.disableSubmit = "y";
+                                // Simula um click no botão de fechar o modal
+                                document.getElementById("closePlanModal").click();
 
-                    // ADICIONAR PLANO À PÁGINA ATUAL
-                    
-                    // Lista de exercicios de um plano
-                    let exercises = [];
+                                for (let i = 0; i < $scope.plan.exerciseBlocks.length; i++) {
+                                    getexerciseById($http, $scope.plan.exerciseBlocks[i].exerciseId, (response2) => {
+                                        if (response2) {
+                                            $scope.plan.exerciseBlocks[i].exercise = response2.data;
+                                        } else {
 
-                    // Percorre os exercicicios todos de cada plano
-                    for(let j=0; j<response.data.exerciseBlocks.length; j++){
+                                        }
 
-                        // Obtem as informações de cada exercicio
-                        getexerciseById($http, response.data.exerciseBlocks[j].exerciseId, (response2)=>{
+                                        // Coloca os dados do modal vazios
+                                        $scope.plan = {};
 
-                            // Objeto que representa um exercicio no contexto de plano de treino
-                            let exercicio = {
-                                name: response2.data.name,
-                                numberOfRepetitions : response.data.exerciseBlocks[j].numberOfRepetitions,
-                                numberOfSeries : response.data.exerciseBlocks[j].numberOfSeries,
-                                dayOfTheWeek : response.data.exerciseBlocks[j].dayOfTheWeek
+                                    });
+                                }
+                                plans.push($scope.plan)
+
+                            } else {
+                                bootbox.alert({
+                                    message: "Plano criado sem sucesso!",
+                                    backdrop: true,
+                                    buttons: {
+                                        ok: {
+                                            label: "OK!",
+                                            className: 'btn-danger'
+                                        }
+                                    }
+                                });
                             }
-                            
-                            // Adiciona este exercicio ao array de exercicios deste plano
-                            exercises.push(exercicio)
+                        });
+
+                        // Se for para editar um plano
+                    } else {
+
+                        // Altera o plano de treino
+                        changePlan($http, $scope.plan.id, $scope.plan, (result) => {
+
+                            if (result) {
+
+                                bootbox.alert({
+                                    message: "Plano editado com sucesso!",
+                                    backdrop: true,
+                                    buttons: {
+                                        ok: {
+                                            label: "OK!",
+                                            className: 'btn-success'
+                                        }
+                                    }
+                                });
+
+                                for (let i = 0; i < plans.length; i++) {
+
+                                    if (plans[i].id == $scope.plan.id) {
+
+                                        plans[i] = $scope.plan;
+
+                                    }
+
+                                }
+
+                                // Simula um click no botão de fechar o modal
+                                document.getElementById("closePlanModal").click();
+
+                            } else {
+
+                                bootbox.alert({
+                                    message: "Plano editado sem sucesso!",
+                                    backdrop: true,
+                                    buttons: {
+                                        ok: {
+                                            label: "OK!",
+                                            className: 'btn-danger'
+                                        }
+                                    }
+                                });
+
+                            }
 
                         });
 
                     }
-
-                    // Obtem o treinador deste plano
-                    let trainer = "";
-                    //let trainer = response.data.supervisingTrainer.firstName + " " + response.data.supervisingTrainer.lastName;
-
-                    // Nome do plano
-                    let name = response.data.name;
-
-                    // Objeto que representa este plano que contem treinador e array de exercicios
-                    let plan = {exercises, trainer, name};
-                    console.log(plan)
-
-                    // Adiciona este plano à lista de planos
-                    plans.push(plan);
-
-                    //////////////////////////////////////////////////
-
-
-                    // Apaga o formulário atual
-                    $scope.newExercises = [];
-                    $scope.name = "";
-
-                }else{
-                    $scope.novo_plano_sucesso = "y";
-                    $scope.novo_plano_sem_sucesso = "";
-                    $scope.novo_plano_sem_sucesso_dados = "y";
                 }
 
-            });
-        }
+            }
+        });
+
     }
+
+    // ELIMINAR PLANOS
+
+    $scope.delete = function (id) {
+
+
+        bootbox.confirm({
+            message: "Você pretende remover este plano? Não pode voltar atrás!",
+            buttons: {
+                cancel: {
+                    label: '<i class="fa fa-times"></i> Cancel'
+                },
+                confirm: {
+                    label: '<i class="fa fa-check"></i> Confirm'
+                }
+            },
+            callback: function (resultConfirm) {
+
+                if (resultConfirm) {
+                    // Efetua o pedido de remoção
+                    deletePlan($http, id, (result) => {
+
+                        if (result) {
+
+                            bootbox.alert({
+                                message: "Plano apagado!",
+                                backdrop: true,
+                                buttons: {
+                                    ok: {
+                                        label: "OK!",
+                                        className: 'btn-success'
+                                    }
+                                }
+                            });
+
+                            // Procura o plano na lista de forma a remover da lista de forma dinamica
+                            for (let i = 0; i < plans.length; i++) {
+
+                                if (plans[i].id == $scope.plan.id) {
+                                    plans.splice(i, 1);
+                                }
+                            }
+                        } else {
+                            bootbox.alert({
+                                message: "Oops... O plano não foi apagado!",
+                                backdrop: true,
+                                buttons: {
+                                    ok: {
+                                        label: "OK!",
+                                        className: 'btn-danger'
+                                    }
+                                }
+                            });
+                        }
+
+                    });
+                }
+
+            }
+        });
+
+    }
+
+
+
+
+    // EDITAR PLANOS
+
+    $scope.edit = function (id) {
+        // Obtem o plano
+        getPlanosTreinoById($http, id, (response) => {
+
+            for (let i = 0; i < response.data.exerciseBlocks.length; i++) {
+
+                getexerciseById($http, response.data.exerciseBlocks[i].exerciseId, (response2) => {
+                    response.data.exerciseBlocks[i].exercise = response2.data;
+                    $scope.plan = response.data;
+                });
+
+            }
+
+        });
+
+        // Tipo de ação a executar quando clicar em submit
+        $scope.type = "edit";
+    }
+
 
     // LISTA DE PLANOS
 
     // Obtem uma lista de planos de treino
-    getPlanosTreino($http, (response)=>{
+    getPlanosTreino($http, (response) => {
 
         // Se a API respondeu da forma correta
-        if(response){
+        if (response) {
 
             // Percorre todos os planos
-            for(let i=0; i<response.data.length; i++){
+            for (let i = 0; i < response.data.length; i++) {
 
-                // Lista de exercicios de um plano
+                // Lista de planos
                 let exercises = [];
 
                 // Percorre os exercicicios todos de cada plano
-                for(let j=0; j<response.data[i].exerciseBlocks.length; j++){
+                for (let j = 0; j < response.data[i].exerciseBlocks.length; j++) {
 
                     // Obtem as informações de cada exercicio
-                    getexerciseById($http, response.data[i].exerciseBlocks[j].exerciseId, (response2)=>{
+                    getexerciseById($http, response.data[i].exerciseBlocks[j].exerciseId, (response2) => {
 
-                        // Objeto que representa um exercicio no contexto de plano de treino
-                        let exercicio = {
-                            name: response2.data.name,
-                            numberOfRepetitions : response.data[i].exerciseBlocks[j].numberOfRepetitions,
-                            numberOfSeries : response.data[i].exerciseBlocks[j].numberOfSeries,
-                            dayOfTheWeek : response.data[i].exerciseBlocks[j].dayOfTheWeek
-                        }
-                        
-                        // Adiciona este exercicio ao array de exercicios deste plano
-                        exercises.push(exercicio)
+                        // Adiciona o objeto deste exercicio ao bloco de exercicios
+                        response.data[i].exerciseBlocks[j].exercise = response2.data
 
                     });
 
                 }
 
-                // Obtem o treinador deste plano
-                let trainer = response.data[i].supervisingTrainer.firstName + " " + response.data[i].supervisingTrainer.lastName;
-
-                // Nome do plano
-                let name = response.data[i].name;
-
-                // Objeto que representa este plano que contem treinador e array de exercicios
-                let plan = {exercises, trainer, name};
-
                 // Adiciona este plano à lista de planos
-                plans.push(plan);
+                plans.push(response.data[i]);
 
             }
-            
+
             // Atualiza a vista do utilizador
             $scope.plans = plans;
 
-        }else{
+        } else {
 
         }
 

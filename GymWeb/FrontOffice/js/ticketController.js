@@ -110,8 +110,23 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
 
         // Se a API não respondeu da forma correta
         } else {
+            bootbox.alert({
+                message: "Ocorreu um erro. O ticket requisitado não foi encontrado",
+                backdrop: true,
+                buttons: {
+                    ok: {
+                        label: "OK!",
+                        className: 'btn-danger'
+                    }
+                }
+            });
+
+            // Se o ticket não existe redireciona para a página 404
+            window.location.href = "index.html#!404";
 
         }
+
+        
 
     });
 
