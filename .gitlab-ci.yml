@@ -1,2 +1,29 @@
-job:
-    script: "cd GymAPI && dotnet run"
+stages:
+  - build
+  - test
+  - deploy
+  
+build:
+  stage: build
+  script:
+    - cd GymAPI && dotnet build
+  tags:
+    - default
+
+#test:
+#  stage: test
+#  script:
+#    - dotnet test
+#  tags:
+#    - default
+
+#deploy:
+#  stage: deploy
+#  script:
+#    - C:\Scripts\Publish.cmd
+#  environment:
+#    name: staging
+#  only:
+#    - master
+#  tags:
+#    - default
