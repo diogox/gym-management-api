@@ -1,12 +1,17 @@
+image: microsoft/dotnet:latest
+
 stages:
   - build
   - test
   - deploy
+
+before_script:
+- "dotnet restore ./GymAPI"
   
 build:
   stage: build
   script:
-    - cd GymAPI && dotnet build
+    - dotnet build ./GymAPI
 
 #test:
 #  stage: test
