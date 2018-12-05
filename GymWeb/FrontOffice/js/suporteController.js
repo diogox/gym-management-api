@@ -15,12 +15,6 @@ app.controller('suporteCtrl', function ($scope, $http) {
             // Percorre cada um dos tickets
             for (let i = 0; i < response.data.length; i++) {
 
-                // Extrai os dados dos tickets
-                let ticketId = response.data[i].id
-                let title = response.data[i].title;
-                let messages = response.data[i].messages;
-                let state = response.data[i].state;
-
                 // Reorganiza o formato da data
                 let openedAt = response.data[i].openedAt;
                 let year = openedAt.substring(0, 4);
@@ -30,16 +24,13 @@ app.controller('suporteCtrl', function ($scope, $http) {
                 let minute = openedAt.substring(14, 16);
                 openedAt = day + "-" + month + "-" + year + " " + hour + ":" + minute;
 
-                // Cria um objeto de ticket com a nova estrutura
-                let ticket = { ticketId, title, openedAt, state };
-
-                // Coloca o ticket no array de ticket
-                tickets.push(ticket);
+                // Reorganiza a data e hora num formato mais legível
+                response.data[i].openedAt = openedAt;
 
             }
 
             // Atualiza os tickets para atualizar a vista
-            $scope.tickets = tickets;
+            $scope.tickets = response.data;
 
             // Se a API não respondeu da forma correta
         } else {

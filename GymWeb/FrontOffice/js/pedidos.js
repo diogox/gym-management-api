@@ -357,3 +357,178 @@ export function closeTicket($http, id, callback) {
     });
 
 }
+
+export function changeExercise($http, id, dataSend, callback) {
+
+    $http({
+
+        method: "PUT",
+        data: dataSend,
+        url: "https://localhost:5001/api/exercises/" + id,
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function createExercise($http, dataSend, callback){
+    
+    $http({
+
+        method: "POST",
+        data: dataSend,
+        url: "https://localhost:5001/api/exercises/",
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function deleteExercise($http, id, callback){
+    $http({
+
+        method: "DELETE",
+        url: "https://localhost:5001/api/exercises/" + id,
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
+export function changeEquipment($http, id, dataSend, callback) {
+
+    $http({
+
+        method: "PUT",
+        data: dataSend,
+        url: "https://localhost:5001/api/equipment/" + id,
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function createEquipment($http, dataSend, callback){
+    
+    $http({
+
+        method: "POST",
+        data: dataSend,
+        url: "https://localhost:5001/api/equipment/",
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function deleteEquipment($http, id, callback){
+    $http({
+
+        method: "DELETE",
+        url: "https://localhost:5001/api/equipment/" + id,
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
+export function changePlan($http, planId, dataSend, callback) {
+
+    $http({
+
+        method: "PUT",
+        data: dataSend,
+        url: "https://localhost:5001/api/plans/" + planId,
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function deletePlan($http, id, callback){
+    $http({
+
+        method: "DELETE",
+        url: "https://localhost:5001/api/plans/" + id,
+        headers: {
+            'content-type': "application/json"
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}

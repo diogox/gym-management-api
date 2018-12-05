@@ -7,28 +7,111 @@
     <input id="fil" type="text" class="form-control" placeholder="Pesquise por nome de exercicio, grupo muscular, etc..." ng-model="filtro_exercicios"/>
     <br/>
 
+
+    <!-- The Modal -->
+    <div class="modal fade" id="editarCriarExercicio">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+      
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Exercicio</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <form ng-submit="submitPlan()">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" ng-model="editExercise.name" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" class="form-control" id="description" name="description" ng-model="editExercise.description" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="imgUrl">Imagem URL:</label>
+                            <input type="text" class="form-control" id="imgUrl" name="imgUrl" ng-model="editExercise.imageUrl" required/>
+                        </div>
+
+                        <div class="form-group custom-control-inline" style="width:150px">
+                            <select name="targetMuscleGroup" class="custom-select" ng-model="editExercise.targetMuscleGroup">
+                                <option value="" disabled selected>Musculo</option>
+                                <option value="Chest">Chest</option>
+                                <option value="Back">Back</option>
+                                <option value="Arms">Arms</option>
+                                <option value="Legs">Legs</option>
+                                <option value="Abs">Abs</option>
+                                <option value="Shoulders">Shoulders</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group custom-control-inline" style="width:150px">
+                            <select name="difficultyLevel" class="custom-select" ng-model="editExercise.difficultyLevel">
+                                <option value="" disabled selected>Dificuldade</option>
+                                <option value="Easy">Easy</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group custom-control-inline" style="width:150px">
+                            <select name="equipment" class="custom-select" ng-model="editExercise.equipmentId">
+                                <option value="" disabled selected>Equipamento</option>
+                                <option ng-repeat="y in equipmentList" value="{{y.id}}">{{y.name}}</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" ng-disabled="disableSubmit">Submit</button>
+
+                    </form>
+
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id="closeExerciseModal" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+      
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão novo exercicio -->
+    
+    <button type="button" class="btn btn-success"  ng-click="create()" data-toggle="modal" data-target="#editarCriarExercicio">Criar novo</button>
+    <br/>
+    <br/>
+
     <!-- Lista de exercicios -->
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="x in exercicios | filter : filtro_exercicios">
 
-            <a><p data-toggle="collapse" data-target="#ex{{x.id}}">{{x.name}}</p></a>
+            <p data-toggle="collapse" data-target="#ex{{x.id}}">{{x.name}} 
+                <a href="" ng-click="edit(x.id)" data-toggle="modal" data-target="#editarCriarExercicio">Edit</a>
+                <a href="" ng-click="edit(x.id);delete(x.id)">Delete</a>
+            </p>
 
             <div id="ex{{x.id}}" class="collapse">
                 <dt>Descrição:</dt>
                 <dd>- {{x.description}}</dd>
 
                 <dt>Grupo muscular</dt>
-                <dd>- {{x.muscle}}</dd>
+                <dd>- {{x.targetMuscleGroup}}</dd>
 
                 <dt>Dificuldade</dt>
-                <dd>- {{x.difficulty}}</dd>
+                <dd>- {{x.difficultyLevel}}</dd>
 
                 <dt>Equipamento</dt>
-                <dd>- {{x.equipmentName}}</dd>
+                <dd>- {{x.equipment.name}}</dd>
 
                 <div class="card" style="width:350px; display:inline-block; margin: 20px">
                     <div class="card-body">
-                        <img class="img" src="{{x.url}}" alt="Something went wrong, it's not possible to display the image." style="width:100%;height:100%"/>
+                        <img class="img" src="{{x.imageUrl}}" alt="Something went wrong, it's not possible to display the image." style="width:100%;height:100%"/>
                         <figcaption>{{x.name}}</figcaption>
                     </div>
                 </div>

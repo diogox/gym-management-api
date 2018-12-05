@@ -19,9 +19,6 @@ app.controller('planoTreinoCtrl', function($scope, $http) {
                 // Se a API respondeu da forma correta
                 if(response2){
 
-                    // Coloca os exercicios numa variavel
-                    let listExercises = response2.data;
-
                     // Arrays que vao conter os exercicios de cada dia
                     let monday = [];
                     let tuesday = [];
@@ -32,55 +29,45 @@ app.controller('planoTreinoCtrl', function($scope, $http) {
                     let sunday = [];
 
                     // Percorre a lista de exercicios para os separar por dias
-                    for(let i=0; i<listExercises.length; i++){
+                    for(let i=0; i<response2.data.length; i++){
 
                         // Pede a descrição promonorizada de cada um dos exercícios à api
-                        getexerciseById($http, listExercises[i].exerciseId, (response3)=>{
+                        getexerciseById($http, response2.data[i].exerciseId, (response3)=>{
 
                             // Se a API respondeu da forma correta
                             if(response3){
 
-                                // Obtem os dados de cada exercicios
-                                let id = response3.data.id;
-                                let name = response3.data.name;
-                                let description = response3.data.description;
-                                let imageUrl = response3.data.imageUrl;
-                                let targetMuscleGroup = response3.data.targetMuscleGroup;
-                                let numberOfRepetitions = listExercises[i].numberOfRepetitions;
-                                let numberOfSeries = listExercises[i].numberOfSeries;
-
-                                // Agrupa os dados de cada exercicio num objeto
-                                let exercise = {id, name, description, imageUrl, targetMuscleGroup, numberOfRepetitions, numberOfSeries};
+                                response2.data[i].exercise = response3.data;
 
                                 // Adiciona o exercico ao dia que lhe pertence
-                                switch(listExercises[i].dayOfTheWeek){
+                                switch(response2.data[i].dayOfTheWeek){
 
                                     case 'Monday':
-                                        monday.push(exercise);
+                                        monday.push(response2.data[i]);
                                         break;
                                     
                                     case 'Tuesday':
-                                        tuesday.push(exercise);
+                                        tuesday.push(response2.data[i]);
                                         break;
         
                                     case 'Wednesday':
-                                        wednesday.push(exercise);
+                                        wednesday.push(response2.data[i]);
                                         break;
         
                                     case 'Thursday':
-                                        thursday.push(exercise);
+                                        thursday.push(response2.data[i]);
                                         break;
         
                                     case 'Friday':
-                                        friday.push(exercise);
+                                        friday.push(response2.data[i]);
                                         break;
         
                                     case 'Saturday':
-                                        saturday.push(exercise);
+                                        saturday.push(response2.data[i]);
                                         break;
         
                                     case 'Sunday':
-                                        sunday.push(exercise);
+                                        sunday.push(response2.data[i]);
                                         break;
                                 }
 
