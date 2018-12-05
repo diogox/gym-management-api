@@ -3,12 +3,12 @@
     <h1>Planos de treino</h1>
 
     <br/>
-    <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#criarPlano">Criar novo</button>
+    <button type="button" class="btn btn-success" ng-click="create()" data-toggle="modal" data-target="#editarCriarPlano">Criar novo</button>
     <br/>
     <br/>
 
     <!-- The Modal -->
-    <div class="modal fade" id="criarPlano">
+    <div class="modal fade" id="editarCriarPlano">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
       
@@ -39,24 +39,24 @@
                     <strong>Warning!</strong> Plano criado sem sucesso. Dados incompletos.
                 </div>
 
-                    <form>
+                    <form ng-submit="submitPlan()">
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name" name="text" ng-model="name" required/>
+                            <input type="text" class="form-control" id="name" name="text" ng-model="plan.name" required/>
                         </div>
 
                         <ul>
-                            <li ng-repeat="x in newExercises" style="list-style:none">
+                            <li ng-repeat="x in plan.exerciseBlocks" style="list-style:none">
 
                                 <div class="form-group custom-control-inline" style="width:150px">
-                                    <select name="exercise" class="custom-select" ng-model="x.exerciseId">
+                                    <select name="exercise" class="custom-select" ng-model="x.exerciseId" required>
                                         <option value="" disabled selected>Exercicio</option>
                                         <option ng-repeat="y in exercisesList" value="{{y.exerciseId}}">{{y.exerciseName}}</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group custom-control-inline" style="width:150px">
-                                    <select name="day" class="custom-select" ng-model="x.dayOfTheWeek">
+                                    <select name="day" class="custom-select" ng-model="x.dayOfTheWeek" required>
                                         <option value="" disabled selected>Dia</option>
                                         <option value="Monday">Monday</option>
                                         <option value="Tuesday">Tuesday</option>
@@ -81,13 +81,13 @@
                         <a href="" class="button" ng-click="addRow()">Adicionar exercicio</a>
                         <br/>
                         <br/>
-                        <button type="submit" class="btn btn-primary" ng-disabled="disableSubmit" ng-click="submitPlan()" ng-disabled="disableSubmit">Submit</button>
+                        <button type="submit" class="btn btn-primary" ng-disabled="disableSubmit">Submit</button>
                     </form>
                 </div>
         
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" id="closePlanModal" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
       
             </div>
@@ -100,8 +100,10 @@
 
     <div ng-repeat="x in plans | filter : filtro_planos">
 
-        <p><b>Treinador:</b> {{x.trainer}}</p>
-        <p><b>Nome:</b> {{x.name}}</p>
+        <p><b>Plano:</b> {{x.name}}
+            <a href="" ng-click="edit(x.id)" data-toggle="modal" data-target="#editarCriarPlano">Edit</a>
+            <a href="" ng-click="edit(x.id);delete(x.id)">Delete</a></p>
+        <p><b>Treinador:</b> {{x.supervisingTrainer.firstName}} {{x.supervisingTrainer.lastName}}</p>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -112,8 +114,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="y in x.exercises | orderBy:'-dayOfTheWeek'">
-                    <td>{{y.name}}</td>
+                <tr ng-repeat="y in x.exerciseBlocks | orderBy:'-dayOfTheWeek'">
+                    <td>{{y.exercise.name}}</td>
                     <td>{{y.dayOfTheWeek}}</td>
                     <td>{{y.numberOfRepetitions}}</td>
                     <td>{{y.numberOfSeries}}</td>
