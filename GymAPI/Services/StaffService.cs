@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GymAPI.Models;
+using GymAPI.Models.User;
+using Microsoft.AspNetCore.Identity;
 
 namespace GymAPI.Services
 {
@@ -18,10 +20,12 @@ namespace GymAPI.Services
     public class StaffService : IStaffService
     {
         private readonly GymContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public StaffService(GymContext context)
+        public StaffService(GymContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
         
         public List<StaffMember> GetAll()
@@ -36,6 +40,7 @@ namespace GymAPI.Services
 
         public void Create(StaffMember member)
         {
+            
             _context.Staff.Add(member);
             _context.SaveChanges();
         }

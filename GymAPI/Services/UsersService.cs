@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GymAPI.Models;
 using GymAPI.Models.User;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace GymAPI.Services
@@ -19,10 +20,12 @@ namespace GymAPI.Services
     public class UsersService : IUsersService
     {
         private readonly GymContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public UsersService(GymContext context)
+        public UsersService(GymContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
 
@@ -37,8 +40,18 @@ namespace GymAPI.Services
                 .SingleOrDefault(user => user.Id == id);
         }
         
-        public void Create(User user)
+        public async void Create(User user)
         {
+            if (user.Role == UserRole.Client)
+            {
+                await _userManager.AddToRoleAsync(user, "Client");
+            } else if (user.Role == UserRole.Staff)
+            {
+                await _userManager.AddToRoleAsync(user, "Staff");
+            } else if (user.Role == UserRole.Trainer)
+            {
+                await _userManager.AddToRoleAsync(user, "Trainer");
+            }
             _context.Users.Add(user);
             _context.SaveChanges();
         }

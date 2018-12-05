@@ -1,0 +1,28 @@
+image: microsoft/dotnet:latest
+
+stages:
+  - build
+  - test
+  - deploy
+
+before_script:
+- "dotnet restore ./GymAPI"
+  
+build:
+  stage: build
+  script:
+    - dotnet build ./GymAPI
+
+#test:
+#  stage: test
+#  script:
+#    - dotnet test
+
+#deploy:
+#  stage: deploy
+#  script:
+#    - C:\Scripts\Publish.cmd
+#  environment:
+#    name: staging
+#  only:
+#    - master

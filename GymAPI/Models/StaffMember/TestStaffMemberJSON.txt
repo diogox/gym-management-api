@@ -1,4 +1,7 @@
 {
+  "username": "pedro",
+  "password": "Password123",
+  "email": "pedro@gmail.com",
   "nif": 122423423,
   "email": "gustavinho19@gmail.com",
   "firstName": "Gustavo",

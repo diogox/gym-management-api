@@ -1,23 +1,30 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GymAPI.Models;
 using GymAPI.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymAPI
 {
     [Route("api/plans")]
     [ApiController]
+    [Authorize(Roles = "Admin, Trainer")] 
     public class TrainingPlansController : Controller
     {
         private readonly ITrainingPlansService _trainingPlansService;
         private readonly ITrainingPlanBlocksService _blocksService;
+        private readonly IAuthorizationsService _authService;
 
         public TrainingPlansController(ITrainingPlansService trainingPlansService,
-            ITrainingPlanBlocksService blocksService)
+            ITrainingPlanBlocksService blocksService,
+            IAuthorizationsService authService)
         {
             _trainingPlansService = trainingPlansService;
             _blocksService = blocksService;
+            _authService = authService;
         }
 
         // GET api/plans
@@ -29,8 +36,21 @@ namespace GymAPI
 
         // GET api/plans/{id}
         [HttpGet("{id}", Name = "GetTrainingPlan")]
-        public ActionResult<TrainingPlan> GetTrainingPlan(long id)
+        [AllowAnonymous]
+        public async Task<ActionResult<TrainingPlan>> GetTrainingPlan(long id)
         {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isStaff = _authService.CheckIfStaff(User);
+            var _isTrainer = _authService.CheckIfTrainer(User);
+
+            if ( !(_isAdmin || _isStaff || _isTrainer) )
+            {
+                if (! await _authService.CheckIfCurrentClientHasTrainingPlan(HttpContext, id))
+                {
+                    return Forbid();
+                }
+            }
+            
             var plan = _trainingPlansService.GetById(id);
             if (plan == null)
             {
@@ -41,8 +61,20 @@ namespace GymAPI
         
         // GET api/plans/{id}/exercises
         [HttpGet("{id}/exercises")]
-        public ActionResult<List<TrainingPlanBlock>> GetTrainingPlanExerciseBlocks(long id)
+        public async Task<ActionResult<List<TrainingPlanBlock>>> GetTrainingPlanExerciseBlocks(long id)
         {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isStaff = _authService.CheckIfStaff(User);
+            var _isTrainer = _authService.CheckIfTrainer(User);
+
+            if ( !(_isAdmin || _isStaff || _isTrainer) )
+            {
+                if (! await _authService.CheckIfCurrentClientHasTrainingPlan(HttpContext, id))
+                {
+                    return Forbid();
+                }
+            }
+            
             var plan = _trainingPlansService.GetById(id);
             if (plan == null)
             {

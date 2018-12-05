@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using GymAPI.Models;
 using GymAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymAPI
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin, Trainer")]
     public class ExercisesController : Controller
     {
         private readonly IExercisesService _exercisesService;

@@ -5,6 +5,7 @@
     <e p="$USER_HOME$/.Rider2018.2/system/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_GymAPI.932361265.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Controllers" t="Include">
+        <e p="AuthController.cs" t="Include" />
         <e p="ClientsController.cs" t="Include" />
         <e p="ClientsNotas.md" t="Include" />
         <e p="EquipmentController.cs" t="Include" />
@@ -12,11 +13,17 @@
         <e p="StaffController.cs" t="Include" />
         <e p="TicketsController.cs" t="Include" />
         <e p="TrainingPlansController.cs" t="Include" />
+        <e p="UsersController.cs" t="Include" />
+      </e>
+      <e p="DAOs" t="Include">
+        <e p="LoginDAO.cs" t="Include" />
+        <e p="SignupClientDAO.cs" t="Include" />
+        <e p="SignupStaffMemberDAO.cs" t="Include" />
       </e>
       <e p="GymAPI.csproj" t="IncludeRecursive" />
       <e p="Migrations" t="Include">
-        <e p="20181127151306_CreateEntities.Designer.cs" t="Include" />
-        <e p="20181127151306_CreateEntities.cs" t="Include" />
+        <e p="20181203172751_CreateEntities.Designer.cs" t="Include" />
+        <e p="20181203172751_CreateEntities.cs" t="Include" />
         <e p="GymContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">
@@ -55,12 +62,17 @@
           <e p="TrainingPlan.cs" t="Include" />
           <e p="TrainingPlanBlock.cs" t="Include" />
         </e>
+        <e p="User" t="Include">
+          <e p="User.cs" t="Include" />
+          <e p="UserRole.cs" t="Include" />
+        </e>
       </e>
       <e p="Program.cs" t="Include" />
       <e p="Properties" t="Include">
         <e p="launchSettings.json" t="Include" />
       </e>
       <e p="Services" t="Include">
+        <e p="AuthorizationsService.cs" t="Include" />
         <e p="ClientsService.cs" t="Include" />
         <e p="EquipmentService.cs" t="Include" />
         <e p="ExercisesService.cs" t="Include" />
@@ -69,6 +81,7 @@
         <e p="TrainersStaffService.cs" t="Include" />
         <e p="TrainingPlanBlocksService.cs" t="Include" />
         <e p="TrainingPlansService.cs" t="Include" />
+        <e p="UsersService.cs" t="Include" />
       </e>
       <e p="Startup.cs" t="Include" />
       <e p="appsettings.Development.json" t="Include" />

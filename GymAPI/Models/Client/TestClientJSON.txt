@@ -1,4 +1,7 @@
 {
+    "username": "diogo",
+    "password": "Password123",
+    "email": "email@gmail.com",
     "nif": 142536549,
     "firstName": "Gustavo",
     "lastName": "Oliveira",
@@ -6,8 +9,5 @@
     "birthDate": "2018-11-22T14:21:08.9430592",
     "age": 0,
     "heightInMeters": 1.5,
-    "weightInKg": 120,
-    "trainingPlan": null,
-    "checkInHistory": [],
-    "notifications": []
+    "weightInKg": 120
 }
