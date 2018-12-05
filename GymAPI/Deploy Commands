@@ -1,0 +1,5 @@
+dotnet publish -c Release -o out
+sudo docker build -t gym-management-lds .
+sudo docker tag gym-management-lds registry.heroku.com/gym-management-lds/web
+sudo docker push registry.heroku.com/gym-management-lds/web
+heroku container:release web --app gym-management-lds

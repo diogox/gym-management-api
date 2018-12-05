@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0053b0a4-1caa-41f3-a1c7-8337c1e360b3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/obj/GymAPI.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/GymAPI.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/GymAPI.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/obj/GymAPI.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,14 +29,14 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cs" value="213" />
-          <entry key="json" value="2" />
+          <entry key="json" value="5" />
           <entry key="txt" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="C#" value="213" />
-          <entry key="JSON" value="2" />
+          <entry key="JSON" value="5" />
           <entry key="PLAIN_TEXT" value="27" />
         </counts>
       </usages-collector>
@@ -62,78 +61,35 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controllers/UsersController.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
-              <folding>
-                <marker date="1543860100812" expanded="false" signature="6:191" ph="..." />
-                <marker date="1543860100812" expanded="true" signature="343:1016" ph="{...}" />
-                <marker date="1543860100812" expanded="true" signature="463:525" ph="{...}" />
-                <marker date="1543860100812" expanded="true" signature="623:690" ph="{...}" />
-                <marker date="1543860100812" expanded="true" signature="818:1010" ph="{...}" />
-                <marker date="1543860100812" expanded="true" signature="908:971" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controllers/TrainingPlansController.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1008">
-              <caret line="63" column="64" selection-start-line="63" selection-start-column="64" selection-end-line="63" selection-end-column="64" />
-              <folding>
-                <marker date="1543879014244" expanded="false" signature="6:238" ph="..." />
-                <marker date="1543879014244" expanded="true" signature="400:4930" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="792:954" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="1068:1143" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="1330:1981" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="1582:1778" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="1691:1764" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="1879:1942" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="2170:2878" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="2422:2618" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="2531:2604" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="2719:2782" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="3001:3163" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="3335:3638" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="3433:3496" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="3781:4058" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="3883:3946" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="4185:4449" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="4283:4346" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="4641:4924" ph="{...}" />
-                <marker date="1543879014244" expanded="true" signature="4739:4802" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Models/User/User.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-              <folding>
-                <marker date="1543857690808" expanded="false" signature="6:59" ph="..." />
-                <marker date="1543857690808" expanded="true" signature="128:436" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Models/User/UserRole.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="54">
-              <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+              <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
               <folding>
                 <marker date="1543857676656" expanded="true" signature="28:132" ph="{...}" />
                 <marker date="1543857676656" expanded="true" signature="55:130" ph="{...}" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Properties/launchSettings.json">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/appsettings.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="1" selection-start-column="1" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/appsettings.Development.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -576,12 +532,12 @@
       <workItem from="1543766750180" duration="2902000" />
       <workItem from="1543770343972" duration="13970000" />
       <workItem from="1543850473969" duration="22970000" />
-      <workItem from="1543936233007" duration="605000" />
+      <workItem from="1543936233007" duration="1820000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121318000" />
+    <option name="totallyTimeSpent" value="122533000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -596,7 +552,7 @@
     <frame x="0" y="-35" width="1440" height="845" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12086331" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2561151" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -666,20 +622,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Models/Exercise/TestExerciseJSON.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/SupportTicket/TestSupportTicketJSON.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Models/Client/ClientCheckIn.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -775,13 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appsettings.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1160,13 +1095,26 @@
     <entry file="file://$PROJECT_DIR$/Models/User/UserRole.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
-          <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
           <folding>
             <marker date="1543857676656" expanded="true" signature="28:132" ph="{...}" />
             <marker date="1543857676656" expanded="true" signature="55:130" ph="{...}" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Properties/launchSettings.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appsettings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appsettings.Development.json">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

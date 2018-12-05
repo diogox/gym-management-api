@@ -4,6 +4,7 @@
     <e p="$USER_HOME$/.Rider2018.2/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2018.2/system/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_GymAPI.932361265.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p=".dockerignore" t="Include" />
       <e p="Controllers" t="Include">
         <e p="AuthController.cs" t="Include" />
         <e p="ClientsController.cs" t="Include" />
@@ -20,6 +21,8 @@
         <e p="SignupClientDAO.cs" t="Include" />
         <e p="SignupStaffMemberDAO.cs" t="Include" />
       </e>
+      <e p="Deploy Commands" t="Include" />
+      <e p="Dockerfile" t="Include" />
       <e p="GymAPI.csproj" t="IncludeRecursive" />
       <e p="Migrations" t="Include">
         <e p="20181203172751_CreateEntities.Designer.cs" t="Include" />
@@ -94,6 +97,104 @@
             <e p="GymAPI.AssemblyInfo.cs" t="Include" />
           </e>
         </e>
+      </e>
+      <e p="out" t="Include">
+        <e p="GymAPI.deps.json" t="Include" />
+        <e p="GymAPI.dll" t="Include" />
+        <e p="GymAPI.pdb" t="Include" />
+        <e p="GymAPI.runtimeconfig.json" t="Include" />
+        <e p="Microsoft.AspNetCore.Cors.dll" t="Include" />
+        <e p="Microsoft.AspNetCore.Http.Abstractions.dll" t="Include" />
+        <e p="Microsoft.AspNetCore.Http.Extensions.dll" t="Include" />
+        <e p="Microsoft.AspNetCore.Http.Features.dll" t="Include" />
+        <e p="Microsoft.Data.Sqlite.dll" t="Include" />
+        <e p="Microsoft.EntityFrameworkCore.Abstractions.dll" t="Include" />
+        <e p="Microsoft.EntityFrameworkCore.Relational.dll" t="Include" />
+        <e p="Microsoft.EntityFrameworkCore.Sqlite.dll" t="Include" />
+        <e p="Microsoft.EntityFrameworkCore.dll" t="Include" />
+        <e p="Microsoft.Extensions.Caching.Abstractions.dll" t="Include" />
+        <e p="Microsoft.Extensions.Caching.Memory.dll" t="Include" />
+        <e p="Microsoft.Extensions.Configuration.Abstractions.dll" t="Include" />
+        <e p="Microsoft.Extensions.Configuration.Binder.dll" t="Include" />
+        <e p="Microsoft.Extensions.Configuration.dll" t="Include" />
+        <e p="Microsoft.Extensions.DependencyInjection.Abstractions.dll" t="Include" />
+        <e p="Microsoft.Extensions.DependencyInjection.dll" t="Include" />
+        <e p="Microsoft.Extensions.FileProviders.Abstractions.dll" t="Include" />
+        <e p="Microsoft.Extensions.Logging.Abstractions.dll" t="Include" />
+        <e p="Microsoft.Extensions.Logging.dll" t="Include" />
+        <e p="Microsoft.Extensions.Options.dll" t="Include" />
+        <e p="Microsoft.Extensions.Primitives.dll" t="Include" />
+        <e p="Microsoft.Net.Http.Headers.dll" t="Include" />
+        <e p="Remotion.Linq.dll" t="Include" />
+        <e p="SQLitePCLRaw.batteries_green.dll" t="Include" />
+        <e p="SQLitePCLRaw.batteries_v2.dll" t="Include" />
+        <e p="SQLitePCLRaw.core.dll" t="Include" />
+        <e p="SQLitePCLRaw.provider.e_sqlite3.dll" t="Include" />
+        <e p="Swashbuckle.AspNetCore.Swagger.dll" t="Include" />
+        <e p="Swashbuckle.AspNetCore.SwaggerGen.dll" t="Include" />
+        <e p="Swashbuckle.AspNetCore.SwaggerUI.dll" t="Include" />
+        <e p="Swashbuckle.AspNetCore.dll" t="Include" />
+        <e p="System.Interactive.Async.dll" t="Include" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="runtimes" t="Include">
+          <e p="alpine-x64" t="Include">
+            <e p="native" t="Include">
+              <e p="libe_sqlite3.so" t="Include" />
+            </e>
+          </e>
+          <e p="linux-arm" t="Include">
+            <e p="native" t="Include">
+              <e p="libe_sqlite3.so" t="Include" />
+            </e>
+          </e>
+          <e p="linux-arm64" t="Include">
+            <e p="native" t="Include">
+              <e p="libe_sqlite3.so" t="Include" />
+            </e>
+          </e>
+          <e p="linux-armel" t="Include">
+            <e p="native" t="Include">
+              <e p="libe_sqlite3.so" t="Include" />
+            </e>
+          </e>
+          <e p="linux-musl-x64" t="Include">
+            <e p="native" t="Include">
+              <e p="libe_sqlite3.so" t="Include" />
+            </e>
+          </e>
+          <e p="linux-x64" t="Include">
+            <e p="native" t="Include">
+              <e p="libe_sqlite3.so" t="Include" />
+            </e>
+          </e>
+          <e p="linux-x86" t="Include">
+            <e p="native" t="Include">
+              <e p="libe_sqlite3.so" t="Include" />
+            </e>
+          </e>
+          <e p="osx-x64" t="Include">
+            <e p="native" t="Include">
+              <e p="libe_sqlite3.dylib" t="Include" />
+            </e>
+          </e>
+          <e p="win-x64" t="Include">
+            <e p="native" t="Include">
+              <e p="e_sqlite3.dll" t="Include" />
+            </e>
+          </e>
+          <e p="win-x86" t="Include">
+            <e p="native" t="Include">
+              <e p="e_sqlite3.dll" t="Include" />
+            </e>
+          </e>
+          <e p="win8-arm" t="Include">
+            <e p="native" t="Include">
+              <e p="e_sqlite3.dll" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="web.config" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="wwwroot" t="Include" />
