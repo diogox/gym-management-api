@@ -379,7 +379,7 @@ export function getMSGSTicket($http,id, callback) {
     });
 }
 
-//Get message from Ticket
+//Get message from Ticket by messageID
 export function getMSGTicket($http,id,messageid, callback) {
     $http({
         method: "GET",
@@ -411,6 +411,56 @@ export function sendMSGTicket($http,data,id, callback) {
     });
 }
 
+//Open Ticket
+export function openTicket($http,id,callback){
+    $http({
+        method: "GET",
+        url : "https://localhost:5001/api/Tickets/"+id+"/open",
+        headers: {
+            'content-type': "application/json"
+        }
+    }).then(function mySuccess(response){
+        //Console.log(response)
+        callback(response)
+
+    }, function myError(response){
+        callback(false)
+    });
+}
+
+//Close Ticket
+export function closeTicket($http,id,callback){
+    $http({
+        method: "GET",
+        url : "https://localhost:5001/api/Tickets/"+id+"/close",
+        headers: {
+            'content-type': "application/json"
+        }
+    }).then(function mySuccess(response){
+        //Console.log(response)
+        callback(response)
+
+    }, function myError(response){
+        callback(false)
+    });
+}
+
+//Suspend Ticket
+export function suspendTicket($http,id,callback){
+    $http({
+        method: "GET",
+        url : "https://localhost:5001/api/Tickets/"+id+"/suspend",
+        headers: {
+            'content-type': "application/json"
+        }
+    }).then(function mySuccess(response){
+        //Console.log(response)
+        callback(response)
+
+    }, function myError(response){
+        callback(false)
+    });
+}
 
 
 

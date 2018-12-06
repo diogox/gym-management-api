@@ -1,4 +1,4 @@
-import { getStaff, removeStaff } from './pedidos.js'
+import { getStaff, removeStaff, adicionarStaff, editarStaff } from './pedidos.js'
 
 //Format date to yyyy-mm-dd
 function formatDate(date) {
@@ -13,8 +13,57 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
+
+//Age Function - Calcula a idade do user através da sua dob
+function getAge(DOB) {
+    let today = new Date();
+    let birthDate = new Date(DOB);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    let m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age = age - 1;
+    }
+    return age;
+}
+
+
 //Lista de Staff
 app.controller("staffCtrl", function ($scope, $http) {
+
+    //Estilo do Alerta de Erro
+    $scope.redAlert = {
+        "width": "100%",
+        "color": "white",
+        "background-color": "red"
+    }
+
+    //Estilo do Alerta de Sucesso
+    $scope.greenAlert = {
+        "width": "100%",
+        "color": "white",
+        "background-color": "green"
+    }
+
+
+    //Alertas
+    $scope.alerts = [
+        //Erro ao Adicionar um Funcionário Index:0
+        { type: 'Error', msg: 'Erro ao Adicionar o Funcionário!', style: $scope.redAlert, show: false },
+        //Sucesso ao Adicionar um Funcionário Index:1
+        { type: 'Success', msg: 'Funcionário Adicionado com Sucesso!', style: $scope.greenAlert, show: false },
+        //Sucesso ao Editar um Funcionário Index:2
+        { type: 'Success', msg: 'Funcionário Editado com Sucesso!', style: $scope.greenAlert, show: false },
+        //Erro ao Editar um Funcionário Index:3
+        { type: 'Error', msg: 'Erro ao Editar o Funcionário!', style: $scope.redAlert, show: false },
+        //Erro ao Carregar a Tabela de Funcionários Index:4
+        { type: 'Error', msg: 'Erro ao Carregar a Tabela de Funcionários!', style: $scope.redAlert, show: false },
+    ];
+
+    //Fechar Alerta pelo ID
+    $scope.closeAlert = function (index) {
+        $scope.alerts[index].show = false;
+    }
+
     //Listar todos os Funcionários
     getStaff($http, (response) => {
         if (response) {
@@ -28,15 +77,106 @@ app.controller("staffCtrl", function ($scope, $http) {
 
             $scope.funcionarios = response.data;
         } else {
-
-            console.log("Falha ao Carregar a Tabela!");
-            $scope.firstName = "Falha ao Carregar a Tabela!"
-
-            //Gestão de Erros
-            //Validações
-
+            $scope.alerts[4].show = true;
         }
     });
+
+
+    //Select para a escolha do Rank do funcionário
+    $scope.franks = ["Manager", "Receptionist", "Trainer", "CleaningPerson"];
+
+
+    //Adicionar Funcionário
+    $scope.submitADD = function () {
+        //Formata a dob do staff
+        let date = new Date($scope.staff.birthDate);
+        let staff = $scope.staff;
+        //Calcula a idade do staff através da sua dob
+        staff.age = getAge(date);
+
+        //Set hasBeenPaidThisMonth para false pois quando o funcionário é adicionado não recebe
+        staff.hasBeenPaidThisMonth = false;
+
+        let data = JSON.stringify(staff);
+        //console.log(data);
+
+        adicionarStaff($http, data, (response) => {
+            if (response) {
+                let resposta = response.data;
+
+                //Formata a birthdate do Funcionário para yyyy-mm-dd
+                resposta.birthDate = formatDate(resposta.birthDate);
+
+                //Atualiza a lista sem dar refresh na pagina
+                let list = $scope.funcionarios;
+                list.push(resposta);
+                $scope.funcionarios = list
+
+                //Dá reset e close no Modal form
+                $('#addFunc form :input').val("");
+                $('#addFunc').modal('toggle');
+                $scope.alerts[1].show = true;
+            } else {
+                //Dá reset e close no Modal form
+                $('#addFunc form :input').val("");
+                $('#addFunc').modal('toggle');
+                $scope.alerts[0].show = true;
+            }
+        });
+    };
+
+
+    //Select para HasBeenPaidThisMonth
+    $scope.paid = [true, false];
+
+    //Antigo Staff
+    let oldStaff
+    //Editar Funcionário
+    $scope.edsubmit = function () {
+
+
+        //console.log(oldStaff);
+        //Copia as informações todas do oldStaff para um novo Staff incluindo as informações inalteraveis
+        let newStaff = oldStaff;
+
+        //Atribui as novas informções ao newStaff
+        newStaff.id = $scope.idstaffedit;
+        newStaff.firstName = $scope.edstaff.firstName;
+        newStaff.lastName = $scope.edstaff.lastName;
+        newStaff.birthDate = formatDate($scope.edstaff.birthDate);
+
+        //Formata a dob do user
+        let date = new Date(newStaff.birthDate);
+
+        //Calcula a idade do user através da sua dob
+        newStaff.age = getAge(date);
+
+        newStaff.nif = $scope.edstaff.nif;
+        newStaff.email = $scope.edstaff.email;
+        newStaff.rank = $scope.edstaff.rank;
+        newStaff.hasBeenPaidThisMonth = $scope.edstaff.hasBeenPaidThisMonth;
+        newStaff.salary = $scope.edstaff.salary;
+        newStaff.imageUrl = $scope.edstaff.imageUrl;
+        //console.log(newStaff);
+
+        editarStaff($http, newStaff, $scope.idstaffedit, (response) => {
+            if (response) {
+                $scope.edstaff = null;
+
+                //Dá reset e close no Modal form
+                $('#editarStaff form :input').val("");
+                $('#editarStaff').modal('toggle');
+                $scope.alerts[2].show = true;
+            } else {
+
+                //Dá reset e close no Modal form
+                $('#editarStaff form :input').val("");
+                $('#editarStaff').modal('toggle');
+                $scope.alerts[3].show = true;
+            }
+        });
+    };
+
 
     //Remove o Staff da Base de Dados
     $scope.rmStaff = function (id) {
@@ -70,10 +210,14 @@ app.controller("staffCtrl", function ($scope, $http) {
     //Abre um popup para colocar nova informação do Funcionário
     $scope.edStaff = function (id) {
         $scope.idstaffedit = id;
+        oldStaff = $scope.funcionarios.find(x => x.id === $scope.idstaffedit);
+        $scope.edstaff = oldStaff;
     }
 
     //Abre um popup para confirmar a remoção do Funcionário
     $scope.removeFunc = function (id) {
         $scope.idfuncremove = id;
     }
+
+
 });
