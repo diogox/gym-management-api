@@ -12,6 +12,8 @@ namespace GymAPI.Services
         List<Client> GetAll();
         Client GetById(long id);
         bool CheckIn(Client client);
+        void AddNotification(Client client, ClientNotificationDAO notification);
+        void MarkNotificationAsRead(ClientNotification notification);
         void Create(Client client);
         void Update(Client oldClient, Client client);
         void Delete(Client client);
@@ -79,6 +81,27 @@ namespace GymAPI.Services
             );
              
             _context.Clients.Update(client);
+            _context.SaveChanges();
+        }
+
+        public void AddNotification(Client client, ClientNotificationDAO notification)
+        {
+            ClientNotification newNotification = new ClientNotification()
+            {
+                Timestamp = DateTime.Now,
+                Title = notification.Title,
+                Message = notification.Message,
+                IsUnread = true,
+                ClientId = client.Id
+                
+            };
+            client.Notifications.Add(newNotification);
+            _context.SaveChanges();
+        }
+
+        public void MarkNotificationAsRead(ClientNotification notification)
+        {
+            notification.IsUnread = false;
             _context.SaveChanges();
         }
 
