@@ -221,7 +221,7 @@ export function getPlanExercisesById($http, id, callback){
     $http({
 
         method: "GET",
-        url: "https://localhost:5001/api/plans/1/exercises/",
+        url: "https://localhost:5001/api/plans/" + id + "/exercises/",
         headers: {
             'content-type': "application/json"
         }
