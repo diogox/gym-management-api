@@ -1,7 +1,10 @@
 import { getTickets } from "./pedidos.js";
 
 // Controller da página de suporte
-app.controller('suporteCtrl', function ($scope, $http) {
+app.controller('suporteCtrl', function ($scope, $http, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
 
     // Pede os tickets à API
     getTickets($http, (response) => {

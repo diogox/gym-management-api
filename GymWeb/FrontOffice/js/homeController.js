@@ -1,7 +1,10 @@
 import { getClient, checkin } from './pedidos.js';
 
 // Controller da  página home
-app.controller('homeCtrl', function ($scope, $http) {
+app.controller('homeCtrl', function ($scope, $http, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
 
     // Função que atualiza na pagina home as entradas no ginásio
     function atualizaEntradas() {

@@ -1,7 +1,10 @@
 import { createTicket, addAnswerToTicket } from './pedidos.js'
 
 // Controller da página de um novo ticket
-app.controller('novoTicketCtrl', function ($scope, $http, $window) {
+app.controller('novoTicketCtrl', function ($scope, $http, $window, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
 
     // Ocultar alertas no topo da página
     $scope.novo_ticket_sucesso = "y";
