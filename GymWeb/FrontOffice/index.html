@@ -23,6 +23,7 @@
 
     <!-- Css internos -->
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/registo.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/home.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/exercicios.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/equipamentos.css" />
@@ -37,10 +38,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 </head>
 
-<body ng-app="myApp">
+<body ng-app="myApp" ng-controller="indexCtrl">
         <img class="imgbg" src="https://images.wallpaperscraft.com/image/dumbbells_fitness_gym_113149_1920x1080.jpg" alt="Error: Image Not Loaded!">
             
-    <header class="row">
+    <header class="row" ng-hide="hideMenus">
         <nav class="navbar navbar-dark bg-dark navbar-inverse col-12">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -52,10 +53,11 @@
             </div>
         </nav>
     </header>
-
-    <!--This the side nav bar-->
+    
     <div class="row" style="height:100vh">
-        <div class="left col-2">
+
+        <!--This the side nav bar-->
+        <div class="left col-2" ng-hide="hideMenus">
             <ul>
                 <a href="index.html">
                     <li class="item-menu">
@@ -121,7 +123,7 @@
         </div>
 
         <!--This the content-->
-        <div class="col-10 content">
+        <div id="content" class="col-10 content">
 
             <div ng-view></div>
             
@@ -131,6 +133,8 @@
 
 </body>
 <script src="js/routes.js"></script>
+<script src="js/indexController.js"></script>
+<script src="js/registoController.js"></script>
 <script src="js/homeController.js" type="module"></script>
 <script src="js/exerciciosController.js" type="module"></script>
 <script src="js/equipamentosController.js" type="module"></script>
