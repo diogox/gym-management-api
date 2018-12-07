@@ -1,4 +1,12 @@
 <div class="container" style="margin-left: 100px" ng-controller="EqCtrl">
+
+    <!--Alertas da API-->
+    <div ng-repeat="alert in alerts" ng-show="alert.show">
+        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong>
+            {{alert.msg}}</h3>
+    </div>
+
+    <!--Button Adicionar Equipamento-->
     <button type="button" class="btn btn-secondary glyphicon glyphicon-plus" data-toggle="modal" data-target="#addEq">ADICIONAR
         EQUIPAMENTO
     </button>
@@ -66,44 +74,69 @@
                 </div>
                 <div class="modal-body">
                     <!--Form para adicionar um novo Equipamento-->
-                    <form ng-submit="submit()" ng-controller="adicionarEq" name="myForm">
+                    <form ng-submit="submitADD()" name="myForm">
                         <h4>Preenche os seguintes cabeçalhos:</h4>
+
+
+                        <!--Nome do Equipamento-->
                         <div class="form-group">
                             <label for="nome">Nome:</label>
-                            <input class="form-control" type="text" ng-model="eq.name" name="nome" id="nome" required />
+                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="eq.name" name="nome" id="nome" required />
                         </div>
+
+
+                        <!--Marca do Equipamento-->
                         <div class="form-group">
                             <label for="brand">Marca:</label>
-                            <input class="form-control" type="text" ng-model="eq.brandName" name="brand" id="brand"
+                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="eq.brandName" name="brand" id="brand"
                                 required />
                         </div>
+
+
+                        <!--Quantidade do Equipamento-->
                         <div class="form-group">
                             <label for="quantity">Quantidade:</label>
-                            <input class="form-control" type="number" min="0" ng-model="eq.quantity" name="quantity" id="quantity"
+                            <input class="form-control" type="number" min="1" max="1000" ng-model="eq.quantity" name="quantity" id="quantity"
                                 required />
                         </div>
+
+
+                        <!--Preço do Equipamento-->
                         <div class="form-group">
                             <label for="preco">Preço(€):</label>
-                            <input class="form-control" type="number" step="0.01" min="0" ng-model="eq.priceInEuro"
+                            <input class="form-control" type="number" step="0.01" min="1" max="1000000" ng-model="eq.priceInEuro"
                                 name="preco" id="preco" required />
                         </div>
+
+
+                        <!--Nome do Fornecedor-->
                         <div class="form-group">
                             <label for="supplier">Fornecedor:</label>
-                            <input class="form-control" type="text" ng-model="eq.supplierName" name="supplier" id="supplier"
+                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="eq.supplierName" name="supplier" id="supplier"
                                 required />
                         </div>
+
+
+                        <!--Descrição do Equipamento-->
                         <div class="form-group">
                             <label for="description">Descrição(150 letras):</label>
-                            <textarea class="form-control" type="text" ng-model="eq.description" name="description"
-                                ng-maxlength="150" id="description" value="" required></textarea>
-                            <span style="color: red" ng-if="!myForm.description.$valid">Atingiu o número máximo de
-                                letras!</span>
+                            <textarea class="form-control" type="text" onfocus="this.value=''" ng-model="eq.description"
+                                name="description" ng-minlength="1" ng-maxlength="150" id="description" required></textarea>
+                            <div role="alert">
+                                <span class="error" ng-show="myForm.description.$error.text">
+                                    Atingiu o número máximo de letras!</span>
+                           </div>
                         </div>
+
+
+                        <!--URL da imagem do Equipamento-->
                         <div class="form-group">
                             <lable for="imgurl">Imagem:(URL)</lable>
                             <input class="form-control" type="url" ng-model="eq.imageUrl" name="imgurl" id="imgurl"
                                 required />
                         </div>
+
+
                         <p></p>
                         <button class="btn btn-default btn-block" ng-disabled="myForm.$invalid" type="submit" id="submit"
                             value="Submit">Submit</button>
@@ -126,47 +159,72 @@
                 <div class="modal-body">
                     <div class="modal-body">
                         <!--Form para editar um Equipamento-->
-                        <form ng-submit="edsubmit()" ng-controller="editarEq" name="myForm">
+                        <form ng-submit="edsubmit()" name="myedForm">
                             <h4>Preenche os seguintes cabeçalhos:</h4>
+
+
+                            <!--Nome do Equipamento-->
                             <div class="form-group">
                                 <label for="nome">Nome:</label>
-                                <input class="form-control" type="text" ng-model="eq.name" name="nome" id="nome"
+                                <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edeq.name" name="nome" id="nome"
                                     required />
                             </div>
+
+
+                            <!--Marca do Equipamento-->
                             <div class="form-group">
                                 <label for="brand">Marca:</label>
-                                <input class="form-control" type="text" ng-model="eq.brandName" name="brand" id="brand"
+                                <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edeq.brandName" name="brand" id="brand"
                                     required />
                             </div>
+
+
+                            <!--Quantidade do Equipamento-->
                             <div class="form-group">
                                 <label for="quantity">Quantidade:</label>
-                                <input class="form-control" type="number" min="0" ng-model="eq.quantity" name="quantity"
+                                <input class="form-control" type="number" min="1" max="1000" ng-model="edeq.quantity" name="quantity"
                                     id="quantity" required />
                             </div>
+
+
+                            <!--Preço do Equipamento-->
                             <div class="form-group">
                                 <label for="preco">Preço(€):</label>
-                                <input class="form-control" type="number" step="0.01" min="0" ng-model="eq.priceInEuro"
+                                <input class="form-control" type="number" step="0.01" min="1" max="1000000" ng-model="edeq.priceInEuro"
                                     name="preco" id="preco" required />
                             </div>
+
+
+                            <!--Nome do Fornecedor-->
                             <div class="form-group">
                                 <label for="supplier">Fornecedor:</label>
-                                <input class="form-control" type="text" ng-model="eq.supplierName" name="supplier" id="supplier"
+                                <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edeq.supplierName" name="supplier" id="supplier"
                                     required />
                             </div>
+
+
+                            <!--Descrição do Equipamento-->
                             <div class="form-group">
                                 <label for="description">Descrição(150 letras):</label>
-                                <textarea class="form-control" type="text" ng-model="eq.description" name="description"
+                                <textarea class="form-control" type="text" ng-model="edeq.description" name="description"
                                     ng-maxlength="150" id="description" value="" required></textarea>
-                                <span style="color: red" ng-if="!myForm.description.$valid">Atingiu o número máximo de
-                                    letras!</span>
+                                <div role="alert">
+                                    <span class="error" ng-show="myedForm.description.$error.text">
+                                        Atingiu o número máximo de letras!</span>
+                               </div>
                             </div>
+
+
+                            <!--URL da imagem do Equipamento-->
                             <div class="form-group">
                                 <lable for="imgurl">Imagem:(URL)</lable>
-                                <input class="form-control" type="url" ng-model="eq.imageUrl" name="imgurl" id="imgurl"
+                                <input class="form-control" type="url" ng-model="edeq.imageUrl" name="imgurl" id="imgurl"
                                     required />
                             </div>
+
+
                             <p></p>
-                            <button class="btn btn-default btn-block" ng-disabled="myForm.$invalid" type="submit" id="submit"
+                            <button class="btn btn-default btn-block" ng-disabled="myedForm.$invalid" type="submit" id="submit"
                                 value="Submit">Submit</button>
                         </form>
                     </div>

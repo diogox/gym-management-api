@@ -91,6 +91,58 @@ namespace GymAPI
             return Ok(client);
         }
         
+        // GET api/clients/{id}/notifications
+        [HttpGet("{id}/notifications")]
+        [AllowAnonymous]
+        public async Task< ActionResult< List<ClientNotification> > > GetClientNotifications(long id)
+        {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isStaff = _authService.CheckIfStaff(User);
+
+            if ( !(_isAdmin || _isStaff) )
+            {
+                if (! await _authService.CheckIfCurrentClient(HttpContext, id))
+                {
+                    return Forbid();
+                }
+            }
+            
+            var client = _clientsService.GetById(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(client.Notifications);
+        }
+        
+        // GET api/clients/{clientId}/notifications/{notificationId}/read
+        [HttpGet("{clientId}/notifications/{notificationId}/read")]
+        [AllowAnonymous]
+        public async Task< ActionResult > GetClientNotifications(long clientId, long notificationId)
+        {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isStaff = _authService.CheckIfStaff(User);
+
+            if ( !(_isAdmin || _isStaff) )
+            {
+                if (! await _authService.CheckIfCurrentClient(HttpContext, clientId))
+                {
+                    return Forbid();
+                }
+            }
+            
+            var client = _clientsService.GetById(clientId);
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            var _notification = client.Notifications.Find(notification => notification.Id == notificationId);
+            _clientsService.MarkNotificationAsRead(_notification);
+            return Ok();
+        }
+        
         // POST api/clients
         [HttpPost]
         [AllowAnonymous]
@@ -137,6 +189,20 @@ namespace GymAPI
             await _userManager.AddToRoleAsync(newUser, "Client");
             
             return CreatedAtRoute("GetClient", new { id = client.Id}, client);
+        }
+        
+        // POST api/clients/{id}/notifications
+        [HttpPost("{id}/notifications")]
+        public ActionResult AddNotificationToClient(long id, [FromBody] ClientNotificationDAO notification)
+        {
+            var client = _clientsService.GetById(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            _clientsService.AddNotification(client, notification);
+            return Ok(client);
         }
 
         // PUT api/clients/{id}

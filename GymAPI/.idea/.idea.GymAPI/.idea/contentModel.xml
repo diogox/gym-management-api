@@ -17,6 +17,7 @@
         <e p="UsersController.cs" t="Include" />
       </e>
       <e p="DAOs" t="Include">
+        <e p="ClientNotificationDAO.cs" t="Include" />
         <e p="LoginDAO.cs" t="Include" />
         <e p="SignupClientDAO.cs" t="Include" />
         <e p="SignupStaffMemberDAO.cs" t="Include" />
@@ -137,6 +138,13 @@
         <e p="System.Interactive.Async.dll" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
+        <e p="out" t="Include">
+          <e p="GymAPI.deps.json" t="Include" />
+          <e p="GymAPI.runtimeconfig.json" t="Include" />
+          <e p="appsettings.Development.json" t="Include" />
+          <e p="appsettings.json" t="Include" />
+          <e p="web.config" t="Include" />
+        </e>
         <e p="runtimes" t="Include">
           <e p="alpine-x64" t="Include">
             <e p="native" t="Include">

@@ -68,8 +68,15 @@
 	color: white;
 }
 
+.susp{
+	background-color: orange;
+	color: white;
+}
+
 td{
 	color: white;
+	max-width:200px;
+    word-wrap:break-word;
 }
 
 tr{
@@ -86,4 +93,8 @@ footer{
 	color: white;
 	border: white;
 	border-radius: 10px;
+}
+
+.alert{
+	cursor: pointer;
 }
