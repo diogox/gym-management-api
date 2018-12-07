@@ -126,9 +126,6 @@ namespace GymAPI.Services
             oldClient.HeightInMeters = client.HeightInMeters;
             oldClient.WeightInKg = client.WeightInKg;
             oldClient.TrainingPlanId = client.TrainingPlanId;
-            oldClient.CheckInHistory = client.CheckInHistory;
-            oldClient.Notifications = client.Notifications;
-            oldClient.SupportTickets = client.SupportTickets;
 
             _context.Clients.Update(oldClient);
             _context.SaveChanges();
