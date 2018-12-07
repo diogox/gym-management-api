@@ -19,7 +19,10 @@ function formatDate(date) {
 }
 
 //Controller do Ticket
-app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
+app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
 
     //Estilo do Alerta de Erro
     $scope.redAlert = {

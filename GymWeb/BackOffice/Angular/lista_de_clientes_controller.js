@@ -26,7 +26,11 @@ function getAge(DOB) {
 }
 
 //Controller da Gestão dos Clientes
-app.controller("clientesCtrl", function ($scope, $http) {
+app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
+
 
     //Estilo do Alerta de Erro
     $scope.redAlert = {

@@ -1,7 +1,11 @@
 import { getEquipment, removeEquipment, adicionarEquipment, editarEquipment } from './pedidos.js'
 
 //Lista de Equipamentos
-app.controller("EqCtrl", function ($scope, $http) {
+app.controller("EqCtrl", function ($scope, $http, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
+
 
     //Estilo do Alerta de Erro
     $scope.redAlert = {

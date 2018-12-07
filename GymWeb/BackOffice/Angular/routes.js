@@ -3,7 +3,8 @@ var app = angular.module('myApp', ["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "Templates/home.html"
+        templateUrl : "Templates/home.html",
+        controller : "homeCtrl"
     })
     .when("/listadeclientes", {
         templateUrl : "Templates/lista_de_clients.html"
@@ -26,8 +27,16 @@ app.config(function($routeProvider) {
     .when("/listadeexercicios",{ //Página com a lista de Exercicios
         templateUrl : "Templates/404.htm"
     })
+    .when("/login",{
+        templateUrl : "Templates/login_page.html"
+    })
     .otherwise({
         templateUrl : "Templates/404.htm"
     })
 });
 
+//Controller da Home Pag (Num patch futuro irá ter os relatórios)
+app.controller("homeCtrl", function ($rootScope) {
+    //Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
+});
