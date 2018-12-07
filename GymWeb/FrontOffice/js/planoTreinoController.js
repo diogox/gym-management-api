@@ -1,7 +1,10 @@
 import { getClient, getPlanExercisesById, getexerciseById } from "./pedidos.js";
 
 // Controller da página de plano de treino
-app.controller('planoTreinoCtrl', function($scope, $http) {
+app.controller('planoTreinoCtrl', function($scope, $http, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
 
     // Pede o cliente à API
     getClient($http, 2, (response)=>{

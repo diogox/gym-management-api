@@ -19,10 +19,32 @@ function formatDate(date) {
 }
 
 
-app.controller("ticketsCtrl", function ($scope, $http,$window) {
+app.controller("ticketsCtrl", function ($scope, $http, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
+
+    //Estilo do Alerta de Erro
+    $scope.redAlert = {
+        "width": "100%",
+        "color": "white",
+        "background-color": "red"
+    }
+
+    //Alertas
+    $scope.alerts = [
+        //Erro ao Carregar a Tabela de Tickets Index:0
+        { type: 'Error', msg: 'Erro ao Carregar a Tabela de Tickets!', style: $scope.redAlert, show: false },
+    ];
+
+    //Fechar Alerta pelo ID
+    $scope.closeAlert = function (index) {
+        $scope.alerts[index].show = false;
+    }
+
     //Lista dos Tickets
     getTickets($http, (response) => {
-        if (Response) {
+        if (response) {
 
             //Formata a data dos Tickets para yyyy-mm-dd hh:mm:ss
             for (let i = 0; i < response.data.length; i++) {
@@ -34,17 +56,13 @@ app.controller("ticketsCtrl", function ($scope, $http,$window) {
             $scope.Tickets = response.data;
 
         } else {
-            console.log("Falha ao Carregar a Tabela!");
-            $scope.firstName = "Falha ao Carregar a Tabela!"
-
-            //Gestão de Erros
-            //Validações
+            $scope.alerts[0].show = true;
         }
     });
 
     //Vai para a página do Ticket 
-    $scope.getthisTicket = function(ticket){
+    $scope.getthisTicket = function (ticket) {
         //console.log(ticket.id);
-        window.location.href = '#!ticket/'+ticket.id;
+        window.location.href = '#!ticket/' + ticket.id;
     };
 });
