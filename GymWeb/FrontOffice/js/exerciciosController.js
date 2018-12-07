@@ -1,7 +1,10 @@
 import { getexercises, getEquipmentById, getexerciseById, getEquipments, changeExercise, createExercise, deleteExercise } from './pedidos.js';
 
 // Controller da página de exercicios
-app.controller('exerciciosCtrl', function ($scope, $http) {
+app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
 
     let listaExercicios = [];
 

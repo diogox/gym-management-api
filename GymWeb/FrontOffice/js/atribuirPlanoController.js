@@ -1,7 +1,10 @@
 import { getAllClients, getPlanosTreinoById, getPlanosTreino, changeClientPlan } from './pedidos.js'
 
 // Controller da página de atribuir planos
-app.controller('atribuirPlanoCtrl', function ($scope, $http) {
+app.controller('atribuirPlanoCtrl', function ($scope, $http, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
 
     let listClients = [];
 

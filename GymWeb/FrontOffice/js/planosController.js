@@ -1,8 +1,10 @@
 import { getPlanosTreino, getexerciseById, getexercises, createPlan, getPlanosTreinoById, changePlan, deletePlan } from './pedidos.js'
 
 // Controller da  página planos de treino
-app.controller('planosCtrl', function ($scope, $http) {
+app.controller('planosCtrl', function ($scope, $http, $rootScope) {
 
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
 
     // Ocultar planos no topo da página
     $scope.novo_plano_sucesso = "y";

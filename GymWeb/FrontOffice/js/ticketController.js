@@ -1,7 +1,10 @@
 import { getTicketById, addAnswerToTicket, getClient, openTicket, closeTicket } from "./pedidos.js";
 
 // Controller página de um ticket especifico
-app.controller('ticketCtrl', function ($scope, $http, $routeParams) {
+app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
 
     // Botão de submit nova resposta é clicável
     $scope.disableSubmit = "";

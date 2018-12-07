@@ -1,7 +1,10 @@
 import { getEquipments, getEquipmentById, changeEquipment, createEquipment, deleteEquipment } from './pedidos.js'
 
 // Controller da página de equipamentos
-app.controller('equipamentosCtrl', function ($scope, $http) {
+app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
 
     let listaEquipment = [];
 
