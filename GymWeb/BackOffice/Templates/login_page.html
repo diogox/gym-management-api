@@ -1,0 +1,29 @@
+<div class="container login-page" ng-controller="loginCtrl">
+    <img class="imgbg" src="https://images.wallpaperscraft.com/image/dumbbells_fitness_gym_113149_1920x1080.jpg" alt="Error: Image Not Loaded!">
+
+    <form name="myForm" method="POST" ng-submit="login()" style="padding: 10px;" class="content login-form">
+        <h1>Admin Login</h1>
+
+        <!--Username do Admin-->
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input class="form-control" type="text" ng-model="admin.username" name="un" id="un" required />
+        </div>
+
+
+        <!--Password do Admin-->
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input class="form-control" type="password" onfocus="this.value=''" ng-minlength="8" ng-model="admin.password" name="psw" id="psw"
+                required />
+        </div>
+
+        <p></p>
+        <button class="btn btn-default btn-block" ng-disabled="myForm.$invalid" type="submit" id="submit" value="Submit">Login</button>
+    </form>
+
+    <!--Alertas da API-->
+    <div ng-repeat="alert in alerts" ng-show="alert.show">
+        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong> {{alert.msg}}</h3>
+    </div>
+</div>

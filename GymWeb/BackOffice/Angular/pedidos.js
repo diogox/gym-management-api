@@ -1,3 +1,19 @@
+//Login
+export function login($http,data,callback) {
+    $http({
+        method: "POST",
+        data: data,
+        url: "https://localhost:5001/api/auth/login/",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    }).then(function mySuccess(response){
+        callback(response)
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
 //Clientes
 //Get all Clients
 export function getClients($http, callback) {

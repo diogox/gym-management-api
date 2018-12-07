@@ -28,7 +28,10 @@ function getAge(DOB) {
 
 
 //Lista de Staff
-app.controller("staffCtrl", function ($scope, $http) {
+app.controller("staffCtrl", function ($scope, $http, $rootScope) {
+
+    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+    $rootScope.$broadcast('show-window', 'true');
 
     //Estilo do Alerta de Erro
     $scope.redAlert = {

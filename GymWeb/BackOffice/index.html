@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="CSS/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="CSS/list_funcionários.css">
     <link rel="stylesheet" type="text/css" media="screen" href="CSS/list_tickets.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="CSS/login_page.css" />
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
     <!--AngularJS-->
@@ -22,9 +23,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body ng-app="myApp">
+<body ng-app="myApp" ng-controller="indexCtrl">
     <img class="imgbg" src="https://images.wallpaperscraft.com/image/dumbbells_fitness_gym_113149_1920x1080.jpg" alt="Error: Image Not Loaded!">
-    <header>
+    <header ng-hide="hideMenus">
         <nav class="navbar navbar-inverse" style="border-radius: 0">
             <div class="container-fluid" style="border-radius: 0">
                 <div class="navbar-header">
@@ -38,7 +39,7 @@
     </header>
 
     <!--This is the side nav bar-->
-    <div class="left">
+    <div class="left" ng-hide="hideMenus">
         <ul>
             <a href="index.html">
                 <li class="item-menu">
@@ -82,7 +83,7 @@
                     <span class="menu">lista de Exercicios</span>
                 </li>
             </a>
-            <a href="#!logout">
+            <a ng-click="logout()">
                 <li class="item-menu">
                     <span class="glyphicon glyphicon-off"></span>
                     <span class="menu">Log OUT</span>
@@ -93,6 +94,7 @@
     <!------------------------->
 
 
+    
     <!--Content-->
     <div class="ng-view"></div>
     <!------------------------->
@@ -108,6 +110,8 @@
 <!--Controllers and Routes-->
 <script src="Angular/routes.js"></script>
 <script src="Angular/pedidos.js" type="module"></script>
+<script src="Angular/login_controller.js" type="module"></script>
+<script src="Angular/index_controller.js" type="module"></script>
 <script src="Angular/ticket_controller.js" type="module"></script>
 <script src="Angular/lista_de_tickets_controller.js" type="module"></script>
 <script src="Angular/lista_de_clientes_controller.js" type="module"></script>
