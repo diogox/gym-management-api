@@ -32,5 +32,9 @@ deploy:
   stage: deploy
   script:
     - docker run gym-lds -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./out"
-    - heroku container:push web --app gym-lds
+    - docker tag gym-lds registry.heroku.com/gym-lds/web    
+    - docker build -t $CI_REGISTRY/my-awesome-app-dev/web .
+    - docker push $CI_REGISTRY/my-awesome-app-dev/web
     - heroku container:release web --app gym-lds
+  only:
+    - master
