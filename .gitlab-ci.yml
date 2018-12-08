@@ -1,28 +1,38 @@
-image: microsoft/dotnet:latest
+# Official docker image.
+image: docker:latest
 
 stages:
   - build
   - test
   - deploy
 
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+
 before_script:
-- "dotnet restore ./GymAPI"
-  
+  - cd GymAPI
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  - apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community nodejs-npm
+  - npm i -g heroku
+
 build:
   stage: build
   script:
-    - dotnet build ./GymAPI
+    - docker build --app gym-lds
 
 #test:
 #  stage: test
 #  script:
 #    - dotnet test
 
-#deploy:
-#  stage: deploy
-#  script:
-#    - C:\Scripts\Publish.cmd
-#  environment:
-#    name: staging
-#  only:
-#    - master
+deploy:
+  stage: deploy
+  script:
+    - docker run -t -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./out"
+    - heroku container:push web --app gym-management-lds
+    - heroku container:release web --app gym-management-lds
+  only:
+    - develop

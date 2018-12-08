@@ -1,9 +1,7 @@
-FROM microsoft/dotnet:2.1-sdk
+FROM microsoft/dotnet:2.1.0-aspnetcore-runtime
 
-COPY ./ /root/
-WORKDIR /root/
+WORKDIR /app
 
-#RUN curl https://api.nuget.org/v3/index.json
-RUN dotnet restore GymAPI.csproj
+COPY out/ ./
 
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet out/GymAPI.dll
+CMD export ASPNETCORE_URLS=http://*:$PORT && dotnet GymAPI.dll
