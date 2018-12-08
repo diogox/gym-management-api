@@ -31,8 +31,8 @@ build:
 deploy:
   stage: deploy
   script:
-    - docker build -t $CI_REGISTRY/my-awesome-app-dev/web .
-    - docker push $CI_REGISTRY/my-awesome-app-dev/web
+    - docker build -t $CI_REGISTRY/gym-lds/web .
+    - docker push $CI_REGISTRY/gym-lds/web
     - heroku container:release web --app gym-lds
   only:
     - master
