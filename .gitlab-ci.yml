@@ -22,7 +22,7 @@ build:
   stage: build
   script:
     - docker run -t -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
-    - docker build -t gym-lds ./
+    #- docker build -t gym-lds ./
 
 #test:
 #  stage: test
