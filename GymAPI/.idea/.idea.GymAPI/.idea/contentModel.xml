@@ -28,6 +28,8 @@
       <e p="Migrations" t="Include">
         <e p="20181203172751_CreateEntities.Designer.cs" t="Include" />
         <e p="20181203172751_CreateEntities.cs" t="Include" />
+        <e p="20181208161642_UpdateClients.Designer.cs" t="Include" />
+        <e p="20181208161642_UpdateClients.cs" t="Include" />
         <e p="GymContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">
