@@ -145,6 +145,13 @@
           <e p="GymAPI.runtimeconfig.json" t="Include" />
           <e p="appsettings.Development.json" t="Include" />
           <e p="appsettings.json" t="Include" />
+          <e p="out" t="Include">
+            <e p="GymAPI.deps.json" t="Include" />
+            <e p="GymAPI.runtimeconfig.json" t="Include" />
+            <e p="appsettings.Development.json" t="Include" />
+            <e p="appsettings.json" t="Include" />
+            <e p="web.config" t="Include" />
+          </e>
           <e p="web.config" t="Include" />
         </e>
         <e p="runtimes" t="Include">

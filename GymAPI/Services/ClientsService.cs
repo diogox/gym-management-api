@@ -133,6 +133,9 @@ namespace GymAPI.Services
 
         public void Delete(Client client)
         {
+            var user = _context.Users.Single(_user => _user.ClientId == client.Id);
+            _context.Users.Remove(user);
+            
             _context.Clients.Remove(client);
             _context.SaveChanges();
         }

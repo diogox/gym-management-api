@@ -206,10 +206,5 @@ namespace GymAPI
             }
         }
 
-        private void CreateAdmin()
-        {
-            
-        }
-
     }
 }

@@ -4,6 +4,7 @@ COPY ./ /app/
 WORKDIR /app
 
 RUN dotnet restore GymAPI.csproj
+RUN dotnet build
 RUN dotnet publish -c Release -o ./out
 
 COPY out/ ./

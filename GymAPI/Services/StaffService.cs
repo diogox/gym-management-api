@@ -65,6 +65,9 @@ namespace GymAPI.Services
 
         public void Delete(StaffMember member)
         {
+            var user = _context.Users.Single(_user => _user.ClientId == member.Id);
+            _context.Users.Remove(user);
+            
             _context.Staff.Remove(member);
             _context.SaveChanges();
         }

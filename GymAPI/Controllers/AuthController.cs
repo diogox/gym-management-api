@@ -49,8 +49,8 @@ namespace GymAPI
                 var roles = await _userManager.GetRolesAsync(user);
                 claimsIdentity.AddClaims(roles.Select(role => new Claim(ClaimTypes.Role, role)));
                 var token = new JwtSecurityToken(
-                    issuer: "http://localhost:5001", // TODO: Change this after launching to the cloud
-                    audience: "http://localhost:5001",
+                    issuer: "https://gym-lds.herokuapp.com/",
+                    audience: "https://gym-lds.herokuapp.com/",
                     expires: DateTime.UtcNow.AddHours(1),
                     claims: claimsIdentity.Claims,
                     signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
