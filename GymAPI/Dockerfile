@@ -1,6 +1,9 @@
-FROM microsoft/dotnet:2.1.0-aspnetcore-runtime
+FROM microsoft/dotnet:2.1-sdk
 
+COPY ./ /app/
 WORKDIR /app
+
+RUN dotnet restore GymAPI.csproj
 
 COPY out/ ./
 

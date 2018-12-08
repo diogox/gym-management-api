@@ -21,7 +21,7 @@ before_script:
 build:
   stage: build
   script:
-    - docker build --app gym-lds
+    - docker build -t gym-lds ./
 
 #test:
 #  stage: test
@@ -31,8 +31,8 @@ build:
 deploy:
   stage: deploy
   script:
-    - docker run -t -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./out"
-    - heroku container:push web --app gym-management-lds
-    - heroku container:release web --app gym-management-lds
+    - docker run gym-lds -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./out"
+    - heroku container:push web --app gym-lds
+    - heroku container:release web --app gym-lds
   only:
     - develop
