@@ -60,12 +60,13 @@ namespace GymAPI
                 var userTypeId = new long();
                 if (user.ClientId != null)
                 {
-                    userTypeId = (long) user.ClientId;
+                    userTypeId = user.ClientId.Value;
                 }
-                else
+                else if (user.StaffMemberId != null)
                 {
-                    userTypeId = (long) user.StaffMemberId;
+                    userTypeId = user.StaffMemberId.Value;
                 }
+                
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
