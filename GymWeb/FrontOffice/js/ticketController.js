@@ -1,7 +1,13 @@
 import { getTicketById, addAnswerToTicket, getClient, openTicket, closeTicket } from "./pedidos.js";
+import { checkLogin } from './myutil.js'
 
 // Controller página de um ticket especifico
 app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) {
+
+    let login = checkLogin();
+    if(!login) {
+        window.location.href = "index.html#!login";
+    }
 
     // Indicar ao controler da página principal que o menu lateral deve ser mostrado
     $rootScope.$broadcast('show-window', 'true');

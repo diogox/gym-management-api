@@ -59,61 +59,61 @@
         <!--This the side nav bar-->
         <div class="left col-2" ng-hide="hideMenus">
             <ul>
-                <a href="index.html">
+                <a href="index.html" ng-hide="hideClient">
                     <li class="item-menu">
                         <span class="glyphicon glyphicon-home"></span>
                         <span class="menu">Home</span>
                     </li>
                 </a>
-                <a href="#!planos">
+                <a href="#!planos" ng-hide="hideTrainner">
                     <li class="item-menu">
                         <span class="glyphicon glyphicon-home"></span>
                         <span class="menu">Planos</span>
                     </li>
                 </a>
-                <a href="#!planotreino">
+                <a href="#!planotreino" ng-hide="hideClient">
                     <li class="item-menu">
                         <span class="glyphicon glyphicon-tasks"></span>
                         <span class="menu">Meu plano</span>
                     </li>
                 </a>
-                <a href="#!atribuirPlano">
+                <a href="#!atribuirPlano" ng-hide="hideTrainner">
                     <li class="item-menu">
                         <span class="glyphicon glyphicon-tasks"></span>
                         <span class="menu">Atribuir plano</span>
                     </li>
                 </a>
-                <a href="#!exercicios">
+                <a href="#!exercicios" ng-hide="hideBoth">
                     <li class="item-menu">
                         <span class="glyphicon glyphicon-book"></span>
                         <span class="menu">Lista de exercicios</span>
                     </li>
                 </a>
-                <a href="#!equipamentos">
+                <a href="#!equipamentos" ng-hide="hideBoth">
                     <li class="item-menu">
                         <span class="glyphicon glyphicon-list"></span>
                         <span class="menu">Lista de Equipamento</span>
                     </li>
                 </a>
-                <a href="#!suporte">
+                <a href="#!suporte" ng-hide="hideBoth">
                     <li class="item-menu">
                         <span class="glyphicon glyphicon-envelope"></span>
                         <span class="menu">Enviar Tickets</span>
                     </li>
                 </a>
-                <a href="#!relatorios">
+                <a href="#!relatorios" ng-hide="hideBoth">
                     <li class="item-menu">
                         <span class="glyphicon glyphicon-align-left"></span>
                         <span class="menu">Relatórios</span>
                     </li>
                 </a>
-                <a href="#!notificacoes">
+                <a href="#!notificacoes" ng-hide="hideClient">
                     <li class="item-menu">
                         <span class="glyphicon glyphicon-bell"></span>
                         <span class="menu">Notificações</span>
                     </li>
                 </a>
-                <a href="#!logout">
+                <a href="#!login" ng-click="logoutBtn()" ng-hide="hideBoth">
                     <li class="item-menu">
                         <span class="glyphicon glyphicon-credit-card"></span>
                         <span class="menu">Logout</span>
@@ -133,9 +133,10 @@
 
 </body>
 <script src="js/routes.js"></script>
-<script src="js/indexController.js"></script>
-<script src="js/registoController.js"></script>
-<script src="js/loginController.js"></script>
+<script src="js/myutil.js" type="module"></script>
+<script src="js/indexController.js" type="module"></script>
+<script src="js/registoController.js" type="module"></script>
+<script src="js/loginController.js" type="module"></script>
 <script src="js/homeController.js" type="module"></script>
 <script src="js/exerciciosController.js" type="module"></script>
 <script src="js/equipamentosController.js" type="module"></script>

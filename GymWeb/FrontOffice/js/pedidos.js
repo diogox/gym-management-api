@@ -1,9 +1,27 @@
+import { checkLogin } from './myutil.js'
+
+const domain = "https://gym-lds.herokuapp.com/";
+
+// GET REQUESTS
+
+/**
+ * Função que obtem um cliente pelo seu id  
+ * @param {*} id id do cliente a obter
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function getClient($http, id, callback) {
+
+    let loginData = checkLogin();
+    let token = loginData.token;
 
     $http({
 
         method : "GET",
-        url : "https://localhost:5001/api/clients/" + id
+        url : domain + "api/clients/" + id,
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
 
     }).then(function mySuccess(response) {
         
@@ -14,15 +32,25 @@ export function getClient($http, id, callback) {
         callback(false)
 
     });
-
 }
 
+/**
+ * Função que obtem uma lista completa de todos os clientes existentes
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function getAllClients($http, callback) {
+
+    let loginData = checkLogin();
+    let token = loginData.token;
     
     $http({
 
         method : "GET",
-        url : "https://localhost:5001/api/clients/"
+        url : domain + "api/clients/",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
 
     }).then(function mySuccess(response) {
         
@@ -33,16 +61,26 @@ export function getAllClients($http, callback) {
         callback(false)
 
     });
-
 }
 
+/**
+ * Função que efetua o check-in de um cliente especifico
+ * @param {*} id id do cliente a efetuar check-in
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function checkin($http, id, callback) {
 
-    // Efetua pedido para realizar check-in do cliente
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method : "GET",
-        url : "https://localhost:5001/api/clients/" + id + "/check-in"
+        url : domain + "api/clients/" + id + "/check-in",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
 
     }).then(function mySuccess(response) {
 
@@ -53,15 +91,26 @@ export function checkin($http, id, callback) {
         callback(false)
 
     });
-
 }
+
+/**
+ * Função que obtem uma lista completa de exercicos existentes
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 
 export function getexercises($http, callback){
 
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method : "GET",
-        url : "https://localhost:5001/api/exercises/"
+        url : domain + "api/exercises/",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
 
     }).then(function mySuccess(response) {
 
@@ -72,15 +121,27 @@ export function getexercises($http, callback){
         callback(false);
 
     });
-
 }
+
+/**
+ * Função que obtem um exercicio especifico pelo seu id
+ * @param {*} id id do exercicio a obter
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 
 export function getexerciseById($http, id, callback){
 
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method : "GET",
-        url : "https://localhost:5001/api/exercises/" + id
+        url : domain + "api/exercises/" + id,
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
 
     }).then(function mySuccess(response) {
 
@@ -91,15 +152,25 @@ export function getexerciseById($http, id, callback){
         callback(false);
 
     });
-
 }
 
+/**
+ * Função que obtem uma lista de equipamentos existentes
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function getEquipments($http, callback) {
 
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method : "GET",
-        url : "https://localhost:5001/api/equipment/"
+        url : domain + "api/equipment/",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
 
     }).then(function mySuccess(response) {
 
@@ -110,15 +181,26 @@ export function getEquipments($http, callback) {
         callback(false);
 
     });
-
 }
 
+/**
+ * Função que obtem um equipamento especifico pelo seu id
+ * @param {*} id id do equipamento a pesquisar
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function getEquipmentById($http, id, callback) {
 
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method : "GET",
-        url : "https://localhost:5001/api/equipment/" + id
+        url : domain + "api/equipment/" + id,
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
 
     }).then(function mySuccess(response) {
 
@@ -129,15 +211,26 @@ export function getEquipmentById($http, id, callback) {
         callback(false);
 
     });
-
 }
+
+/**
+ * Função que obtem uma lista dos tickets existentes
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 
 export function getTickets($http, callback) {
 
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method : "GET",
-        url : "https://localhost:5001/api/tickets"
+        url : domain + "api/tickets",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
 
     }).then(function mySuccess(response) {
 
@@ -148,61 +241,25 @@ export function getTickets($http, callback) {
         callback(false);
 
     });
-
 }
 
+/**
+ * Função que obtem um ticket especifico pelo seu id
+ * @param {*} id id do ticket a pesquisar
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function getTicketById($http, id, callback){
 
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method: "GET",
-        url: "https://localhost:5001/api/tickets/" + id
-
-    }).then(function mySuccess(response) {
-
-        callback(response);
-
-    }, function myError(response) {
-
-        callback(false);
-
-    });
-
-
-}
-
-export function addAnswerToTicket($http, id, dataSend, callback){
-
-    $http({
-        method: "POST",
-        data: dataSend,
-        url: "https://localhost:5001/api/tickets/" + id + "/messages",
+        url: domain + "api/tickets/" + id,
         headers: {
-            'content-type': "application/json"
-        }
-
-    }).then(function mySuccess(response) {
-
-        callback(response);
-
-    }, function myError(response) {
-
-        callback(false);
-
-    });
-
-}
-
-export function createTicket($http, dataSend, callback) {
-    
-    // Envia ticket para a API
-    $http({
-
-        method: "POST",
-        data: dataSend,
-        url: "https://localhost:5001/api/tickets",
-        headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
 
     }).then(function mySuccess(response) {
@@ -216,14 +273,23 @@ export function createTicket($http, dataSend, callback) {
     });
 }
 
+/**
+ *  Função que obtem os exercicios de um plano especifico pelo seu id
+ * @param {*} id id do plano a obter os exercicios
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function getPlanExercisesById($http, id, callback){
-    // Pede os exercicios de um plano de treino à API
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method: "GET",
-        url: "https://localhost:5001/api/plans/" + id + "/exercises/",
+        url: domain + "api/plans/" + id + "/exercises/",
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
 
     }).then(function mySuccess(response) {
@@ -237,12 +303,23 @@ export function getPlanExercisesById($http, id, callback){
     });
 }
 
+/**
+ * Função que obtem todos os planos existentes
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function getPlanosTreino($http, callback) {
-    // Pede os exercicios de um plano de treino à API
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method: "GET",
-        url: "https://localhost:5001/api/plans/",
+        url: domain + "api/plans/",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
 
     }).then(function mySuccess(response) {
 
@@ -255,34 +332,23 @@ export function getPlanosTreino($http, callback) {
     });
 }
 
+/**
+ * Função que obtem um plano especifico pelo seu id
+ * @param {*} id id do plano a obter
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function getPlanosTreinoById($http, id, callback) {
-    // Pede os exercicios de um plano de treino à API
+    
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method: "GET",
-        url: "https://localhost:5001/api/plans/" + id,
-
-    }).then(function mySuccess(response) {
-
-        callback(response);
-
-    }, function myError(response) {
-
-        callback(false);
-
-    });
-}
-
-export function createPlan($http, dataSend, callback) {
-
-    // Cria novo plano
-    $http({
-
-        method: "POST",
-        data: dataSend,
-        url: "https://localhost:5001/api/plans",
+        url: domain + "api/plans/" + id,
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
 
     }).then(function mySuccess(response) {
@@ -294,38 +360,26 @@ export function createPlan($http, dataSend, callback) {
         callback(false);
 
     });
-
 }
 
-export function changeClientPlan($http, clientId, dataSend, callback) {
-
-    $http({
-
-        method: "PUT",
-        data: dataSend,
-        url: "https://localhost:5001/api/clients/" + clientId,
-        headers: {
-            'content-type': "application/json"
-        }
-
-    }).then(function mySuccess(response) {
-
-        callback(response);
-
-    }, function myError(response) {
-
-        callback(false);
-
-    });
-
-}
-
+/**
+ * Função que abre um ticket especifico pelo seu id
+ * @param {*} id id do ticket a abrir
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function openTicket($http, id, callback) {
     
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method: "GET",
-        url: "https://localhost:5001/api/tickets/" + id + "/open",
+        url: domain + "api/tickets/" + id + "/open",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
 
     }).then(function mySuccess(response) {
 
@@ -336,37 +390,25 @@ export function openTicket($http, id, callback) {
         callback(false);
 
     });
-
 }
 
+/**
+ * Função que fecha um ticket especifico pelo seu id
+ * @param {*} id id do ticket a fechar
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function closeTicket($http, id, callback) {
     
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method: "GET",
-        url: "https://localhost:5001/api/tickets/" + id + "/close",
-
-    }).then(function mySuccess(response) {
-
-        callback(response);
-
-    }, function myError(response) {
-
-        callback(false);
-
-    });
-
-}
-
-export function changeExercise($http, id, dataSend, callback) {
-
-    $http({
-
-        method: "PUT",
-        data: dataSend,
-        url: "https://localhost:5001/api/exercises/" + id,
+        url: domain + "api/tickets/" + id + "/close",
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
 
     }).then(function mySuccess(response) {
@@ -378,18 +420,152 @@ export function changeExercise($http, id, dataSend, callback) {
         callback(false);
 
     });
-
 }
 
+/**
+ * Função que efetua o login do cliente
+ * @param {*} dataSend dados a enviar no pedido para poder efetuar o login
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function loginUser($http, dataSend, callback) {
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
+    $http({
+
+        method: "POST",
+        data: dataSend,
+        url: domain + "api/auth/login",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
+// POST REQUESTS
+
+/**
+ * Função que adiciona uma resposta a um ticket especifico pelo seu id
+ * @param {*} id id do ticket a adicioanar uma resposta
+ * @param {*} dataSend dados a enviar no pedido
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function addAnswerToTicket($http, id, dataSend, callback){
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
+    $http({
+        method: "POST",
+        data: dataSend,
+        url: domain + "api/tickets/" + id + "/messages",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
+/**
+ * Função que cria um ticket
+ * @param {*} dataSend dados a enviar no pedido
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function createTicket($http, dataSend, callback) {
+    
+    let loginData = checkLogin();
+    let token = loginData.token;
+
+    $http({
+
+        method: "POST",
+        data: dataSend,
+        url: domain + "api/tickets",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
+/**
+ * Função que cria um plano
+ * @param {*} dataSend dados a enviar no pedido
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function createPlan($http, dataSend, callback) {
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
+    $http({
+
+        method: "POST",
+        data: dataSend,
+        url: domain + "api/plans",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
+/**
+ * Função que cria um exercicio
+ * @param {*} dataSend dados a enviar no pedido
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function createExercise($http, dataSend, callback){
     
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method: "POST",
         data: dataSend,
-        url: "https://localhost:5001/api/exercises/",
+        url: domain + "api/exercises/",
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
 
     }).then(function mySuccess(response) {
@@ -401,16 +577,26 @@ export function createExercise($http, dataSend, callback){
         callback(false);
 
     });
-
 }
 
-export function deleteExercise($http, id, callback){
+/**
+ * Função que cria um equipamento
+ * @param {*} dataSend dados a enviar no pedido
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function createEquipment($http, dataSend, callback){
+    
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
-        method: "DELETE",
-        url: "https://localhost:5001/api/exercises/" + id,
+        method: "POST",
+        data: dataSend,
+        url: domain + "api/equipment/",
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
 
     }).then(function mySuccess(response) {
@@ -424,15 +610,58 @@ export function deleteExercise($http, id, callback){
     });
 }
 
-export function changeEquipment($http, id, dataSend, callback) {
+/**
+ * Função que regista um cliente
+ * @param {*} dataSend dados a enviar no pedido
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function registerClient($http, dataSend, callback) {
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
+    $http({
+
+        method: "POST",
+        data: dataSend,
+        url: domain + "api/clients",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
+// PUT REQUESTS
+
+/**
+ * Função que altera um cliente
+ * @param {*} clientId id do cliente a alterar
+ * @param {*} dataSend dados a enviar no pedido
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function changeClientPlan($http, clientId, dataSend, callback) {
+
+    let loginData = checkLogin();
+    let token = loginData.token;
 
     $http({
 
         method: "PUT",
         data: dataSend,
-        url: "https://localhost:5001/api/equipment/" + id,
+        url: domain + "api/clients/" + clientId,
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
 
     }).then(function mySuccess(response) {
@@ -444,18 +673,123 @@ export function changeEquipment($http, id, dataSend, callback) {
         callback(false);
 
     });
-
 }
 
-export function createEquipment($http, dataSend, callback){
+/**
+ * Função que altera as informações de um exercicio
+ * @param {*} id id do exercicio a alterar
+ * @param {*} dataSend dados a enviar no pedido
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function changeExercise($http, id, dataSend, callback) {
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
+    $http({
+
+        method: "PUT",
+        data: dataSend,
+        url: domain + "api/exercises/" + id,
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
+/**
+ * Função que altera um equipamento
+ * @param {*} id id do equipamento a alterar
+ * @param {*} dataSend dados a enviar no pedido
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function changeEquipment($http, id, dataSend, callback) {
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
+    $http({
+
+        method: "PUT",
+        data: dataSend,
+        url: domain + "api/equipment/" + id,
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
+/**
+ * Função que altera um plano
+ * @param {*} planId id do plano a alterar
+ * @param {*} dataSend dados a enviar no pedido
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function changePlan($http, planId, dataSend, callback) {
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
+    $http({
+
+        method: "PUT",
+        data: dataSend,
+        url: domain + "api/plans/" + planId,
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+}
+
+// DELETE REQUESTS
+
+/**
+ * Função que elimina um exercicio
+ * @param {*} id id do exercicio a eliminar
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function deleteExercise($http, id, callback){
+    
+    let loginData = checkLogin();
+    let token = loginData.token;
     
     $http({
 
-        method: "POST",
-        data: dataSend,
-        url: "https://localhost:5001/api/equipment/",
+        method: "DELETE",
+        url: domain + "api/exercises/" + id,
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
 
     }).then(function mySuccess(response) {
@@ -467,16 +801,25 @@ export function createEquipment($http, dataSend, callback){
         callback(false);
 
     });
-
 }
 
+/**
+ * Função que elimina um equipamento
+ * @param {*} id id do equipamento a eliminar
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function deleteEquipment($http, id, callback){
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method: "DELETE",
-        url: "https://localhost:5001/api/equipment/" + id,
+        url: domain + "api/equipment/" + id,
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
 
     }).then(function mySuccess(response) {
@@ -490,36 +833,23 @@ export function deleteEquipment($http, id, callback){
     });
 }
 
-export function changePlan($http, planId, dataSend, callback) {
-
-    $http({
-
-        method: "PUT",
-        data: dataSend,
-        url: "https://localhost:5001/api/plans/" + planId,
-        headers: {
-            'content-type': "application/json"
-        }
-
-    }).then(function mySuccess(response) {
-
-        callback(response);
-
-    }, function myError(response) {
-
-        callback(false);
-
-    });
-
-}
-
+/**
+ * Função que elimina um plano
+ * @param {*} id id do plano a eliminar
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
 export function deletePlan($http, id, callback){
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
     $http({
 
         method: "DELETE",
-        url: "https://localhost:5001/api/plans/" + id,
+        url: domain + "api/plans/" + id,
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
 
     }).then(function mySuccess(response) {

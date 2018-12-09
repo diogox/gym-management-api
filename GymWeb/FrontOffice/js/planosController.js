@@ -1,7 +1,13 @@
 import { getPlanosTreino, getexerciseById, getexercises, createPlan, getPlanosTreinoById, changePlan, deletePlan } from './pedidos.js'
+import { checkLogin } from './myutil.js'
 
 // Controller da  página planos de treino
 app.controller('planosCtrl', function ($scope, $http, $rootScope) {
+
+    let login = checkLogin();
+    if(!login) {
+        window.location.href = "index.html#!login";
+    }
 
     // Indicar ao controler da página principal que o menu lateral deve ser mostrado
     $rootScope.$broadcast('show-window', 'true');

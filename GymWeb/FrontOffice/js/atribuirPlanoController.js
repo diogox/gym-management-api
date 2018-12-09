@@ -1,7 +1,13 @@
 import { getAllClients, getPlanosTreinoById, getPlanosTreino, changeClientPlan } from './pedidos.js'
+import { checkLogin } from './myutil.js'
 
 // Controller da página de atribuir planos
 app.controller('atribuirPlanoCtrl', function ($scope, $http, $rootScope) {
+
+    let login = checkLogin();
+    if(!login) {
+        window.location.href = "index.html#!login";
+    }
 
     // Indicar ao controler da página principal que o menu lateral deve ser mostrado
     $rootScope.$broadcast('show-window', 'true');
