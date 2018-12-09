@@ -55,7 +55,6 @@ namespace GymAPI.Services
             oldMember.ImageUrl = member.ImageUrl;
             oldMember.Age = member.Age;
             oldMember.BirthDate = member.BirthDate;
-            oldMember.Rank = member.Rank;
             oldMember.Salary = member.Salary;
             oldMember.HasBeenPaidThisMonth = member.HasBeenPaidThisMonth;
 
