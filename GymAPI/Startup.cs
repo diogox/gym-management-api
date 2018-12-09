@@ -92,8 +92,8 @@ namespace GymAPI
                     {
                         ValidateIssuer = true,
                         ValidateAudience = true,
-                        ValidAudience = "https://gym-lds.herokuapp.com",
-                        ValidIssuer = "https://gym-lds.herokuapp.com",
+                        ValidAudience = "https://gym-lds.herokuapp.com/",
+                        ValidIssuer = "https://gym-lds.herokuapp.com/",
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsASuperSecurePassword"))
                     };
                 }));

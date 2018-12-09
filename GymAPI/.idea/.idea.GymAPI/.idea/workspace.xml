@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0053b0a4-1caa-41f3-a1c7-8337c1e360b3" name="Default Changelist" comment="" />
+    <list default="true" id="0053b0a4-1caa-41f3-a1c7-8337c1e360b3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Startup.cs" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +44,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="21858" />
+          <entry key="cs" value="21860" />
           <entry key="json" value="155" />
           <entry key="md" value="395" />
           <entry key="txt" value="330" />
@@ -50,7 +52,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="21858" />
+          <entry key="C#" value="21860" />
           <entry key="JSON" value="155" />
           <entry key="Markdown" value="395" />
           <entry key="PLAIN_TEXT" value="330" />
@@ -155,7 +157,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Services/AuthorizationsService.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
@@ -319,36 +321,36 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Startup.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1558">
-              <caret line="206" column="9" selection-start-line="206" selection-start-column="9" selection-end-line="206" selection-end-column="9" />
+            <state relative-caret-position="-1466">
+              <caret line="92" column="46" lean-forward="true" selection-start-line="92" selection-start-column="46" selection-end-line="92" selection-end-column="46" />
               <folding>
-                <marker date="1544297520657" expanded="false" signature="6:617" ph="..." />
-                <marker date="1544297520657" expanded="true" signature="635:8205" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="662:8203" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="721:784" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="1007:5128" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="1197:1644" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="1455:1626" ph="/* Makes the fields with null values not show up in the JSON ... */" />
-                <marker date="1544297520657" expanded="true" signature="1693:1915" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="1774:1899" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="2316:3020" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="3073:3382" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="3425:4044" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="3656:4025" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="4131:4359" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="5343:6125" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="5390:5467" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="5484:5543" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="5958:6066" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="6220:8196" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="6609:7220" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="6843:7055" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="7380:7546" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="7692:7857" ph="{...}" />
-                <marker date="1544297520657" expanded="true" signature="8019:8186" ph="{...}" />
+                <marker date="1544375818500" expanded="false" signature="6:617" ph="..." />
+                <marker date="1544375818500" expanded="true" signature="635:8223" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="662:8221" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="721:784" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="1007:5146" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="1197:1644" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="1455:1626" ph="/* Makes the fields with null values not show up in the JSON ... */" />
+                <marker date="1544375818500" expanded="true" signature="1693:1915" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="1774:1899" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="2316:3020" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="3073:3382" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="3425:4062" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="3656:4043" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="4149:4377" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="5361:6143" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="5408:5485" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="5502:5561" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="5976:6084" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="6238:8214" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="6627:7238" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="6861:7073" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="7398:7564" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="7710:7875" ph="{...}" />
+                <marker date="1544375818500" expanded="true" signature="8037:8204" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -466,8 +468,8 @@
         <option value="$PROJECT_DIR$/Controllers/ClientsController.cs" />
         <option value="$PROJECT_DIR$/Services/ClientsService.cs" />
         <option value="$PROJECT_DIR$/Services/StaffService.cs" />
-        <option value="$PROJECT_DIR$/Startup.cs" />
         <option value="$PROJECT_DIR$/Controllers/AuthController.cs" />
+        <option value="$PROJECT_DIR$/Startup.cs" />
       </list>
     </option>
   </component>
@@ -615,12 +617,12 @@
       <workItem from="1544124884954" duration="2654000" />
       <workItem from="1544221382997" duration="523000" />
       <workItem from="1544282706810" duration="1733000" />
-      <workItem from="1544294688644" duration="3629000" />
+      <workItem from="1544294688644" duration="5366000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131072000" />
+    <option name="totallyTimeSpent" value="132809000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1112,39 +1114,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Startup.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1558">
-          <caret line="206" column="9" selection-start-line="206" selection-start-column="9" selection-end-line="206" selection-end-column="9" />
-          <folding>
-            <marker date="1544297520657" expanded="false" signature="6:617" ph="..." />
-            <marker date="1544297520657" expanded="true" signature="635:8205" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="662:8203" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="721:784" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="1007:5128" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="1197:1644" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="1455:1626" ph="/* Makes the fields with null values not show up in the JSON ... */" />
-            <marker date="1544297520657" expanded="true" signature="1693:1915" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="1774:1899" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="2316:3020" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="3073:3382" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="3425:4044" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="3656:4025" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="4131:4359" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="5343:6125" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="5390:5467" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="5484:5543" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="5958:6066" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="6220:8196" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="6609:7220" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="6843:7055" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="7380:7546" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="7692:7857" ph="{...}" />
-            <marker date="1544297520657" expanded="true" signature="8019:8186" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DAOs/LoginDAO.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -1251,6 +1220,39 @@
             <marker date="1543878718122" expanded="true" signature="3933:4162" ph="{...}" />
             <marker date="1543878718122" expanded="true" signature="4075:4145" ph="{...}" />
             <marker date="1543878718122" expanded="true" signature="4179:4237" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Startup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1466">
+          <caret line="92" column="46" lean-forward="true" selection-start-line="92" selection-start-column="46" selection-end-line="92" selection-end-column="46" />
+          <folding>
+            <marker date="1544375818500" expanded="false" signature="6:617" ph="..." />
+            <marker date="1544375818500" expanded="true" signature="635:8223" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="662:8221" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="721:784" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="1007:5146" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="1197:1644" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="1455:1626" ph="/* Makes the fields with null values not show up in the JSON ... */" />
+            <marker date="1544375818500" expanded="true" signature="1693:1915" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="1774:1899" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="2316:3020" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="3073:3382" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="3425:4062" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="3656:4043" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="4149:4377" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="5361:6143" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="5408:5485" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="5502:5561" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="5976:6084" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="6238:8214" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="6627:7238" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="6861:7073" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="7398:7564" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="7710:7875" ph="{...}" />
+            <marker date="1544375818500" expanded="true" signature="8037:8204" ph="{...}" />
           </folding>
         </state>
       </provider>
