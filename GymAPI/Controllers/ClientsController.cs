@@ -226,7 +226,16 @@ namespace GymAPI
             {
                 return NotFound();
             }
-            
+
+            // Check for training plan changes
+            if (oldClient.TrainingPlanId != client.TrainingPlanId)
+            {
+                _clientsService.AddNotification(oldClient, new ClientNotificationDAO()
+                {
+                    Title = "Novo Plano de Treino Atribuído.",
+                    Message = "Foi-lhe atribuído um novo plano de treino. Vá a \"Plano Treino\" no seu menu para visualiza-lo."
+                });
+            }
             _clientsService.Update(oldClient, client);
             return NoContent();
         }

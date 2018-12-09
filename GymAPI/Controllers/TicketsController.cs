@@ -13,10 +13,12 @@ namespace GymAPI
     public class TicketsController : Controller
     {
         private readonly ISupportTicketsService _supportTicketService;
+        private readonly IClientsService _clientsService;
 
-        public TicketsController (ISupportTicketsService supportTicketService)
+        public TicketsController (ISupportTicketsService supportTicketService, IClientsService clientsService)
         {
             _supportTicketService = supportTicketService;
+            _clientsService = clientsService;
         }
 
         // GET api/tickets
@@ -130,6 +132,18 @@ namespace GymAPI
             if (ticket == null)
             {
                 return NotFound();
+            }
+
+            var client = _clientsService.GetById(ticket.ClientId);
+            
+            // If the current message is not from the client. Notify him.
+            if (message.From != SupportTicketMessageSender.Client )
+            {
+                _clientsService.AddNotification(client, new ClientNotificationDAO()
+                {
+                    Title = "Nova mensagem",
+                    Message = "Tem uma nova mensagem no seu ticket de suporte.",
+                });
             }
             
             _supportTicketService.AddMessage(ticket, message);
