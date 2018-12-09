@@ -56,11 +56,22 @@ namespace GymAPI
                     signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
                 );
 
+
+                var userTypeId = new long();
+                if (user.ClientId != null)
+                {
+                    userTypeId = (long) user.ClientId;
+                }
+                else
+                {
+                    userTypeId = (long) user.StaffMemberId;
+                }
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     expiration = token.ValidTo,
                     userType = user.Role,
+                    userTypeId,
                 });
             }
             
