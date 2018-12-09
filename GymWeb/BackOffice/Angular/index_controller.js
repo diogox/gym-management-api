@@ -2,7 +2,7 @@ import { setCookie, getCookie, deletCookie } from './cookies.js'
 app.controller("indexCtrl", function ($scope, $rootScope) {
 
     //Verifica se o admin está logged se não estiver redireciona para a página de Login (Comentário no "if statement" para testar na api sem auth)
-    if (getCookie("admin") == "") {
+    if (getCookie("admin") == "" || getCookie("usertype") != "Admin") {
         window.location.href = "#!login";
     }
 
@@ -35,9 +35,10 @@ app.controller("indexCtrl", function ($scope, $rootScope) {
     });
 
 
-    //LogOut
+    //LogOut apaga a Cookie da Sessão
     $scope.logout = function () {
         deletCookie("admin");
+        deletCookie("usertype");
         window.location.href = "#!login";
     }
 

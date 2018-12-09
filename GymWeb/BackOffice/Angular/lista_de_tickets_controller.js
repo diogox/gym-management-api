@@ -1,4 +1,5 @@
 import { getTickets } from './pedidos.js'
+import { setCookie, getCookie } from './cookies.js'
 
 //Format date to yyyy-mm-dd hh:mm:ss
 function formatDate(date) {
@@ -20,6 +21,11 @@ function formatDate(date) {
 
 
 app.controller("ticketsCtrl", function ($scope, $http, $rootScope) {
+
+    //Verifica se o admin está logged se não estiver redireciona para a página de Login (Comentário no "if statement" para testar na api sem auth)
+    if (getCookie("admin") == "" || getCookie("usertype") != "Admin") {
+        window.location.href = "#!login";
+    }
 
     // Indicar ao controler da página principal que o menu lateral deve ser mostrado
     $rootScope.$broadcast('show-window', 'true');

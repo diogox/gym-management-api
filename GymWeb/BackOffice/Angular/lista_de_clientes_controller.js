@@ -1,4 +1,5 @@
 import { getClients, removeClient, adicionarClient, editarClient } from './pedidos.js'
+import { setCookie, getCookie } from './cookies.js'
 
 //Format date to yyyy-mm-dd
 function formatDate(date) {
@@ -27,6 +28,12 @@ function getAge(DOB) {
 
 //Controller da Gestão dos Clientes
 app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
+
+    //Verifica se o admin está logged se não estiver redireciona para a página de Login (Comentário no "if statement" para testar na api sem auth)
+    if (getCookie("admin") == "" || getCookie("usertype") != "Admin") {
+        window.location.href = "#!login";
+    }
+
 
     // Indicar ao controler da página principal que o menu lateral deve ser mostrado
     $rootScope.$broadcast('show-window', 'true');
@@ -68,7 +75,8 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
 
     //Listar todos os Clientes
     //Executa a função para pedir os dados à API
-    getClients($http, (response) => {
+    let token = getCookie('admin');
+    getClients($http,token, (response) => {
         if (response) {
 
             //Formata a BirthDate dos Clientes para yyyy-mm-dd
@@ -94,7 +102,8 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
         user.age = getAge(date);
         let data = JSON.stringify(user);
 
-        adicionarClient($http, data, (response) => {
+        let token = getCookie("admin");
+        adicionarClient($http, data, token, (response) => {
             if (response) {
                 let resposta = response.data;
 
@@ -145,7 +154,8 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
         newClient.weightInKg = $scope.eduser.weightInKg;
         newClient.imageUrl = $scope.eduser.imageUrl;
 
-        editarClient($http, newClient, $scope.idclienteedit, (response) => {
+        let token = getCookie("admin");
+        editarClient($http, newClient, $scope.idclienteedit, token, (response) => {
             if (response) {
                 $scope.eduser = null;
 
@@ -169,7 +179,8 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
         //console.log($scope.Clientes);
         //console.log(id);
 
-        removeClient($http, id, (response) => {
+        let token = getCookie("admin");
+        removeClient($http, id, token, (response) => {
             if (response) {
 
                 $scope.Clientes = $.grep($scope.Clientes, function (e) {

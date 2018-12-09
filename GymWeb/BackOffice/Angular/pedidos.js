@@ -3,7 +3,7 @@ export function login($http,data,callback) {
     $http({
         method: "POST",
         data: data,
-        url: "https://localhost:5001/api/auth/login/",
+        url: "https://localhost:5001/api/auth/login",
         headers: {
             'Content-Type': "application/json"
         }
@@ -16,10 +16,15 @@ export function login($http,data,callback) {
 
 //Clientes
 //Get all Clients
-export function getClients($http, callback) {
+export function getClients($http,token, callback) {
+    console.log(token);
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/clients/"
+        url: "https://localhost:5001/api/clients/",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
     }).then(function mySuccess(response) {
         //console.log(response);
         callback(response)
@@ -29,11 +34,16 @@ export function getClients($http, callback) {
     });
 }
 
+
 //Get Client by ID
-export function getClientsByID($http,id, callback) {
+export function getClientsByID($http,id, token, callback) {
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/clients/"+id
+        url: "https://localhost:5001/api/clients/"+id,
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
     }).then(function mySuccess(response) {
         //console.log(response);
         callback(response)
@@ -44,10 +54,13 @@ export function getClientsByID($http,id, callback) {
 }
 
 //Remover Cliente pelo ID
-export function removeClient($http, id, callback) {
+export function removeClient($http, id, token, callback) {
     $http({
         method: "DELETE",
-        url: "https://localhost:5001/api/clients/" + id
+        url: "https://localhost:5001/api/clients/" + id,
+        headers: {
+            'authorization': "bearer "+ token,
+        }
     }).then(function mySuccess(response) {
         //console.log(response)
         callback(response)
@@ -58,12 +71,13 @@ export function removeClient($http, id, callback) {
 }
 
 //Adiciconar Cliente
-export function adicionarClient($http, data, callback) {
+export function adicionarClient($http, data, token, callback) {
     $http({
         method: "POST",
         data: data,
         url: "https://localhost:5001/api/clients/",
         headers: {
+            'authorization': "bearer "+ token,
             'content-type': "application/json"
         }
     }).then(function mySuccess(response) {
@@ -76,12 +90,13 @@ export function adicionarClient($http, data, callback) {
 }
 
 //Editar Cliente
-export function editarClient($http,data,id,callback){
+export function editarClient($http, data, id, token, callback){
     $http({
         method: "PUT",
         data: data,
         url: "https://localhost:5001/api/clients/" + id,
         headers: {
+            'authorization': "bearer "+ token,
             'content-type': "application/json"
         }
     }).then(function mySuccess(response) {
@@ -110,10 +125,14 @@ export function editarClient($http,data,id,callback){
 
 //Funcionário
 //Get all Staff
-export function getStaff($http, callback) {
+export function getStaff($http, token, callback) {
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/staff/"
+        url: "https://localhost:5001/api/staff/",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
     }).then(function mySuccess(response) {
         //console.log(response);
         callback(response)
@@ -124,10 +143,14 @@ export function getStaff($http, callback) {
 }
 
 //Get Staff by ID
-export function getStaffByID($http,id, callback) {
+export function getStaffByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/staff/"+id
+        url: "https://localhost:5001/api/staff/"+id,
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
     }).then(function mySuccess(response) {
         //console.log(response);
         callback(response)
@@ -138,10 +161,13 @@ export function getStaffByID($http,id, callback) {
 }
 
 //Remover Staff pelo ID
-export function removeStaff($http, id, callback) {
+export function removeStaff($http, id, token, callback) {
     $http({
         method: "DELETE",
-        url: "https://localhost:5001/api/staff/" + id
+        url: "https://localhost:5001/api/staff/" + id,
+        headers: {
+            'authorization': "bearer "+ token,
+        }
     }).then(function mySuccess(response) {
         //console.log(response)
         callback(response)
@@ -152,13 +178,14 @@ export function removeStaff($http, id, callback) {
 }
 
 //Adiciconar Staff
-export function adicionarStaff($http, data, callback) {
+export function adicionarStaff($http, data, token, callback) {
     $http({
         method: "POST",
         data: data,
         url: "https://localhost:5001/api/staff/",
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
         //console.log(response)
@@ -170,13 +197,14 @@ export function adicionarStaff($http, data, callback) {
 }
 
 //Editar Cliente
-export function editarStaff($http,data,id,callback){
+export function editarStaff($http, data, id, token, callback){
     $http({
         method: "PUT",
         data: data,
         url: "https://localhost:5001/api/staff/" + id,
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
         //console.log(response)
