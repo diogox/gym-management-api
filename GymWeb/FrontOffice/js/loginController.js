@@ -25,7 +25,11 @@ app.controller('loginCtrl', function ($scope, $http, $rootScope) {
                 
                 newLogin(userType, token, userTypeId, expiration);
 
-                window.location.href = "index.html#!";
+                if(userType === "Client"){
+                    window.location.href = "index.html#!";
+                }else{
+                    window.location.href = "index.html#!planos";
+                }
 
             }else{
 

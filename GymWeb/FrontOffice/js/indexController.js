@@ -13,6 +13,8 @@ app.controller('indexCtrl', function ($scope, $http) {
     // irá mostrar e quais irá ocultar
     $scope.$on('show-window', function (event, arg) {
 
+        // Obtem as cookies do login
+        login = checkLogin();
         let emitter = event.name;
 
         // Se for para ocultar os menus
@@ -32,15 +34,19 @@ app.controller('indexCtrl', function ($scope, $http) {
             if (type === "Client") {
 
                 $scope.hideClient = "";
-                $scope.hideTrainner = "y";
+                $scope.hideStaff = "y";
                 $scope.hideBoth = "";
 
-            } else if (type === "Trainner") {
+            } else if (type === "Staff") {
 
                 $scope.hideClient = "y";
-                $scope.hideTrainner = "";
+                $scope.hideStaff = "";
                 $scope.hideBoth = "";
 
+            } else if(type === "Admin") {
+                $scope.hideClient = "";
+                $scope.hideStaff = "";
+                $scope.hideBoth = "";
             }
 
         }

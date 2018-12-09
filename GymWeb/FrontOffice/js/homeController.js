@@ -8,13 +8,11 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope) {
 
     // Se não tem login efetuado
     if (!login) {
-
         // Redireciona para a página de login
         window.location.href = "index.html#!login";
 
     // Se tem login efetuado
     } else {
-
         // Obtem o id do utilizador que fez login
         let myId = login.userTypeId;
 
