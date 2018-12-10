@@ -1,9 +1,16 @@
+import { registerClient } from './pedidos.js'
+import { checkLogin } from './myutil.js'
+
 // Controller do registo
 app.controller('registoCtrl', function ($scope, $http, $rootScope) {
 
+    let login = checkLogin();
+    if (login) {
+        window.location.href = "index.html#!";
+    }
+
     // Indicar ao controler da página principal que o menu lateral deve ser oculto
     $rootScope.$broadcast('show-window', 'false');
-    // ::TODO:: VERIFICAR SE NÂO È PECISO INSERIR A IDADE
 
     // Verificar se a password e a confirmação de password são iguais
     $scope.checkPasswords = function () {
@@ -53,16 +60,42 @@ app.controller('registoCtrl', function ($scope, $http, $rootScope) {
 
                 if (resultConfirm) {
 
-                    /*bootbox.alert({
-                        message: "Registo efetuado com sucesso!",
-                        backdrop: true,
-                        buttons: {
-                            ok: {
-                                label: "OK!",
-                                className: 'btn-success'
-                            }
+                    // Efetua um pedido de registo ao cliente
+                    registerClient($http, $scope.registo, (response)=>{
+
+                        // Se o registo foi efetuado com sucesso
+                        if(response) {
+
+                            bootbox.alert({
+                                message: "Registo efetuado com sucesso!",
+                                backdrop: true,
+                                buttons: {
+                                    ok: {
+                                        label: "OK!",
+                                        className: 'btn-success'
+                                    }
+                                }
+                            });
+
+                            window.location.href = "index.html#!login";
+
+                        // Se o registo não foi efetuado com sucesso
+                        }else{
+
+                            bootbox.alert({
+                                message: "Registo efetuado sem sucesso! Experimente um username ou email diferentes!",
+                                backdrop: true,
+                                buttons: {
+                                    ok: {
+                                        label: "OK!",
+                                        className: 'btn-danger'
+                                    }
+                                }
+                            });
+
                         }
-                    });*/
+
+                    });
 
                 }
             }

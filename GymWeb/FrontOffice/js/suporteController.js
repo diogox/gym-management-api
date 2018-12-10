@@ -1,43 +1,58 @@
 import { getTickets } from "./pedidos.js";
+import { checkLogin } from './myutil.js'
 
 // Controller da página de suporte
 app.controller('suporteCtrl', function ($scope, $http, $rootScope) {
 
-    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
-    $rootScope.$broadcast('show-window', 'true');
+    let login = checkLogin();
+    let userType = login.userType;
+    
+    if (!login) {
+        window.location.href = "index.html#!login";
+    } else if(userType !== "Client"){
 
-    // Pede os tickets à API
-    getTickets($http, (response) => {
+        window.location.href = "index.html#!403";
 
-        // Se a API respondeu da forma correta
-        if (response) {
+    }else {
 
-            // Array que vai conter todos os ticket do cliente
-            let tickets = [];
+        // Obtem o id do utilizador que fez login
+        let myId = login.userTypeId;
 
-            // Percorre cada um dos tickets
-            for (let i = 0; i < response.data.length; i++) {
+        // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+        $rootScope.$broadcast('show-window', 'true');
 
-                // Reorganiza o formato da data
-                let openedAt = response.data[i].openedAt;
-                let year = openedAt.substring(0, 4);
-                let month = openedAt.substring(5, 7);
-                let day = openedAt.substring(8, 10);
-                let hour = openedAt.substring(11, 13);
-                let minute = openedAt.substring(14, 16);
-                openedAt = day + "-" + month + "-" + year + " " + hour + ":" + minute;
+        // Pede os tickets à API
+        getTickets($http, myId, (response) => {
 
-                // Reorganiza a data e hora num formato mais legível
-                response.data[i].openedAt = openedAt;
+            // Se a API respondeu da forma correta
+            if (response) {
 
+                // Array que vai conter todos os ticket do cliente
+                let tickets = [];
+
+                // Percorre cada um dos tickets
+                for (let i = 0; i < response.data.length; i++) {
+
+                    // Reorganiza o formato da data
+                    let openedAt = response.data[i].openedAt;
+                    let year = openedAt.substring(0, 4);
+                    let month = openedAt.substring(5, 7);
+                    let day = openedAt.substring(8, 10);
+                    let hour = openedAt.substring(11, 13);
+                    let minute = openedAt.substring(14, 16);
+                    openedAt = day + "-" + month + "-" + year + " " + hour + ":" + minute;
+
+                    // Reorganiza a data e hora num formato mais legível
+                    response.data[i].openedAt = openedAt;
+
+                }
+
+                // Atualiza os tickets para atualizar a vista
+                $scope.tickets = response.data;
+
+                // Se a API não respondeu da forma correta
+            } else {
             }
-
-            // Atualiza os tickets para atualizar a vista
-            $scope.tickets = response.data;
-
-            // Se a API não respondeu da forma correta
-        } else {
-        }
-    });
-
+        });
+    }
 });
