@@ -117,7 +117,7 @@ namespace GymAPI.Migrations
 
                     b.Property<int>("DifficultyLevel");
 
-                    b.Property<long>("EquipmentId");
+                    b.Property<long?>("EquipmentId");
 
                     b.Property<string>("ImageUrl");
 
@@ -435,8 +435,7 @@ namespace GymAPI.Migrations
                 {
                     b.HasOne("GymAPI.Models.Equipment", "Equipment")
                         .WithMany()
-                        .HasForeignKey("EquipmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("EquipmentId");
                 });
 
             modelBuilder.Entity("GymAPI.Models.SupportTicket", b =>
