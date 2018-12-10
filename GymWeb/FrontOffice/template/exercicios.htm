@@ -62,6 +62,7 @@
                         <div class="form-group custom-control-inline" style="width:150px">
                             <select name="equipment" class="custom-select" ng-model="editExercise.equipmentId">
                                 <option value="" disabled selected>Equipamento</option>
+                                <option></option>
                                 <option ng-repeat="y in equipmentList" value="{{y.id}}">{{y.name}}</option>
                             </select>
                         </div>
@@ -91,7 +92,7 @@
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="x in exercicios | filter : filtro_exercicios">
 
-            <p data-toggle="collapse" data-target="#ex{{x.id}}">{{x.name}} 
+            <p class="pointer" data-toggle="collapse" data-target="#ex{{x.id}}">{{x.name}} 
                 <a ng-hide="hideStaff" href="" ng-click="edit(x.id)" data-toggle="modal" data-target="#editarCriarExercicio">Edit</a>
                 <a ng-hide="hideStaff" href="" ng-click="edit(x.id);delete(x.id)">Delete</a>
             </p>

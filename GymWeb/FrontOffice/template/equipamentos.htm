@@ -83,7 +83,7 @@
         <li class="list-group-item" ng-repeat="x in equipamentos | filter : filtro_equipamentos">
 
 
-            <p data-toggle="collapse" data-target="#eq{{x.id}}">{{x.name}} 
+            <p class="pointer" data-toggle="collapse" data-target="#eq{{x.id}}">{{x.name}} 
                 <a ng-hide="hideStaff" href="" ng-click="edit(x.id)" data-toggle="modal" data-target="#editarCriarEquipamento">Edit</a>
                 <a ng-hide="hideStaff" href="" ng-click="edit(x.id);delete(x.id)">Delete</a>
             </p>
