@@ -61,6 +61,7 @@ namespace GymAPI
         
         // GET api/plans/{id}/exercises
         [HttpGet("{id}/exercises")]
+        [AllowAnonymous]
         public async Task<ActionResult<List<TrainingPlanBlock>>> GetTrainingPlanExerciseBlocks(long id)
         {
             var _isAdmin = _authService.CheckIfAdmin(User);
