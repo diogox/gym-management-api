@@ -14,6 +14,7 @@ namespace GymAPI.Services
         bool CheckIn(Client client);
         void AddNotification(Client client, ClientNotificationDAO notification);
         void MarkNotificationAsRead(ClientNotification notification);
+        bool UpdatePlan(Client client, long planId);
         void Create(Client client);
         void Update(Client oldClient, Client client);
         void Delete(Client client);
@@ -103,6 +104,19 @@ namespace GymAPI.Services
         {
             notification.IsUnread = false;
             _context.SaveChanges();
+        }
+
+        public bool UpdatePlan(Client client, long planId)
+        {
+            // Check if training plan exists
+            if (_context.Plans.Any(plan => plan.Id == planId))
+            {
+                client.TrainingPlanId = planId;
+                _context.SaveChanges();
+                return true;
+            }
+
+            return false;
         }
 
         public void Create(Client client)

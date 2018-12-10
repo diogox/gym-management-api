@@ -21,6 +21,7 @@
         <e p="LoginDAO.cs" t="Include" />
         <e p="SignupClientDAO.cs" t="Include" />
         <e p="SignupStaffMemberDAO.cs" t="Include" />
+        <e p="SwitchPlanDAO.cs" t="Include" />
       </e>
       <e p="Deploy Commands" t="Include" />
       <e p="Dockerfile" t="Include" />

@@ -230,6 +230,27 @@ namespace GymAPI
             _clientsService.AddNotification(client, notification);
             return Ok(client);
         }
+        
+        // POST api/clients/{id}/tickets
+        [HttpPost("{id}/tickets")]
+        public ActionResult SwitchTrainingPlan(long id, [FromBody] SwitchPlanDAO planIdObj)
+        {
+            var client = _clientsService.GetById(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            var success = _clientsService.UpdatePlan(client, planIdObj.PlanId);
+            if (success)
+            {
+                return Ok(client);
+            }
+            else
+            {
+                return BadRequest("The training plan doesn't exist!");
+            }
+        }
 
         // PUT api/clients/{id}
         [HttpPut("{id}")]
