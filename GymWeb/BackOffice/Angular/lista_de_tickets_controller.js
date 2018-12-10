@@ -49,7 +49,9 @@ app.controller("ticketsCtrl", function ($scope, $http, $rootScope) {
     }
 
     //Lista dos Tickets
-    getTickets($http, (response) => {
+    //Executa a função para pedir os dados à API
+    let token = getCookie('admin');
+    getTickets($http, token, (response) => {
         if (response) {
 
             //Formata a data dos Tickets para yyyy-mm-dd hh:mm:ss

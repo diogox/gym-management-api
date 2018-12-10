@@ -59,8 +59,9 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
     //Retirar o id do URL
     let id = $routeParams.id;
     $scope.novaMensagem = "Introduza uma mensagem.";
-
-    getTicketByID($http, id, (response) => {
+    
+    let token = getCookie('admin');
+    getTicketByID($http, id, token, (response) => {
         if (response) {
             $scope.id_Ticket = response.data.id;
             $scope.titulo_Ticket = response.data.title;
@@ -86,7 +87,7 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
 
 
             //Ligação para ir buscar o cliente responsável pela criação do Ticket
-            getClientsByID($http, response.data.clientId, (response2) => {
+            getClientsByID($http, response.data.clientId, token, (response2) => {
                 if (response2) {
                     $scope.nome_cliente = response2.data.firstName + " " + response2.data.lastName;
                 } else {
@@ -95,7 +96,7 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
             });
 
             //Ligação para ir buscar as Messagens de um Ticket
-            getMSGSTicket($http, id, (response3) => {
+            getMSGSTicket($http, id, token, (response3) => {
                 if (response3) {
 
                     //Formata a data dos Tickets para yyyy-mm-dd hh:mm:ss
@@ -126,7 +127,9 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
         let dataSend = { message, from, supportTicketId };
 
         let data = JSON.stringify(dataSend);
-        sendMSGTicket($http, data, id, (response4) => {
+
+        let token = getCookie('admin');
+        sendMSGTicket($http, data, id, token, (response4) => {
             if (response4) {
                 let resposta = response4.data;
 
@@ -137,7 +140,7 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
                 let list = $scope.Messages;
                 list.push(resposta);
                 $scope.Messages = list;
-                $scope.novaMensagem = "\n";
+                $scope.novaMensagem = null;
             } else {
                 $scope.alerts[3].show = true;
             }
@@ -147,7 +150,8 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
     //Close Ticket
     $scope.closeTicket = function () {
         //Pedido para fechar um determinado Ticket
-        closeTicket($http, $routeParams.id, (response5) => {
+        let token = getCookie('admin');
+        closeTicket($http, $routeParams.id, token, (response5) => {
             if (response5) {
                 $scope.state_Ticket = "Closed";
                 $scope.ShowClose = false;
@@ -162,7 +166,8 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
 
     //ReOpen Ticket
     $scope.reOpenTicket = function () {
-        openTicket($http, $routeParams.id, (response6) => {
+        let token = getCookie('admin');
+        openTicket($http, $routeParams.id, token, (response6) => {
             if (response6) {
                 $scope.state_Ticket = "Open";
                 $scope.ShowClose = true;
@@ -178,7 +183,8 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
     //Suspend Ticket (Futuramente Implementado)
     /*
     $scope.supsTicket = function(){
-        suspendTicket($http,$routeParams.id,(response6)=>{
+        let token = getCookie('admin');
+        suspendTicket($http, $routeParams.id, token, (response6)=>{
             if(response6){
                 $scope.state_Ticket = "Suspend";
                 $scope.ShowClose = true;

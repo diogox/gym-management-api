@@ -100,7 +100,10 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
         let user = $scope.user;
         //Calcula a idade do user através da sua dob
         user.age = getAge(date);
+
+        user.confirmPassword = null;
         let data = JSON.stringify(user);
+        //console.log("Cliente"+data);
 
         let token = getCookie("admin");
         adicionarClient($http, data, token, (response) => {

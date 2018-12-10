@@ -108,8 +108,9 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
         //Set hasBeenPaidThisMonth para false pois quando o funcionário é adicionado não recebe
         staff.hasBeenPaidThisMonth = false;
 
+        staff.confirmPassword = null;
         let data = JSON.stringify(staff);
-        //console.log(data);
+        //console.log("Funcionário"+data);
 
         let token = getCookie("admin");
         adicionarStaff($http, data, token, (response) => {
@@ -199,7 +200,7 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
         removeStaff($http, id, token, (response) => {
             if (response) {
 
-                console.log("Removido com Sucesso!");
+                //console.log("Removido com Sucesso!");
                 $scope.funcionarios = $.grep($scope.funcionarios, function (e) {
                     return e.id != id;
                 });
@@ -209,7 +210,7 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
 
             } else {
 
-                console.log("Erro ao remover Funcionário");
+                //console.log("Erro ao remover Funcionário");
 
                 //Dá close no Modal from
                 $('#removerfunc').modal('toggle');
