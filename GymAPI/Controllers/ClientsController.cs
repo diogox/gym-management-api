@@ -144,6 +144,31 @@ namespace GymAPI
             return Ok();
         }
         
+        // GET api/clients/{id}/tickets
+        [HttpGet("{id}/tickets")]
+        [AllowAnonymous]
+        public async Task< ActionResult< List<ClientNotification> > > GetClientTickets(long id)
+        {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isStaff = _authService.CheckIfStaff(User);
+
+            if ( !(_isAdmin || _isStaff) )
+            {
+                if (! await _authService.CheckIfCurrentClient(HttpContext, id))
+                {
+                    return Forbid();
+                }
+            }
+            
+            var client = _clientsService.GetById(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(client.SupportTickets);
+        }
+        
         // POST api/clients
         [HttpPost]
         [AllowAnonymous]
