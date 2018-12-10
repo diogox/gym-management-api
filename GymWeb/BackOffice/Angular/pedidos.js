@@ -235,10 +235,14 @@ export function editarStaff($http, data, id, token, callback){
 
 //Equipamentos
 //Get all Equipamento
-export function getEquipment($http, callback) {
+export function getEquipment($http, token, callback) {
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/equipment/"
+        url: "https://localhost:5001/api/equipment/",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
     }).then(function mySuccess(response) {
         //console.log(response);
         callback(response)
@@ -249,10 +253,14 @@ export function getEquipment($http, callback) {
 }
 
 //Get Equipamento by ID
-export function getEquipmentByID($http,id, callback) {
+export function getEquipmentByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/equipment/"+id
+        url: "https://localhost:5001/api/equipment/"+id,
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
     }).then(function mySuccess(response) {
         //console.log(response);
         callback(response)
@@ -263,10 +271,13 @@ export function getEquipmentByID($http,id, callback) {
 }
 
 //Remover Equipamento pelo ID
-export function removeEquipment($http, id, callback) {
+export function removeEquipment($http, id, token, callback) {
     $http({
         method: "DELETE",
-        url: "https://localhost:5001/api/equipment/" + id
+        url: "https://localhost:5001/api/equipment/" + id,
+        headers: {
+            'authorization': "bearer "+ token,
+        }
     }).then(function mySuccess(response) {
         //console.log(response)
         callback(response)
@@ -277,13 +288,14 @@ export function removeEquipment($http, id, callback) {
 }
 
 //Adiciconar Equipamento
-export function adicionarEquipment($http, data, callback) {
+export function adicionarEquipment($http, data, token, callback) {
     $http({
         method: "POST",
         data: data,
         url: "https://localhost:5001/api/equipment/",
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
         //console.log(response)
@@ -295,13 +307,14 @@ export function adicionarEquipment($http, data, callback) {
 }
 
 //Editar Equipamento
-export function editarEquipment($http,data,id,callback){
+export function editarEquipment($http, data, id, token, callback){
     $http({
         method: "PUT",
         data: data,
         url: "https://localhost:5001/api/equipment/" + id,
         headers: {
-            'content-type': "application/json"
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
         //console.log(response)
