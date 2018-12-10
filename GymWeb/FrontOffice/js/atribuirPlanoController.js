@@ -5,9 +5,15 @@ import { checkLogin } from './myutil.js'
 app.controller('atribuirPlanoCtrl', function ($scope, $http, $rootScope) {
 
     let login = checkLogin();
+    let userType = login.userType;
+    
     if (!login) {
         window.location.href = "index.html#!login";
-    } else {
+    } else if(userType !== "Staff"){
+
+        window.location.href = "index.html#!403";
+
+    }else {
 
         // Obtem o id do utilizador que fez login
         let myId = login.userTypeId;
@@ -26,7 +32,7 @@ app.controller('atribuirPlanoCtrl', function ($scope, $http, $rootScope) {
                 for (let i = 0; i < response.data.length; i++) {
                     listClients.push(response.data[i]);
 
-                    if (listClients[i].trainingPlan != null) {
+                    if (listClients[i].trainingPlanId != null) {
                         // Obter o plano atual deste cliente
                         getPlanosTreinoById($http, listClients[i].trainingPlanId, (plan) => {
 
@@ -43,6 +49,7 @@ app.controller('atribuirPlanoCtrl', function ($scope, $http, $rootScope) {
             } else {
 
             }
+
             // Atualiza a vista do utilizador
             $scope.clients = listClients;
 
@@ -67,7 +74,11 @@ app.controller('atribuirPlanoCtrl', function ($scope, $http, $rootScope) {
                 if (listClients[i].id === clientId) {
 
                     listClients[i].trainingPlanId = planId;
-                    changeClientPlan($http, listClients[i].id, listClients[i], (response) => {
+
+                    // Objeto a enviar no body do pedido
+                    let obj = {planId: planId};
+
+                    changeClientPlan($http, listClients[i].id, obj, (response) => {
 
                         if (response) {
                             bootbox.alert({

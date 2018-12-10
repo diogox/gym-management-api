@@ -5,9 +5,15 @@ import { checkLogin } from './myutil.js'
 app.controller('planosCtrl', function ($scope, $http, $rootScope) {
 
     let login = checkLogin();
+    let userType = login.userType;
+
     if (!login) {
         window.location.href = "index.html#!login";
-    } else {
+    } else if(userType !== "Staff"){
+
+        window.location.href = "index.html#!403";
+
+    }else{
 
         // Obtem o id do utilizador que fez login
         let myId = login.userTypeId;

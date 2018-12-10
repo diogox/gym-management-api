@@ -656,9 +656,9 @@ export function changeClientPlan($http, clientId, dataSend, callback) {
 
     $http({
 
-        method: "PUT",
+        method: "POST",
         data: dataSend,
-        url: domain + "api/clients/" + clientId,
+        url: domain + "api/clients/" + clientId + "/plan/",
         headers: {
             'authorization': "bearer "+ token,
             'content-type': "application/json",

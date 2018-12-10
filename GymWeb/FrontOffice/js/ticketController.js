@@ -5,8 +5,14 @@ import { checkLogin } from './myutil.js'
 app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) {
 
     let login = checkLogin();
+    let userType = login.userType;
+    
     if (!login) {
         window.location.href = "index.html#!login";
+    } else if(userType !== "Client"){
+
+        window.location.href = "index.html#!403";
+
     } else {
 
         // Obtem o id do utilizador que fez login

@@ -5,6 +5,7 @@ import { checkLogin } from './myutil.js'
 app.controller('homeCtrl', function ($scope, $http, $rootScope) {
 
     let login = checkLogin();
+    let userType = login.userType;
 
     // Se não tem login efetuado
     if (!login) {
@@ -12,7 +13,11 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope) {
         window.location.href = "index.html#!login";
 
     // Se tem login efetuado
-    } else {
+    } else if(userType !== "Client"){
+
+        window.location.href = "index.html#!403";
+
+    }else {
         // Obtem o id do utilizador que fez login
         let myId = login.userTypeId;
 

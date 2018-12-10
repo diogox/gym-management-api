@@ -48,6 +48,9 @@ app.config(function($routeProvider) {
     .when('/404',{
         templateUrl : "template/404.htm"
     })
+    .when('/403', {
+        templateUrl : "template/403.htm"
+    })
     .otherwise({
         templateUrl : "template/404.htm"
     })
