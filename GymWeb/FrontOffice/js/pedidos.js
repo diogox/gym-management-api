@@ -1,6 +1,7 @@
 import { checkLogin } from './myutil.js'
 
-const domain = "https://gym-lds.herokuapp.com/";
+const domain = "https://gym-lds.herokuapp.com/";  // -> Para usar a API na nuvem
+//const domain = "https://localhost:5001/";       // -> Para usar a API local
 
 // GET REQUESTS
 
@@ -215,10 +216,11 @@ export function getEquipmentById($http, id, callback) {
 
 /**
  * Função que obtem uma lista dos tickets existentes
+ * @param {*} id id do cliente para obter os tickets
  * @param {*} callback resposta a enviar após receber o pedido
  */
 
-export function getTickets($http, callback) {
+export function getTickets($http, id, callback) {
 
     let loginData = checkLogin();
     let token = loginData.token;
@@ -226,7 +228,7 @@ export function getTickets($http, callback) {
     $http({
 
         method : "GET",
-        url : domain + "api/tickets",
+        url : domain + "api/clients/" + id + "/tickets",
         headers: {
             'authorization': "bearer "+ token,
             'content-type': "application/json",

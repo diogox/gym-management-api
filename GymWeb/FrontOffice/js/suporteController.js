@@ -22,7 +22,7 @@ app.controller('suporteCtrl', function ($scope, $http, $rootScope) {
         $rootScope.$broadcast('show-window', 'true');
 
         // Pede os tickets à API
-        getTickets($http, (response) => {
+        getTickets($http, myId, (response) => {
 
             // Se a API respondeu da forma correta
             if (response) {
