@@ -138,8 +138,6 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
 
             }
 
-
-
         });
 
         // Ações quando clica em fechar ticket

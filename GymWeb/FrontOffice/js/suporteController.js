@@ -5,45 +5,48 @@ import { checkLogin } from './myutil.js'
 app.controller('suporteCtrl', function ($scope, $http, $rootScope) {
 
     let login = checkLogin();
-    if(!login) {
+    if (!login) {
         window.location.href = "index.html#!login";
-    }
+    } else {
 
-    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
-    $rootScope.$broadcast('show-window', 'true');
+        // Obtem o id do utilizador que fez login
+        let myId = login.userTypeId;
 
-    // Pede os tickets à API
-    getTickets($http, (response) => {
+        // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+        $rootScope.$broadcast('show-window', 'true');
 
-        // Se a API respondeu da forma correta
-        if (response) {
+        // Pede os tickets à API
+        getTickets($http, (response) => {
 
-            // Array que vai conter todos os ticket do cliente
-            let tickets = [];
+            // Se a API respondeu da forma correta
+            if (response) {
 
-            // Percorre cada um dos tickets
-            for (let i = 0; i < response.data.length; i++) {
+                // Array que vai conter todos os ticket do cliente
+                let tickets = [];
 
-                // Reorganiza o formato da data
-                let openedAt = response.data[i].openedAt;
-                let year = openedAt.substring(0, 4);
-                let month = openedAt.substring(5, 7);
-                let day = openedAt.substring(8, 10);
-                let hour = openedAt.substring(11, 13);
-                let minute = openedAt.substring(14, 16);
-                openedAt = day + "-" + month + "-" + year + " " + hour + ":" + minute;
+                // Percorre cada um dos tickets
+                for (let i = 0; i < response.data.length; i++) {
 
-                // Reorganiza a data e hora num formato mais legível
-                response.data[i].openedAt = openedAt;
+                    // Reorganiza o formato da data
+                    let openedAt = response.data[i].openedAt;
+                    let year = openedAt.substring(0, 4);
+                    let month = openedAt.substring(5, 7);
+                    let day = openedAt.substring(8, 10);
+                    let hour = openedAt.substring(11, 13);
+                    let minute = openedAt.substring(14, 16);
+                    openedAt = day + "-" + month + "-" + year + " " + hour + ":" + minute;
 
+                    // Reorganiza a data e hora num formato mais legível
+                    response.data[i].openedAt = openedAt;
+
+                }
+
+                // Atualiza os tickets para atualizar a vista
+                $scope.tickets = response.data;
+
+                // Se a API não respondeu da forma correta
+            } else {
             }
-
-            // Atualiza os tickets para atualizar a vista
-            $scope.tickets = response.data;
-
-            // Se a API não respondeu da forma correta
-        } else {
-        }
-    });
-
+        });
+    }
 });

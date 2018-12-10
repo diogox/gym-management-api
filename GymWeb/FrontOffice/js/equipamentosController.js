@@ -9,6 +9,9 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
         window.location.href = "index.html#!login";
     } else {
 
+        // Obtem o id do utilizador que fez login
+        let myId = login.userTypeId;
+
         // Indicar ao controler da página principal que o menu lateral deve ser mostrado
         $rootScope.$broadcast('show-window', 'true');
 

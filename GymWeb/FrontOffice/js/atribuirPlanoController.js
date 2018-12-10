@@ -5,97 +5,96 @@ import { checkLogin } from './myutil.js'
 app.controller('atribuirPlanoCtrl', function ($scope, $http, $rootScope) {
 
     let login = checkLogin();
-    if(!login) {
+    if (!login) {
         window.location.href = "index.html#!login";
-    }
+    } else {
 
-    // Indicar ao controler da página principal que o menu lateral deve ser mostrado
-    $rootScope.$broadcast('show-window', 'true');
+        // Obtem o id do utilizador que fez login
+        let myId = login.userTypeId;
 
-    let listClients = [];
+        // Indicar ao controler da página principal que o menu lateral deve ser mostrado
+        $rootScope.$broadcast('show-window', 'true');
 
-    // Obter lista de todos os clients
-    getAllClients($http, (response) => {
+        let listClients = [];
 
-        if (response) {
+        // Obter lista de todos os clients
+        getAllClients($http, (response) => {
 
-            // Guardar os clientes num array
-            for (let i = 0; i < response.data.length; i++) {
-                listClients.push(response.data[i]);
+            if (response) {
 
-                // Obter o plano atual deste cliente
-                getPlanosTreinoById($http, listClients[i].trainingPlanId, (plan) => {
+                // Guardar os clientes num array
+                for (let i = 0; i < response.data.length; i++) {
+                    listClients.push(response.data[i]);
 
-                    if (plan) {
+                    if (listClients[i].trainingPlan != null) {
+                        // Obter o plano atual deste cliente
+                        getPlanosTreinoById($http, listClients[i].trainingPlanId, (plan) => {
 
-                        listClients[i].trainingPlan = plan.data;
+                            if (plan) {
 
-                    } else {
+                                listClients[i].trainingPlan = plan.data;
 
-                    }
+                            } else {
 
-                });
-
-            }
-
-        } else {
-
-        }
-        // Atualiza a vista do utilizador
-        $scope.clients = listClients;
-
-    });
-
-    // Obtem todos os planos existentes
-    getPlanosTreino($http, (planos) => {
-
-        if (planos) {
-            // Atualiza a vista de utilizador
-            $scope.plans = planos.data;
-        } else {
-
-        }
-    });
-
-    // Quando alterar o item selected, altera o plano do utilizador
-    $scope.changePlan = function (clientId, planId) {
-
-        for (let i = 0; i < listClients.length; i++) {
-
-            if (listClients[i].id === clientId) {
-
-                listClients[i].trainingPlanId = planId;
-                changeClientPlan($http, listClients[i].id, listClients[i], (response) => {
-
-                    if (response) {
-                        bootbox.alert({
-                            message: "Plano alterado com sucesso!",
-                            backdrop: true,
-                            buttons: {
-                                ok: {
-                                    label: "OK!",
-                                    className: 'btn-success'
-                                }
                             }
                         });
-                    } else {
-                        bootbox.alert({
-                            message: "Plano alterado sem sucesso!",
-                            backdrop: true,
-                            buttons: {
-                                ok: {
-                                    label: "OK!",
-                                    className: 'btn-danger'
-                                }
-                            }
-                        });
-
                     }
+                }
+            } else {
 
-                });
+            }
+            // Atualiza a vista do utilizador
+            $scope.clients = listClients;
+
+        });
+
+        // Obtem todos os planos existentes
+        getPlanosTreino($http, (planos) => {
+
+            if (planos) {
+                // Atualiza a vista de utilizador
+                $scope.plans = planos.data;
+            } else {
+
+            }
+        });
+
+        // Quando alterar o item selected, altera o plano do utilizador
+        $scope.changePlan = function (clientId, planId) {
+
+            for (let i = 0; i < listClients.length; i++) {
+
+                if (listClients[i].id === clientId) {
+
+                    listClients[i].trainingPlanId = planId;
+                    changeClientPlan($http, listClients[i].id, listClients[i], (response) => {
+
+                        if (response) {
+                            bootbox.alert({
+                                message: "Plano alterado com sucesso!",
+                                backdrop: true,
+                                buttons: {
+                                    ok: {
+                                        label: "OK!",
+                                        className: 'btn-success'
+                                    }
+                                }
+                            });
+                        } else {
+                            bootbox.alert({
+                                message: "Plano alterado sem sucesso!",
+                                backdrop: true,
+                                buttons: {
+                                    ok: {
+                                        label: "OK!",
+                                        className: 'btn-danger'
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
             }
         }
-
     }
-
 });

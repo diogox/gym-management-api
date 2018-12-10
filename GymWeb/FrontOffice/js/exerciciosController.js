@@ -9,6 +9,9 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
         window.location.href = "index.html#!login";
     } else {
 
+        // Obtem o id do utilizador que fez login
+        let myId = login.userTypeId;
+
         // Indicar ao controler da página principal que o menu lateral deve ser mostrado
         $rootScope.$broadcast('show-window', 'true');
 
@@ -32,21 +35,25 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
                 // Percorre o array de exercicios
                 for (let i = 0; i < size; i++) {
 
-                    // Pede um exercicio especifico à API
-                    getEquipmentById($http, response.data[i].equipmentId, (response2) => {
+                    if (response.data[i].equipmentId != null) {
+                        // Pede um exercicio especifico à API
+                        getEquipmentById($http, response.data[i].equipmentId, (response2) => {
 
-                        // Se a API respondeu da forma correta
-                        if (response2) {
+                            // Se a API respondeu da forma correta
+                            if (response2) {
 
-                            response.data[i].equipment = response2.data;
+                                response.data[i].equipment = response2.data;
 
-                            // Se a API não respondeu da forma correta
-                        } else {
+                                // Se a API não respondeu da forma correta
+                            } else {
 
-                            response.data[i].equipment = {};
+                                response.data[i].equipment = {};
 
-                        }
-                    });
+                            }
+                        });
+                    } else{
+                        response.data[i].equipment = {};
+                    }
                 }
 
                 listaExercicios = response.data;
@@ -69,15 +76,17 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
             // Obtem o exercicio
             getexerciseById($http, id, (response) => {
 
-                // Obtem o equipamento associado ao exercicio
-                getEquipmentById($http, response.data.equipmentId, (response2) => {
+                if (response.data.equipmentId != null) {
+                    // Obtem o equipamento associado ao exercicio
+                    getEquipmentById($http, response.data.equipmentId, (response2) => {
 
-                    response.data.equipmentName = response2.data.name;
+                        response.data.equipmentName = response2.data.name;
 
-                    // Atualiza a vista
-                    $scope.editExercise = response.data;
+                    });
+                }
 
-                });
+                // Atualiza a vista
+                $scope.editExercise = response.data;
 
 
             });
@@ -134,14 +143,16 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
 
                                     if (listaExercicios[i].id == $scope.editExercise.id) {
 
-                                        // Vai buscar o objeto do equipmento associado a este exercicio
-                                        getEquipmentById($http, $scope.editExercise.equipmentId, (response2)=>{
+                                        if ($scope.editExercise.equipmentId != null) {
+                                            // Vai buscar o objeto do equipmento associado a este exercicio
+                                            getEquipmentById($http, $scope.editExercise.equipmentId, (response2) => {
 
-                                            if(response2){
-                                                $scope.editExercise.equipment = response2.data;
-                                            }
+                                                if (response2) {
+                                                    $scope.editExercise.equipment = response2.data;
+                                                }
 
-                                        });
+                                            });
+                                        } 
 
                                         listaExercicios[i] = $scope.editExercise;
                                     }
@@ -183,14 +194,16 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
                                 // Coloca o id do exercicio criado no objeto do exercicio
                                 $scope.editExercise.id = result.data.id;
 
-                                // Vai buscar o objeto do equipmento associado a este exercicio
-                                getEquipmentById($http, $scope.editExercise.equipmentId, (response2)=>{
+                                if ($scope.editExercise.equipmentId != null) {
+                                    // Vai buscar o objeto do equipmento associado a este exercicio
+                                    getEquipmentById($http, $scope.editExercise.equipmentId, (response2) => {
 
-                                    if(response2){
-                                        $scope.editExercise.equipment = response2.data;
-                                    }
+                                        if (response2) {
+                                            $scope.editExercise.equipment = response2.data;
+                                        }
 
-                                });
+                                    });
+                                }
 
                                 listaExercicios.push($scope.editExercise);
 
