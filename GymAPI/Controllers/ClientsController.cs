@@ -231,10 +231,19 @@ namespace GymAPI
             return Ok(client);
         }
         
-        // POST api/clients/{id}/tickets
-        [HttpPost("{id}/tickets")]
-        public ActionResult SwitchTrainingPlan(long id, [FromBody] SwitchPlanDAO planIdObj)
+        // POST api/clients/{id}/plan
+        [HttpPost("{id}/plan")]
+        [AllowAnonymous]
+        public async Task<ActionResult> SwitchTrainingPlan(long id, [FromBody] SwitchPlanDAO planIdObj)
         {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isTrainer = _authService.CheckIfTrainer(User);
+
+            if ( !(_isAdmin || _isTrainer) )
+            {
+                return Forbid();
+            }
+            
             var client = _clientsService.GetById(id);
             if (client == null)
             {
