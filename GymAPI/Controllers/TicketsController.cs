@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GymAPI.Models;
 using GymAPI.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -9,14 +10,18 @@ namespace GymAPI
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Staff, Trainer")]
     public class TicketsController : Controller
     {
         private readonly ISupportTicketsService _supportTicketService;
+        private readonly IClientsService _clientsService;
+        private readonly IAuthorizationsService _authService;
 
-        public TicketsController (ISupportTicketsService supportTicketService)
+        public TicketsController (ISupportTicketsService supportTicketService, IClientsService clientsService, IAuthorizationsService authService)
         {
             _supportTicketService = supportTicketService;
+            _clientsService = clientsService;
+            _authService = authService;
         }
 
         // GET api/tickets
@@ -28,9 +33,31 @@ namespace GymAPI
 
         // GET api/tickets/{id}
         [HttpGet("{id}", Name = "GetSupportTicket")]
-        public ActionResult<SupportTicket> GetTicket(long id)
+        [AllowAnonymous]
+        public async Task<ActionResult<SupportTicket>> GetTicket(long id)
         {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isStaff = _authService.CheckIfStaff(User);
+            var _isTrainer = _authService.CheckIfTrainer(User);
+
             var ticket = _supportTicketService.GetById(id);
+            
+            if ( !(_isAdmin || _isStaff || _isTrainer) )
+            {
+                if (ticket != null)
+                {
+                    var isSameClient = await _authService.CheckIfCurrentClient(HttpContext, ticket.ClientId);
+                    if (!isSameClient)
+                    {
+                        return Forbid();
+                    }
+                }
+                else
+                {
+                    return Forbid();
+                }
+            }
+            
             if (ticket == null)
             {
                 return NotFound();
@@ -41,9 +68,32 @@ namespace GymAPI
 
         // GET api/tickets/{id}/messages
         [HttpGet("{id}/messages")]
-        public ActionResult<SupportTicketMessage> GetTicketMessages(long id)
+        [AllowAnonymous]
+        public async Task<ActionResult<SupportTicketMessage>> GetTicketMessages(long id)
         {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isStaff = _authService.CheckIfStaff(User);
+            var _isTrainer = _authService.CheckIfTrainer(User);
+
             var ticket = _supportTicketService.GetById(id);
+            
+            if ( !(_isAdmin || _isStaff || _isTrainer) )
+            {
+                if (ticket != null)
+                {
+                    var isSameClient = await _authService.CheckIfCurrentClient(HttpContext, ticket.ClientId);
+                    if (!isSameClient)
+                    {
+                        return Forbid();
+                    }
+                }
+                else
+                {
+                    return Forbid();
+                }
+            }
+            
+            
             if (ticket == null)
             {
                 return NotFound();
@@ -59,9 +109,32 @@ namespace GymAPI
         
         // GET api/tickets/{id}/messages/{messageId}
         [HttpGet("{id}/messages/{messageId}", Name = "GetSupportTicketMessage")]
-        public ActionResult<SupportTicketMessage> GetTicketMessages(long id, long messageId)
+        [AllowAnonymous]
+        public async Task<ActionResult<SupportTicketMessage>> GetTicketMessages(long id, long messageId)
         {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isStaff = _authService.CheckIfStaff(User);
+            var _isTrainer = _authService.CheckIfTrainer(User);
+
             var ticket = _supportTicketService.GetById(id);
+            
+            if ( !(_isAdmin || _isStaff || _isTrainer) )
+            {
+                if (ticket != null)
+                {
+                    var isSameClient = await _authService.CheckIfCurrentClient(HttpContext, ticket.ClientId);
+                    if (!isSameClient)
+                    {
+                        return Forbid();
+                    }
+                }
+                else
+                {
+                    return Forbid();
+                }
+            }
+            
+            
             if (ticket == null)
             {
                 return NotFound();
@@ -115,8 +188,29 @@ namespace GymAPI
         
         // POST api/tickets
         [HttpPost]
-        public ActionResult CreateTicket([FromBody] SupportTicket ticket)
+        [AllowAnonymous]
+        public async Task<ActionResult> CreateTicket([FromBody] SupportTicket ticket)
         {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isStaff = _authService.CheckIfStaff(User);
+            var _isTrainer = _authService.CheckIfTrainer(User);
+            
+            if ( !(_isAdmin || _isStaff || _isTrainer) )
+            {
+                if (ticket != null)
+                {
+                    var isSameClient = await _authService.CheckIfCurrentClient(HttpContext, ticket.ClientId);
+                    if (!isSameClient)
+                    {
+                        return Forbid();
+                    }
+                }
+                else
+                {
+                    return Forbid();
+                }
+            }
+            
             _supportTicketService.Create(ticket);
             
             return CreatedAtRoute("GetSupportTicket", new { id = ticket.Id }, ticket);
@@ -124,12 +218,46 @@ namespace GymAPI
         
         // POST api/tickets/{id}/messages
         [HttpPost("{id}/messages")]
-        public ActionResult AddMessageToTicket(long id,[FromBody] SupportTicketMessage message)
+        [AllowAnonymous]
+        public async Task<ActionResult> AddMessageToTicket(long id,[FromBody] SupportTicketMessage message)
         {
-            var ticket= _supportTicketService.GetById(id);
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isStaff = _authService.CheckIfStaff(User);
+            var _isTrainer = _authService.CheckIfTrainer(User);
+
+            var ticket = _supportTicketService.GetById(message.SupportTicketId);
+            
+            if ( !(_isAdmin || _isStaff || _isTrainer) )
+            {
+                if (ticket != null)
+                {
+                    var isSameClient = await _authService.CheckIfCurrentClient(HttpContext, ticket.ClientId);
+                    if (!isSameClient)
+                    {
+                        return Forbid();
+                    }
+                }
+                else
+                {
+                    return Forbid();
+                }
+            }
+            
             if (ticket == null)
             {
                 return NotFound();
+            }
+
+            var client = _clientsService.GetById(ticket.ClientId);
+            
+            // If the current message is not from the client. Notify him.
+            if (message.From != SupportTicketMessageSender.Client )
+            {
+                _clientsService.AddNotification(client, new ClientNotificationDAO()
+                {
+                    Title = "Nova mensagem",
+                    Message = "Tem uma nova mensagem no seu ticket de suporte.",
+                });
             }
             
             _supportTicketService.AddMessage(ticket, message);

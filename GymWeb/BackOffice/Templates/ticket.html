@@ -30,12 +30,11 @@
             <div class="form-group">
                 <label for="mensagem">Nova Mensagem(500 letras):</label>
                 <textarea class="form-control" type="text" onfocus="this.value=''" ng-model="novaMensagem" name="mensagem"
-                    ng-minlength="-1" ng-maxlength="500" id="mensagem" required></textarea>
-                <span style="color: red" ng-if="myForm.mensagem.$invalid">Atingiu o número máximo de
-                    letras!</span>
+                    ng-minlength="1" ng-maxlength="500" id="mensagem" ng-required ="true"></textarea>
+                <span style="color: red" ng-if="myForm.mensagem.$invalid">Mensagem Inválida!</span>
             </div>
             <p></p>
-            <button class="btn btn-default" ng-disabled="myForm.$invalid" type="submit" id="submit" value="Submit">Enviar
+            <button class="btn btn-default" ng-disabled="myForm.$invalid || myForm.mensagem.$pristine" type="submit" id="submit" value="Submit">Enviar
                 Mensagem</button>
         </form>
 </div>

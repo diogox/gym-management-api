@@ -21,15 +21,14 @@
         <e p="LoginDAO.cs" t="Include" />
         <e p="SignupClientDAO.cs" t="Include" />
         <e p="SignupStaffMemberDAO.cs" t="Include" />
+        <e p="SwitchPlanDAO.cs" t="Include" />
       </e>
       <e p="Deploy Commands" t="Include" />
       <e p="Dockerfile" t="Include" />
       <e p="GymAPI.csproj" t="IncludeRecursive" />
       <e p="Migrations" t="Include">
-        <e p="20181203172751_CreateEntities.Designer.cs" t="Include" />
-        <e p="20181203172751_CreateEntities.cs" t="Include" />
-        <e p="20181208161642_UpdateClients.Designer.cs" t="Include" />
-        <e p="20181208161642_UpdateClients.cs" t="Include" />
+        <e p="20181210155704_CreateEntities.Designer.cs" t="Include" />
+        <e p="20181210155704_CreateEntities.cs" t="Include" />
         <e p="GymContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">

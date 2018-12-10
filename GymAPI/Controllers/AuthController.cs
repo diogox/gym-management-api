@@ -31,7 +31,7 @@ namespace GymAPI
         }
         
         // POST api/auth/login
-        [Route("/api/[controller]/login")]
+        [HttpPost("/api/[controller]/login")]
         public async Task<ActionResult> LoginUser([FromBody] LoginDAO loginInfo)
         {
             var user = await _userManager.FindByNameAsync(loginInfo.Username);
@@ -56,11 +56,23 @@ namespace GymAPI
                     signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
                 );
 
+
+                var userTypeId = new long();
+                if (user.ClientId != null)
+                {
+                    userTypeId = user.ClientId.Value;
+                }
+                else if (user.StaffMemberId != null)
+                {
+                    userTypeId = user.StaffMemberId.Value;
+                }
+                
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     expiration = token.ValidTo,
                     userType = user.Role,
+                    userTypeId,
                 });
             }
             

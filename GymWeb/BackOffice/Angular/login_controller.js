@@ -1,9 +1,9 @@
 import { login } from './pedidos.js'
-import { setCookie, getCookie } from './cookies.js'
+import { setCookie, getCookie, deletCookie } from './cookies.js'
 
 app.controller("loginCtrl", function ($scope, $http, $rootScope) {
 
-    if (getCookie("admin") != "") {
+    if (getCookie("admin") != "" || getCookie("usertype") == "Admin") {
         window.location.href = "#!";
     }
 
@@ -20,7 +20,8 @@ app.controller("loginCtrl", function ($scope, $http, $rootScope) {
     //Alertas
     $scope.alerts = [
         //Erro ao realizar o Login Index:0
-        { type: 'Error', msg: 'Erro no Login!', style: $scope.redAlert, show: false },
+        { type: 'Error', msg: 'Erro no Login!',sugs: 'Username não existe ou Password errada!', style: $scope.redAlert, show: false },
+        { type: 'Error', msg: 'User sem permissões!',sugs: '', style: $scope.redAlert, show: false },
     ];
 
     //Fechar Alerta pelo ID
@@ -33,8 +34,16 @@ app.controller("loginCtrl", function ($scope, $http, $rootScope) {
         let data = JSON.stringify($scope.admin);
         login($http, data, (response) => {
             if (response) {
-                setCookie($scope.admin.username, response.data.token, response.data.expiration);
-                window.location.reload();
+                //Verificar se é o admin que está a fazer log
+                if(response.data.userType == "Admin"){
+                    //Token Cookie
+                    setCookie($scope.admin.username, response.data.token, response.data.expiration);
+                    //UserType Cookie
+                    setCookie("usertype", response.data.userType, response.data.expiration);
+                    window.location.reload();
+                }else{
+                    $scope.alerts[1].show = true;    
+                }
             } else {
                 $scope.alerts[0].show = true;
             }

@@ -94,7 +94,7 @@ namespace GymAPI.Migrations
                     ImageUrl = table.Column<string>(nullable: true),
                     TargetMuscleGroup = table.Column<int>(nullable: false),
                     DifficultyLevel = table.Column<int>(nullable: false),
-                    EquipmentId = table.Column<long>(nullable: false)
+                    EquipmentId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -104,7 +104,7 @@ namespace GymAPI.Migrations
                         column: x => x.EquipmentId,
                         principalTable: "Equipment",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -247,6 +247,7 @@ namespace GymAPI.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(nullable: true),
                     Message = table.Column<string>(nullable: true),
                     Timestamp = table.Column<DateTime>(nullable: false),
                     IsUnread = table.Column<bool>(nullable: false),

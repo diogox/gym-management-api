@@ -19,7 +19,7 @@ namespace GymAPI.Models
         
         [JsonIgnore]
         public Equipment Equipment { get; set; }
-        public long EquipmentId { get; set; }
+        public long? EquipmentId { get; set; }
         //public List<TrainingPlanBlock> UsedByPlans { get; set; } = new List<TrainingPlanBlock>();
     }
 }

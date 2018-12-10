@@ -13,7 +13,7 @@ namespace GymAPI
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin, Staff")] 
+    [Authorize(Roles = "Admin, Staff, Trainer")] 
     public class ClientsController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -41,8 +41,9 @@ namespace GymAPI
         {
             var _isAdmin = _authService.CheckIfAdmin(User);
             var _isStaff = _authService.CheckIfStaff(User);
+            var _isTrainer = _authService.CheckIfTrainer(User);
 
-            if ( !(_isAdmin || _isStaff) )
+            if ( !(_isAdmin || _isStaff || _isTrainer) )
             {
                 if (! await _authService.CheckIfCurrentClient(HttpContext, id))
                 {
@@ -143,6 +144,31 @@ namespace GymAPI
             return Ok();
         }
         
+        // GET api/clients/{id}/tickets
+        [HttpGet("{id}/tickets")]
+        [AllowAnonymous]
+        public async Task< ActionResult< List<ClientNotification> > > GetClientTickets(long id)
+        {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isStaff = _authService.CheckIfStaff(User);
+
+            if ( !(_isAdmin || _isStaff) )
+            {
+                if (! await _authService.CheckIfCurrentClient(HttpContext, id))
+                {
+                    return Forbid();
+                }
+            }
+            
+            var client = _clientsService.GetById(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(_clientsService.GetClientTickets(client));
+        }
+        
         // POST api/clients
         [HttpPost]
         [AllowAnonymous]
@@ -204,6 +230,36 @@ namespace GymAPI
             _clientsService.AddNotification(client, notification);
             return Ok(client);
         }
+        
+        // POST api/clients/{id}/plan
+        [HttpPost("{id}/plan")]
+        [AllowAnonymous]
+        public ActionResult SwitchTrainingPlan(long id, [FromBody] SwitchPlanDAO planIdObj)
+        {
+            var _isAdmin = _authService.CheckIfAdmin(User);
+            var _isTrainer = _authService.CheckIfTrainer(User);
+
+            if ( !(_isAdmin || _isTrainer) )
+            {
+                return Forbid();
+            }
+            
+            var client = _clientsService.GetById(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            var success = _clientsService.UpdatePlan(client, planIdObj.PlanId);
+            if (success)
+            {
+                return Ok(client);
+            }
+            else
+            {
+                return BadRequest("The training plan doesn't exist!");
+            }
+        }
 
         // PUT api/clients/{id}
         [HttpPut("{id}")]
@@ -226,7 +282,16 @@ namespace GymAPI
             {
                 return NotFound();
             }
-            
+
+            // Check for training plan changes
+            if (oldClient.TrainingPlanId != client.TrainingPlanId)
+            {
+                _clientsService.AddNotification(oldClient, new ClientNotificationDAO()
+                {
+                    Title = "Novo Plano de Treino Atribuído.",
+                    Message = "Foi-lhe atribuído um novo plano de treino. Vá a \"Plano Treino\" no seu menu para visualiza-lo."
+                });
+            }
             _clientsService.Update(oldClient, client);
             return NoContent();
         }

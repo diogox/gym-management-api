@@ -55,7 +55,6 @@ namespace GymAPI.Services
             oldMember.ImageUrl = member.ImageUrl;
             oldMember.Age = member.Age;
             oldMember.BirthDate = member.BirthDate;
-            oldMember.Rank = member.Rank;
             oldMember.Salary = member.Salary;
             oldMember.HasBeenPaidThisMonth = member.HasBeenPaidThisMonth;
 
@@ -65,7 +64,7 @@ namespace GymAPI.Services
 
         public void Delete(StaffMember member)
         {
-            var user = _context.Users.Single(_user => _user.ClientId == member.Id);
+            var user = _context.Users.Single(_user => _user.StaffMemberId == member.Id);
             _context.Users.Remove(user);
             
             _context.Staff.Remove(member);

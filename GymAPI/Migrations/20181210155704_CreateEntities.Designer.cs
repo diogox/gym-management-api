@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymAPI.Migrations
 {
     [DbContext(typeof(GymContext))]
-    [Migration("20181203172751_CreateEntities")]
+    [Migration("20181210155704_CreateEntities")]
     partial class CreateEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,6 +77,8 @@ namespace GymAPI.Migrations
 
                     b.Property<DateTime>("Timestamp");
 
+                    b.Property<string>("Title");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
@@ -117,7 +119,7 @@ namespace GymAPI.Migrations
 
                     b.Property<int>("DifficultyLevel");
 
-                    b.Property<long>("EquipmentId");
+                    b.Property<long?>("EquipmentId");
 
                     b.Property<string>("ImageUrl");
 
@@ -435,8 +437,7 @@ namespace GymAPI.Migrations
                 {
                     b.HasOne("GymAPI.Models.Equipment", "Equipment")
                         .WithMany()
-                        .HasForeignKey("EquipmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("EquipmentId");
                 });
 
             modelBuilder.Entity("GymAPI.Models.SupportTicket", b =>

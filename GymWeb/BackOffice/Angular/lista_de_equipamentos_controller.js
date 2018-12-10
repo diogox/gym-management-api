@@ -1,7 +1,13 @@
 import { getEquipment, removeEquipment, adicionarEquipment, editarEquipment } from './pedidos.js'
+import { setCookie, getCookie } from './cookies.js'
 
 //Lista de Equipamentos
 app.controller("EqCtrl", function ($scope, $http, $rootScope) {
+
+    //Verifica se o admin está logged se não estiver redireciona para a página de Login (Comentário no "if statement" para testar na api sem auth)
+    if (getCookie("admin") == "" || getCookie("usertype") != "Admin") {
+        window.location.href = "#!login";
+    }
 
     // Indicar ao controler da página principal que o menu lateral deve ser mostrado
     $rootScope.$broadcast('show-window', 'true');
@@ -42,7 +48,9 @@ app.controller("EqCtrl", function ($scope, $http, $rootScope) {
     }
 
     //Listar todos os Equipamentos
-    getEquipment($http, (response) => {
+    //Executa a função para pedir os dados à API
+    let token = getCookie('admin');
+    getEquipment($http, token, (response) => {
         if (response) {
             //console.log(response.data);
 
@@ -59,7 +67,8 @@ app.controller("EqCtrl", function ($scope, $http, $rootScope) {
 
         let data = JSON.stringify($scope.eq);
         //console.log(data);
-        adicionarEquipment($http, data, (response) => {
+        let token = getCookie('admin');
+        adicionarEquipment($http, data, token, (response) => {
             if (response) {
                 let resposta = response.data;
 
@@ -103,7 +112,8 @@ app.controller("EqCtrl", function ($scope, $http, $rootScope) {
         newEq.imageUrl = $scope.edeq.imageUrl;
         //console.log(newEq);
 
-        editarEquipment($http, newEq, $scope.idEqedit, (response) => {
+        let token = getCookie('admin');
+        editarEquipment($http, newEq, $scope.idEqedit, token, (response) => {
             if (response) {
                 $scope.edeq = null;
                 //Dá reset e close no Modal form
@@ -126,7 +136,8 @@ app.controller("EqCtrl", function ($scope, $http, $rootScope) {
         //console.log($scope.equipamentos);
         //console.log(id);
 
-        removeEquipment($http, id, (response) => {
+        let token = getCookie('admin');
+        removeEquipment($http, id, token, (response) => {
             if (response) {
                 $scope.equipamentos = $.grep($scope.equipamentos, function (e) {
                     return e.id != id;

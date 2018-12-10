@@ -9,7 +9,6 @@ namespace GymAPI
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin, Trainer")]
     public class EquipmentController : Controller
     {
         private readonly IEquipmentService _equipmentService;
@@ -21,6 +20,7 @@ namespace GymAPI
 
         // GET api/equipment
         [HttpGet]
+        [Authorize]
         public ActionResult<List<Equipment>> GetAllEquipment()
         {
             return Ok(_equipmentService.GetAll());
@@ -28,6 +28,7 @@ namespace GymAPI
 
         // GET api/equipment/{id}
         [HttpGet("{id}", Name = "GetEquipment")]
+        [Authorize]
         public ActionResult<Equipment> GetEquipment(long id)
         {
             var equipment = _equipmentService.GetById(id);
@@ -40,6 +41,7 @@ namespace GymAPI
 
         // POST api/equipment
         [HttpPost]
+        [Authorize(Roles = "Admin, Trainer, Staff")]
         public ActionResult RegisterEquipment([FromBody] Equipment equipment)
         {
             _equipmentService.Create(equipment);
@@ -49,6 +51,7 @@ namespace GymAPI
 
         // PUT api/equipment/{id}
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, Trainer, Staff")]
         public ActionResult UpdateEquipment(int id,[FromBody] Equipment equipment)
         {
             var oldEquipment = _equipmentService.GetById(id);
@@ -63,6 +66,7 @@ namespace GymAPI
 
         // DELETE api/equipment/{id}
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin, Trainer, Staff")]
         public ActionResult DeleteEquipment(int id)
         {
             var equipment = _equipmentService.GetById(id);

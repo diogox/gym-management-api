@@ -9,7 +9,6 @@ namespace GymAPI
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin, Trainer")]
     public class ExercisesController : Controller
     {
         private readonly IExercisesService _exercisesService;
@@ -21,6 +20,7 @@ namespace GymAPI
 
         // GET api/exercises
         [HttpGet]
+        [Authorize]
         public ActionResult<List<Exercise>> GetAllExercises()
         {
             return Ok(_exercisesService.GetAll());
@@ -28,6 +28,7 @@ namespace GymAPI
 
         // GET api/exercises/5
         [HttpGet("{id}", Name = "GetExercise")]
+        [Authorize]
         public ActionResult<Exercise> GetExercise(int id)
         {
             var exercise = _exercisesService.GetById(id);
@@ -40,6 +41,7 @@ namespace GymAPI
 
         // POST api/exercises
         [HttpPost]
+        [Authorize(Roles = "Admin, Trainer")]
         public ActionResult CreateExercise([FromBody] Exercise exercise)
         {
             _exercisesService.Create(exercise);
@@ -49,6 +51,7 @@ namespace GymAPI
 
         // PUT api/exercises/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, Trainer")]
         public ActionResult UpdateExercise(int id,[FromBody] Exercise exercise)
         {
             var oldExercise= _exercisesService.GetById(id);
@@ -63,6 +66,7 @@ namespace GymAPI
 
         // DELETE api/exercises/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin, Trainer")]
         public ActionResult DeleteExercise(int id)
         {
             var exercise = _exercisesService.GetById(id);
