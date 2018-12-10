@@ -31,7 +31,7 @@ namespace GymAPI
         }
         
         // POST api/auth/login
-        [Route("/api/[controller]/login")]
+        [HttpPost("/api/[controller]/login")]
         public async Task<ActionResult> LoginUser([FromBody] LoginDAO loginInfo)
         {
             var user = await _userManager.FindByNameAsync(loginInfo.Username);
