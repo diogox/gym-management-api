@@ -1,0 +1,99 @@
+<div class="container" style="margin-left: 100px" ng-controller="exercisesCtrl">
+
+    <!--Alertas da API-->
+    <div ng-repeat="alert in alerts" ng-show="alert.show">
+        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong>
+            {{alert.msg}}</h3>
+    </div>
+
+    <!--Button Adicionar Exercicio-->
+    <button type="button" class="btn btn-secondary glyphicon glyphicon-plus" data-toggle="modal" data-target="#addFunc">ADICIONAR
+        EXERCICIO
+    </button>
+    <table class="content table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Músculo</th>
+                <th>Dificuldade</th>
+                <th>Nome do Equipamento</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="ex in exercicios">
+                <td>{{ex.id}}</td>
+                <td><img src="{{ex.imageUrl}}" alt="Image not Loaded" width="100px"></img></td>
+                <td>{{ex.name}}</td>
+                <td>{{ex.targetMuscleGroup}}</td>
+                <td>{{ex.difficultyLevel}}</td>
+                <td>{{ex.equipmentId}}</td>
+                <!--Vai retornar o nome do Equipamento-->
+                <td>{{ex.description}}</td>
+                <td class="options">
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"
+                        data-target="#removerEx" ng-click="removeEx(ex.id)">
+                    </button>
+                    <button type="button" class="edt btn btn-success glyphicon glyphicon-pencil" data-toggle="modal"
+                        data-target="#editarEx" ng-click="edEx(ex.id)">
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--Modal Remover Equipamento-->
+    <modal class="modal fade" id="removerEx" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Remover Exercicio {{idExremove}}</h3>
+                </div>
+                <div class="modal-body">
+                    <h4>Pretende remover este Exercicio?</h4>
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" ng-click="rmEx(idExremove)">
+                        Confirm
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </modal>
+    
+
+    <!--Modal Adicionar Exercicio-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

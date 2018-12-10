@@ -98,6 +98,38 @@
                         </div>
 
 
+                         <!--Username do Funcionário-->
+                         <div class="form-group">
+                            <lable for="un">Username(só letras):</lable>
+                            <input class="form-control" ng-pattern="/^[a-zA-Z\s]*$/" type="text" ng-model="staff.username"
+                                name="un" id="un" required />
+                        </div>
+
+
+                        <!--Email do Funcionário-->
+                        <div class="form-group">
+                            <lable for="email">Email:</lable>
+                            <input class="form-control" type="email" ng-model="staff.email" name="email" id="email" required />
+                        </div>
+
+
+                        <!--Password do Funcionário-->
+                        <div class="form-group">
+                            <lable for="psw">Password:</lable>
+                            <input class="form-control" type="password" min-length="8" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/" ng-model="staff.password" name="psw" id="psw" 
+                                required />
+                            <span ng-show="!myForm.psw.$error.required &&  myForm.psw.$error.pattern && myForm.psw.$dirty">Tem de conter um lower e uppercase letra, um  numero ou simbolo e min 8 characters</span>
+                        </div>
+
+
+                        <!--Confirm Password do Funcionário-->
+                        <div class="form-group">
+                            <label for="cpsw">Confirm Password:</label>
+                            <input name="cpsw" type="password" class="form-control" ng-model="staff.confirmPassword" ng-pattern="staff.password" required />
+                            <span ng-show="staff.password != staff.confirmPassword">As passwords devem ser iguais.</span>
+                        </div>
+
+
                         <!--Data de Nascimento yyyy-mm-dd-->
                         <div class="form-group">
                             <lable for="ddn">Data de Nascimento(yyyy-mm-dd):</lable>
@@ -116,14 +148,6 @@
                         <div class="form-group">
                             <lable for="nif">NIF:</lable>
                             <input class="form-control" ng-pattern="/^\d{9}$/" type="text" ng-model="staff.nif" name="nif" id="nif" required />
-                        </div>
-
-
-                        <!--Email do Funcionário-->
-                        <div class="form-group">
-                            <lable for="email">Email:</lable>
-                            <input class="form-control" type="email" ng-model="staff.email" name="email" id="email"
-                                required />
                         </div>
 
 
@@ -205,22 +229,6 @@
                             <div class="form-group">
                                 <lable for="nif">NIF:</lable>
                                 <input class="form-control" ng-pattern="/^\d{9}$/" type="text" ng-model="edstaff.nif" name="nif" id="nif" required />
-                            </div>
-
-
-                            <!--Email do Funcionário-->
-                            <div class="form-group">
-                                <lable for="email">Email:</lable>
-                                <input class="form-control" type="email" ng-model="edstaff.email" name="email" id="email" required />
-                            </div>
-
-
-                            <!--Rank do Funcionário-->
-                            <div class="form-group">
-                                <label for="sel1">Rank:</label>
-                                <select class="form-control" ng-model="edstaff.rank" >
-                                    <option ng-repeat="x in franks" value="{{x}}">{{x}}</option>
-                                </select>
                             </div>
 
 

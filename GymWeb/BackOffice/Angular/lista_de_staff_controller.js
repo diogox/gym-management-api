@@ -1,4 +1,5 @@
 import { getStaff, removeStaff, adicionarStaff, editarStaff } from './pedidos.js'
+import { setCookie, getCookie } from './cookies.js'
 
 //Format date to yyyy-mm-dd
 function formatDate(date) {
@@ -29,6 +30,11 @@ function getAge(DOB) {
 
 //Lista de Staff
 app.controller("staffCtrl", function ($scope, $http, $rootScope) {
+
+    //Verifica se o admin está logged se não estiver redireciona para a página de Login (Comentário no "if statement" para testar na api sem auth)
+    if (getCookie("admin") == "" || getCookie("usertype") != "Admin") {
+        window.location.href = "#!login";
+    }
 
     // Indicar ao controler da página principal que o menu lateral deve ser mostrado
     $rootScope.$broadcast('show-window', 'true');
@@ -68,7 +74,9 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
     }
 
     //Listar todos os Funcionários
-    getStaff($http, (response) => {
+    //Executa a função para pedir os dados à API
+    let token = getCookie('admin');
+    getStaff($http,token,(response) => {
         if (response) {
             //console.log(response.data);
 
@@ -100,10 +108,12 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
         //Set hasBeenPaidThisMonth para false pois quando o funcionário é adicionado não recebe
         staff.hasBeenPaidThisMonth = false;
 
+        staff.confirmPassword = null;
         let data = JSON.stringify(staff);
-        //console.log(data);
+        //console.log("Funcionário"+data);
 
-        adicionarStaff($http, data, (response) => {
+        let token = getCookie("admin");
+        adicionarStaff($http, data, token, (response) => {
             if (response) {
                 let resposta = response.data;
 
@@ -156,13 +166,13 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
 
         newStaff.nif = $scope.edstaff.nif;
         newStaff.email = $scope.edstaff.email;
-        newStaff.rank = $scope.edstaff.rank;
         newStaff.hasBeenPaidThisMonth = $scope.edstaff.hasBeenPaidThisMonth;
         newStaff.salary = $scope.edstaff.salary;
         newStaff.imageUrl = $scope.edstaff.imageUrl;
         //console.log(newStaff);
 
-        editarStaff($http, newStaff, $scope.idstaffedit, (response) => {
+        let token = getCookie("admin");
+        editarStaff($http, newStaff, $scope.idstaffedit, token, (response) => {
             if (response) {
                 $scope.edstaff = null;
 
@@ -186,10 +196,11 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
         //console.log($scope.funcionarios);
         //console.log(id);
 
-        removeStaff($http, id, (response) => {
+        let token = getCookie("admin");
+        removeStaff($http, id, token, (response) => {
             if (response) {
 
-                console.log("Removido com Sucesso!");
+                //console.log("Removido com Sucesso!");
                 $scope.funcionarios = $.grep($scope.funcionarios, function (e) {
                     return e.id != id;
                 });
@@ -199,7 +210,7 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
 
             } else {
 
-                console.log("Erro ao remover Funcionário");
+                //console.log("Erro ao remover Funcionário");
 
                 //Dá close no Modal from
                 $('#removerfunc').modal('toggle');
