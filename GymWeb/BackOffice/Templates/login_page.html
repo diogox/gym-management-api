@@ -7,7 +7,7 @@
         <!--Username do Admin-->
         <div class="form-group">
             <label for="username">Username:</label>
-            <input class="form-control" type="text" ng-model="admin.username" name="un" id="un" required />
+            <input class="form-control" type="text" onfocus="this.value=''" ng-model="admin.username" name="un" id="un" required />
         </div>
 
 
@@ -24,6 +24,6 @@
 
     <!--Alertas da API-->
     <div ng-repeat="alert in alerts" ng-show="alert.show">
-        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong> {{alert.msg}}</h3>
+        <h4 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong> {{alert.msg}} <p style="font-size: 15px"> {{alert.sugs}} </p></h4>
     </div>
 </div>
