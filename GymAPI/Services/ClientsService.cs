@@ -139,7 +139,6 @@ namespace GymAPI.Services
             oldClient.Age = client.Age;
             oldClient.HeightInMeters = client.HeightInMeters;
             oldClient.WeightInKg = client.WeightInKg;
-            oldClient.TrainingPlanId = client.TrainingPlanId;
 
             _context.Clients.Update(oldClient);
             _context.SaveChanges();
