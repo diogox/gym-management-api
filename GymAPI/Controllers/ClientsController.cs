@@ -13,7 +13,7 @@ namespace GymAPI
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin, Staff")] 
+    [Authorize(Roles = "Admin, Staff, Trainer")] 
     public class ClientsController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -41,8 +41,9 @@ namespace GymAPI
         {
             var _isAdmin = _authService.CheckIfAdmin(User);
             var _isStaff = _authService.CheckIfStaff(User);
+            var _isTrainer = _authService.CheckIfTrainer(User);
 
-            if ( !(_isAdmin || _isStaff) )
+            if ( !(_isAdmin || _isStaff || _isTrainer) )
             {
                 if (! await _authService.CheckIfCurrentClient(HttpContext, id))
                 {
