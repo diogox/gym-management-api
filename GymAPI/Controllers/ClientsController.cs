@@ -166,7 +166,7 @@ namespace GymAPI
                 return NotFound();
             }
             
-            return Ok(client.SupportTickets);
+            return Ok(_clientsService.GetClientTickets(client));
         }
         
         // POST api/clients

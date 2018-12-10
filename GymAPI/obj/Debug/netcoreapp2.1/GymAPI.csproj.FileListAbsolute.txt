@@ -11,4 +11,4 @@
 /home/diogox/Desktop/gym-management/GymAPI/obj/Debug/netcoreapp2.1/GymAPI.RazorTargetAssemblyInfo.cache
 /home/diogox/Desktop/gym-management/GymAPI/obj/Debug/netcoreapp2.1/GymAPI.dll
 /home/diogox/Desktop/gym-management/GymAPI/obj/Debug/netcoreapp2.1/GymAPI.pdb
-/home/diogox/Desktop/gym-management/GymAPI/obj/Debug/netcoreapp2.1/GymAPI.csprojResolveAssemblyReference.cache
+/home/diogox/Desktop/gym-management/GymAPI/obj/Debug/netcoreapp2.1/GymAPI.csprojAssemblyReference.cache

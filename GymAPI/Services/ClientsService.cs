@@ -15,6 +15,7 @@ namespace GymAPI.Services
         void AddNotification(Client client, ClientNotificationDAO notification);
         void MarkNotificationAsRead(ClientNotification notification);
         bool UpdatePlan(Client client, long planId);
+        List<SupportTicket> GetClientTickets(Client client);
         void Create(Client client);
         void Update(Client oldClient, Client client);
         void Delete(Client client);
@@ -118,6 +119,12 @@ namespace GymAPI.Services
 
             return false;
         }
+
+        public List<SupportTicket> GetClientTickets(Client client)
+        {
+            return _context.SupportTickets.Where(ticket => ticket.ClientId == client.Id).ToList();
+        }
+
 
         public void Create(Client client)
         {
