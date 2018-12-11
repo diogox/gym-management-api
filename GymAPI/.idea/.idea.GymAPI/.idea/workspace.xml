@@ -1,16 +1,196 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0053b0a4-1caa-41f3-a1c7-8337c1e360b3" name="Default Changelist" comment="">
+    <list default="true" id="e24d25f7-b236-4a4b-abfa-d78e00c2e83d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GymAPI.Web/.idea/.idea.GymAPI.Web/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GymAPI.Web/.idea/.idea.GymAPI.Web/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GymAPI.Web/.idea/.idea.GymAPI.Web/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GymAPI.Web/.idea/.idea.GymAPI.Web/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GymAPI.Web/.idea/.idea.GymAPI.Web/riderModule.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/MockServices/MockClientsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/ClientsControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/GymAPI.Tests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.Tests.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.Tests.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.Tests.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.Tests.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.Tests.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/GymAPI.Tests.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/GymAPI.Tests.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/GymAPI.Tests.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.Tests/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/ClientsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ClientsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/ClientsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/ClientsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/GymAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/GymAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.csprojResolveAssemblyReference.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/riderModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AuthController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ClientsController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ClientsNotas.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/EquipmentController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ExercisesController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/StaffController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/TicketsController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/TrainingPlansController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/UsersController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAOs/ClientNotificationDAO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAOs/LoginDAO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAOs/SignupClientDAO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAOs/SignupStaffMemberDAO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAOs/SwitchPlanDAO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deploy Commands" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20181210155704_CreateEntities.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20181210155704_CreateEntities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/GymContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Client/Client.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Client/ClientCheckIn.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Client/ClientNotification.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Client/TestClientJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Equipment/Equipment.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Equipment/TestEquipmentJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Exercise/DifficultyLevels.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Exercise/Exercise.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Exercise/MuscleGroups.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Exercise/TestExerciseJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Model.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/StaffMember/StaffMember.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/StaffMember/StaffMemberRank.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/StaffMember/TestStaffMemberJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/SupportTicket/SupportTicket.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/SupportTicket/SupportTicketMessage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/SupportTicket/SupportTicketMessageSender.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/SupportTicket/TestSupportTicketJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/SupportTicket/TicketState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/TrainingPlan/DayOfTheWeek.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/TrainingPlan/TestTrainingPlanJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/TrainingPlan/TrainingPlan.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/TrainingPlan/TrainingPlanBlock.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/User/User.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/User/UserRole.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/AuthorizationsService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/ClientsService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/EquipmentService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/ExercisesService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/StaffService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/SupportTicketsService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/TrainersStaffService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/TrainingPlanBlocksService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/TrainingPlansService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/UsersService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Startup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/GymAPI.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/GymAPI.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/GymAPI.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/GymAPI.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/GymAPI.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/GymAPI.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/GymAPI.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/GymAPI.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.AspNetCore.Cors.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.AspNetCore.Http.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.AspNetCore.Http.Extensions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.AspNetCore.Http.Features.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Data.Sqlite.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.EntityFrameworkCore.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.EntityFrameworkCore.Relational.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.EntityFrameworkCore.Sqlite.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.EntityFrameworkCore.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Configuration.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Configuration.Binder.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Configuration.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.DependencyInjection.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.FileProviders.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Options.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Primitives.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Microsoft.Net.Http.Headers.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Remotion.Linq.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/SQLitePCLRaw.batteries_green.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/SQLitePCLRaw.batteries_v2.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/SQLitePCLRaw.core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/SQLitePCLRaw.provider.e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Swashbuckle.AspNetCore.Swagger.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Swashbuckle.AspNetCore.SwaggerGen.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Swashbuckle.AspNetCore.SwaggerUI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/Swashbuckle.AspNetCore.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/System.Interactive.Async.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/runtimes/alpine-x64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/runtimes/linux-arm/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/runtimes/linux-arm64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/runtimes/linux-armel/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/runtimes/linux-musl-x64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/runtimes/linux-x64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/runtimes/linux-x86/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/runtimes/osx-x64/native/libe_sqlite3.dylib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/runtimes/win-x64/native/e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/runtimes/win-x86/native/e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/runtimes/win8-arm/native/e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Release/netcoreapp2.1/publish/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.RazorAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.RazorAssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.RazorTargetAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/GymAPI.csproj.EntityFrameworkCore.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/GymAPI.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/GymAPI.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/GymAPI.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/netcoreapp2.1/GymAPI.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/netcoreapp2.1/GymAPI.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/netcoreapp2.1/GymAPI.RazorAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/netcoreapp2.1/GymAPI.RazorAssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/netcoreapp2.1/GymAPI.RazorTargetAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/netcoreapp2.1/GymAPI.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/netcoreapp2.1/GymAPI.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/netcoreapp2.1/GymAPI.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/netcoreapp2.1/GymAPI.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/netcoreapp2.1/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/netcoreapp2.1/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,51 +202,31 @@
     <session id="-757677245">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="13" />
-          <entry key="project.open.time.15" value="5" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.2" value="2" />
-          <entry key="project.open.time.20" value="2" />
-          <entry key="project.open.time.21" value="1" />
-          <entry key="project.open.time.22" value="1" />
-          <entry key="project.open.time.23" value="1" />
-          <entry key="project.open.time.24" value="1" />
-          <entry key="project.open.time.30" value="1" />
-          <entry key="project.open.time.77" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="254" />
-          <entry key="csproj" value="1" />
-          <entry key="json" value="5" />
-          <entry key="txt" value="31" />
+          <entry key="cs" value="8" />
+          <entry key="csproj" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="254" />
-          <entry key="Csproj" value="1" />
-          <entry key="JSON" value="5" />
-          <entry key="PLAIN_TEXT" value="31" />
+          <entry key="C#" value="8" />
+          <entry key="Csproj" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="24190" />
-          <entry key="json" value="155" />
-          <entry key="md" value="395" />
-          <entry key="txt" value="331" />
+          <entry key="cs" value="769" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="24190" />
-          <entry key="JSON" value="155" />
-          <entry key="Markdown" value="395" />
-          <entry key="PLAIN_TEXT" value="331" />
+          <entry key="C#" value="769" />
         </counts>
       </usages-collector>
     </session>
@@ -74,127 +234,145 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controllers/TrainingPlansController.cs">
+        <entry file="file://$PROJECT_DIR$/Tests/ClientsControllerTests.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+            <state relative-caret-position="378">
+              <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
               <folding>
-                <marker date="1544479472994" expanded="false" signature="6:238" ph="..." />
-                <marker date="1544479472994" expanded="true" signature="256:4957" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="400:4955" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="792:954" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="1068:1143" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="1330:1981" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="1582:1778" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="1691:1764" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="1879:1942" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="2195:2903" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="2447:2643" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="2556:2629" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="2744:2807" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="3026:3188" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="3360:3663" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="3458:3521" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="3806:4083" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="3908:3971" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="4210:4474" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="4308:4371" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="4666:4949" ph="{...}" />
-                <marker date="1544479472994" expanded="true" signature="4764:4827" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Controllers/ClientsController.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="162" column="53" lean-forward="true" selection-start-line="162" selection-start-column="53" selection-end-line="162" selection-end-column="53" />
-              <folding>
-                <marker date="1544479935375" expanded="false" signature="6:277" ph="..." />
-                <marker date="1544479935375" expanded="true" signature="295:10736" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="447:10734" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="763:909" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="1013:1082" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="1253:1889" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="1505:1686" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="1599:1672" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="1785:1848" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="1940:2037" ph="/// Checks-in the client. Can only be done once day. ... " />
-                <marker date="1544479935375" expanded="true" signature="2168:2919" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="2342:2523" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="2436:2509" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="2622:2685" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="2771:2878" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="3141:3726" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="3315:3496" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="3409:3482" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="3595:3658" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="4003:4745" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="4177:4364" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="4277:4350" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="4469:4532" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="4949:5554" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="5123:5304" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="5217:5290" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="5403:5466" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="5727:7342" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="5885:5976" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="6073:6472" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="6608:6850" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="6986:7161" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="7547:7815" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="7643:7706" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="8011:8709" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="8191:8252" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="8351:8414" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="8520:8583" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="8600:8699" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="8881:9959" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="9055:9236" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="9149:9222" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="9340:9403" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="9518:9862" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="9636:9846" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="10112:10728" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="10286:10467" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="10380:10453" ph="{...}" />
-                <marker date="1544479935375" expanded="true" signature="10566:10629" ph="{...}" />
+                <marker date="1544486821313" expanded="false" signature="6:184" ph="..." />
+                <marker date="1544486821313" expanded="true" signature="243:1056" ph="{...}" />
+                <marker date="1544486821313" expanded="true" signature="354:731" ph="{...}" />
+                <marker date="1544486821313" expanded="true" signature="780:1054" ph="{...}" />
+                <marker date="1544486821313" expanded="true" signature="803:901" ph="/* Arrange ... */" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Services/ClientsService.cs">
+        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+            <state relative-caret-position="378">
+              <caret line="252" column="43" selection-start-line="252" selection-start-column="43" selection-end-line="252" selection-end-column="43" />
               <folding>
-                <marker date="1544479913275" expanded="false" signature="6:124" ph="..." />
-                <marker date="1544479913275" expanded="true" signature="151:4964" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="190:758" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="813:4962" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="916:968" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="1007:1091" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="1131:1249" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="1303:1531" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="1575:2188" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="1635:1726" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="1872:2004" ph="/* Check if the client has checked-in today ... */" />
-                <marker date="1544479913275" expanded="true" signature="2060:2151" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="2234:2512" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="2334:2392" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="2600:3035" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="2697:2933" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="3112:3211" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="3271:3571" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="3389:3534" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="3639:3758" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="3802:4070" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="4131:4674" ph="{...}" />
-                <marker date="1544479913275" expanded="true" signature="4717:4956" ph="{...}" />
+                <marker date="1544528440221" expanded="false" signature="6:277" ph="..." />
+                <marker date="1544528440221" expanded="true" signature="295:10278" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="447:10276" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="763:909" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="1013:1082" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="1253:1889" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="1505:1686" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="1599:1672" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="1785:1848" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="1940:2037" ph="/// Checks-in the client. Can only be done once day. ... " />
+                <marker date="1544528440221" expanded="true" signature="2168:2919" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="2342:2523" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="2436:2509" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="2622:2685" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="2771:2878" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="3141:3726" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="3315:3496" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="3409:3482" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="3595:3658" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="4003:4745" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="4177:4364" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="4277:4350" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="4469:4532" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="4949:5554" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="5123:5304" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="5217:5290" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="5403:5466" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="5727:7342" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="5885:5976" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="6073:6472" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="6608:6850" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="6986:7161" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="7547:7815" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="7643:7706" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="8011:8709" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="8191:8252" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="8351:8414" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="8520:8583" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="8600:8699" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="8881:9501" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="9055:9236" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="9149:9222" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="9340:9403" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="9654:10270" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="9828:10009" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="9922:9995" ph="{...}" />
+                <marker date="1544528440221" expanded="true" signature="10108:10171" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Services/ClientsService.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="109" column="58" lean-forward="true" selection-start-line="109" selection-start-column="58" selection-end-line="109" selection-end-column="58" />
+              <folding>
+                <marker date="1544528519689" expanded="false" signature="6:124" ph="..." />
+                <marker date="1544528519689" expanded="true" signature="151:5341" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="190:758" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="813:5339" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="916:968" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="1007:1091" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="1131:1249" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="1303:1531" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="1575:2188" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="1635:1726" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="1872:2004" ph="/* Check if the client has checked-in today ... */" />
+                <marker date="1544528519689" expanded="true" signature="2060:2151" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="2234:2512" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="2334:2392" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="2600:3035" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="2697:2933" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="3112:3211" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="3271:3948" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="3389:3911" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="3599:3809" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="4016:4135" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="4179:4447" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="4508:5051" ph="{...}" />
+                <marker date="1544528519689" expanded="true" signature="5094:5333" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/07DE3E67-FFD1-4268-B6BE-81C34E676267/cb/7c6375ee/UserManager`1.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/MockServices/MockClientsService.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="792">
+              <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+              <folding>
+                <marker date="1544486302675" expanded="true" signature="6:91" ph="..." />
+                <marker date="1544486302675" expanded="true" signature="177:2851" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="268:1550" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="333:1539" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="380:928" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="975:1524" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="1588:1637" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="1677:1753" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="1797:1873" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="1961:2037" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="2114:2190" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="2250:2326" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="2394:2470" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="2513:2589" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="2650:2726" ph="{...}" />
+                <marker date="1544486302675" expanded="true" signature="2769:2845" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -202,78 +380,25 @@
       </file>
     </leaf>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>Data</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6CFCCEBD-0B9A-498F-BF47-688690CA5A4E/9e/1bbf2414/Thread.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EB2028F-5D77-4111-9AAF-F376F55282AE/da/8e5ddff7/UserManager`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Controllers/TrainingPlansController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Controllers/ClientsController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/77D1AF87-8F36-4D40-92FE-40FE59256B81/7d/d36c59c8/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2FDF37AF-79BF-45D3-A50E-8AF376A7AE36/a4/fe0c46b0/FeatureReferences`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1A542331-C54B-416C-BB81-D7AB73D311CC/2c/20f70bde/HttpProtocol.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/ClientsService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/MockServices/MockClientsService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GymAPI.Web/Services/ClientsService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GymAPI.Web/DAOs/SignupClientDAO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/07DE3E67-FFD1-4268-B6BE-81C34E676267/cb/7c6375ee/UserManager`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/ClientsControllerTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Models/TrainingPlan/TrainingPlanExercise.cs" />
-        <option value="$PROJECT_DIR$/Models/TrainingPlan/DayOfTheWeek.cs" />
-        <option value="$PROJECT_DIR$/Services/TrainingPlansService.cs" />
-        <option value="$PROJECT_DIR$/Models/TrainingPlan/TrainingPlanBlock.cs" />
-        <option value="$PROJECT_DIR$/Services/TrainingPlanBlocksService.cs" />
-        <option value="$PROJECT_DIR$/Models/TrainingPlan/TestTrainingPlanJSON.txt" />
-        <option value="$PROJECT_DIR$/Models/Client/ClientCheckIn.cs" />
-        <option value="$PROJECT_DIR$/Models/TrainingPlan/TrainingPlan.cs" />
-        <option value="$PROJECT_DIR$/Models/SupportTicket/TicketState.cs" />
-        <option value="$PROJECT_DIR$/Models/SupportTicket/SupportTicketMessageSender.cs" />
-        <option value="$PROJECT_DIR$/Services/ExercisesService.cs" />
-        <option value="$PROJECT_DIR$/Models/Equipment/TestEquipmentJSON.txt" />
-        <option value="$PROJECT_DIR$/Models/Exercise/TestExerciseJSON.txt" />
-        <option value="$PROJECT_DIR$/Models/SupportTicket/TestSupportTicketJSON.txt" />
-        <option value="$PROJECT_DIR$/Models/SupportTicket/SupportTicketMessage.cs" />
-        <option value="$PROJECT_DIR$/Models/Client/Client.cs" />
-        <option value="$PROJECT_DIR$/Models/Equipment/Equipment.cs" />
-        <option value="$PROJECT_DIR$/Services/SupportTicketsService.cs" />
-        <option value="$PROJECT_DIR$/appsettings.json" />
-        <option value="$PROJECT_DIR$/Models/Model.cs" />
-        <option value="$PROJECT_DIR$/Services/AuthService.cs" />
-        <option value="$PROJECT_DIR$/Data/SeedDatabase.cs" />
-        <option value="$PROJECT_DIR$/Services/UsersService.cs" />
-        <option value="$PROJECT_DIR$/DAOs/LoginDAO.cs" />
-        <option value="$PROJECT_DIR$/DAOs/SignupDAO.cs" />
-        <option value="$PROJECT_DIR$/DAOs/SignupClientDAO.cs" />
-        <option value="$PROJECT_DIR$/DAOs/SignupStaffMemberDAO.cs" />
-        <option value="$PROJECT_DIR$/Models/User/UserRole.cs" />
-        <option value="$PROJECT_DIR$/Models/User/User.cs" />
-        <option value="$PROJECT_DIR$/Controllers/UsersController.cs" />
-        <option value="$PROJECT_DIR$/CustomAuthorize.cs" />
-        <option value="$PROJECT_DIR$/Services/AuthorizationsService.cs" />
-        <option value="$PROJECT_DIR$/Models/Client/TestClientJSON.txt" />
-        <option value="$PROJECT_DIR$/Models/Client/ClientNotification.cs" />
-        <option value="$PROJECT_DIR$/DAOs/ClientNotificationDAO.cs" />
-        <option value="$PROJECT_DIR$/Startup.cs" />
-        <option value="$PROJECT_DIR$/Controllers/ExercisesController.cs" />
-        <option value="$PROJECT_DIR$/Controllers/EquipmentController.cs" />
-        <option value="$PROJECT_DIR$/Models/Exercise/Exercise.cs" />
-        <option value="$PROJECT_DIR$/Models/StaffMember/TestStaffMemberJSON.txt" />
-        <option value="$PROJECT_DIR$/Services/StaffService.cs" />
-        <option value="$PROJECT_DIR$/Controllers/TicketsController.cs" />
-        <option value="$PROJECT_DIR$/Models/SupportTicket/SupportTicket.cs" />
-        <option value="$PROJECT_DIR$/Services/TrainersStaffService.cs" />
-        <option value="$PROJECT_DIR$/Controllers/StaffController.cs" />
-        <option value="$PROJECT_DIR$/DAOs/SwitchPlanDAO.cs" />
-        <option value="$PROJECT_DIR$/Controllers/AuthController.cs" />
-        <option value="$PROJECT_DIR$/GymAPI.csproj" />
-        <option value="$PROJECT_DIR$/Controllers/TrainingPlansController.cs" />
-        <option value="$PROJECT_DIR$/Services/ClientsService.cs" />
-        <option value="$PROJECT_DIR$/Controllers/ClientsController.cs" />
+        <option value="$PROJECT_DIR$/Tests/UnitTest1.cs" />
+        <option value="$PROJECT_DIR$/Tests/MockServices/MockClientsService.cs" />
+        <option value="$PROJECT_DIR$/Tests/ClientsControllerTests.cs" />
+        <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs" />
+        <option value="$PROJECT_DIR$/GymAPI.Web/Services/ClientsService.cs" />
       </list>
     </option>
   </component>
@@ -284,9 +409,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="-35" />
-    <option name="width" value="1920" />
-    <option name="height" value="1115" />
+    <option name="width" value="1910" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -305,63 +429,24 @@
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Properties" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
               <item name="DAOs" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Models" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Models" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Client" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Models" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Exercise" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Models" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="StaffMember" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Models" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="SupportTicket" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Models" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="TrainingPlan" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Models" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="User" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Services" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Tests" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -374,8 +459,7 @@
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/[ ESTGF ]/LDS/GymAPI" />
-    <property name="settings.editor.selected.configurable" value="XamlPreviewOptionsPage" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/GymAPI.Web/GymAPI.csproj" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -391,24 +475,19 @@
   </component>
   <component name="RunManager">
     <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/GymAPI.dll" />
+      <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <envs>
-        <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
-        <env name="ASPNETCORE_URLS" value="https://*:5001;http://*:5000" />
-      </envs>
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/GymAPI.csproj" />
+      <option name="PROJECT_PATH" value="" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.1" />
-      <browser start="true" url="https://*:5001" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
       <method v="2">
         <option name="Build" enabled="true" />
       </method>
@@ -419,33 +498,18 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0053b0a4-1caa-41f3-a1c7-8337c1e360b3" name="Default Changelist" comment="" />
-      <created>1542823084982</created>
+      <changelist id="e24d25f7-b236-4a4b-abfa-d78e00c2e83d" name="Default Changelist" comment="" />
+      <created>1544484458430</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1542823084982</updated>
-      <workItem from="1542823088487" duration="12433000" />
-      <workItem from="1542888255986" duration="9904000" />
-      <workItem from="1542902831841" duration="9254000" />
-      <workItem from="1542986214535" duration="40069000" />
-      <workItem from="1543162166548" duration="1137000" />
-      <workItem from="1543180366361" duration="3459000" />
-      <workItem from="1543328789237" duration="3443000" />
-      <workItem from="1543496391425" duration="1172000" />
-      <workItem from="1543766750180" duration="2902000" />
-      <workItem from="1543770343972" duration="13970000" />
-      <workItem from="1543850473969" duration="22970000" />
-      <workItem from="1543936233007" duration="1820000" />
-      <workItem from="1544124884954" duration="2654000" />
-      <workItem from="1544221382997" duration="523000" />
-      <workItem from="1544282706810" duration="1733000" />
-      <workItem from="1544294688644" duration="10928000" />
-      <workItem from="1544456650865" duration="11119000" />
+      <updated>1544484458430</updated>
+      <workItem from="1544484460514" duration="2895000" />
+      <workItem from="1544527471494" duration="770000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149490000" />
+    <option name="totallyTimeSpent" value="3665000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -457,37 +521,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-35" width="1920" height="1115" extended-state="6" />
+    <frame x="0" y="-35" width="1440" height="845" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.2053476" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3281893" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.28806585" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="NuGet" order="7" weight="0.32905984" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unit Tests" order="11" />
-      <window_info anchor="bottom" id="REST Client" order="12" />
-      <window_info anchor="bottom" id="Terminal" order="13" weight="0.32905984" />
-      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="15" weight="0.3281893" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Errors In Solution" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26258993" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25395682" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="REST Client" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -495,20 +535,20 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="NuGet" order="7" weight="0.32905984" />
+      <window_info anchor="bottom" id="NuGet" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Unit Tests" order="11" />
-      <window_info anchor="bottom" id="REST Client" order="12" />
-      <window_info anchor="bottom" id="Terminal" order="13" weight="0.32905984" />
-      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="14" visible="true" weight="0.32921812" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Errors In Solution" order="3" />
       <window_info anchor="right" id="Database" order="4" />
-    </layout-to-restore>
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -525,440 +565,146 @@
           <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/StaffController.cs</url>
-          <line>147</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/StaffController.cs" initialLine="147">
-            <startOffsets>
-              <option value="4899" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4915" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Models/Exercise/MuscleGroups.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Exercise/DifficultyLevels.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Equipment/Equipment.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/AuthService.cs" />
-    <entry file="file://$PROJECT_DIR$/Models/Model.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/SeedDatabase.cs" />
-    <entry file="file://$PROJECT_DIR$/Models/StaffMember/StaffMemberRank.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/UsersService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="24" column="77" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/StaffMember/StaffMember.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Program.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6CFCCEBD-0B9A-498F-BF47-688690CA5A4E/9e/1bbf2414/Thread.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EB2028F-5D77-4111-9AAF-F376F55282AE/da/8e5ddff7/UserManager`1.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-194">
-          <caret line="1729" column="41" selection-start-line="1729" selection-start-column="41" selection-end-line="1729" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CustomAuthorize.cs" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1A542331-C54B-416C-BB81-D7AB73D311CC/2c/20f70bde/HttpProtocol.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="1360" column="8" selection-start-line="1360" selection-start-column="8" selection-end-line="1360" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2FDF37AF-79BF-45D3-A50E-8AF376A7AE36/a4/fe0c46b0/FeatureReferences`1.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/77D1AF87-8F36-4D40-92FE-40FE59256B81/7d/d36c59c8/ControllerBase.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="212" column="8" selection-start-line="212" selection-start-column="8" selection-end-line="212" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/User/TestUserClient.txt" />
-    <entry file="file://$PROJECT_DIR$/Controllers/UsersController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAOs/SignupClientDAO.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appsettings.Development.json">
+    <entry file="file://$PROJECT_DIR$/../GymAPI.Web/GymAPI.csproj" />
+    <entry file="file://$PROJECT_DIR$/Web/Web.csproj" />
+    <entry file="file://$PROJECT_DIR$/GymAPI.Web/DAOs/SignupClientDAO.cs">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/appsettings.json">
+    <entry file="file://$PROJECT_DIR$/Tests/ClientsControllerTests.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Properties/launchSettings.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Client/ClientNotification.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="10" column="47" lean-forward="true" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Client/Client.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAOs/LoginDAO.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAOs/ClientNotificationDAO.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/SupportTicket/SupportTicketMessageSender.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/SupportTicket/SupportTicketMessage.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/User/User.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/User/UserRole.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Startup.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="92" column="46" selection-start-line="92" selection-start-column="46" selection-end-line="92" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Exercise/Exercise.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/ExercisesController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/StaffService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="69" column="42" lean-forward="true" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/StaffMember/TestStaffMemberJSON.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Client/TestClientJSON.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/SupportTicketsService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="53" column="38" lean-forward="true" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/SupportTicket/SupportTicket.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="15" column="8" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="18" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/TicketsController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="48" column="107" selection-start-line="48" selection-start-column="107" selection-end-line="48" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/TrainersStaffService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/StaffController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="766">
-          <caret line="193" column="9" selection-start-line="193" selection-start-column="9" selection-end-line="193" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/EquipmentController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAOs/SignupStaffMemberDAO.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAOs/SwitchPlanDAO.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/AuthorizationsService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="95" column="74" selection-start-line="95" selection-start-column="74" selection-end-line="95" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/AuthController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/TrainingPlan/TestTrainingPlanJSON.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="37" lean-forward="true" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GymAPI.csproj">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/TrainingPlansController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+        <state relative-caret-position="378">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
           <folding>
-            <marker date="1544479472994" expanded="false" signature="6:238" ph="..." />
-            <marker date="1544479472994" expanded="true" signature="256:4957" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="400:4955" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="792:954" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="1068:1143" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="1330:1981" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="1582:1778" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="1691:1764" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="1879:1942" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="2195:2903" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="2447:2643" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="2556:2629" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="2744:2807" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="3026:3188" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="3360:3663" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="3458:3521" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="3806:4083" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="3908:3971" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="4210:4474" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="4308:4371" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="4666:4949" ph="{...}" />
-            <marker date="1544479472994" expanded="true" signature="4764:4827" ph="{...}" />
+            <marker date="1544486821313" expanded="false" signature="6:184" ph="..." />
+            <marker date="1544486821313" expanded="true" signature="243:1056" ph="{...}" />
+            <marker date="1544486821313" expanded="true" signature="354:731" ph="{...}" />
+            <marker date="1544486821313" expanded="true" signature="780:1054" ph="{...}" />
+            <marker date="1544486821313" expanded="true" signature="803:901" ph="/* Arrange ... */" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Services/ClientsService.cs">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/07DE3E67-FFD1-4268-B6BE-81C34E676267/cb/7c6375ee/UserManager`1.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+        <state relative-caret-position="450">
+          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/MockServices/MockClientsService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
           <folding>
-            <marker date="1544479913275" expanded="false" signature="6:124" ph="..." />
-            <marker date="1544479913275" expanded="true" signature="151:4964" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="190:758" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="813:4962" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="916:968" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="1007:1091" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="1131:1249" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="1303:1531" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="1575:2188" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="1635:1726" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="1872:2004" ph="/* Check if the client has checked-in today ... */" />
-            <marker date="1544479913275" expanded="true" signature="2060:2151" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="2234:2512" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="2334:2392" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="2600:3035" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="2697:2933" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="3112:3211" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="3271:3571" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="3389:3534" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="3639:3758" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="3802:4070" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="4131:4674" ph="{...}" />
-            <marker date="1544479913275" expanded="true" signature="4717:4956" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="6:91" ph="..." />
+            <marker date="1544486302675" expanded="true" signature="177:2851" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="268:1550" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="333:1539" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="380:928" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="975:1524" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="1588:1637" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="1677:1753" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="1797:1873" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="1961:2037" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="2114:2190" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="2250:2326" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="2394:2470" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="2513:2589" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="2650:2726" ph="{...}" />
+            <marker date="1544486302675" expanded="true" signature="2769:2845" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/ClientsController.cs">
+    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="162" column="53" lean-forward="true" selection-start-line="162" selection-start-column="53" selection-end-line="162" selection-end-column="53" />
+        <state relative-caret-position="378">
+          <caret line="252" column="43" selection-start-line="252" selection-start-column="43" selection-end-line="252" selection-end-column="43" />
           <folding>
-            <marker date="1544479935375" expanded="false" signature="6:277" ph="..." />
-            <marker date="1544479935375" expanded="true" signature="295:10736" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="447:10734" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="763:909" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="1013:1082" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="1253:1889" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="1505:1686" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="1599:1672" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="1785:1848" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="1940:2037" ph="/// Checks-in the client. Can only be done once day. ... " />
-            <marker date="1544479935375" expanded="true" signature="2168:2919" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="2342:2523" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="2436:2509" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="2622:2685" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="2771:2878" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="3141:3726" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="3315:3496" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="3409:3482" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="3595:3658" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="4003:4745" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="4177:4364" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="4277:4350" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="4469:4532" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="4949:5554" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="5123:5304" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="5217:5290" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="5403:5466" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="5727:7342" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="5885:5976" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="6073:6472" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="6608:6850" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="6986:7161" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="7547:7815" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="7643:7706" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="8011:8709" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="8191:8252" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="8351:8414" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="8520:8583" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="8600:8699" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="8881:9959" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="9055:9236" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="9149:9222" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="9340:9403" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="9518:9862" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="9636:9846" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="10112:10728" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="10286:10467" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="10380:10453" ph="{...}" />
-            <marker date="1544479935375" expanded="true" signature="10566:10629" ph="{...}" />
+            <marker date="1544528440221" expanded="false" signature="6:277" ph="..." />
+            <marker date="1544528440221" expanded="true" signature="295:10278" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="447:10276" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="763:909" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="1013:1082" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="1253:1889" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="1505:1686" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="1599:1672" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="1785:1848" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="1940:2037" ph="/// Checks-in the client. Can only be done once day. ... " />
+            <marker date="1544528440221" expanded="true" signature="2168:2919" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="2342:2523" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="2436:2509" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="2622:2685" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="2771:2878" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="3141:3726" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="3315:3496" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="3409:3482" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="3595:3658" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="4003:4745" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="4177:4364" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="4277:4350" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="4469:4532" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="4949:5554" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="5123:5304" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="5217:5290" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="5403:5466" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="5727:7342" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="5885:5976" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="6073:6472" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="6608:6850" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="6986:7161" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="7547:7815" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="7643:7706" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="8011:8709" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="8191:8252" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="8351:8414" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="8520:8583" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="8600:8699" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="8881:9501" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="9055:9236" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="9149:9222" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="9340:9403" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="9654:10270" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="9828:10009" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="9922:9995" ph="{...}" />
+            <marker date="1544528440221" expanded="true" signature="10108:10171" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Services/ClientsService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="109" column="58" lean-forward="true" selection-start-line="109" selection-start-column="58" selection-end-line="109" selection-end-column="58" />
+          <folding>
+            <marker date="1544528519689" expanded="false" signature="6:124" ph="..." />
+            <marker date="1544528519689" expanded="true" signature="151:5341" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="190:758" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="813:5339" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="916:968" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="1007:1091" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="1131:1249" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="1303:1531" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="1575:2188" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="1635:1726" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="1872:2004" ph="/* Check if the client has checked-in today ... */" />
+            <marker date="1544528519689" expanded="true" signature="2060:2151" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="2234:2512" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="2334:2392" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="2600:3035" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="2697:2933" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="3112:3211" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="3271:3948" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="3389:3911" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="3599:3809" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="4016:4135" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="4179:4447" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="4508:5051" ph="{...}" />
+            <marker date="1544528519689" expanded="true" signature="5094:5333" ph="{...}" />
           </folding>
         </state>
       </provider>
