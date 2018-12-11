@@ -1,4 +1,4 @@
-import { getExercises, getEquipmentByID } from './pedidos.js'
+import { getExercises, getEquipmentByID, addExercises, getEquipment, removeExercise, editarExercise } from './pedidos.js'
 import { setCookie, getCookie } from './cookies.js'
 
 
@@ -42,6 +42,8 @@ app.controller("exercisesCtrl", function ($scope, $http, $rootScope) {
         { type: 'Error', msg: 'Erro ao Editar o Exercicio!', style: $scope.redAlert, show: false },
         //Erro ao Carregar a Tabela de Exercicios Index:4
         { type: 'Error', msg: 'Erro ao Carregar a Tabela de Exercicios!', style: $scope.redAlert, show: false },
+        //Erro ao Carregar os Equipamentos
+        { type: 'Error', msg: 'Erro ao Carregar os Equipamentos!', style: $scope.redAlert, show: false },
     ];
 
     //Fechar Alerta pelo ID
@@ -51,7 +53,19 @@ app.controller("exercisesCtrl", function ($scope, $http, $rootScope) {
 
 
     //Dificuldade do Exercicio
-    //$scope.edif = ["Easy", "Normal", "Hard"];
+    $scope.exDif = ["Easy", "Intermediate", "Hard"];
+    $scope.exMus = ["Chest", "Back", "Arms", "Legs", "Abs", "Shoulders"];
+
+    //Equipamentos disponíveis para o exercicio
+    $scope.loadEq = function () {
+        getEquipment($http, token, (response) => {
+            if (response) {
+                $scope.exEq = response.data;
+            } else {
+                $scope.alerts[5].show = true;
+            }
+        });
+    };
 
 
     //Listar todos os Exercicios
@@ -59,7 +73,7 @@ app.controller("exercisesCtrl", function ($scope, $http, $rootScope) {
     let token = getCookie('admin');
     getExercises($http, token, (response) => {
         if (response) {
-            console.log(response.data);
+            //console.log(response.data);
             //A cada exercicio recebido é feito um pedido á apí pelo nome do equipamento que este necessita para ser realizado
             for (let i = 0; i < response.data.length; i++) {
 
@@ -88,55 +102,140 @@ app.controller("exercisesCtrl", function ($scope, $http, $rootScope) {
 
 
     //Adicionar um Exercicio
+    $scope.submitADD = function () {
+        let exercise = $scope.ex;
+
+        //Verifica se o Valor do equipamento é none
+        if ($scope.ex.equipmentId == "") {
+            exercise.equipmentId = null;
+        }
+
+        let data = JSON.stringify(exercise);
+
+        //console.log(data);
+        let token = getCookie('admin');
+        addExercises($http, data, token, (response) => {
+            if (response) {
+
+                //Substitui o id pelo nome do equipamento logo depois de adicionar o exercicio
+                for (let i = 0; i < $scope.exEq.length; i++) {
+                    if (response.data.equipmentId != null) {
+                        if ($scope.exEq[i].id == response.data.equipmentId) {
+                            response.data.equipmentId = $scope.exEq[i].name;
+                        }
+                    } else {
+                        response.data.equipmentId = "Não necessita"
+                    }
+                }
+
+                let resposta = response.data;
+
+                //Atualiza a lista sem dar refresh na pagina
+                let list = $scope.exercicios;
+                list.push(resposta);
+                $scope.exercicios = list
+
+                //Dá reset e close no Modal form
+                $('#addEx form :input').val("");
+                $('#addEx').modal('toggle');
+                $scope.alerts[1].show = true;
+            } else {
+
+                //Dá reset e close no Modal form
+                $('#addEx form :input').val("");
+                $('#addEx').modal('toggle');
+                $scope.alerts[0].show = true;
+                $scope.alerts[0].show = true;
+            }
+        });
+    };
 
 
+    //Remover Exercicio
+    $scope.rmEx = function (id) {
+
+        let token = getCookie("admin");
+        removeExercise($http, id, token, (response) => {
+            if (response) {
+
+                //console.log("Removido com Sucesso!");
+                $scope.exercicios = $.grep($scope.exercicios, function (e) {
+                    return e.id != id;
+                });
+
+                //Dá close no Modal from
+                $('#removerEx').modal('toggle');
 
 
+            } else {
+                console.log("Erro ao Remover Exercicio!")
 
-
-
-
-
-
-
-
-
-
+                //Dá close no Modal from
+                $('#removerEx').modal('toggle');
+            }
+        });
+    }
 
     //Antigo Exercicio
-     let oldEx;
+    let oldEx;
     //Editar um Exercicio
+    $scope.exsubmit = function () {
 
+        //console.log(oldEx);
+        //Copia as informações todas do oldEx para um novo exercicio incluindo as informações inalteraveis
+        let newEx = oldEx;
 
+        //Atribui as novas informções ao newStaff
+        newEx.id = $scope.idExedit;
+        newEx.name = $scope.edex.name;
+        newEx.targetMuscleGroup = $scope.edex.targetMuscleGroup;
+        newEx.difficultyLevel = $scope.edex.difficultyLevel;
+        newEx.equipmentId = $scope.edex.equipmentId;
+        newEx.description = $scope.edex.description;
+        newEx.imageUrl = $scope.edex.imageUrl;
+        //console.log(newEx);
 
+        let token = getCookie("admin");
+        editarExercise($http, newEx, $scope.idExedit, token, (response) => {
+            if (response) {
 
+                $scope.edex = null;
 
+                //Dá reset e close no Modal form
+                $('#editarEx form :input').val("");
+                $('#editarEx').modal('toggle');
+                $scope.alerts[2].show = true;
 
+            } else {
 
-
-
-
-    
-
-
-
-
-
-
-
-
+                //Dá reset e close no Modal form
+                $('#editarEx form :input').val("");
+                $('#editarEx').modal('toggle');
+                $scope.alerts[3].show = true;
+            }
+        });
+    };
 
     //Abre um popup para colocar nova informação do Exercicio
     $scope.edEx = function (id) {
         $scope.idExedit = id;
         oldEx = $scope.exercicios.find(x => x.id === $scope.idExedit);
         $scope.edex = oldEx;
+        let token = getCookie("admin");
+        getEquipment($http, token, (response) => {
+            if (response) {
+                $scope.exEq = response.data;
+            } else {
+                $scope.alerts[5].show = true;
+            }
+        });
+        //console.log($scope.idExedit);
     }
 
     //Abre um popup para confirmar a remoção do Equipamento
     $scope.removeEx = function (id) {
         $scope.idExremove = id;
-        console.log($scope.idExremove);
+        //console.log($scope.idExremove);
     }
 
 

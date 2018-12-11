@@ -549,6 +549,26 @@ export function suspendTicket($http, id, token, callback) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Exercicios
 //Get all exercises
 export function getExercises($http, token, callback) {
@@ -569,7 +589,7 @@ export function getExercises($http, token, callback) {
 }
 
 //Adicionar um Exercicio
-export function addExercises($http, token, callback){
+export function addExercises($http, data, token, callback){
     $http({
         method: "POST",
         data: data,
@@ -587,9 +607,41 @@ export function addExercises($http, token, callback){
     });
 }
 
+//Remover um Exercicio
+export function removeExercise($http, id, token, callback){
+    $http({
+        method: "DELETE",
+        url: "https://localhost:5001/api/exercises/" + id,
+        headers: {
+            'authorization': "bearer " + token,
+        }
+    }).then(function mySuccess(response){
+       //console.log(response)
+       callback(response)
 
+    }, function myError(response) {
+        callback(false)
+    });
+}
 
+//Editar um Exercicio
+export function editarExercise($http, data, id, token, callback) {
+    $http({
+        method: "PUT",
+        data: data,
+        url: "https://localhost:5001/api/exercises/" + id,
+        headers: {
+            'authorization': "bearer " + token,
+            'content-type': "application/json",
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response)
+        callback(response)
 
+    }, function myError(response) {
+        callback(false)
+    });
+}
 
 
 
