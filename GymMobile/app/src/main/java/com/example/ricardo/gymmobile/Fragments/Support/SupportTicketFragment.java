@@ -56,33 +56,6 @@ public class SupportTicketFragment extends Fragment implements OnItemClickListen
     @Override
     public void onResume() {
         super.onResume();
-
-        supportTickets.clear();
-        supportAdapter.notifyItemRemoved(0);
-
-        /** <TESTE> */
-        SupportTicketMessage supportTicketMessage = new SupportTicketMessage();
-
-        supportTicketMessage.setId(1);
-        supportTicketMessage.setMessage("Uma das elipticas está estragada.");
-        supportTicketMessage.setAt(new Date());
-        supportTicketMessage.setSupportTicketId(1);
-        supportTicketMessage.setFrom(SupportTicketMessageSender.Client);
-
-        supportTicketMessages.add(supportTicketMessage);
-
-        SupportTicket supportTicket = new SupportTicket();
-
-        supportTicket.setId(1);
-        supportTicket.setTitle("Abdominais");
-        supportTicket.setMessages(null);
-        supportTicket.setOpenedAt(new Date());
-        supportTicket.setState(TicketState.Open);
-        supportTicket.setClientId(1);
-
-        supportTickets.add(supportTicket);
-        supportAdapter.notifyItemInserted(0);
-
     }
 
     @Override

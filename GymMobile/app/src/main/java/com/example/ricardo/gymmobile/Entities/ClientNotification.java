@@ -12,6 +12,10 @@ public class ClientNotification {
      */
     private long id;
     /**
+     * Titulo da notificação
+     */
+    private String title;
+    /**
      * Mensagem da notificação
      */
     private String message;
@@ -28,44 +32,36 @@ public class ClientNotification {
      */
     private long clientId;
 
+    public ClientNotification(long id, String title, String message, Date timestamp, boolean isUnread, long clientId) {
+        this.id = id;
+        this.title = title;
+        this.message = message;
+        this.timestamp = timestamp;
+        this.isUnread = isUnread;
+        this.clientId = clientId;
+    }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public String getTitle() {
+        return title;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public Date getTimestamp() {
         return timestamp;
-    }
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
     }
 
     public boolean isUnread() {
         return isUnread;
     }
 
-    public void setUnread(boolean unread) {
-        isUnread = unread;
-    }
-
     public long getClientId() {
         return clientId;
-    }
-
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
     }
 }

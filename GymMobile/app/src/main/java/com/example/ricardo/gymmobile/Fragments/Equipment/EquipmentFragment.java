@@ -52,23 +52,6 @@ public class EquipmentFragment extends Fragment implements OnItemClickListener {
     @Override
     public void onResume() {
         super.onResume();
-
-        equipments.clear();
-        equipmentAdapter.notifyItemRemoved(0);
-
-        /** < TESTE > */
-        Equipment equipment = new Equipment();
-        equipment.setId(1);
-        equipment.setName("Ergómetro");
-        equipment.setBrandName("Concept2");
-        equipment.setImageUrl("https://singularwod-44af.kxcdn.com/media/catalog/product/cache/6/thumbnail/1000x668.57142857143/9df78eab33525d08d6e5fb8d27136e95/r/e/remoindoor-modelod-pm5-7.jpg");
-        equipment.setQuantity(4);
-        equipment.setPriceInEuro(800.0f);
-        equipment.setSupplierName("ErgometrosLda");
-        equipment.setDescription("An ergometer is a machine used to simulate the action of watercraft rowing for the purpose of exercise or training for rowing.");
-
-        equipments.add(equipment);
-        equipmentAdapter.notifyItemInserted(0);
     }
 
     @Override
