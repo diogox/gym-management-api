@@ -1,5 +1,5 @@
 //Login
-export function login($http,data,callback) {
+export function login($http, data, callback) {
     $http({
         method: "POST",
         data: data,
@@ -7,7 +7,7 @@ export function login($http,data,callback) {
         headers: {
             'Content-Type': "application/json"
         }
-    }).then(function mySuccess(response){
+    }).then(function mySuccess(response) {
         callback(response)
     }, function myError(response) {
         callback(false)
@@ -16,13 +16,13 @@ export function login($http,data,callback) {
 
 //Clientes
 //Get all Clients
-export function getClients($http,token, callback) {
+export function getClients($http, token, callback) {
     console.log(token);
     $http({
         method: "GET",
         url: "https://localhost:5001/api/clients/",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -36,12 +36,12 @@ export function getClients($http,token, callback) {
 
 
 //Get Client by ID
-export function getClientsByID($http,id, token, callback) {
+export function getClientsByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/clients/"+id,
+        url: "https://localhost:5001/api/clients/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -59,7 +59,7 @@ export function removeClient($http, id, token, callback) {
         method: "DELETE",
         url: "https://localhost:5001/api/clients/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
         }
     }).then(function mySuccess(response) {
         //console.log(response)
@@ -77,7 +77,7 @@ export function adicionarClient($http, data, token, callback) {
         data: data,
         url: "https://localhost:5001/api/clients/",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json"
         }
     }).then(function mySuccess(response) {
@@ -90,13 +90,13 @@ export function adicionarClient($http, data, token, callback) {
 }
 
 //Editar Cliente
-export function editarClient($http, data, id, token, callback){
+export function editarClient($http, data, id, token, callback) {
     $http({
         method: "PUT",
         data: data,
         url: "https://localhost:5001/api/clients/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json"
         }
     }).then(function mySuccess(response) {
@@ -130,7 +130,7 @@ export function getStaff($http, token, callback) {
         method: "GET",
         url: "https://localhost:5001/api/staff/",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -146,9 +146,9 @@ export function getStaff($http, token, callback) {
 export function getStaffByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/staff/"+id,
+        url: "https://localhost:5001/api/staff/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -166,7 +166,7 @@ export function removeStaff($http, id, token, callback) {
         method: "DELETE",
         url: "https://localhost:5001/api/staff/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
         }
     }).then(function mySuccess(response) {
         //console.log(response)
@@ -184,7 +184,7 @@ export function adicionarStaff($http, data, token, callback) {
         data: data,
         url: "https://localhost:5001/api/staff/",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -197,13 +197,13 @@ export function adicionarStaff($http, data, token, callback) {
 }
 
 //Editar Cliente
-export function editarStaff($http, data, id, token, callback){
+export function editarStaff($http, data, id, token, callback) {
     $http({
         method: "PUT",
         data: data,
         url: "https://localhost:5001/api/staff/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -240,7 +240,7 @@ export function getEquipment($http, token, callback) {
         method: "GET",
         url: "https://localhost:5001/api/equipment/",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -256,9 +256,9 @@ export function getEquipment($http, token, callback) {
 export function getEquipmentByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/equipment/"+id,
+        url: "https://localhost:5001/api/equipment/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -276,7 +276,7 @@ export function removeEquipment($http, id, token, callback) {
         method: "DELETE",
         url: "https://localhost:5001/api/equipment/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
         }
     }).then(function mySuccess(response) {
         //console.log(response)
@@ -294,7 +294,7 @@ export function adicionarEquipment($http, data, token, callback) {
         data: data,
         url: "https://localhost:5001/api/equipment/",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -307,13 +307,13 @@ export function adicionarEquipment($http, data, token, callback) {
 }
 
 //Editar Equipamento
-export function editarEquipment($http, data, id, token, callback){
+export function editarEquipment($http, data, id, token, callback) {
     $http({
         method: "PUT",
         data: data,
         url: "https://localhost:5001/api/equipment/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -350,7 +350,7 @@ export function getTickets($http, token, callback) {
         method: "GET",
         url: "https://localhost:5001/api/tickets/",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -363,12 +363,12 @@ export function getTickets($http, token, callback) {
 }
 
 //Get Ticket by ID
-export function getTicketByID($http,id, token, callback) {
+export function getTicketByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/tickets/"+id,
+        url: "https://localhost:5001/api/tickets/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -386,7 +386,7 @@ export function removeTicket($http, id, token, callback) {
         method: "DELETE",
         url: "https://localhost:5001/api/tickets/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
         }
     }).then(function mySuccess(response) {
         //console.log(response)
@@ -404,7 +404,7 @@ export function adicionarTicket($http, data, token, callback) {
         data: data,
         url: "https://localhost:5001/api/tickets/",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -417,13 +417,13 @@ export function adicionarTicket($http, data, token, callback) {
 }
 
 //Editar Ticket
-export function editarTicket($http, data, id, token, callback){
+export function editarTicket($http, data, id, token, callback) {
     $http({
         method: "PUT",
         data: data,
         url: "https://localhost:5001/api/tickets/" + id,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -436,12 +436,12 @@ export function editarTicket($http, data, id, token, callback){
 }
 
 //Get messages from Ticket
-export function getMSGSTicket($http,id, token, callback) {
+export function getMSGSTicket($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/tickets/"+id+"/messages",
+        url: "https://localhost:5001/api/tickets/" + id + "/messages",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -457,9 +457,9 @@ export function getMSGSTicket($http,id, token, callback) {
 export function getMSGTicket($http, id, messageid, token, callback) {
     $http({
         method: "GET",
-        url: "https://localhost:5001/api/tickets/"+id+"/messages/"+messageid,
+        url: "https://localhost:5001/api/tickets/" + id + "/messages/" + messageid,
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -476,9 +476,9 @@ export function sendMSGTicket($http, data, id, token, callback) {
     $http({
         method: "POST",
         data: data,
-        url: "https://localhost:5001/api/tickets/"+id+"/messages/",
+        url: "https://localhost:5001/api/tickets/" + id + "/messages/",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
     }).then(function mySuccess(response) {
@@ -491,61 +491,157 @@ export function sendMSGTicket($http, data, id, token, callback) {
 }
 
 //Open Ticket
-export function openTicket($http, id, token, callback){
+export function openTicket($http, id, token, callback) {
     $http({
         method: "GET",
-        url : "https://localhost:5001/api/Tickets/"+id+"/open",
+        url: "https://localhost:5001/api/Tickets/" + id + "/open",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
-    }).then(function mySuccess(response){
+    }).then(function mySuccess(response) {
         //Console.log(response)
         callback(response)
 
-    }, function myError(response){
+    }, function myError(response) {
         callback(false)
     });
 }
 
 //Close Ticket
-export function closeTicket($http, id, token, callback){
+export function closeTicket($http, id, token, callback) {
     $http({
         method: "GET",
-        url : "https://localhost:5001/api/Tickets/"+id+"/close",
+        url: "https://localhost:5001/api/Tickets/" + id + "/close",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
-    }).then(function mySuccess(response){
+    }).then(function mySuccess(response) {
         //Console.log(response)
         callback(response)
 
-    }, function myError(response){
+    }, function myError(response) {
         callback(false)
     });
 }
 
 //Suspend Ticket
-export function suspendTicket($http, id, token,callback){
+export function suspendTicket($http, id, token, callback) {
     $http({
         method: "GET",
-        url : "https://localhost:5001/api/Tickets/"+id+"/suspend",
+        url: "https://localhost:5001/api/Tickets/" + id + "/suspend",
         headers: {
-            'authorization': "bearer "+ token,
+            'authorization': "bearer " + token,
             'content-type': "application/json",
         }
-    }).then(function mySuccess(response){
+    }).then(function mySuccess(response) {
         //Console.log(response)
         callback(response)
 
-    }, function myError(response){
+    }, function myError(response) {
         callback(false)
     });
 }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Exercicios
+//Get all exercises
+export function getExercises($http, token, callback) {
+    $http({
+        method: "GET",
+        url: "https://localhost:5001/api/exercises/",
+        headers: {
+            'authorization': "bearer " + token,
+            'content-type': "application/json",
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response);
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Adicionar um Exercicio
+export function addExercises($http, data, token, callback){
+    $http({
+        method: "POST",
+        data: data,
+        url: "https://localhost:5001/api/exercises/",
+        headers: {
+            'authorization': "bearer " + token,
+            'content-type': "application/json",
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response)
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Remover um Exercicio
+export function removeExercise($http, id, token, callback){
+    $http({
+        method: "DELETE",
+        url: "https://localhost:5001/api/exercises/" + id,
+        headers: {
+            'authorization': "bearer " + token,
+        }
+    }).then(function mySuccess(response){
+       //console.log(response)
+       callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Editar um Exercicio
+export function editarExercise($http, data, id, token, callback) {
+    $http({
+        method: "PUT",
+        data: data,
+        url: "https://localhost:5001/api/exercises/" + id,
+        headers: {
+            'authorization': "bearer " + token,
+            'content-type': "application/json",
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response)
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
 
 
 
@@ -559,5 +655,5 @@ export function suspendTicket($http, id, token,callback){
 
 
 //Planos de Treino
-//Exercicios
+
 

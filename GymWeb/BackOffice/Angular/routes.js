@@ -24,8 +24,8 @@ app.config(function($routeProvider) {
     .when("/listadeplanos",{ //Página com a lista de Planos de Exercicios
         templateUrl : "Templates/404.htm"
     })
-    .when("/listadeexercicios",{ //Página com a lista de Exercicios
-        templateUrl : "Templates/404.htm"
+    .when("/listadeexercicios",{
+        templateUrl : "Templates/lista_de_exercicios.html"
     })
     .when("/login",{
         templateUrl : "Templates/login_page.html"
