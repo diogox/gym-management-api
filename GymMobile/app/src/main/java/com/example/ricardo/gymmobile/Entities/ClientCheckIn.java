@@ -18,30 +18,23 @@ public class ClientCheckIn {
     /**
      * Número de identificação do cliente que está asociado o check-in
      */
-    private long ClientId;
+    private long clientId;
 
+    public ClientCheckIn(long id, Date at, long clientId) {
+        this.id = id;
+        this.at = at;
+        this.clientId = clientId;
+    }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public Date getAt() {
         return at;
     }
 
-    public void setAt(Date at) {
-        this.at = at;
-    }
-
     public long getClientId() {
-        return ClientId;
-    }
-
-    public void setClientId(long clientId) {
-        ClientId = clientId;
+        return clientId;
     }
 }

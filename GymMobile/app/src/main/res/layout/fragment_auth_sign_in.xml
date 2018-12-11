@@ -70,32 +70,6 @@
             android:hint="Confirm Password"
             android:inputType="textPassword" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/auth_sign_in_birth_date"
-                android:layout_width="151dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="50dp"
-                android:hint="Birth Date"
-                android:inputType="date" />
-
-            <EditText
-                android:id="@+id/auth_sign_in_age"
-                android:layout_width="77dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="40dp"
-                android:hint="Idade"
-                android:inputType="number" />
-
-        </LinearLayout>
-
         <EditText
             android:id="@+id/auth_sign_in_nif"
             android:layout_width="match_parent"
@@ -110,29 +84,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <EditText
                 android:id="@+id/auth_sign_in_height"
-                android:layout_width="85dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_weight="1"
                 android:layout_marginRight="40dp"
                 android:hint="Height"
                 android:inputType="numberDecimal" />
 
             <EditText
                 android:id="@+id/auth_sign_in_weight"
-                android:layout_width="94dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="50dp"
                 android:hint="Weight"
                 android:inputType="numberDecimal" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/auth_sign_in_birth_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="70dp"
+            android:text="Birth date" />
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -141,6 +125,7 @@
             android:gravity="center_vertical">
 
             <Button
+                android:id="@+id/auth_sign_in_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
