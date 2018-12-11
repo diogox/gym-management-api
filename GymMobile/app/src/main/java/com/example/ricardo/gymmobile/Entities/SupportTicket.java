@@ -29,58 +29,42 @@ public class SupportTicket {
     /**
      * Atual estado do ticket de suporte
      */
-    private TicketState State;
+    private TicketState state;
     /**
      * Número de identificação do cliente que criou o ticket de suporte
      */
-    private long ClientId;
+    private Long clientId;
 
+    public SupportTicket(long id, String title, List<SupportTicketMessage> messages, Date openedAt, TicketState state, Long clientId) {
+        this.id = id;
+        this.title = title;
+        this.messages = messages;
+        this.openedAt = openedAt;
+        this.state = state;
+        this.clientId = clientId;
+    }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public List<SupportTicketMessage> getMessages() {
         return messages;
-    }
-
-    public void setMessages(List<SupportTicketMessage> messages) {
-        this.messages = messages;
     }
 
     public Date getOpenedAt() {
         return openedAt;
     }
 
-    public void setOpenedAt(Date openedAt) {
-        this.openedAt = openedAt;
-    }
-
     public TicketState getState() {
-        return State;
+        return state;
     }
 
-    public void setState(TicketState state) {
-        State = state;
-    }
-
-    public long getClientId() {
-        return ClientId;
-    }
-
-    public void setClientId(long clientId) {
-        ClientId = clientId;
+    public Long getClientId() {
+        return clientId;
     }
 }

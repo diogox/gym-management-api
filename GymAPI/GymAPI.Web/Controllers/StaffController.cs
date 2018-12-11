@@ -13,7 +13,6 @@ namespace GymAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")] 
     public class StaffController : ControllerBase
     {
         private readonly IStaffService _staffService;
@@ -31,6 +30,7 @@ namespace GymAPI.Controllers
 
         // GET api/staff
         [HttpGet]
+        [Authorize(Roles = "Admin")] 
         public ActionResult<List<StaffMember>> GetStaff()
         {
             return Ok(_staffService.GetAll());
@@ -38,19 +38,9 @@ namespace GymAPI.Controllers
 
         // GET api/staff/{id}
         [HttpGet("{id}", Name = "GetStaffMember")]
-        [AllowAnonymous]
-        public async Task<ActionResult<string>> GetStaffMember(long id)
+        [Authorize(Policy = "SameStaffMemberOnly&AllowAdmin")]
+        public ActionResult<string> GetStaffMember(long id)
         {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-
-            if ( !_isAdmin )
-            {
-                if (! await _authService.CheckIfCurrentStaffMember(HttpContext, id))
-                {
-                    return Forbid();
-                }
-            }
-            
             var member = _staffService.GetById(id);
             if (member == null)
             {
@@ -61,6 +51,7 @@ namespace GymAPI.Controllers
         
         // POST api/staff
         [HttpPost]
+        [Authorize(Roles = "Admin")] 
         public async Task<ActionResult> SignupUser([FromBody] SignupStaffMemberDAO signupInfo)
         {
             // Check username overlap
@@ -115,19 +106,9 @@ namespace GymAPI.Controllers
 
         // PUT api/staff/{id}
         [HttpPut("{id}")]
-        [AllowAnonymous]
+        [Authorize(Policy = "SameStaffMemberOnly&AllowAdmin")]
         public async Task<ActionResult> UpdateStaffMember(long id, [FromBody] StaffMember member)
         {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-
-            if ( !_isAdmin )
-            {
-                if (! await _authService.CheckIfCurrentStaffMember(HttpContext, id))
-                {
-                    return Forbid();
-                }
-            }
-            
             var oldMember = _staffService.GetById(id);
             if (oldMember == null)
             {
@@ -140,19 +121,9 @@ namespace GymAPI.Controllers
 
         // DELETE api/staff/{id}
         [HttpDelete("{id}")]
-        [AllowAnonymous]
+        [Authorize(Policy = "SameStaffMemberOnly&AllowAdmin")]
         public async Task<ActionResult> DeleteStaffMember(long id)
         {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-
-            if ( !_isAdmin )
-            {
-                if (! await _authService.CheckIfCurrentStaffMember(HttpContext, id))
-                {
-                    return Forbid();
-                }
-            }
-            
             var member = _staffService.GetById(id);
             if (member == null)
             {
@@ -165,6 +136,7 @@ namespace GymAPI.Controllers
         
         // GET api/staff/trainers
         [HttpGet("trainers")]
+        [Authorize(Roles = "Admin")] 
         public ActionResult<string> GetAllTrainers()
         {
             return Ok(_trainersStaffService.GetAll());
@@ -172,19 +144,9 @@ namespace GymAPI.Controllers
         
         // GET api/staff/trainers/{id}
         [HttpGet("trainers/{id}")]
-        [AllowAnonymous]
+        [Authorize(Policy = "SameStaffMemberOnly&AllowAdmin")]
         public async Task<ActionResult<string>> GetTrainer(long id)
         {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-
-            if ( !_isAdmin )
-            {
-                if (! await _authService.CheckIfCurrentStaffMember(HttpContext, id))
-                {
-                    return Forbid();
-                }
-            }
-            
             var trainer = _trainersStaffService.GetById(id);
             if (trainer == null)
             {
