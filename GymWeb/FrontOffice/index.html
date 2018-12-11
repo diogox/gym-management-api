@@ -110,7 +110,7 @@
                 <a href="#!notificacoes" ng-hide="hideClient">
                     <li class="item-menu">
                         <span class="glyphicon glyphicon-bell"></span>
-                        <span class="menu">Notificações</span>
+                        <span class="menu">Notificações <span class="badge badge-secondary">{{numberNotifications}}</span> </span>
                     </li>
                 </a>
                 <a href="#!login" ng-click="logoutBtn()" ng-hide="hideBoth">
@@ -146,6 +146,7 @@
 <script src="js/planoTreinoController.js" type="module"></script>
 <script src="js/planosController.js" type="module"></script>
 <script src="js/atribuirPlanoController.js" type="module"></script>
+<script src="js/notificacoesController.js" type="module"></script>
 <script src="js/pedidos.js" type="module"></script>
 
 </html>
