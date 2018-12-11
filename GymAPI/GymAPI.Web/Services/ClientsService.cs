@@ -118,7 +118,7 @@ namespace GymAPI.Services
                 this.AddNotification(client, new ClientNotificationDAO()
                 {
                     Title = "Novo Plano de Treino Atribuído.",
-                    Message = "Foi-lhe atribuído um novo plano de treino. Vá a \"Plano Treino\" no seu menu para visualiza-lo."
+                    Message = "Foi-lhe atribuído um novo plano de treino. Vá a \"Meu Plano\" no seu menu para visualiza-lo."
                 });
                 
                 _context.SaveChanges();
