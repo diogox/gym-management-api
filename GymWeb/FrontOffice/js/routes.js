@@ -42,14 +42,14 @@ app.config(function($routeProvider) {
     .when('/notificacoes', {
         templateUrl : "template/501.htm"
     })
-    .when('/logout', {
-        templateUrl : "template/501.htm"
-    })
     .when('/501', {
         templateUrl : "template/501.htm"
     })
     .when('/404',{
         templateUrl : "template/404.htm"
+    })
+    .when('/403', {
+        templateUrl : "template/403.htm"
     })
     .otherwise({
         templateUrl : "template/404.htm"

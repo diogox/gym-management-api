@@ -1,11 +1,13 @@
 //Determinar uma Cookie
-export function setCookie(admin, token, expires) {
-    document.cookie = admin + "=" + token + ";" + expires + ";path=/";
+export function setCookie(cookieName, cookieValue, cookieExpires) {
+    let d = new Date(cookieExpires);
+    let date = "expires=" + d;
+    document.cookie = cookieName + "=" + cookieValue + ";" + date + ";path=/";
 }
 
 //Retornar uma Cookie
-export function getCookie(admin) {
-    var name = admin + "=";
+export function getCookie(cookieName) {
+    var name = cookieName + "=";
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
@@ -20,6 +22,6 @@ export function getCookie(admin) {
 }
 
 //Delete Cookie
-export function deletCookie(admin) {
-    document.cookie = admin + "=" +" "+";"+"-1"+ ";path=/";
+export function deletCookie(cookieName) {
+    document.cookie = cookieName + "=" + " " + ";" + "-1" + ";path=/";
 }
