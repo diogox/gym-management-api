@@ -81,11 +81,13 @@ function deleteLogin() {
  * @param {*} userTypeId id do utilizador
  * @param {*} expiration data de expiração das cookies
  */
-export function newLogin(userType, token, userTypeId, expiration) {
+export function newLogin(userType, token, userTypeId, expiration, callback) {
 
     setCookie("userType", userType, expiration);
     setCookie("token", token, expiration);
     setCookie("userTypeId", userTypeId, expiration);
+
+    callback();
 
 }
 

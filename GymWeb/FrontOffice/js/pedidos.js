@@ -425,6 +425,63 @@ export function closeTicket($http, id, callback) {
 }
 
 /**
+ * Função que retorna todas as notificações de um cliente
+ * @param {*} id id do cliente
+ * @param {*} callback função que executa após a resposta
+ */
+export function getClientNotifications($http, id, callback){
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
+    $http({
+
+        method: "GET",
+        url: domain + "api/clients/" + id + "/notifications",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+export function readNotification($http, clientId, notificationId, callback) {
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
+    $http({
+
+        method: "GET",
+        url: domain + "api/clients/" + clientId + "/notifications/" + notificationId + "/read",
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
+
+    }).then(function mySuccess(response) {
+
+        callback(response);
+
+    }, function myError(response) {
+
+        callback(false);
+
+    });
+
+}
+
+/**
  * Função que efetua o login do cliente
  * @param {*} dataSend dados a enviar no pedido para poder efetuar o login
  * @param {*} callback resposta a enviar após receber o pedido
