@@ -13,7 +13,6 @@ namespace GymAPI
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin, Staff, Trainer")] 
     public class ClientsController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -29,6 +28,7 @@ namespace GymAPI
 
         // GET api/clients
         [HttpGet]
+        [Authorize(Roles = "Admin, Staff, Trainer")] 
         public ActionResult<List<Client>> GetAllClients()
         {
             return Ok(_clientsService.GetAll());
@@ -36,21 +36,10 @@ namespace GymAPI
 
         // GET api/clients/{id}
         [HttpGet("{id}", Name = "GetClient")]
-        [AllowAnonymous]
-        public async Task<ActionResult<Client>> GetClient(long id)
+        [Authorize(Policy = "PreventOtherClients")]
+        public ActionResult<Client> GetClient(long id)
         {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-            var _isStaff = _authService.CheckIfStaff(User);
-            var _isTrainer = _authService.CheckIfTrainer(User);
 
-            if ( !(_isAdmin || _isStaff || _isTrainer) )
-            {
-                if (! await _authService.CheckIfCurrentClient(HttpContext, id))
-                {
-                    return Forbid();
-                }
-            }
-            
             var client = _clientsService.GetById(id);
             if (client == null)
             {
@@ -64,20 +53,9 @@ namespace GymAPI
         /// Checks-in the client. Can only be done once day.
         /// </summary>
         [HttpGet("{id}/check-in")]
-        [AllowAnonymous]
-        public async Task<ActionResult<Client>> ClientCheckIn(long id)
+        [Authorize(Policy = "PreventOtherClients")]
+        public ActionResult<Client> ClientCheckIn(long id)
         {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-            var _isStaff = _authService.CheckIfStaff(User);
-
-            if ( !(_isAdmin || _isStaff) )
-            {
-                if (! await _authService.CheckIfCurrentClient(HttpContext, id))
-                {
-                    return Forbid();
-                }
-            }
-            
             var client = _clientsService.GetById(id);
             if (client == null)
             {
@@ -94,20 +72,9 @@ namespace GymAPI
         
         // GET api/clients/{id}/notifications
         [HttpGet("{id}/notifications")]
-        [AllowAnonymous]
-        public async Task< ActionResult< List<ClientNotification> > > GetClientNotifications(long id)
-        {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-            var _isStaff = _authService.CheckIfStaff(User);
-
-            if ( !(_isAdmin || _isStaff) )
-            {
-                if (! await _authService.CheckIfCurrentClient(HttpContext, id))
-                {
-                    return Forbid();
-                }
-            }
-            
+        [Authorize(Policy = "PreventOtherClients")]
+        public ActionResult< List<ClientNotification> > GetClientNotifications(long id)
+        {   
             var client = _clientsService.GetById(id);
             if (client == null)
             {
@@ -119,20 +86,9 @@ namespace GymAPI
         
         // GET api/clients/{clientId}/notifications/{notificationId}/read
         [HttpGet("{clientId}/notifications/{notificationId}/read")]
-        [AllowAnonymous]
-        public async Task< ActionResult > GetClientNotifications(long clientId, long notificationId)
+        [Authorize(Policy = "PreventOtherClients")]
+        public ActionResult GetClientNotifications(long clientId, long notificationId)
         {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-            var _isStaff = _authService.CheckIfStaff(User);
-
-            if ( !(_isAdmin || _isStaff) )
-            {
-                if (! await _authService.CheckIfCurrentClient(HttpContext, clientId))
-                {
-                    return Forbid();
-                }
-            }
-            
             var client = _clientsService.GetById(clientId);
             if (client == null)
             {
@@ -146,20 +102,9 @@ namespace GymAPI
         
         // GET api/clients/{id}/tickets
         [HttpGet("{id}/tickets")]
-        [AllowAnonymous]
-        public async Task< ActionResult< List<ClientNotification> > > GetClientTickets(long id)
+        [Authorize(Policy = "PreventOtherClients")]
+        public ActionResult< List<ClientNotification> > GetClientTickets(long id)
         {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-            var _isStaff = _authService.CheckIfStaff(User);
-
-            if ( !(_isAdmin || _isStaff) )
-            {
-                if (! await _authService.CheckIfCurrentClient(HttpContext, id))
-                {
-                    return Forbid();
-                }
-            }
-            
             var client = _clientsService.GetById(id);
             if (client == null)
             {
@@ -194,7 +139,7 @@ namespace GymAPI
                 WeightInKg = signupInfo.WeightInKg,
             };
             _clientsService.Create(client);
-            
+
             // Create user
             User newUser = new User()
             {
@@ -219,6 +164,7 @@ namespace GymAPI
         
         // POST api/clients/{id}/notifications
         [HttpPost("{id}/notifications")]
+        [Authorize(Roles = "Admin, Staff")] 
         public ActionResult AddNotificationToClient(long id, [FromBody] ClientNotificationDAO notification)
         {
             var client = _clientsService.GetById(id);
@@ -233,7 +179,7 @@ namespace GymAPI
         
         // POST api/clients/{id}/plan
         [HttpPost("{id}/plan")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Trainer")] 
         public ActionResult SwitchTrainingPlan(long id, [FromBody] SwitchPlanDAO planIdObj)
         {
             var _isAdmin = _authService.CheckIfAdmin(User);
@@ -263,20 +209,9 @@ namespace GymAPI
 
         // PUT api/clients/{id}
         [HttpPut("{id}")]
-        [AllowAnonymous]
-        public async Task<ActionResult> UpdateClients(long id,[FromBody] Client client)
+        [Authorize(Policy = "PreventOtherClients")]
+        public ActionResult UpdateClients(long id,[FromBody] Client client)
         {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-            var _isStaff = _authService.CheckIfStaff(User);
-
-            if ( !(_isAdmin || _isStaff) )
-            {
-                if (! await _authService.CheckIfCurrentClient(HttpContext, id))
-                {
-                    return Forbid();
-                }
-            }
-            
             var oldClient = _clientsService.GetById(id);
             if (oldClient== null)
             {
@@ -289,20 +224,9 @@ namespace GymAPI
 
         // DELETE api/clients/{id}
         [HttpDelete("{id}")]
-        [AllowAnonymous]
-        public async Task<ActionResult> DeleteClients(long id)
+        [Authorize(Policy = "PreventOtherClients")]
+        public ActionResult DeleteClients(long id)
         {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-            var _isStaff = _authService.CheckIfStaff(User);
-
-            if ( !(_isAdmin || _isStaff) )
-            {
-                if (! await _authService.CheckIfCurrentClient(HttpContext, id))
-                {
-                    return Forbid();
-                }
-            }
-            
             var client = _clientsService.GetById(id);
             if (client == null)
             {

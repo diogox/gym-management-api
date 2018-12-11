@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GymAPI.CustomPolicies;
 using GymAPI.Models;
 using GymAPI.Models.User;
 using GymAPI.Services;
@@ -106,6 +109,26 @@ namespace GymAPI
                     .Build();
                 o.Filters.Add(new AuthorizeFilter(policy));
             });
+            
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("PreventOtherClients",
+                    policy => policy.Requirements.Add( new SameUserTypeRequirement("Client", new List<string>()
+                    {
+                        "Admin",
+                        "Staff",
+                        "Trainer"
+                    })) 
+                );
+                
+                options.AddPolicy("SameStaffMemberOnly&AllowAdmin",
+                    policy => policy.Requirements.Add( new SameUserTypeRequirement("StaffMember", new List<string>()
+                    {
+                        "Admin"
+                    })) 
+                );
+            });
+            services.AddTransient<IAuthorizationHandler, SameUserTypeHandler>();
             
             services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<IClientsService, ClientsService>();
