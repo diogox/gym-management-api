@@ -22,7 +22,7 @@
                 <!-- Modal body -->
                 <div class="modal-body">
 
-                    <form ng-submit="submitPlan()">
+                    <form ng-submit="submitExercise()">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" id="name" name="name" ng-model="editExercise.name" required/>
@@ -62,6 +62,7 @@
                         <div class="form-group custom-control-inline" style="width:150px">
                             <select name="equipment" class="custom-select" ng-model="editExercise.equipmentId">
                                 <option value="" disabled selected>Equipamento</option>
+                                <option></option>
                                 <option ng-repeat="y in equipmentList" value="{{y.id}}">{{y.name}}</option>
                             </select>
                         </div>
@@ -83,7 +84,7 @@
 
     <!-- Botão novo exercicio -->
     
-    <button type="button" class="btn btn-success"  ng-click="create()" data-toggle="modal" data-target="#editarCriarExercicio">Criar novo</button>
+    <button ng-hide="hideStaff" type="button" class="btn btn-success"  ng-click="create()" data-toggle="modal" data-target="#editarCriarExercicio">Criar novo</button>
     <br/>
     <br/>
 
@@ -91,9 +92,9 @@
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="x in exercicios | filter : filtro_exercicios">
 
-            <p data-toggle="collapse" data-target="#ex{{x.id}}">{{x.name}} 
-                <a href="" ng-click="edit(x.id)" data-toggle="modal" data-target="#editarCriarExercicio">Edit</a>
-                <a href="" ng-click="edit(x.id);delete(x.id)">Delete</a>
+            <p class="pointer" data-toggle="collapse" data-target="#ex{{x.id}}">{{x.name}} 
+                <a ng-hide="hideStaff" href="" ng-click="edit(x.id)" data-toggle="modal" data-target="#editarCriarExercicio">Edit</a>
+                <a ng-hide="hideStaff" href="" ng-click="edit(x.id);delete(x.id)">Delete</a>
             </p>
 
             <div id="ex{{x.id}}" class="collapse">

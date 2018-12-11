@@ -54,27 +54,6 @@ public class WorkPlanFragment extends Fragment implements OnItemClickListener {
     @Override
     public void onResume() {
         super.onResume();
-
-        workPlans.clear();
-        workPlanAdapter.notifyItemRemoved(0);
-
-        /** < TESTE > */
-        TrainingPlanBlock trainingPlanBlock = new TrainingPlanBlock();
-        trainingPlanBlock.setPlanId(1);
-        trainingPlanBlock.setExerciseId(1);
-        trainingPlanBlock.setNumberOfRepetitions(0);
-        trainingPlanBlock.setNumberOfSeries(0);
-        trainingPlanBlock.setDayOfTheWeek(DayOfTheWeek.Sunday);
-        trainingPlanBlocks.add(trainingPlanBlock);
-
-        WorkPlan workPlan = new WorkPlan();
-        workPlan.setId(1);
-        workPlan.setName("Tonificar");
-        workPlan.setExerciseBlocks(trainingPlanBlocks);
-        workPlan.setSupervisingTrainerId(1);
-
-        workPlans.add(workPlan);
-        workPlanAdapter.notifyItemInserted(0);
     }
 
     @Override

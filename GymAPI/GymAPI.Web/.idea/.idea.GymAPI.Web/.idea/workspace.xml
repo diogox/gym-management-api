@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d22735bd-d00e-4567-9e5e-628cf682f8cf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/ClientsControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/GymAPI.Tests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.Tests.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.Tests.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.Tests.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.Tests.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.Tests.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/bin/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/Debug/netcoreapp2.1/GymAPI.Tests.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/GymAPI.Tests.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/GymAPI.Tests.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/GymAPI.Tests.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GymAPI.Tests/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.GymAPI/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.idea.GymAPI/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.GymAPI/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.GymAPI/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.GymAPI/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.GymAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.idea.GymAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.GymAPI/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Controllers/AuthController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Controllers/ClientsController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Controllers/ClientsNotas.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Controllers/EquipmentController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Controllers/ExercisesController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Controllers/StaffController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Controllers/TicketsController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Controllers/TrainingPlansController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Controllers/UsersController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DAOs/ClientNotificationDAO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DAOs/LoginDAO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DAOs/SignupClientDAO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DAOs/SignupStaffMemberDAO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DAOs/SwitchPlanDAO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Deploy Commands" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GymAPI.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Migrations/20181210155704_CreateEntities.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Migrations/20181210155704_CreateEntities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Migrations/GymContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Client/Client.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Client/ClientCheckIn.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Client/ClientNotification.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Client/TestClientJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Equipment/Equipment.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Equipment/TestEquipmentJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Exercise/DifficultyLevels.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Exercise/Exercise.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Exercise/MuscleGroups.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Exercise/TestExerciseJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Model.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/StaffMember/StaffMember.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/StaffMember/StaffMemberRank.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/StaffMember/TestStaffMemberJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/SupportTicket/SupportTicket.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/SupportTicket/SupportTicketMessage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/SupportTicket/SupportTicketMessageSender.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/SupportTicket/TestSupportTicketJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/SupportTicket/TicketState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/TrainingPlan/DayOfTheWeek.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/TrainingPlan/TestTrainingPlanJSON.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/TrainingPlan/TrainingPlan.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/TrainingPlan/TrainingPlanBlock.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/User/User.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/User/UserRole.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Services/AuthorizationsService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Services/ClientsService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Services/EquipmentService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Services/ExercisesService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Services/StaffService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Services/SupportTicketsService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Services/TrainersStaffService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Services/TrainingPlanBlocksService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Services/TrainingPlansService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Services/UsersService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Startup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Debug/netcoreapp2.1/GymAPI.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Debug/netcoreapp2.1/GymAPI.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Debug/netcoreapp2.1/GymAPI.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/GymAPI.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/GymAPI.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/GymAPI.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/GymAPI.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/GymAPI.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.AspNetCore.Cors.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.AspNetCore.Http.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.AspNetCore.Http.Extensions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.AspNetCore.Http.Features.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Data.Sqlite.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.EntityFrameworkCore.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.EntityFrameworkCore.Relational.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.EntityFrameworkCore.Sqlite.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.EntityFrameworkCore.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Configuration.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Configuration.Binder.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Configuration.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.DependencyInjection.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.FileProviders.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Options.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Extensions.Primitives.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Microsoft.Net.Http.Headers.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Remotion.Linq.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/SQLitePCLRaw.batteries_green.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/SQLitePCLRaw.batteries_v2.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/SQLitePCLRaw.core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/SQLitePCLRaw.provider.e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Swashbuckle.AspNetCore.Swagger.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Swashbuckle.AspNetCore.SwaggerGen.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Swashbuckle.AspNetCore.SwaggerUI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/Swashbuckle.AspNetCore.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/System.Interactive.Async.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/runtimes/alpine-x64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/runtimes/linux-arm/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/runtimes/linux-arm64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/runtimes/linux-armel/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/runtimes/linux-musl-x64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/runtimes/linux-x64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/runtimes/linux-x86/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/runtimes/osx-x64/native/libe_sqlite3.dylib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/runtimes/win-x64/native/e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/runtimes/win-x86/native/e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/runtimes/win8-arm/native/e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Release/netcoreapp2.1/publish/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gym.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/GymAPI.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/GymAPI.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/GymAPI.RazorAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/GymAPI.RazorAssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/GymAPI.RazorTargetAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/GymAPI.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/GymAPI.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/GymAPI.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/GymAPI.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp2.1/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/GymAPI.csproj.EntityFrameworkCore.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/GymAPI.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/GymAPI.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/GymAPI.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/netcoreapp2.1/GymAPI.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/netcoreapp2.1/GymAPI.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/netcoreapp2.1/GymAPI.RazorAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/netcoreapp2.1/GymAPI.RazorAssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/netcoreapp2.1/GymAPI.RazorTargetAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/netcoreapp2.1/GymAPI.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/netcoreapp2.1/GymAPI.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/netcoreapp2.1/GymAPI.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/netcoreapp2.1/GymAPI.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/netcoreapp2.1/GymAPI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/netcoreapp2.1/GymAPI.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/project.packagespec.json" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1007835708">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="1910" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d22735bd-d00e-4567-9e5e-628cf682f8cf" name="Default Changelist" comment="" />
+      <created>1544484250396</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1544484250396</updated>
+      <workItem from="1544484252348" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="-35" width="1920" height="1115" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973261" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

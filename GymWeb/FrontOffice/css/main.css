@@ -68,3 +68,7 @@
 nav {
 	margin: 0px;
 }
+
+.pointer {
+	cursor: pointer;
+}

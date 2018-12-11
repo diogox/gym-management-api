@@ -9,7 +9,7 @@ import retrofit2.http.GET;
 
 public interface EquipmentService {
 
-    @GET("/equipment")
+    @GET("/api/equipment")
     Call<List<Equipment>> getEquipments();
 
 }
