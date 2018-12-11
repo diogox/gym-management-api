@@ -85,11 +85,11 @@ namespace GymAPI
         }
         
         // GET api/clients/{clientId}/notifications/{notificationId}/read
-        [HttpGet("{clientId}/notifications/{notificationId}/read")]
+        [HttpGet("{id}/notifications/{notificationId}/read")]
         [Authorize(Policy = "PreventOtherClients")]
-        public ActionResult GetClientNotifications(long clientId, long notificationId)
+        public ActionResult GetClientNotifications(long id, long notificationId) // ! The clientId must be named 'id' otherwise the authorize doesn't work
         {
-            var client = _clientsService.GetById(clientId);
+            var client = _clientsService.GetById(id);
             if (client == null)
             {
                 return NotFound();
