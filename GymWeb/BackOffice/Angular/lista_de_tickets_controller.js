@@ -60,6 +60,9 @@ app.controller("ticketsCtrl", function ($scope, $http, $rootScope) {
                 //console.log(response.data[i].birthDate);
             }
 
+            //TODO substituir o id do cliente pelo seu nome
+
+
             //Atualiza a Lista de Clientes
             $scope.Tickets = response.data;
 

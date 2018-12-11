@@ -5,143 +5,105 @@ import java.util.List;
 
 public class Client {
 
-    public long id;
-    public long nif;
-    public String firstName;
-    public String lastName;
-    public String imageUrl;
-    public Date birthDate;
-    public int age;
-    public double heightInMeters;
-    public float weightInKg;
-    public WorkPlan trainingPlan;
-    public long trainingPlanId;
+    private long id;
+    private long nif;
+    private String firstName;
+    private String lastName;
+    private String imageUrl;
+    private Date birthDate;
+    private int age;
+    private double heightInMeters;
+    private float weightInKg;
+    private Long trainingPlanId;
+    private List<ClientCheckIn> checkInHistory;
+    private List<ClientNotification> notifications;
+    private List<SupportTicket> supportTickets;
 
-    /// <summary>
-    /// Contains a list of times and dates the client checked-in at the gym.
-    /// </summary>
-    public List<ClientCheckIn> checkInHistory;
-
-    /// <summary>
-    /// Contains a list of notifications for the user.
-    /// </summary>
-    public List<ClientNotification> notifications;
-
-    /// <summary>
-    /// Contains a list of support tickets associated with the user.
-    /// </summary>
-    public List<SupportTicket> supportTickets;
+    public Client(long id, long nif, String firstName, String lastName, String imageUrl, Date birthDate, int age, double heightInMeters, float weightInKg, Long trainingPlanId, List<ClientCheckIn> checkInHistory, List<ClientNotification> notifications, List<SupportTicket> supportTickets) {
+        this.id             = id;
+        this.nif            = nif;
+        this.firstName      = firstName;
+        this.lastName       = lastName;
+        this.imageUrl       = imageUrl;
+        this.birthDate      = birthDate;
+        this.age            = age;
+        this.heightInMeters = heightInMeters;
+        this.weightInKg     = weightInKg;
+        this.trainingPlanId = trainingPlanId;
+        this.checkInHistory = checkInHistory;
+        this.notifications  = notifications;
+        this.supportTickets = supportTickets;
+    }
 
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public long getNif() {
         return nif;
-    }
-
-    public void setNif(long nif) {
-        this.nif = nif;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public Date getBirthDate() {
         return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
     }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public double getHeightInMeters() {
         return heightInMeters;
-    }
-
-    public void setHeightInMeters(double heightInMeters) {
-        this.heightInMeters = heightInMeters;
     }
 
     public float getWeightInKg() {
         return weightInKg;
     }
 
-    public void setWeightInKg(float weightInKg) {
-        this.weightInKg = weightInKg;
-    }
-
-    public WorkPlan getTrainingPlan() {
-        return trainingPlan;
-    }
-
-    public void setTrainingPlan(WorkPlan trainingPlan) {
-        this.trainingPlan = trainingPlan;
-    }
-
-    public long getTrainingPlanId() {
+    public Long getTrainingPlanId() {
         return trainingPlanId;
-    }
-
-    public void setTrainingPlanId(long trainingPlanId) {
-        this.trainingPlanId = trainingPlanId;
     }
 
     public List<ClientCheckIn> getCheckInHistory() {
         return checkInHistory;
     }
 
-    public void setCheckInHistory(List<ClientCheckIn> checkInHistory) {
-        this.checkInHistory = checkInHistory;
-    }
-
     public List<ClientNotification> getNotifications() {
         return notifications;
-    }
-
-    public void setNotifications(List<ClientNotification> notifications) {
-        this.notifications = notifications;
     }
 
     public List<SupportTicket> getSupportTickets() {
         return supportTickets;
     }
 
-    public void setSupportTickets(List<SupportTicket> supportTickets) {
-        this.supportTickets = supportTickets;
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", nif=" + nif +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", birthDate=" + birthDate +
+                ", age=" + age +
+                ", heightInMeters=" + heightInMeters +
+                ", weightInKg=" + weightInKg +
+                ", trainingPlanId=" + trainingPlanId +
+                ", checkInHistory=" + checkInHistory +
+                ", notifications=" + notifications +
+                ", supportTickets=" + supportTickets +
+                '}';
     }
 }

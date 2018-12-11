@@ -35,64 +35,45 @@ public class Exercise {
      */
     private DifficultyLevels difficultyLevel;
     /**
-     * Lista de equipamentos que o exercicio utiliza
+     * Número de identificação do equipamento que o exercicio utiliza
      */
-    private List<Equipment> equipmentToUse;
+    private Long equipmentId;
 
+    public Exercise(long id, String name, String description, String imageUrl, MuscleGroups targetMuscleGroup, DifficultyLevels difficultyLevel, Long equipmentId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.targetMuscleGroup = targetMuscleGroup;
+        this.difficultyLevel = difficultyLevel;
+        this.equipmentId = equipmentId;
+    }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public MuscleGroups getTargetMuscleGroup() {
         return targetMuscleGroup;
-    }
-
-    public void setTargetMuscleGroup(MuscleGroups targetMuscleGroup) {
-        this.targetMuscleGroup = targetMuscleGroup;
     }
 
     public DifficultyLevels getDifficultyLevel() {
         return difficultyLevel;
     }
 
-    public void setDifficultyLevel(DifficultyLevels difficultyLevel) {
-        this.difficultyLevel = difficultyLevel;
-    }
-
-    public List<Equipment> getEquipmentToUse() {
-        return equipmentToUse;
-    }
-
-    public void setEquipmentToUse(List<Equipment> equipmentToUse) {
-        this.equipmentToUse = equipmentToUse;
+    public Long getEquipmentId() {
+        return equipmentId;
     }
 }

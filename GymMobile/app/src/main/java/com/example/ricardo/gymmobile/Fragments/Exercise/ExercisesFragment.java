@@ -15,10 +15,21 @@ import com.example.ricardo.gymmobile.Entities.Enums.DifficultyLevels;
 import com.example.ricardo.gymmobile.Entities.Enums.MuscleGroups;
 import com.example.ricardo.gymmobile.Entities.Exercise;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
+import com.example.ricardo.gymmobile.MainActivity;
 import com.example.ricardo.gymmobile.R;
+import com.example.ricardo.gymmobile.Retrofit.Interfaces.ExerciseService;
+import com.example.ricardo.gymmobile.Retrofit.RetrofitClient;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ExercisesFragment extends Fragment implements OnItemClickListener {
 
@@ -50,26 +61,6 @@ public class ExercisesFragment extends Fragment implements OnItemClickListener {
     @Override
     public void onResume() {
         super.onResume();
-
-        exercises.clear();
-        exerciseAdapter.notifyItemRemoved(0);
-
-        /** < TESTE > */
-        Exercise exercise = new Exercise();
-        exercise.setId(1);
-        exercise.setName("Abdominais");
-        exercise.setDescription("O exercício abdominal é um dos mais conhecidos exercícios para " +
-                "desenvolvimento e fortalecimento da musculatura abdominal, principalmente do músculo " +
-                "reto abdominal. É também um modelo pertencente ao método Hiit, que dentro deste, " +
-                "pode sofrer muitas variações, de acordo com a necessidade do praticante.");
-        exercise.setImageUrl("https://images.fitpregnancy.mdpcdn.com/sites/fitpregnancy.com/files/styles/width_360/public/field/image/young-woman-abdominal-exercise_700x700.jpg");
-        exercise.setTargetMuscleGroup(MuscleGroups.Abs);
-        exercise.setDifficultyLevel(DifficultyLevels.Easy);
-        exercise.setEquipmentToUse(null);
-
-        exercises.add(exercise);
-        exerciseAdapter.notifyItemInserted(0);
-
     }
 
     @Override
@@ -77,9 +68,9 @@ public class ExercisesFragment extends Fragment implements OnItemClickListener {
 
         final View mContentView = inflater.inflate(R.layout.fragment_exercises, container, false);
 
-        exerciseAdapter = new ExerciseAdapter(context, exercises, getActivity());
-
         recyclerView = mContentView.findViewById(R.id.recycler_view_exercise);
+
+        exerciseAdapter = new ExerciseAdapter(context, exercises, getActivity());
         recyclerView.setAdapter(exerciseAdapter);
 
         // Set LayoutManager
@@ -91,7 +82,57 @@ public class ExercisesFragment extends Fragment implements OnItemClickListener {
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
 
+        getExercises();
+
         return mContentView;
+    }
+
+    /**
+     * Obter os exercicios da API
+     */
+    private void getExercises() {
+
+        // Token do cliente
+        final String token = MainActivity.clientLogin.getToken();
+
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                .create();
+
+        // RETROFIT
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(RetrofitClient.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson));
+
+        Retrofit retrofit = builder.build();
+
+        ExerciseService exerciseService = retrofit.create(ExerciseService.class);
+        Call<List<Exercise>> call = exerciseService.getExercises("Bearer " + token);
+        call.enqueue(new Callback<List<Exercise>>() {
+            @Override
+            public void onResponse(Call<List<Exercise>> call, Response<List<Exercise>> response) {
+
+                if (response.isSuccessful()) {
+
+                    List<Exercise> list = response.body();
+                    for (int i = 0; i < list.size(); i++) {
+                        exercises.add(list.get(i));
+                        exerciseAdapter.notifyItemInserted(i);
+                    }
+
+                } else {
+
+                    Toast.makeText(context, "Erro", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Exercise>> call, Throwable t) {
+                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     /**

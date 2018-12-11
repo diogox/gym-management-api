@@ -23,13 +23,18 @@ app.controller('loginCtrl', function ($scope, $http, $rootScope) {
                 let userType = response.data.userType;
                 let userTypeId = response.data.userTypeId;
                 
-                newLogin(userType, token, userTypeId, expiration);
+                newLogin(userType, token, userTypeId, expiration, ()=>{
 
-                if(userType === "Client"){
-                    window.location.href = "index.html#!";
-                }else{
-                    window.location.href = "index.html#!planos";
-                }
+                    if(userType === "Client"){
+                        window.location.href = "index.html#!";
+
+                        // Comjunto de ações a serem executadas apos efetuar login
+                        $rootScope.$broadcast("after-login", "true");
+                    }else{
+                        window.location.href = "index.html#!planos";
+                    }
+
+                });
 
             }else{
 

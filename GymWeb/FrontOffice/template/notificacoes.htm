@@ -1,0 +1,48 @@
+<div ng-controller="notificacoesCtrl">
+
+    <h1>Notificações</h1>
+
+    <br/>
+
+    <!-- Lista de exercicios -->
+    <ul class="list-group">
+
+        <li class="list-group-item" ng-repeat="x in notificacoes">
+
+            <img style="display:inline-block" src={{x.iconNotification}} width="30px" />
+
+            <p style="display:inline-block" ng-click="readNotification(x.id)" class="pointer" data-toggle="collapse" data-target="#nf{{x.id}}">
+            &nbsp; {{x.title}} </p>
+
+            <div id="nf{{x.id}}" class="collapse">
+                <dt>Titulo:</dt>
+                <dd>- {{x.title}}</dd>
+
+                <dt>Mensagem</dt>
+                <dd>- {{x.message}}</dd>
+
+                <dt>Data</dt>
+                <dd>- {{x.timestamp}}</dd>
+
+            </div>
+
+        </li>
+
+    </ul>
+
+    <br/>
+    <ul class="pagination justify-content-center">
+        <li id="pageback" class="page-item">
+            <a class="page-link disabled" href="" ng-click="previousPage()">Previous</a>
+        </li>
+
+        <li id="page{{x.index}}" class="page-item" ng-repeat="x in numberPages">
+            <a class="page-link" href="" ng-click="setPage(x.index)">{{x.index}}</a>
+        </li>
+
+        <li id="pagenext" class="page-item">
+            <a class="page-link" href="" ng-click="nextPage()">Next</a>
+        </li>
+    </ul>
+
+</div>
