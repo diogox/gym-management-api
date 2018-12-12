@@ -30,7 +30,6 @@
           <e p="SwitchPlanDAO.cs" t="Include" />
         </e>
         <e p="Deploy Commands" t="Include" />
-        <e p="Dockerfile" t="Include" />
         <e p="GymAPI.csproj" t="IncludeRecursive" />
         <e p="Migrations" t="Include">
           <e p="20181210155704_CreateEntities.Designer.cs" t="Include" />
