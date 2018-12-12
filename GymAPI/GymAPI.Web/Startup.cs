@@ -24,6 +24,13 @@ namespace GymAPI
 {
     public class Startup
     {
+        public virtual void SetUpDataBase(IServiceCollection services)
+        {
+            var connection = "Data Source=gym.db";
+            services.AddDbContext<GymContext>
+                (options => options.UseSqlite(connection));
+        }
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -55,10 +62,8 @@ namespace GymAPI
                 });
             });
             
-            var connection = "Data Source=gym.db";
-            services.AddDbContext<GymContext>
-                (options => options.UseSqlite(connection));
-
+            SetUpDataBase(services);
+            
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<GymContext>()
                 .AddDefaultTokenProviders();
@@ -171,7 +176,7 @@ namespace GymAPI
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Gym API");
             });
 
-            CreateUserRoles(services).Wait();
+            //CreateUserRoles(services).Wait();
         }
         
         
