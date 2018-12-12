@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e24d25f7-b236-4a4b-abfa-d78e00c2e83d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymAPI.Web/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/Dockerfile" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,7 +25,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Dockerfile" value="1" />
+          <entry key="Dockerfile" value="2" />
           <entry key="cs" value="35" />
           <entry key="csproj" value="3" />
           <entry key="targets" value="2" />
@@ -36,7 +37,7 @@
         <counts>
           <entry key="C#" value="35" />
           <entry key="Csproj" value="3" />
-          <entry key="Dockerfile" value="1" />
+          <entry key="Dockerfile" value="2" />
           <entry key="MsBuild targets file" value="2" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="YAML" value="1" />
@@ -44,59 +45,36 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Dockerfile" value="3" />
+          <entry key="Dockerfile" value="8" />
           <entry key="cs" value="5427" />
-          <entry key="yml" value="11" />
+          <entry key="yml" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="C#" value="5427" />
-          <entry key="Dockerfile" value="3" />
-          <entry key="YAML" value="11" />
+          <entry key="Dockerfile" value="8" />
+          <entry key="YAML" value="17" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/ClientsControllerTests.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="105" column="76" selection-start-line="105" selection-start-column="76" selection-end-line="105" selection-end-column="76" />
-              <folding>
-                <marker date="1544575321143" expanded="false" signature="6:224" ph="..." />
-                <marker date="1544575321143" expanded="true" signature="241:3921" ph="{...}" />
-                <marker date="1544575321143" expanded="true" signature="283:3919" ph="{...}" />
-                <marker date="1544575321143" expanded="true" signature="495:2683" ph="{...}" />
-                <marker date="1544575321143" expanded="true" signature="593:1465" ph="{...}" />
-                <marker date="1544575321143" expanded="true" signature="1184:1451" ph="{...}" />
-                <marker date="1544575321143" expanded="true" signature="1251:1433" ph="{...}" />
-                <marker date="1544575321143" expanded="true" signature="1917:2275" ph="/* const string ROLENAME = &quot;Admin&quot;; ... */" />
-                <marker date="1544575321143" expanded="true" signature="2732:2906" ph="{...}" />
-                <marker date="1544575321143" expanded="true" signature="2964:3205" ph="{...}" />
-                <marker date="1544575321143" expanded="true" signature="3269:3588" ph="{...}" />
-                <marker date="1544575321143" expanded="true" signature="3661:3912" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../.gitlab-ci.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="28" column="79" selection-start-line="28" selection-start-column="79" selection-end-line="28" selection-end-column="79" />
+            <state relative-caret-position="396">
+              <caret line="29" column="18" lean-forward="true" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GymAPI.Web/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="54">
+              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -314,6 +292,7 @@
         <option value="$PROJECT_DIR$/GymAPI.Web/Services/ClientsService.cs" />
         <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs" />
         <option value="$PROJECT_DIR$/Tests/ClientsControllerTests.cs" />
+        <option value="$PROJECT_DIR$/Tests/Dockerfile" />
         <option value="$PROJECT_DIR$/../.gitlab-ci.yml" />
         <option value="$PROJECT_DIR$/GymAPI.Web/Dockerfile" />
       </list>
@@ -412,12 +391,12 @@
       <workItem from="1544484460514" duration="2895000" />
       <workItem from="1544527471494" duration="19502000" />
       <workItem from="1544557009622" duration="11029000" />
-      <workItem from="1544611386066" duration="1319000" />
+      <workItem from="1544611386066" duration="2253000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34745000" />
+    <option name="totallyTimeSpent" value="35679000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -737,17 +716,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../.gitlab-ci.yml">
+    <entry file="file://$PROJECT_DIR$/Tests/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="28" column="79" selection-start-line="28" selection-start-column="79" selection-end-line="28" selection-end-column="79" />
+        <state relative-caret-position="36">
+          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GymAPI.Web/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="54">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../.gitlab-ci.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="29" column="18" lean-forward="true" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
         </state>
       </provider>
     </entry>
