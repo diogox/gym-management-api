@@ -69,7 +69,7 @@ app.controller("planosTreinoCtrl", function ($scope, $http, $rootScope) {
 
     //Remover um Plano de Treino da BD
     //Executa a função para pedir os dados à API
-    $scope.rmCliente = function (id) {
+    $scope.rmPlano = function (id) {
         let token = getCookie("admin");
         removePlanoTreino($http, id, token, (response) => {
             if (response) {

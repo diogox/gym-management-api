@@ -47,7 +47,7 @@
                 </div>
                 <div class="modal-body">
                     <h4>Pretende remover este Plano de Treino?</h4>
-                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" ng-click="rmCliente(idplanoTremove)">
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" ng-click="rmPlano(idplanoTremove)">
                         Confirm
                     </button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -64,7 +64,7 @@
                     <h3 class="modal-title" id="exampleModalLabel">Adicionar Plano de Treino</h3>
                 </div>
                 <div class="modal-body">
-                    <!--Form para adicionar um novo Exercicio-->
+                    <!--Form para adicionar um novo Plano-->
                     <form ng-submit="submitADD()" name="myForm">
                         <h4>Preenche os seguintes cabeçalhos:</h4>
 
@@ -107,7 +107,7 @@
                     <h3 class="modal-title" id="exampleModalLabel">Editar Plano de Treino {{idPTedit}}</h3>
                 </div>
                 <div class="modal-body">
-                    <!--Form para adicionar um novo Exercicio-->
+                    <!--Form para editar um Plano-->
                     <form ng-submit="submitED()" name="myedForm">
                         <h4>Preenche os seguintes cabeçalhos:</h4>
 

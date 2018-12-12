@@ -783,7 +783,7 @@ export function getExercisesPlanoTreinoByID($http, id, token, callback) {
 }
 
 //Remover um Exercicio do Plano de Treino by ID
-export function removeExercisePlanoTreinoByID($http, id,idExercise, token, callback) {
+export function removeExercisePlanoTreinoByID($http, id, idExercise, token, callback) {
     $http({
         method: "DELETE",
         url: "https://localhost:5001/api/plans/"+id+"/exercises/"+idExercise,
