@@ -1,17 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Claims;
-using System.Security.Principal;
-using System.Threading;
 using GymAPI;
 using GymAPI.Models;
 using GymAPI.Models.User;
 using GymAPI.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Tests.Utils;
 using Xunit;
 
 namespace Tests
