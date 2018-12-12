@@ -20,7 +20,7 @@ test:
   image: microsoft/dotnet:2.1-sdk
   stage: test
   script:
-    - cd ../GymAPI.Web
+    - cd GymAPI/Tests
     - dotnet test
 
 deploy:
