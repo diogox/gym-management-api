@@ -87,7 +87,7 @@ namespace GymAPI
         // GET api/clients/{clientId}/notifications/{notificationId}/read
         [HttpGet("{id}/notifications/{notificationId}/read")]
         [Authorize(Policy = "PreventOtherClients")]
-        public ActionResult GetClientNotifications(long id, long notificationId) // ! The clientId must be named 'id' otherwise the authorize doesn't work
+        public ActionResult<ClientNotification> MarkClientNotificationAsRead(long id, long notificationId) // ! The clientId must be named 'id' otherwise the authorize doesn't work
         {
             var client = _clientsService.GetById(id);
             if (client == null)
@@ -97,7 +97,7 @@ namespace GymAPI
 
             var _notification = client.Notifications.Find(notification => notification.Id == notificationId);
             _clientsService.MarkNotificationAsRead(_notification);
-            return Ok();
+            return Ok(_notification);
         }
         
         // GET api/clients/{id}/tickets
