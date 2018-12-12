@@ -1,0 +1,156 @@
+<div class="container" style="margin-left: 100px" ng-controller="planosTreinoCtrl">
+
+    <!--Alertas da API-->
+    <div ng-repeat="alert in alerts" ng-show="alert.show">
+        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong>
+            {{alert.msg}}</h3>
+    </div>
+
+    <h2 style="color: white">Planos de Treino:</h2>
+    <!--Button Adicionar Plano de Treino-->
+    <button type="button" class="btn btn-secondary glyphicon glyphicon-plus" ng-click="loadT()" data-toggle="modal"
+        data-target="#addPT">ADICIONAR
+        PLANO DE TREINO</button>
+    <table class="content table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome do Plano</th>
+                <th>Nome do Treinador</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="plano in pTreino">
+                <td>{{plano.id}}</td>
+                <td>{{plano.name}}</td>
+                <td>{{plano.supervisingTrainer.firstName}} {{plano.supervisingTrainer.lastName}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary glyphicon glyphicon-tag" ng-click="getthisPlano(plano);">
+                    </button>
+                    <button type="button" class="edt btn btn-success glyphicon glyphicon-pencil" data-toggle="modal"
+                        data-target="#edPT" ng-click="ediPT(plano.id,$event);">
+                    </button>
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"
+                        data-target="#removerPlanoT" ng-click="removePlanoT(plano.id,$event);">
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--Modal Remover Plano de Treino-->
+    <modal class="modal fade" id="removerPlanoT" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Remover Plano de Treino {{idplanoTremove}}</h3>
+                </div>
+                <div class="modal-body">
+                    <h4>Pretende remover este Plano de Treino?</h4>
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" ng-click="rmCliente(idplanoTremove)">
+                        Confirm
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </modal>
+
+    <!--Adicionar Plano de Treino-->
+    <modal class="modal fade" id="addPT" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Adicionar Plano de Treino</h3>
+                </div>
+                <div class="modal-body">
+                    <!--Form para adicionar um novo Exercicio-->
+                    <form ng-submit="submitADD()" name="myForm">
+                        <h4>Preenche os seguintes cabeçalhos:</h4>
+
+
+                        <!--Nome do Exercicio-->
+                        <div class="form-group">
+                            <label for="nome">Nome:</label>
+                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="pt.name"
+                                name="nome" id="nome" required />
+                        </div>
+
+
+                        <!--Nome do Treinador-->
+                        <div class="form-group">
+                            <label for="treinador">Treinador:</label>
+                            <select class="form-control" ng-model="pt.supervisingTrainerId" required>
+                                <option ng-repeat="x in PTrainer" value="{{x.id}}">{{x.firstName}} {{x.lastName}}</option>
+                            </select>
+                        </div>
+
+
+                        <p></p>
+                        <button class="btn btn-default btn-block" ng-disabled="myForm.$invalid" type="submit" id="submit"
+                            value="Submit">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </modal>
+
+
+    <!--Editar Plano de Treino-->
+    <modal class="modal fade" id="edPT" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Editar Plano de Treino {{idPTedit}}</h3>
+                </div>
+                <div class="modal-body">
+                    <!--Form para adicionar um novo Exercicio-->
+                    <form ng-submit="submitED()" name="myedForm">
+                        <h4>Preenche os seguintes cabeçalhos:</h4>
+
+
+                        <!--Nome do Exercicio-->
+                        <div class="form-group">
+                            <label for="nome">Nome:</label>
+                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="editarpt.name"
+                                name="nome" id="nome" required />
+                        </div>
+
+
+                        <!--Nome do Treinador-->
+                        <div class="form-group">
+                            <label for="treinador">Treinador:</label>
+                            <select class="form-control" ng-model="editarpt.supervisingTrainerId" required>
+                                <option ng-repeat="x in PTrainer" value="{{x.id}}">{{x.firstName}} {{x.lastName}}</option>
+                            </select>
+                        </div>
+
+
+                        <p></p>
+                        <button class="btn btn-default btn-block" ng-disabled="myedForm.$invalid" type="submit" id="submit"
+                            value="Submit">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </modal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

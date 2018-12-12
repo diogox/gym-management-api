@@ -1,0 +1,64 @@
+<div class="container body" style="margin-left: 100px" ng-controller="planoCtrl">
+
+
+    <!--Alertas da API-->
+    <div ng-repeat="alert in alerts" ng-show="alert.show">
+        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong>
+            {{alert.msg}}</h3>
+    </div>
+
+
+    <h3>Plano de Treino: {{Plano_nome}}</h3>
+    <h3>Supervisionado por: {{Plano_Treinador.firstName}} {{Plano_Treinador.lastName}}</h3>
+    <!--Button Adicionar Exercicio ao Plano-->
+    <button style="color: black;" type="button" class="btn btn-secondary glyphicon glyphicon-plus" ng-click="loadT()"
+        data-toggle="modal" data-target="#addPT">ADICIONAR
+        EXERCICIO
+    </button>
+    <table class="content table">
+        <thead>
+            <tr>
+                <th>ID do Exercicio</th>
+                <th>Nome do Exercicio</th>
+                <th>Numero de Repetições</th>
+                <th>Numero de séries</th>
+                <th>Dia da Semana</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="exercicio in Exercicios">
+                <td>{{exercicio.exerciseId}}</td>
+                <td>{{exercicio.nome}}</td>
+                <td>{{exercicio.numberOfRepetitions}}</td>
+                <td>{{exercicio.numberOfSeries}}</td>
+                <td>{{exercicio.dayOfTheWeek}}</td>
+                <td>
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"
+                        data-target="#removerPlanoEx" ng-click="removePlanoEx(exercicio.exerciseId)">
+                    </button>
+                    <button type="button" class="edt btn btn-success glyphicon glyphicon-pencil" data-toggle="modal"
+                        data-target="#editarPlanoEx" ng-click="edPlanoEx(exercicio.exerciseId)">
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--Remover Exercicio do Plano-->
+
+    <!--Adicionar Exercicio ao Plano-->
+
+    <!--Editar Exercicio ao Plano-->
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

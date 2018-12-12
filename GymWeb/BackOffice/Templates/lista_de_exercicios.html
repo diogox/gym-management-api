@@ -90,7 +90,7 @@
                         <!--Target Muscle do Exercicio-->
                         <div class="form-group">
                             <label for="targetMuscleGroup">Músculo:</label>
-                            <select class="form-control" ng-model="ex.targetMuscleGroup">
+                            <select class="form-control" ng-model="ex.targetMuscleGroup" required>
                                 <option ng-repeat="x in exMus" value="{{x}}">{{x}}</option>
                             </select>
                         </div>
@@ -99,7 +99,7 @@
                         <!--Dificuldade do Exercicio-->
                         <div class="form-group">
                             <label for="dificuldade">Dificuldade:</label>
-                            <select class="form-control" ng-model="ex.difficultyLevel">
+                            <select class="form-control" ng-model="ex.difficultyLevel" required>
                                 <option ng-repeat="x in exDif" value="{{x}}">{{x}}</option>
                             </select>
                         </div>
@@ -108,7 +108,7 @@
                         <!--Nome do Equipamento (Select com o nome dos equipamentos existentes)-->
                         <div class="form-group">
                             <label for="equipamento">Equipamento:</label>
-                            <select class="form-control" ng-model="ex.equipmentId">
+                            <select class="form-control" ng-model="ex.equipmentId" required>
                                 <option value="" selected>None</option>
                                 <option ng-repeat="x in exEq" value="{{x.id}}">{{x.name}}</option>
                             </select>

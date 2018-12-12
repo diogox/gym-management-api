@@ -588,6 +588,24 @@ export function getExercises($http, token, callback) {
     });
 }
 
+//Receber um Exercicio
+export function getExerciseByID($http, id, token, callback) {
+    $http({
+        method: "GET",
+        url: "https://localhost:5001/api/exercises/" + id,
+        headers: {
+            'authorization': "bearer " + token,
+            'content-type': "application/json",
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response)
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
 //Adicionar um Exercicio
 export function addExercises($http, data, token, callback){
     $http({
@@ -655,5 +673,128 @@ export function editarExercise($http, data, id, token, callback) {
 
 
 //Planos de Treino
+//Get all Planos de Treino
+export function getPlanosTreino($http, token, callback) {
+    $http({
+        method: "GET",
+        url: "https://localhost:5001/api/plans",
+        headers: {
+            'authorization': "bearer " + token,
+            'content-type': "application/json",
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response);
+        callback(response)
 
+    }, function myError(response) {
+        callback(false)
+    });
+}
 
+//Adicionar um Plano de Treino
+export function addPlanoTreino($http, data, token, callback){
+    $http({
+        method: "POST",
+        data: data,
+        url: "https://localhost:5001/api/plans/",
+        headers: {
+            'authorization': "bearer " + token,
+            'content-type': "application/json",
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response)
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Remover um Plano de Treino
+export function removePlanoTreino($http, id, token, callback){
+    $http({
+        method: "DELETE",
+        url: "https://localhost:5001/api/plans/" + id,
+        headers: {
+            'authorization': "bearer " + token,
+        }
+    }).then(function mySuccess(response){
+       //console.log(response)
+       callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Editar um Plano de Treino
+export function editarPlanoTreino($http, data, id, token, callback) {
+    $http({
+        method: "PUT",
+        data: data,
+        url: "https://localhost:5001/api/plans/" + id,
+        headers: {
+            'authorization': "bearer " + token,
+            'content-type': "application/json",
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response)
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Get Plano de Treino by ID
+export function getPlanoTreinoByID($http, id, token, callback) {
+    $http({
+        method: "GET",
+        url: "https://localhost:5001/api/plans/" + id,
+        headers: {
+            'authorization': "bearer " + token,
+            'content-type': "application/json",
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response);
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Get Todos os Exercicios do Plano de Treino by ID
+export function getExercisesPlanoTreinoByID($http, id, token, callback) {
+    $http({
+        method: "GET",
+        url: "https://localhost:5001/api/plans/"+id+"/exercises/",
+        headers: {
+            'authorization': "bearer " + token,
+            'content-type': "application/json",
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response);
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
+
+//Remover um Exercicio do Plano de Treino by ID
+export function removeExercisePlanoTreinoByID($http, id,idExercise, token, callback) {
+    $http({
+        method: "DELETE",
+        url: "https://localhost:5001/api/plans/"+id+"/exercises/"+idExercise,
+        headers: {
+            'authorization': "bearer " + token,
+        }
+    }).then(function mySuccess(response) {
+        //console.log(response);
+        callback(response)
+
+    }, function myError(response) {
+        callback(false)
+    });
+}
