@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:id="@+id/swipe_layout"
-    tools:context=".MainActivity"
+    tools:context=".Activities.MainActivity"
     tools:showIn="@layout/app_bar_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">

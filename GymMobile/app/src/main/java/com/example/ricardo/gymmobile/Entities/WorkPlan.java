@@ -25,36 +25,27 @@ public class WorkPlan {
     public long supervisingTrainerId;
 
 
-    public long getId() {
-        return id;
+    public WorkPlan(long id, String name, List<TrainingPlanBlock> exerciseBlocks, long supervisingTrainerId) {
+        this.id                   = id;
+        this.name                 = name;
+        this.exerciseBlocks       = exerciseBlocks;
+        this.supervisingTrainerId = supervisingTrainerId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+
+    public long getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public List<TrainingPlanBlock> getExerciseBlocks() {
         return exerciseBlocks;
-    }
-
-    public void setExerciseBlocks(List<TrainingPlanBlock> exerciseBlocks) {
-        this.exerciseBlocks = exerciseBlocks;
     }
 
     public long getSupervisingTrainerId() {
         return supervisingTrainerId;
     }
-
-    public void setSupervisingTrainerId(long supervisingTrainerId) {
-        this.supervisingTrainerId = supervisingTrainerId;
-    }
-
 }

@@ -11,16 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.ricardo.gymmobile.Entities.Enums.DifficultyLevels;
-import com.example.ricardo.gymmobile.Entities.Enums.MuscleGroups;
 import com.example.ricardo.gymmobile.Entities.Exercise;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
-import com.example.ricardo.gymmobile.MainActivity;
+import com.example.ricardo.gymmobile.Activities.MainActivity;
 import com.example.ricardo.gymmobile.R;
-import com.example.ricardo.gymmobile.Retrofit.Interfaces.ExerciseService;
-import com.example.ricardo.gymmobile.Retrofit.RetrofitClient;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.example.ricardo.gymmobile.Retrofit.APIServices;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +23,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ExercisesFragment extends Fragment implements OnItemClickListener {
 
@@ -68,12 +61,10 @@ public class ExercisesFragment extends Fragment implements OnItemClickListener {
 
         final View mContentView = inflater.inflate(R.layout.fragment_exercises, container, false);
 
-        recyclerView = mContentView.findViewById(R.id.recycler_view_exercise);
-
         exerciseAdapter = new ExerciseAdapter(context, exercises, getActivity());
-        recyclerView.setAdapter(exerciseAdapter);
 
-        // Set LayoutManager
+        recyclerView = mContentView.findViewById(R.id.recycler_view_exercise);
+        recyclerView.setAdapter(exerciseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         // Clicar num exercicio da lista
@@ -82,54 +73,61 @@ public class ExercisesFragment extends Fragment implements OnItemClickListener {
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
 
-        getExercises();
+        getExercises(); // Obter os exercicios
 
         return mContentView;
     }
 
     /**
-     * Obter os exercicios da API
+     * Obter os exercicios da API e coloca-los na recycler view de exercicios
      */
     private void getExercises() {
 
         // Token do cliente
-        final String token = MainActivity.clientLogin.getToken();
+        final String token = MainActivity.loginDataResponse.getToken();
 
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                .create();
-
-        // RETROFIT
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(RetrofitClient.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson));
-
-        Retrofit retrofit = builder.build();
-
-        ExerciseService exerciseService = retrofit.create(ExerciseService.class);
-        Call<List<Exercise>> call = exerciseService.getExercises("Bearer " + token);
+        Call<List<Exercise>> call = APIServices.exerciseService().getExercises("Bearer " + token);
         call.enqueue(new Callback<List<Exercise>>() {
             @Override
             public void onResponse(Call<List<Exercise>> call, Response<List<Exercise>> response) {
 
-                if (response.isSuccessful()) {
+                if (response.isSuccessful()) { // Resposta com sucesso
 
                     List<Exercise> list = response.body();
-                    for (int i = 0; i < list.size(); i++) {
-                        exercises.add(list.get(i));
-                        exerciseAdapter.notifyItemInserted(i);
+
+                    if (list.isEmpty()) { // Se a lista não contiver exercicios
+
+                        Toast.makeText(context, "List is empty!!!", Toast.LENGTH_SHORT).show();
+
+                    } else {
+
+                        /**
+                         * Adicionar todos o exercicios à lista de exercicios
+                         * Notificar o adapter
+                         */
+                        for (int i = 0; i < list.size(); i++) {
+                            exercises.add(list.get(i));
+                            exerciseAdapter.notifyItemInserted(i);
+                        }
+
                     }
 
                 } else {
 
                     Toast.makeText(context, "Erro", Toast.LENGTH_SHORT).show();
+                    System.out.println("******* " + response.code() + " ********");
 
                 }
+
             }
 
             @Override
             public void onFailure(Call<List<Exercise>> call, Throwable t) {
-                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(context, "No internet connection!!!", Toast.LENGTH_SHORT).show();
+                System.out.println("******** " + t.getMessage());
+                System.out.println("******** " + t.getCause());
+
             }
         });
 

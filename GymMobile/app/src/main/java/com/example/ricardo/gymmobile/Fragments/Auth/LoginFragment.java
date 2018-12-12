@@ -2,8 +2,6 @@ package com.example.ricardo.gymmobile.Fragments.Auth;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,20 +12,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ricardo.gymmobile.MainActivity;
+import com.example.ricardo.gymmobile.Entities.Connection;
+import com.example.ricardo.gymmobile.Activities.MainActivity;
 import com.example.ricardo.gymmobile.R;
+import com.example.ricardo.gymmobile.Retrofit.APIServices;
 import com.example.ricardo.gymmobile.Retrofit.Entities.LoginCredentials;
 import com.example.ricardo.gymmobile.Retrofit.Entities.LoginResponse;
-import com.example.ricardo.gymmobile.Retrofit.Interfaces.AuthService;
-import com.example.ricardo.gymmobile.Retrofit.RetrofitClient;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
@@ -83,24 +78,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         progressBar.setVisibility(View.VISIBLE);
         loginButton.setEnabled(false);
 
-        if (isConnected()) { // Verificar a conecção com a internet
-
-            Gson gson = new GsonBuilder()
-                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                    .create();
-
-            // RETROFIT
-            Retrofit.Builder builder = new Retrofit.Builder()
-                    .baseUrl(RetrofitClient.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create());
-
-            Retrofit retrofit = builder.build();
+        if (Connection.isConnected(getActivity())) { // Verificar a conecção com a internet
 
             // New credentials
             LoginCredentials credentials = new LoginCredentials(username, password);
 
-            AuthService authService = retrofit.create(AuthService.class);
-            Call<LoginResponse> call = authService.userLogin(credentials);
+            Call<LoginResponse> call = APIServices.authService().userLogin(credentials);
             call.enqueue(new Callback<LoginResponse>() {
 
                 @Override
@@ -149,14 +132,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    private boolean isConnected() {
-
-        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-
-        return networkInfo != null && networkInfo.isConnectedOrConnecting();
-    }
-
     @Override
     public void onClick(View v) {
 
@@ -170,4 +145,5 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         }
 
     }
+
 }

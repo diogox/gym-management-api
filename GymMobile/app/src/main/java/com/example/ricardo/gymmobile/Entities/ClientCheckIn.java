@@ -20,11 +20,13 @@ public class ClientCheckIn {
      */
     private long clientId;
 
+
     public ClientCheckIn(long id, Date at, long clientId) {
-        this.id = id;
-        this.at = at;
+        this.id       = id;
+        this.at       = at;
         this.clientId = clientId;
     }
+
 
     public long getId() {
         return id;

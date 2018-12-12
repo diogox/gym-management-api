@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".AuthActivity">
+    tools:context=".Activities.AuthActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -33,7 +33,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="176dp"
                     android:layout_height="37dp"
-                    android:text="@string/title_activity_auth"
+                    android:text="Autenticação"
                     android:textAlignment="center"
                     android:textColor="#ffffffff"
                     android:textColorLink="@color/ic_launcher_background"

@@ -9,6 +9,19 @@
                 android:id="@+id/nav_check_in"
                 android:icon="@drawable/check_in_icon"
                 android:title="CHECK-IN" />
+            <item
+                android:id="@+id/nav_check_in_history"
+                android:icon="@drawable/check_in_history_icon"
+                android:title="Histórico" />
+        </menu>
+    </item>
+
+    <item android:title="Inicio">
+        <menu>
+            <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/home_icon"
+                android:title="Home" />
         </menu>
     </item>
 
@@ -34,32 +47,15 @@
                 android:id="@+id/nav_notifications"
                 android:icon="@drawable/baseline_notification_important_black_24dp"
                 android:title="Notificações" />
-            <item
-                android:id="@+id/nav_reports"
-                android:icon="@drawable/record_icon"
-                android:title="Relatórios" />
         </menu>
     </item>
 
-    <item android:title="Comunicação">
+    <item android:title="Sessão">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
-
-    <item android:title="Definições">
-        <menu>
-            <item
-                android:id="@+id/nav_settings"
-                android:icon="@drawable/settings_icon"
-                android:title="Settings" />
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/logout_icon"
+                android:title="Sair" />
         </menu>
     </item>
 

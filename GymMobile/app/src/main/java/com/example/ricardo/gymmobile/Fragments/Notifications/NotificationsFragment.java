@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.ricardo.gymmobile.Activities.MainActivity;
+import com.example.ricardo.gymmobile.Entities.ClientCheckIn;
 import com.example.ricardo.gymmobile.Entities.ClientNotification;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
 import com.example.ricardo.gymmobile.R;
@@ -60,8 +62,6 @@ public class NotificationsFragment extends Fragment implements OnItemClickListen
 
         recyclerView = mContentView.findViewById(R.id.recycler_view_notification);
         recyclerView.setAdapter(notificationAdapter);
-
-        // Set LayoutManager
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         // Clicar num plano de treino da lista
@@ -70,7 +70,36 @@ public class NotificationsFragment extends Fragment implements OnItemClickListen
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
 
+        getClientNotifications(); // Notificações do cliente
+
         return mContentView;
+    }
+
+    /**
+     * Obter as notificações de um cliente
+     */
+    private void getClientNotifications() {
+
+        // Lista de notificações
+        List<ClientNotification> list = MainActivity.clientLogged.getNotifications();
+
+        if (list.isEmpty()) { // Se a lista estiver vazia
+
+            Toast.makeText(context, "Não existem notificações", Toast.LENGTH_SHORT).show();
+
+        } else {
+
+            /**
+             * Obter o histórico de check-in e introduzir na lista
+             * Notificar o adapter
+             */
+            for (int i = 0; i < list.size(); i++) {
+                clientNotifications.add(list.get(i));
+                notificationAdapter.notifyItemInserted(i);
+            }
+
+        }
+
     }
 
     /**

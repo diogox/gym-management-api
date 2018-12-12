@@ -3,15 +3,10 @@ package com.example.ricardo.gymmobile.Retrofit.Interfaces;
 import com.example.ricardo.gymmobile.Entities.Client;
 import com.example.ricardo.gymmobile.Retrofit.Entities.LoginCredentials;
 import com.example.ricardo.gymmobile.Retrofit.Entities.LoginResponse;
-import com.example.ricardo.gymmobile.Retrofit.Entities.User;
-
-import org.json.JSONObject;
+import com.example.ricardo.gymmobile.Retrofit.Entities.UserSignIn;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 /**
@@ -40,6 +35,6 @@ public interface AuthService {
      * através do dados introduzidos
      */
     @POST("clients")
-    Call<Client> userSignIn(@Body JSONObject object);
+    Call<Client> userSignIn(@Body UserSignIn user);
 
 }
