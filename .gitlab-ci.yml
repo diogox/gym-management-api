@@ -26,7 +26,7 @@ build:
 test:
   stage: test
   script:
-    - docker run -t -v $PWD:/app/tests --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet test"
+    - docker run -t -v $PWD:/app/Tests --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet test"
     #- dotnet test
 
 deploy:
