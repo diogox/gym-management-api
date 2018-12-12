@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e24d25f7-b236-4a4b-abfa-d78e00c2e83d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,14 +47,14 @@
         <counts>
           <entry key="Dockerfile" value="65" />
           <entry key="cs" value="5427" />
-          <entry key="yml" value="29" />
+          <entry key="yml" value="66" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="C#" value="5427" />
           <entry key="Dockerfile" value="65" />
-          <entry key="YAML" value="29" />
+          <entry key="YAML" value="66" />
         </counts>
       </usages-collector>
     </session>
@@ -62,17 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../.gitlab-ci.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="58" lean-forward="true" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
+            <state relative-caret-position="540">
+              <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -80,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GymAPI.Web/Startup.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1674">
+            <state relative-caret-position="210">
               <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
               <folding>
                 <marker date="1544554387923" expanded="false" signature="6:699" ph="..." />
@@ -390,12 +383,12 @@
       <workItem from="1544484460514" duration="2895000" />
       <workItem from="1544527471494" duration="19502000" />
       <workItem from="1544557009622" duration="11029000" />
-      <workItem from="1544611386066" duration="5704000" />
+      <workItem from="1544611386066" duration="7782000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39130000" />
+    <option name="totallyTimeSpent" value="41208000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -407,10 +400,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-35" width="1440" height="845" extended-state="6" />
+    <frame x="0" y="-35" width="1920" height="1115" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19496402" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14491978" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -557,42 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Startup.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1674">
-          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
-          <folding>
-            <marker date="1544554387923" expanded="false" signature="6:699" ph="..." />
-            <marker date="1544554387923" expanded="true" signature="717:9113" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="744:9111" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="803:866" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="1089:6036" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="1279:1726" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="1537:1708" ph="/* Makes the fields with null values not show up in the JSON ... */" />
-            <marker date="1544554387923" expanded="true" signature="1775:1997" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="1856:1981" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="2398:3102" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="3155:3464" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="3507:4144" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="3738:4125" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="4231:4459" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="4523:5186" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="4727:4850" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="5095:5150" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="6251:7033" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="6298:6375" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="6392:6451" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="6866:6974" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="7128:9104" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="7517:8128" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="7751:7963" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="8288:8454" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="8600:8765" ph="{...}" />
-            <marker date="1544554387923" expanded="true" signature="8927:9094" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GymAPI.Web/Models/StaffMember/TestStaffMemberJSON.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -731,15 +688,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="58" lean-forward="true" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
+        <state relative-caret-position="126">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Startup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
+          <folding>
+            <marker date="1544554387923" expanded="false" signature="6:699" ph="..." />
+            <marker date="1544554387923" expanded="true" signature="717:9113" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="744:9111" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="803:866" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="1089:6036" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="1279:1726" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="1537:1708" ph="/* Makes the fields with null values not show up in the JSON ... */" />
+            <marker date="1544554387923" expanded="true" signature="1775:1997" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="1856:1981" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="2398:3102" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="3155:3464" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="3507:4144" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="3738:4125" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="4231:4459" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="4523:5186" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="4727:4850" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="5095:5150" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="6251:7033" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="6298:6375" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="6392:6451" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="6866:6974" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="7128:9104" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="7517:8128" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="7751:7963" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="8288:8454" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="8600:8765" ph="{...}" />
+            <marker date="1544554387923" expanded="true" signature="8927:9094" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../.gitlab-ci.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+        <state relative-caret-position="540">
+          <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
         </state>
       </provider>
     </entry>
