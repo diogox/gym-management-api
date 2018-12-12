@@ -21,7 +21,7 @@ before_script:
 build:
   stage: build
   script:
-    - docker run -t -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
+    - docker run -t -v $PWD:/app/GymAPI.Web --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
 
 test:
   stage: test
