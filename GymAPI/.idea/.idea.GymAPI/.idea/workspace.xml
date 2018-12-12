@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e24d25f7-b236-4a4b-abfa-d78e00c2e83d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitlab-ci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,14 +45,14 @@
         <counts>
           <entry key="Dockerfile" value="65" />
           <entry key="cs" value="5427" />
-          <entry key="yml" value="66" />
+          <entry key="yml" value="76" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="C#" value="5427" />
           <entry key="Dockerfile" value="65" />
-          <entry key="YAML" value="66" />
+          <entry key="YAML" value="76" />
         </counts>
       </usages-collector>
     </session>
@@ -64,8 +62,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../.gitlab-ci.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
+            <state relative-caret-position="378">
+              <caret line="21" column="157" selection-start-line="21" selection-start-column="157" selection-end-line="21" selection-end-column="157" />
             </state>
           </provider>
         </entry>
@@ -383,12 +381,12 @@
       <workItem from="1544484460514" duration="2895000" />
       <workItem from="1544527471494" duration="19502000" />
       <workItem from="1544557009622" duration="11029000" />
-      <workItem from="1544611386066" duration="7782000" />
+      <workItem from="1544611386066" duration="8231000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41208000" />
+    <option name="totallyTimeSpent" value="41657000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -731,8 +729,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../.gitlab-ci.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
+        <state relative-caret-position="378">
+          <caret line="21" column="157" selection-start-line="21" selection-start-column="157" selection-end-line="21" selection-end-column="157" />
         </state>
       </provider>
     </entry>

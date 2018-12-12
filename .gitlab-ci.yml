@@ -12,17 +12,14 @@ services:
 variables:
   DOCKER_DRIVER: overlay
 
-before_script:
-  - cd GymAPI/GymAPI.Web
-  - docker login -u "$CI_REGISTRY_USER" -p "$HEROKU_API_KEY" $CI_REGISTRY
-  - apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community nodejs-npm
-  - npm i -g heroku
-
 build:
   stage: build
   script:
+    - cd GymAPI/GymAPI.Web
+    - docker login -u "$CI_REGISTRY_USER" -p "$HEROKU_API_KEY" $CI_REGISTRY
+    - apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community nodejs-npm
+    - npm i -g heroku
     - docker run -t -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
-    #- docker build -t gym-lds ./
 
 test:
   image: dotnet:latest
@@ -34,6 +31,10 @@ test:
 deploy:
   stage: deploy
   script:
+    - cd GymAPI/GymAPI.Web
+    - docker login -u "$CI_REGISTRY_USER" -p "$HEROKU_API_KEY" $CI_REGISTRY
+    - apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community nodejs-npm
+    - npm i -g heroku
     - docker build -t $CI_REGISTRY/gym-lds/web .
     - docker push $CI_REGISTRY/gym-lds/web
     - heroku container:release web --app gym-lds
