@@ -30,6 +30,10 @@
   "frameworks": {
     "netcoreapp2.1": {
       "dependencies": {
+        "Microsoft.AspNetCore.Hosting": {
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
         "Microsoft.AspNetCore.Identity": {
           "target": "Package",
           "version": "[2.2.0, )"
@@ -37,6 +41,10 @@
         "Microsoft.AspNetCore.Mvc.Core": {
           "target": "Package",
           "version": "[2.2.0, )"
+        },
+        "Microsoft.AspNetCore.TestHost": {
+          "target": "Package",
+          "version": "[3.0.0-preview-18579-0056, )"
         },
         "Microsoft.NET.Test.Sdk": {
           "target": "Package",
