@@ -112,6 +112,7 @@
       <e p="GymAPI.sln" t="IncludeFlat" />
       <e p="Tests" t="IncludeRecursive">
         <e p="ClientsControllerTests.cs" t="Include" />
+        <e p="Dockerfile" t="Include" />
         <e p="TestHttpClient.cs" t="Include" />
         <e p="TestStartup.cs" t="Include" />
         <e p="Tests.csproj" t="IncludeRecursive" />

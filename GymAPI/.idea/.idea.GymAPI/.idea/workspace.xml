@@ -3,6 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="e24d25f7-b236-4a4b-abfa-d78e00c2e83d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/obj/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/obj/Debug/netcoreapp2.1/GymAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/obj/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/obj/Debug/netcoreapp2.1/GymAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/obj/GymAPI.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/obj/GymAPI.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/obj/GymAPI.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/obj/GymAPI.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/GymAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/GymAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.assets.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,7 +31,7 @@
     <session id="-757677245">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.47" value="2" />
@@ -23,38 +40,38 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Dockerfile" value="4" />
+          <entry key="Dockerfile" value="5" />
           <entry key="cs" value="55" />
           <entry key="csproj" value="4" />
           <entry key="targets" value="2" />
           <entry key="txt" value="1" />
-          <entry key="yml" value="2" />
+          <entry key="yml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="C#" value="55" />
           <entry key="Csproj" value="4" />
-          <entry key="Dockerfile" value="4" />
+          <entry key="Dockerfile" value="5" />
           <entry key="MsBuild targets file" value="2" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="YAML" value="2" />
+          <entry key="YAML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Dockerfile" value="65" />
+          <entry key="Dockerfile" value="84" />
           <entry key="cs" value="10657" />
           <entry key="csproj" value="2" />
-          <entry key="yml" value="142" />
+          <entry key="yml" value="172" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="C#" value="10657" />
           <entry key="Csproj" value="2" />
-          <entry key="Dockerfile" value="65" />
-          <entry key="YAML" value="142" />
+          <entry key="Dockerfile" value="84" />
+          <entry key="YAML" value="172" />
         </counts>
       </usages-collector>
     </session>
@@ -83,11 +100,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../.gitlab-ci.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+            <state relative-caret-position="234">
+              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Tests/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -176,47 +202,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Startup.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2898">
-              <caret line="183" column="15" selection-start-line="183" selection-start-column="15" selection-end-line="183" selection-end-column="15" />
-              <folding>
-                <marker date="1544659433100" expanded="false" signature="6:766" ph="..." />
-                <marker date="1544659433100" expanded="true" signature="784:9819" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="811:9817" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="888:1065" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="1146:1208" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="1270:1333" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="1556:6395" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="1746:2193" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="2004:2175" ph="/* Makes the fields with null values not show up in the JSON ... */" />
-                <marker date="1544659433100" expanded="true" signature="2242:2464" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="2323:2448" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="2757:3461" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="3514:3823" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="3866:4503" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="4097:4484" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="4590:4818" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="4882:5545" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="5086:5209" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="5454:5509" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="6610:7728" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="6657:6734" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="6751:6810" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="7225:7333" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="7473:7672" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="7823:9810" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="8222:8834" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="8457:8669" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="8994:9160" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="9306:9471" ph="{...}" />
-                <marker date="1544659433100" expanded="true" signature="9633:9800" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tests/TestStartup.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="702">
@@ -296,8 +281,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GymAPI.Web/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="72">
+              <caret line="4" column="47" lean-forward="true" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -363,8 +348,6 @@
         <option value="$PROJECT_DIR$/GymAPI.Web/CustomPolicies/SameClientRequirement.cs" />
         <option value="$PROJECT_DIR$/GymAPI.Web/CustomPolicies/SameClientHandler.cs" />
         <option value="$PROJECT_DIR$/GymAPI.Web/Services/ClientsService.cs" />
-        <option value="$PROJECT_DIR$/Tests/Dockerfile" />
-        <option value="$PROJECT_DIR$/GymAPI.Web/Dockerfile" />
         <option value="$PROJECT_DIR$/Dockerfile" />
         <option value="$PROJECT_DIR$/Tests/Tests.csproj" />
         <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs" />
@@ -377,6 +360,8 @@
         <option value="$PROJECT_DIR$/Tests/ClientsControllerTests.cs" />
         <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/TicketsController.cs" />
         <option value="$PROJECT_DIR$/../.gitlab-ci.yml" />
+        <option value="$PROJECT_DIR$/GymAPI.Web/Dockerfile" />
+        <option value="$PROJECT_DIR$/Tests/Dockerfile" />
       </list>
     </option>
   </component>
@@ -488,12 +473,12 @@
       <workItem from="1544527471494" duration="19502000" />
       <workItem from="1544557009622" duration="11029000" />
       <workItem from="1544611386066" duration="35967000" />
-      <workItem from="1544701138390" duration="7197000" />
+      <workItem from="1544701138390" duration="9213000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76590000" />
+    <option name="totallyTimeSpent" value="78606000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -506,7 +491,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-35" width="1920" height="1115" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10962567" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -683,7 +667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Dockerfile" />
     <entry file="file://$PROJECT_DIR$/Dockerfile" />
     <entry file="file://$PROJECT_DIR$/Tests/Tests.csproj">
       <provider selected="true" editor-type-id="text-editor">
@@ -1010,17 +993,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../.gitlab-ci (cópia).yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/GymAPI.Web/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="72">
+          <caret line="4" column="47" lean-forward="true" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../.gitlab-ci.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        <state relative-caret-position="234">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
