@@ -11,11 +11,11 @@ app.controller('notificacoesCtrl', function ($scope, $http, $rootScope) {
 
         window.location.href = "index.html#!login";
 
-    } else if (userType !== "Client") {
+    } else if (userType === "Staff") {
 
         window.location.href = "index.html#!403";
 
-    } else {
+    } else if (userType === "Client" || userType === "Admin") {
 
         // Indicar ao controler da página principal que o menu lateral deve ser oculto
         $rootScope.$broadcast('show-window', 'true');
@@ -38,67 +38,82 @@ app.controller('notificacoesCtrl', function ($scope, $http, $rootScope) {
 
         getClientNotifications($http, myId, (response) => {
 
-            notificacoes = response.data;
+            if (response) {
+
+                notificacoes = response.data;
 
 
-            // Percorre todas as notificações
-            for (let i = 0; i < notificacoes.length; i++) {
+                // Percorre todas as notificações
+                for (let i = 0; i < notificacoes.length; i++) {
 
-                // Extrai a data da notificação
-                let data = notificacoes[i].timestamp.split('T')[0];
+                    // Extrai a data da notificação
+                    let data = notificacoes[i].timestamp.split('T')[0];
 
-                // Extrai a hora da notificação
-                let hora = notificacoes[i].timestamp.split('T')[1].split('.')[0];
+                    // Extrai a hora da notificação
+                    let hora = notificacoes[i].timestamp.split('T')[1].split('.')[0];
 
-                // Cria nova entrada no objeto para adicionar hora e data separados
-                notificacoes[i].timestamp = data + " " + hora;
+                    // Cria nova entrada no objeto para adicionar hora e data separados
+                    notificacoes[i].timestamp = data + " " + hora;
 
-                // Verifica se a notificação está lida ou não para escolher o icon associado
-                if (response.data[i].isUnread) {
-                    notificacoes[i].iconNotification = notOkImage;
-                } else {
-                    notificacoes[i].iconNotification = okImage;
-                }
-            }
-
-            // Reverte o array para as notificações mais recentes ficarem em primeiro lugar
-            notificacoes.reverse();
-
-            // Divide o array de notificações em chuncks para efeitos de paginação,
-            // onde a variavel chunck define o numero de itens por pagina
-            var i, j, temparray, chunk = 14;
-            for (i = 0, j = notificacoes.length; i < j; i += chunk) {
-                temparray = notificacoes.slice(i, i + chunk);
-                notificationChuncks.push(temparray);
-            }
-
-            // Obtem a quantidade de página de acordo com o numero de chuncks
-            let numberOfPages = [];
-            for (let i = 0; i < notificationChuncks.length; i++) {
-                numberOfPages.push({ index: i });
-            }
-
-            // Lista com tantos elementos quanto o numero de chuncks
-            $scope.numberPages = numberOfPages;
-
-
-            // Atualiza a vista
-            $scope.notificacoes = notificationChuncks[0];
-
-            // Quando a página estiver pronta, coloca a pagina 0 como selecionada
-            // e coloca a pagina anterior como disabled
-            $(document).ready(function () {
-                document.getElementById("page0").classList.add("active");
-                document.getElementById("pageback").classList.add("disabled");
-
-                // Se só existir uma página, então o botão de próxima página também fica disabled
-                if (notificationChuncks.length == 1) {
-                    document.getElementById("pagenext").classList.add("disabled");
+                    // Verifica se a notificação está lida ou não para escolher o icon associado
+                    if (response.data[i].isUnread) {
+                        notificacoes[i].iconNotification = notOkImage;
+                    } else {
+                        notificacoes[i].iconNotification = okImage;
+                    }
                 }
 
-            });
+                // Reverte o array para as notificações mais recentes ficarem em primeiro lugar
+                notificacoes.reverse();
 
+                // Divide o array de notificações em chuncks para efeitos de paginação,
+                // onde a variavel chunck define o numero de itens por pagina
+                var i, j, temparray, chunk = 5;
+                for (i = 0, j = notificacoes.length; i < j; i += chunk) {
+                    temparray = notificacoes.slice(i, i + chunk);
+                    notificationChuncks.push(temparray);
+                }
+
+                // Obtem a quantidade de página de acordo com o numero de chuncks
+                let numberOfPages = [];
+                for (let i = 0; i < notificationChuncks.length; i++) {
+                    numberOfPages.push({ index: i });
+                }
+
+                // Lista com tantos elementos quanto o numero de chuncks
+                $scope.numberPages = numberOfPages;
+
+
+                // Atualiza a vista
+                $scope.notificacoes = notificationChuncks[0];
+
+                // Quando a página estiver pronta, coloca a pagina 0 como selecionada
+                // e coloca a pagina anterior como disabled
+                $(document).ready(function () {
+
+                    // se nao tiver notificações, a lista de paginas desaparece
+                    if (notificationChuncks.length == 0) {
+                        $scope.paginationHide = "y";
+                        document.getElementById("paginationHide").style.display = "none";
+                    } else {
+
+                        document.getElementById("page0").classList.add("active");
+                        document.getElementById("pageback").classList.add("disabled");
+
+                        // Se só existir uma página, então o botão de próxima página também fica disabled
+                        if (notificationChuncks.length == 1) {
+                            document.getElementById("pagenext").classList.add("disabled");
+                        }
+
+                    }
+
+                });
+            } else {
+
+            }
         });
+
+
 
 
         // Quando clica no numero de uma página

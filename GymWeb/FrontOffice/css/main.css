@@ -72,3 +72,9 @@ nav {
 .pointer {
 	cursor: pointer;
 }
+
+.img {
+	border-radius:50%;
+	padding: 30px;
+	width: 200px;
+}
