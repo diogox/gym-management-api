@@ -39,7 +39,6 @@ namespace GymAPI
         [Authorize(Policy = "PreventOtherClients")]
         public ActionResult<Client> GetClient(long id)
         {
-
             var client = _clientsService.GetById(id);
             if (client == null)
             {

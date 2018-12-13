@@ -34,7 +34,7 @@ namespace GymAPI
         // GET api/tickets/{id}
         [HttpGet("{id}", Name = "GetSupportTicket")]
         [Authorize(Policy = "PreventOtherClients")]
-        public async Task<ActionResult<SupportTicket>> GetTicket(long id)
+        public ActionResult<SupportTicket> GetTicket(long id)
         {
             var ticket = _supportTicketService.GetById(id);
             
@@ -49,7 +49,7 @@ namespace GymAPI
         // GET api/tickets/{id}/messages
         [HttpGet("{id}/messages")]
         [Authorize(Policy = "PreventOtherClients")]
-        public async Task<ActionResult<SupportTicketMessage>> GetTicketMessages(long id)
+        public ActionResult<SupportTicketMessage> GetTicketMessages(long id)
         {
             var ticket = _supportTicketService.GetById(id);
             
@@ -69,7 +69,7 @@ namespace GymAPI
         // GET api/tickets/{id}/messages/{messageId}
         [HttpGet("{id}/messages/{messageId}", Name = "GetSupportTicketMessage")]
         [Authorize(Policy = "PreventOtherClients")]
-        public async Task<ActionResult<SupportTicketMessage>> GetTicketMessages(long id, long messageId)
+        public ActionResult<SupportTicketMessage> GetTicketMessages(long id, long messageId)
         {
             var ticket = _supportTicketService.GetById(id);
             
@@ -130,7 +130,7 @@ namespace GymAPI
         // POST api/tickets
         [HttpPost]
         [Authorize(Policy = "PreventOtherClients")]
-        public async Task<ActionResult> CreateTicket([FromBody] SupportTicket ticket)
+        public ActionResult CreateTicket([FromBody] SupportTicket ticket)
         {
             _supportTicketService.Create(ticket);
             
@@ -140,7 +140,7 @@ namespace GymAPI
         // POST api/tickets/{id}/messages
         [HttpPost("{id}/messages")]
         [Authorize(Policy = "PreventOtherClients")]
-        public async Task<ActionResult> AddMessageToTicket(long id,[FromBody] SupportTicketMessage message)
+        public ActionResult AddMessageToTicket(long id,[FromBody] SupportTicketMessage message)
         {
             var ticket = _supportTicketService.GetById(message.SupportTicketId);
             
