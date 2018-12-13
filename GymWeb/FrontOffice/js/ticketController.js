@@ -29,6 +29,7 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
 
         // Ticket currente
         let ticket = {};
+        let clientName = "";
 
         // Ocultar alertas no topo da página
         $scope.nova_resposta_sucesso = "y";
@@ -98,8 +99,8 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
                             // Se a mensagem tiver sido enviado pelo cliente, o nome que aparece
                             // no ticket é o nome do cliente
                             if (response.data.messages[i].from === "Client") {
-                                response.data.messages[i].name = response2.data.firstName + response2.data.lastName;
-
+                                response.data.messages[i].name = response2.data.firstName + " " + response2.data.lastName;
+                                clientName = response.data.messages[i].name;
                                 // Se a mensagem tiver sido enviada pelo admin, aparece "admin" como
                                 // emissor da mensagem
                             } else {
@@ -108,8 +109,10 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
 
                         }
 
+                        ticket = response.data;
+
                         // Atualizar a vista
-                        $scope.ticket = response.data;
+                        $scope.ticket = ticket;
 
                         // Verifica o estado do ticket e executa as ações necessárias
                         if (response.data.state === "Open") {
@@ -195,12 +198,18 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
             if ($scope.answer === "" || $scope.answer === undefined) {
 
                 // Mostra alerta de que os dados foram preenchidos sem sucesso
-                $scope.nova_resposta_sem_sucesso_dados = "";
+                bootbox.alert({
+                    message: "Dados incorretamente preenchidos!",
+                    backdrop: true,
+                    buttons: {
+                        ok: {
+                            label: "OK!",
+                            className: 'btn-warning'
+                        }
+                    }
+                });
 
             } else {
-
-                // Oculta warning de formulário preenchidos sem sucesso
-                $scope.novo_ticket_sem_sucesso_dados = "y";
 
                 // Disable do botão de submit para evitar enviar o mesmo ticket várias vezes
                 $scope.disableSubmit = "y";
@@ -217,20 +226,50 @@ app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) 
                     // Se a API respondeu da forma correta
                     if (response) {
 
-                        // Mostra mensagem de sucesso
-                        $scope.nova_resposta_sucesso = "";
+                        // Obtem a data atual e converte num novo formato
+                        let at = String(new Date());
+                        let year = at.substring(0, 4);
+                        let month = at.substring(5, 7);
+                        let day = at.substring(8, 10);
+                        let hour = at.substring(11, 13);
+                        let minute = at.substring(14, 16);
+                        at = day + "-" + month + "-" + year + " " + hour + ":" + minute;
 
-                        // Se a resposta for enviado com sucesso, 
-                        // é redireionado para a página de tickets em 2 segundos
-                        setTimeout(function () {
-                            window.location.href = "#!ticket/" + id;
-                        }, 2000);
+                        let newMessage = {message, name:clientName, at};
+                        ticket.messages.push(newMessage);
+
+                        // Informa que a resposta foi enviada com sucesso
+                        bootbox.alert({
+                            message: "Resposta enviada com sucesso!",
+                            backdrop: true,
+                            buttons: {
+                                ok: {
+                                    label: "OK!",
+                                    className: 'btn-success'
+                                }
+                            }
+                        });
+
+                        // Limpa a resposta enviada pelo utilizador
+                        document.getElementById("newmessage").value=null;
+
+                        // Habilita novamente o botão de enviar ticket
+                        $scope.disableSubmit = "";
 
                         // Se a API não respondeu da forma correta
                     } else {
 
-                        // Mostra mensagem de insucesso
-                        $scope.nova_resposta_sem_sucesso = "";
+                        // Informa que a resposta foi enviada sem sucesso
+                        bootbox.alert({
+                            message: "Mensagem enviada sem sucesso!",
+                            backdrop: true,
+                            buttons: {
+                                ok: {
+                                    label: "OK!",
+                                    className: 'btn-danger'
+                                }
+                            }
+                        });
                     }
 
                 });
