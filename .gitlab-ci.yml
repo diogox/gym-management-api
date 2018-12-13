@@ -18,7 +18,7 @@ build:
     - cd GymAPI/GymAPI.Web
     - docker run -t -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
   tags:
-    - local-runner
+    - gitlab
 
 test:
   image: microsoft/dotnet:2.1-sdk
@@ -29,7 +29,7 @@ test:
     - cd GymAPI/Tests
     - dotnet test
   tags:
-    - local-runner  
+    - gitlab
 
 deploy:
   image: docker:latest
@@ -47,4 +47,4 @@ deploy:
   only:
     - master
   tags:
-    - local-runner
+    - gitlab

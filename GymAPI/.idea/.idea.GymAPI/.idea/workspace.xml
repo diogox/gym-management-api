@@ -46,7 +46,7 @@
           <entry key="Dockerfile" value="65" />
           <entry key="cs" value="10657" />
           <entry key="csproj" value="2" />
-          <entry key="yml" value="126" />
+          <entry key="yml" value="132" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -54,7 +54,7 @@
           <entry key="C#" value="10657" />
           <entry key="Csproj" value="2" />
           <entry key="Dockerfile" value="65" />
-          <entry key="YAML" value="126" />
+          <entry key="YAML" value="132" />
         </counts>
       </usages-collector>
     </session>
@@ -86,8 +86,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../.gitlab-ci.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+            <state relative-caret-position="562">
+              <caret line="49" column="12" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -488,12 +488,12 @@
       <workItem from="1544527471494" duration="19502000" />
       <workItem from="1544557009622" duration="11029000" />
       <workItem from="1544611386066" duration="35967000" />
-      <workItem from="1544701138390" duration="6721000" />
+      <workItem from="1544701138390" duration="6838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76114000" />
+    <option name="totallyTimeSpent" value="76231000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1019,8 +1019,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../.gitlab-ci.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+        <state relative-caret-position="562">
+          <caret line="49" column="12" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
         </state>
       </provider>
     </entry>
