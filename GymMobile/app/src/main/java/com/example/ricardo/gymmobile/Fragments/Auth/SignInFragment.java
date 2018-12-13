@@ -3,6 +3,7 @@ package com.example.ricardo.gymmobile.Fragments.Auth;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.icu.text.SimpleDateFormat;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -20,23 +21,19 @@ import android.widget.Toast;
 
 import com.example.ricardo.gymmobile.Entities.Client;
 import com.example.ricardo.gymmobile.R;
-import com.example.ricardo.gymmobile.Retrofit.Entities.User;
-import com.example.ricardo.gymmobile.Retrofit.Interfaces.AuthService;
-import com.example.ricardo.gymmobile.Retrofit.RetrofitClient;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.example.ricardo.gymmobile.Retrofit.APIServices;
+import com.example.ricardo.gymmobile.Retrofit.Entities.UserSignIn;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SignInFragment extends Fragment implements View.OnClickListener {
 
@@ -95,11 +92,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
         if (id == R.id.auth_sign_in_button) { // Botão de registo
 
-            try {
                 signInUser(); // Fazer o registo
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
 
         } else if (id == R.id.auth_sign_in_birth_date) { // Botão da data de nascimento
 
@@ -138,9 +131,10 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
             birthDate = calendar.getTime();
         }
+
     }
 
-    private void signInUser() throws JSONException {
+    private void signInUser() {
 
         String firstName       = signInFirstName.getText().toString();
         String lastName        = signInLastName.getText().toString();
@@ -152,7 +146,6 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         String height          = signInHeight.getText().toString();
         String weight          = signInWeight.getText().toString();
 
-        /**
         // Se houver campos vazios
         if (firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty() || email.isEmpty() ||
              password.isEmpty() || confirmPassword.isEmpty() || nif.isEmpty() || height.isEmpty() ||
@@ -160,7 +153,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
             Toast.makeText(context, "There is empty fields!!!", Toast.LENGTH_SHORT).show();
             return;
-        }**/
+        }
 
         // Validação do email
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -171,16 +164,23 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
         // Validação da password
         if (!password.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}")) {
-
             signInPassword.setError("Password inválida. Deve conter pelo menos 8 caractéres, " +
                     "um número e uma letra maiúscula.");
             signInPassword.requestFocus();
+            return;
+        }
 
-            if (!confirmPassword.equals(password)) {
-                signInConfirmPassword.setError("Password does not match!!!");
-                signInConfirmPassword.requestFocus();
-            }
+        // Se as passwords coincidirem
+        if (!confirmPassword.equals(password)) {
+            signInConfirmPassword.setError("Password does not match!!!");
+            signInConfirmPassword.requestFocus();
+            return;
+        }
 
+        // O NIF tem de ter 9 caracteres
+        if (nif.length() != 9) {
+            signInNif.setError("O nif deve conter 9 números");
+            signInNif.requestFocus();
             return;
         }
 
@@ -189,27 +189,12 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
         if (isConnected()) { // Verificar a conecção com a internet
 
-            Gson gson = new GsonBuilder()
-                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                    .create();
+            UserSignIn user = new UserSignIn(email, userName, password, Integer.parseInt(nif),
+                    firstName, lastName, null, DatePickerFragment.birthDate,
+                    Double.parseDouble(height), Float.parseFloat(weight));
 
-            // RETROFIT
-            Retrofit.Builder builder = new Retrofit.Builder()
-                    .baseUrl(RetrofitClient.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create(gson));
-
-            Retrofit retrofit = builder.build();
-
-            AuthService authService = retrofit.create(AuthService.class);
-            JSONObject object = new JSONObject();
-            object.put("username", userName);
-            object.put("email", email);
-            object.put("password", password);
-
-            System.out.println(">>>>>>>>> OBJECT: " + object.toString());
-
-            Call<Client> call = authService.userSignIn(object);
-            System.out.println(">>>>>>> ");
+            Call<Client> call = APIServices.authService().userSignIn(user);
+            System.out.println(">>>>>>> USER: " + user.toString());
             call.enqueue(new Callback<Client>() {
                 @Override
                 public void onResponse(Call<Client> call, Response<Client> response) {
@@ -224,6 +209,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
                         System.out.println("****  STATUS: " + response.code() + " ******");
                         System.out.println("Message: " + response.message());
+                        Toast.makeText(context, "Utilizador já existe", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -236,6 +222,8 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
                     progressBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(context, "Sign in failed!!!", Toast.LENGTH_SHORT).show();
+                    System.out.println("********** " + t.getMessage());
+                    System.out.println("********** " + t.getCause());
 
                 }
             });

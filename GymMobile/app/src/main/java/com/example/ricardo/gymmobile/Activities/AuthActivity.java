@@ -1,4 +1,4 @@
-package com.example.ricardo.gymmobile;
+package com.example.ricardo.gymmobile.Activities;
 
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.example.ricardo.gymmobile.Fragments.Auth.LoginFragment;
 import com.example.ricardo.gymmobile.Fragments.Auth.SignInFragment;
+import com.example.ricardo.gymmobile.R;
 
 public class AuthActivity extends AppCompatActivity {
 

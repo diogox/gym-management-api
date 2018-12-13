@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using GymAPI.CustomPolicies;
@@ -14,6 +15,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +26,18 @@ namespace GymAPI
 {
     public class Startup
     {
+        public virtual void SetUpDataBase(IServiceCollection services)
+        {
+            var connection = "Data Source=gym.db";
+            services.AddDbContext<GymContext>
+                (options => options.UseSqlite(connection));
+        }
+        
+        public virtual void EnsureDatabaseCreated(GymContext dbContext)
+        {
+            dbContext.Database.Migrate();
+        }
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -55,10 +69,8 @@ namespace GymAPI
                 });
             });
             
-            var connection = "Data Source=gym.db";
-            services.AddDbContext<GymContext>
-                (options => options.UseSqlite(connection));
-
+            SetUpDataBase(services);
+            
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<GymContext>()
                 .AddDefaultTokenProviders();
@@ -171,6 +183,13 @@ namespace GymAPI
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Gym API");
             });
 
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetService<GymContext>();
+                // run Migrations
+                EnsureDatabaseCreated(dbContext);
+            }
             CreateUserRoles(services).Wait();
         }
         
@@ -179,14 +198,14 @@ namespace GymAPI
         {
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
-  
+            
             IdentityResult roleResult;
             //Adding Admin Role
             var roleCheck = await roleManager.RoleExistsAsync("Admin");
             User user;
             if (!roleCheck)
             {
-                //create the roles and seed them to the database
+                // Create the roles and seed them to the database
                 roleResult = await roleManager.CreateAsync(new IdentityRole("Admin"));
                 
                 user = new User()

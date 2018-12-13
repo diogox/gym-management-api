@@ -107,7 +107,7 @@ namespace GymAPI.Controllers
         // PUT api/staff/{id}
         [HttpPut("{id}")]
         [Authorize(Policy = "SameStaffMemberOnly&AllowAdmin")]
-        public async Task<ActionResult> UpdateStaffMember(long id, [FromBody] StaffMember member)
+        public ActionResult UpdateStaffMember(long id, [FromBody] StaffMember member)
         {
             var oldMember = _staffService.GetById(id);
             if (oldMember == null)
@@ -122,7 +122,7 @@ namespace GymAPI.Controllers
         // DELETE api/staff/{id}
         [HttpDelete("{id}")]
         [Authorize(Policy = "SameStaffMemberOnly&AllowAdmin")]
-        public async Task<ActionResult> DeleteStaffMember(long id)
+        public ActionResult DeleteStaffMember(long id)
         {
             var member = _staffService.GetById(id);
             if (member == null)
@@ -145,7 +145,7 @@ namespace GymAPI.Controllers
         // GET api/staff/trainers/{id}
         [HttpGet("trainers/{id}")]
         [Authorize(Policy = "SameStaffMemberOnly&AllowAdmin")]
-        public async Task<ActionResult<string>> GetTrainer(long id)
+        public ActionResult<string> GetTrainer(long id)
         {
             var trainer = _trainersStaffService.GetById(id);
             if (trainer == null)
