@@ -16,7 +16,7 @@ build:
     name: staging
   script:
     - cd GymAPI/GymAPI.Web
-    - docker run -t -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
+    - sudo docker run -t -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "sudo dotnet restore && sudo dotnet publish -c Release -o ./bin/Release/PublishOutput"
   tags:
     - gitlab
 
@@ -27,7 +27,7 @@ test:
     name: staging
   script:
     - cd GymAPI/Tests
-    - dotnet test
+    - sudo dotnet test
   tags:
     - gitlab
 
@@ -38,12 +38,12 @@ deploy:
     name: staging
   script:
     - cd GymAPI/GymAPI.Web
-    - docker login -u "$CI_REGISTRY_USER" -p "$HEROKU_API_KEY" $CI_REGISTRY
+    - sudo docker login -u "$CI_REGISTRY_USER" -p "$HEROKU_API_KEY" $CI_REGISTRY
     - apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community nodejs-npm
     - npm i -g heroku
-    - docker build -t $CI_REGISTRY/gym-lds/web .
-    - docker push $CI_REGISTRY/gym-lds/web
-    - heroku container:release web --app gym-lds
+    - sudo docker build -t $CI_REGISTRY/gym-lds/web .
+    - sudo docker push $CI_REGISTRY/gym-lds/web
+    - sudo heroku container:release web --app gym-lds
   only:
     - master
   tags:
