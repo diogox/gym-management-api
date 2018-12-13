@@ -12,6 +12,8 @@ variables:
 build:
   image: docker:latest
   stage: build
+  environment:
+    name: staging
   script:
     - cd GymAPI/GymAPI.Web
     - docker run -t -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
@@ -21,6 +23,8 @@ build:
 test:
   image: microsoft/dotnet:2.1-sdk
   stage: test
+  environment:
+    name: staging
   script:
     - cd GymAPI/Tests
     - dotnet test
@@ -30,6 +34,8 @@ test:
 deploy:
   image: docker:latest
   stage: deploy
+  environment:
+    name: staging
   script:
     - cd GymAPI/GymAPI.Web
     - docker login -u "$CI_REGISTRY_USER" -p "$HEROKU_API_KEY" $CI_REGISTRY
