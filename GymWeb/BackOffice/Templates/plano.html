@@ -1,0 +1,198 @@
+<div class="container body" style="margin-left: 100px" ng-controller="planoCtrl">
+
+
+    <!--Alertas da API-->
+    <div ng-repeat="alert in alerts" ng-show="alert.show">
+        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong>
+            {{alert.msg}}</h3>
+    </div>
+
+
+    <h3>Plano de Treino: {{Plano_nome}}</h3>
+    <h3>Supervisionado por: {{Plano_Treinador.firstName}} {{Plano_Treinador.lastName}}</h3>
+    <!--Button Adicionar Exercicio ao Plano-->
+    <button style="color: black;" type="button" class="btn btn-secondary glyphicon glyphicon-plus" ng-click="loadT()"
+        data-toggle="modal" data-target="#addExPT">ADICIONAR
+        EXERCICIO
+    </button>
+    <table class="content table">
+        <thead>
+            <tr>
+                <th>ID do Exercicio</th>
+                <th>Nome do Exercicio</th>
+                <th>Numero de Repetições</th>
+                <th>Numero de séries</th>
+                <th>Dia da Semana</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="exercicio in Exercicios">
+                <td>{{exercicio.exerciseId}}</td>
+                <td>{{exercicio.nome}}</td>
+                <td>{{exercicio.numberOfRepetitions}}</td>
+                <td>{{exercicio.numberOfSeries}}</td>
+                <td>{{exercicio.dayOfTheWeek}}</td>
+                <td>
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"
+                        data-target="#removerPlanoEx" ng-click="removePlanoEx($index)">
+                    </button>
+                    <button type="button" class="edt btn btn-success glyphicon glyphicon-pencil" data-toggle="modal"
+                        data-target="#editarPlanoEx" ng-click="edPlanoEx($index)">
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!--Remover Exercicio do Plano-->
+    <modal class="modal fade" id="removerPlanoEx" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="color: black;">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Remover Exercicio {{idExremove}}</h3>
+                </div>
+                <div class="modal-body">
+                    <h4>Pretende remover este Exercicio?</h4>
+                    <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" ng-click="rmEx(idExremove)">
+                        Confirm
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </modal>
+
+
+    <!--Adicionar Exercicio ao Plano-->
+    <modal class="modal fade" id="addExPT" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="color: black;">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Adicionar Exercicio ao Plano de Treino</h3>
+                </div>
+                <div class="modal-body">
+                    <!--Form para adicionar um novo Exercicio-->
+                    <form ng-submit="submitADD()" name="myForm">
+                        <h4>Preenche os seguintes cabeçalhos:</h4>
+
+
+                        <!--Nome do Exercicio-->
+                        <div class="form-group">
+                            <label for="exercicio">Exercicio:</label>
+                            <select class="form-control" ng-model="ptex.exerciseId" required>
+                                <option ng-repeat="x in PTEX" value="{{x.id}}">{{x.name}}</option>
+                            </select>
+                        </div>
+
+
+                        <!--Numero de Repetições-->
+                        <div class="form-group">
+                            <label for="repeticoes">Numero de Repetições:</label>
+                            <input class="form-control" type="number" step="1" min="1" max="1000" ng-model="ptex.numberOfRepetitions"
+                                name="repeticoes" id="repeticoes" required />
+                        </div>
+
+
+                        <!--Numero de Séries-->
+                        <div class="form-group">
+                            <label for="series">Numero de Séries:</label>
+                            <input class="form-control" type="number" step="1" min="1" max="1000" ng-model="ptex.numberOfSeries"
+                                name="series" id="series" required />
+                        </div>
+
+
+                        <!--Dia da Semana-->
+                        <div class="form-group">
+                            <label for="diaSemana">Dia da Semana:</label>
+                            <select class="form-control" ng-model="ptex.dayOfTheWeek" required>
+                                <option ng-repeat="x in diaSemana" value="{{x}}">{{x}}</option>
+                            </select>
+                        </div>
+
+
+                        <p></p>
+                        <button class="btn btn-default btn-block" ng-disabled="myForm.$invalid" type="submit" id="submit"
+                            value="Submit">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </modal>
+
+
+    <!--Editar Exercicio ao Plano-->
+    <modal class="modal fade" id="editarPlanoEx" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="color: black;">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Editar Exercicio do Plano de Treino  {{idExed}}</h3>
+                </div>
+                <div class="modal-body">
+                    <!--Form para adicionar um novo Exercicio-->
+                    <form ng-submit="submitED()" name="myedForm">
+                        <h4>Preenche os seguintes cabeçalhos:</h4>
+
+
+                        <!--Nome do Exercicio-->
+                        <div class="form-group">
+                            <label for="exercicio">Exercicio:</label>
+                            <select class="form-control" ng-model="edptex.exerciseId" required>
+                                <option ng-repeat="x in PTEX" value="{{x.id}}">{{x.name}}</option>
+                            </select>
+                        </div>
+
+
+                        <!--Numero de Repetições-->
+                        <div class="form-group">
+                            <label for="repeticoes">Numero de Repetições:</label>
+                            <input class="form-control" type="number" step="1" min="1" max="1000" ng-model="edptex.numberOfRepetitions"
+                                name="repeticoes" id="repeticoes" required />
+                        </div>
+
+
+                        <!--Numero de Séries-->
+                        <div class="form-group">
+                            <label for="series">Numero de Séries:</label>
+                            <input class="form-control" type="number" step="1" min="1" max="1000" ng-model="edptex.numberOfSeries"
+                                name="series" id="series" required />
+                        </div>
+
+
+                        <!--Dia da Semana-->
+                        <div class="form-group">
+                            <label for="diaSemana">Dia da Semana:</label>
+                            <select class="form-control" ng-model="edptex.dayOfTheWeek" required>
+                                <option ng-repeat="x in diaSemana" value="{{x}}">{{x}}</option>
+                            </select>
+                        </div>
+
+
+                        <p></p>
+                        <button class="btn btn-default btn-block" ng-disabled="myedForm.$invalid" type="submit" id="submit"
+                            value="Submit">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </modal>
+
+
+
+
+
+
+
+
+
+
+
+</div>

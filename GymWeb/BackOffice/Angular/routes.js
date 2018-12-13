@@ -21,8 +21,11 @@ app.config(function($routeProvider) {
     .when("/ticket/:id", {
         templateUrl : "Templates/ticket.html"
     })
-    .when("/listadeplanos",{ //Página com a lista de Planos de Exercicios
-        templateUrl : "Templates/404.htm"
+    .when("/listadeplanos",{
+        templateUrl : "Templates/lista_de_planos_treino.html"
+    })
+    .when("/plano/:id", {
+        templateUrl : "Templates/plano.html" //Página para um plano de Treino
     })
     .when("/listadeexercicios",{
         templateUrl : "Templates/lista_de_exercicios.html"
