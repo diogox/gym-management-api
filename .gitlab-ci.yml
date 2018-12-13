@@ -15,6 +15,8 @@ build:
   script:
     - cd GymAPI/GymAPI.Web
     - docker run -t -v $PWD:/app --workdir /app microsoft/dotnet:2.1-sdk bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
+  tags:
+    - local-runner
 
 test:
   image: microsoft/dotnet:2.1-sdk
@@ -22,6 +24,8 @@ test:
   script:
     - cd GymAPI/Tests
     - dotnet test
+  tags:
+    - local-runner  
 
 deploy:
   image: docker:latest
@@ -36,3 +40,5 @@ deploy:
     - heroku container:release web --app gym-lds
   only:
     - master
+  tags:
+    - local-runner
