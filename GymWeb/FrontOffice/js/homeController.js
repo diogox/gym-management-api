@@ -13,11 +13,11 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope) {
         window.location.href = "index.html#!login";
 
     // Se tem login efetuado
-    } else if(userType !== "Client"){
+    } else if(userType === "Staff"){
 
         window.location.href = "index.html#!403";
 
-    }else {
+    }else if(userType === "Client" || userType==="Admin"){
         // Obtem o id do utilizador que fez login
         let myId = login.userTypeId;
 

@@ -34,8 +34,13 @@
 	<link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
 
+    <!-- Angular js -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <!-- Google charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
 </head>
 
 <body ng-app="myApp" ng-controller="indexCtrl">
@@ -48,7 +53,6 @@
                     <a class="navbar-brand" href="#">Awesome Gym</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Cliente</a></li>
                 </ul>
             </div>
         </nav>
@@ -59,63 +63,54 @@
         <!--This the side nav bar-->
         <div class="left col-2" ng-hide="hideMenus">
             <ul>
+                <img class="img" src="{{clientImage}}" alt="Something went wrong, it's not possible to display the image."/>
                 <a href="index.html" ng-hide="hideClient">
                     <li class="item-menu">
-                        <span class="glyphicon glyphicon-home"></span>
                         <span class="menu">Home</span>
                     </li>
                 </a>
                 <a href="#!planos" ng-hide="hideStaff">
                     <li class="item-menu">
-                        <span class="glyphicon glyphicon-home"></span>
                         <span class="menu">Planos</span>
                     </li>
                 </a>
                 <a href="#!planotreino" ng-hide="hideClient">
                     <li class="item-menu">
-                        <span class="glyphicon glyphicon-tasks"></span>
                         <span class="menu">Meu plano</span>
                     </li>
                 </a>
                 <a href="#!atribuirPlano" ng-hide="hideStaff">
                     <li class="item-menu">
-                        <span class="glyphicon glyphicon-tasks"></span>
                         <span class="menu">Atribuir plano</span>
                     </li>
                 </a>
                 <a href="#!exercicios" ng-hide="hideBoth">
                     <li class="item-menu">
-                        <span class="glyphicon glyphicon-book"></span>
                         <span class="menu">Lista de exercicios</span>
                     </li>
                 </a>
                 <a href="#!equipamentos" ng-hide="hideBoth">
                     <li class="item-menu">
-                        <span class="glyphicon glyphicon-list"></span>
                         <span class="menu">Lista de Equipamento</span>
                     </li>
                 </a>
                 <a href="#!suporte" ng-hide="hideClient">
                     <li class="item-menu">
-                        <span class="glyphicon glyphicon-envelope"></span>
                         <span class="menu">Enviar Tickets</span>
                     </li>
                 </a>
                 <a href="#!relatorios" ng-hide="hideBoth">
                     <li class="item-menu">
-                        <span class="glyphicon glyphicon-align-left"></span>
                         <span class="menu">Relatórios</span>
                     </li>
                 </a>
                 <a href="#!notificacoes" ng-hide="hideClient">
                     <li class="item-menu">
-                        <span class="glyphicon glyphicon-bell"></span>
                         <span class="menu">Notificações <span class="badge badge-secondary">{{numberNotifications}}</span> </span>
                     </li>
                 </a>
                 <a href="#!login" ng-click="logoutBtn()" ng-hide="hideBoth">
                     <li class="item-menu">
-                        <span class="glyphicon glyphicon-credit-card"></span>
                         <span class="menu">Logout</span>
                     </li>
                 </a>
@@ -134,6 +129,7 @@
 </body>
 <script src="js/routes.js"></script>
 <script src="js/myutil.js" type="module"></script>
+<script src="js/reports.js" type="module"></script>
 <script src="js/indexController.js" type="module"></script>
 <script src="js/registoController.js" type="module"></script>
 <script src="js/loginController.js" type="module"></script>
@@ -147,6 +143,7 @@
 <script src="js/planosController.js" type="module"></script>
 <script src="js/atribuirPlanoController.js" type="module"></script>
 <script src="js/notificacoesController.js" type="module"></script>
+<script src="js/relatoriosController.js" type="module"></script>
 <script src="js/pedidos.js" type="module"></script>
 
 </html>

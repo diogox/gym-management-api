@@ -37,7 +37,7 @@ app.config(function($routeProvider) {
         templateUrl : "template/planoTreino.htm"
     })
     .when('/relatorios', {
-        templateUrl : "template/501.htm"
+        templateUrl : "template/relatorios.htm"
     })
     .when('/notificacoes', {
         templateUrl : "template/notificacoes.htm"
