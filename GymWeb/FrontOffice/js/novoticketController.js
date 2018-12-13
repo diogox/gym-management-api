@@ -9,11 +9,11 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window, $rootScope) {
     
     if (!login) {
         window.location.href = "index.html#!login";
-    } else if(userType !== "Client"){
+    } else if(userType === "Staff"){
 
         window.location.href = "index.html#!403";
 
-    }else {
+    }else if(userType === "Client" || userType==="Admin") {
 
         // Obtem o id do utilizador que fez login
         let myId = login.userTypeId;

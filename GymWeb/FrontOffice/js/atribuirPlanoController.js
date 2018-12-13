@@ -9,11 +9,11 @@ app.controller('atribuirPlanoCtrl', function ($scope, $http, $rootScope) {
     
     if (!login) {
         window.location.href = "index.html#!login";
-    } else if(userType !== "Staff"){
+    } else if(userType === "Client"){
 
         window.location.href = "index.html#!403";
 
-    }else {
+    }else if(userType === "Staff" || userType==="Admin"){
 
         // Obtem o id do utilizador que fez login
         let myId = login.userTypeId;

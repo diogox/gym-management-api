@@ -1,0 +1,29 @@
+<div ng-controller="relatoriosCtrl">
+
+    <h1>Relatórios</h1>
+
+    <!-- Lista de relatórios a apresentar aos treinadores e aos admins -->
+    <div ng-hide="hideStaff">
+
+        <h1 class="display-5" style="text-align: center">Calendário de entradas</h1> 
+        <div id="calendario_entradas"></div>
+
+        <h1 class="display-5" style="text-align: center">Total de entradas por cliente</h1> 
+        <div id="histograma_entradas"></div>
+
+        <br/>
+        <h1 class="display-5" style="text-align: center">Total de entradas por ano</h1> 
+        <div id="line_entradas"></div>
+
+    </div>
+
+    <div ng-hide="hideClient">
+
+        <!-- Lista de relatórios a apresentar aos clientes -->
+        <h1 class="display-5" style="text-align: center"> Total entradas por ano </h1>
+        <div id="line_entradas_cliente"></div>
+    </div>
+    
+    
+
+</div>

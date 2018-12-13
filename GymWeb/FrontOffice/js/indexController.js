@@ -1,5 +1,5 @@
 import { checkLogin, logout } from './myutil.js'
-import { getAllClients, getPlanosTreinoById, getPlanosTreino, changeClientPlan, getClient } from './pedidos.js'
+import { getAllClients, getPlanosTreinoById, getPlanosTreino, changeClientPlan, getClient, getStaff } from './pedidos.js'
 
 // Controller do index
 app.controller('indexCtrl', function ($scope, $http) {
@@ -11,9 +11,13 @@ app.controller('indexCtrl', function ($scope, $http) {
 
     // Obtem o id do utilizador que fez login
     let myId = login.userTypeId;
-    
-    // Faz update das notificações se fizer refresh à página
-    updateNotifications();
+
+    // Faz update das notificações se fizer refresh à página e se for cliente
+    if (login.userType == "Client") {
+        updateNotifications();
+    }else if(login.userType == "Staff"){
+        updateStaffImage();
+    }
 
     // Quando recebe um broadcast do tipo show-window, irá decidir que partes da página
     // irá mostrar e quais irá ocultar
@@ -67,7 +71,7 @@ app.controller('indexCtrl', function ($scope, $http) {
 
     // Após efetuar login
     $scope.$on('after-login', function (event, arg) {
-        
+
         updateNotifications();
 
     });
@@ -78,7 +82,7 @@ app.controller('indexCtrl', function ($scope, $http) {
     }
 
     // Função que faz update do numero de notificações mostrado no item do menu
-    function updateNotifications(){
+    function updateNotifications() {
         login = checkLogin();
         myId = login.userTypeId;
 
@@ -101,9 +105,27 @@ app.controller('indexCtrl', function ($scope, $http) {
                 // Atualiza a vista
                 $scope.numberNotifications = unRead;
 
+                $scope.clientImage = result.data.imageUrl;
+
             }
 
         });
+    }
+
+    function updateStaffImage(){
+        login = checkLogin();
+        myId = login.userTypeId;
+
+        getStaff($http, myId, (result) => {
+
+            if (result) {
+
+                $scope.clientImage = result.data.imageUrl;
+
+            }
+
+        });
+
     }
 
 });

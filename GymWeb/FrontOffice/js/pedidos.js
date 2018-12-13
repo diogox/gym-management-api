@@ -36,6 +36,36 @@ export function getClient($http, id, callback) {
 }
 
 /**
+ * Função que obtem um staff pelo seu id  
+ * @param {*} id id do staff a obter
+ * @param {*} callback resposta a enviar após receber o pedido
+ */
+export function getStaff($http, id, callback) {
+
+    let loginData = checkLogin();
+    let token = loginData.token;
+
+    $http({
+
+        method : "GET",
+        url : domain + "api/staff/" + id,
+        headers: {
+            'authorization': "bearer "+ token,
+            'content-type': "application/json",
+        }
+
+    }).then(function mySuccess(response) {
+        
+        callback(response)
+
+    }, function myError(response) {
+
+        callback(false)
+
+    });
+}
+
+/**
  * Função que obtem uma lista completa de todos os clientes existentes
  * @param {*} callback resposta a enviar após receber o pedido
  */
