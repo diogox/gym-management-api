@@ -35,14 +35,16 @@ public class SupportTicket {
      */
     private Long clientId;
 
+
     public SupportTicket(long id, String title, List<SupportTicketMessage> messages, Date openedAt, TicketState state, Long clientId) {
-        this.id = id;
-        this.title = title;
+        this.id       = id;
+        this.title    = title;
         this.messages = messages;
         this.openedAt = openedAt;
-        this.state = state;
+        this.state    = state;
         this.clientId = clientId;
     }
+
 
     public long getId() {
         return id;

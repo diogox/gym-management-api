@@ -11,37 +11,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.ricardo.gymmobile.Activities.MainActivity;
 import com.example.ricardo.gymmobile.Entities.Enums.DayOfTheWeek;
 import com.example.ricardo.gymmobile.Entities.TrainingPlanBlock;
 import com.example.ricardo.gymmobile.Entities.WorkPlan;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
 import com.example.ricardo.gymmobile.R;
+import com.example.ricardo.gymmobile.Retrofit.APIServices;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkPlanFragment extends Fragment implements OnItemClickListener {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class WorkPlanFragment extends Fragment {
 
     /**
      * Contexto
      */
     private Context context;
     /**
-     * RecyclerView que contém a listagem dos planos de treino
+     * Plano de treino
      */
-    private RecyclerView recyclerView;
-    /**
-     * WorkPlan adapter
-     */
-    private WorkPlanAdapter workPlanAdapter;
-    /**
-     * Lista de blocos de treino associados a um plano de treino
-     */
-    private List<TrainingPlanBlock> trainingPlanBlocks = new ArrayList<>();
-    /**
-     * Lista de planos de treino a ser adicionada na RecyclerView
-     */
-    private List<WorkPlan> workPlans = new ArrayList<>();
+    private WorkPlan workPlan;
 
 
     @Override
@@ -61,30 +55,60 @@ public class WorkPlanFragment extends Fragment implements OnItemClickListener {
 
         final View mContentView = inflater.inflate(R.layout.fragment_work_plan, container, false);
 
-        workPlanAdapter = new WorkPlanAdapter(context, workPlans, getActivity());
-
-        recyclerView = mContentView.findViewById(R.id.recycler_view_work_plan);
-        recyclerView.setAdapter(workPlanAdapter);
-
-        // Set LayoutManager
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-
-        // Clicar num plano de treino da lista
-        workPlanAdapter.setClickListener(this);
-
-        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(itemDecoration);
+        getWorkPlanClient(); // Plano de treino
 
         return mContentView;
     }
 
     /**
-     * Método que permite clicar num plano de treino da RecycleView para
-     * poder visualizar a informação
+     * Obter o plano de treino do cliente
      */
-    @Override
-    public void onItemClick(View view, int position) {
-        Toast.makeText(context, "Position -> " + position, Toast.LENGTH_SHORT).show();
+    private void getWorkPlanClient() {
+
+        // Número de identificação do plano de treino
+        Long workPlanId = MainActivity.clientLogged.getTrainingPlanId();
+
+        // Se o id do plano de treino não for null
+        // Significa que o cliente tem um plano de treino atribuído
+        if (workPlanId != null) {
+
+            // Token de autorização
+            String token = MainActivity.loginDataResponse.getToken();
+
+            Call<WorkPlan> call = APIServices.workPlanService().getWorkPlan("Bearer " + token, workPlanId);
+            call.enqueue(new Callback<WorkPlan>() {
+                @Override
+                public void onResponse(Call<WorkPlan> call, Response<WorkPlan> response) {
+
+                    if (response.isSuccessful()) { // Resposta com sucesso
+
+                        workPlan = response.body();
+
+                    } else {
+
+                        Toast.makeText(context, "Erro", Toast.LENGTH_SHORT).show();
+                        System.out.println("******* " + response.code() + " ********");
+
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<WorkPlan> call, Throwable t) {
+
+                    Toast.makeText(context, "No internet connection!!!", Toast.LENGTH_SHORT).show();
+                    System.out.println("******** " + t.getMessage());
+                    System.out.println("******** " + t.getCause());
+
+                }
+            });
+
+        } else {
+
+            Toast.makeText(context, "Não possui planos atribuídos", Toast.LENGTH_SHORT).show();
+
+        }
+
     }
 
 }

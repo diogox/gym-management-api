@@ -5,18 +5,57 @@ import java.util.List;
 
 public class Client {
 
+    /**
+     * Número de identificação de um cliente
+     */
     private long id;
+    /**
+     * Número de identificação fiscal do cliente
+     */
     private long nif;
+    /**
+     * Primeiro nome do cliente
+     */
     private String firstName;
+    /**
+     * Último nome do cliente
+     */
     private String lastName;
+    /**
+     * Imagem do cliente
+     */
     private String imageUrl;
+    /**
+     * Data de nascimento do cliente
+     */
     private Date birthDate;
+    /**
+     * Idade do cliente
+     */
     private int age;
+    /**
+     * Altura em metros do cliente
+     */
     private double heightInMeters;
+    /**
+     * Peso em kilos do cliente
+     */
     private float weightInKg;
+    /**
+     * Número de identificação do plano de treino do cliente
+     */
     private Long trainingPlanId;
+    /**
+     * Lista de checkIns do cliente
+     */
     private List<ClientCheckIn> checkInHistory;
+    /**
+     * Lista de notificações do cliente
+     */
     private List<ClientNotification> notifications;
+    /**
+     * Lista de tickets de suporte do cliente
+     */
     private List<SupportTicket> supportTickets;
 
     public Client(long id, long nif, String firstName, String lastName, String imageUrl, Date birthDate, int age, double heightInMeters, float weightInKg, Long trainingPlanId, List<ClientCheckIn> checkInHistory, List<ClientNotification> notifications, List<SupportTicket> supportTickets) {

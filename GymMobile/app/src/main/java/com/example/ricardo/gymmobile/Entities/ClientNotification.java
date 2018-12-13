@@ -33,12 +33,12 @@ public class ClientNotification {
     private long clientId;
 
     public ClientNotification(long id, String title, String message, Date timestamp, boolean isUnread, long clientId) {
-        this.id = id;
-        this.title = title;
-        this.message = message;
+        this.id        = id;
+        this.title     = title;
+        this.message   = message;
         this.timestamp = timestamp;
-        this.isUnread = isUnread;
-        this.clientId = clientId;
+        this.isUnread  = isUnread;
+        this.clientId  = clientId;
     }
 
     public long getId() {

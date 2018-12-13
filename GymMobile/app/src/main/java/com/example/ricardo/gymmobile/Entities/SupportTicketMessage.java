@@ -22,7 +22,7 @@ public class SupportTicketMessage {
      */
     private Date at;
     /**
-     * <TALVEZ SEJA ALTERADO>
+     * Remetente e destinatário do da mensagem
      */
     private long fromClientId;
     private long fromStaffId;
@@ -35,6 +35,17 @@ public class SupportTicketMessage {
      * Entidade que enviou a mensagem
      */
     private SupportTicketMessageSender from;
+
+
+    public SupportTicketMessage(long id, String message, Date at, long fromClientId, long fromStaffId, long supportTicketId, SupportTicketMessageSender from) {
+        this.id              = id;
+        this.message         = message;
+        this.at              = at;
+        this.fromClientId    = fromClientId;
+        this.fromStaffId     = fromStaffId;
+        this.supportTicketId = supportTicketId;
+        this.from            = from;
+    }
 
 
     public long getId() {

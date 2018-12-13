@@ -29,44 +29,32 @@ public class TrainingPlanBlock {
     private DayOfTheWeek dayOfTheWeek;
 
 
-    public long getPlanId() {
-        return planId;
+    public TrainingPlanBlock(long planId, long exerciseId, int numberOfRepetitions, int numberOfSeries, DayOfTheWeek dayOfTheWeek) {
+        this.planId              = planId;
+        this.exerciseId          = exerciseId;
+        this.numberOfRepetitions = numberOfRepetitions;
+        this.numberOfSeries      = numberOfSeries;
+        this.dayOfTheWeek        = dayOfTheWeek;
     }
 
-    public void setPlanId(long planId) {
-        this.planId = planId;
+
+    public long getPlanId() {
+        return planId;
     }
 
     public long getExerciseId() {
         return exerciseId;
     }
 
-    public void setExerciseId(long exerciseId) {
-        this.exerciseId = exerciseId;
-    }
-
     public int getNumberOfRepetitions() {
         return numberOfRepetitions;
-    }
-
-    public void setNumberOfRepetitions(int numberOfRepetitions) {
-        this.numberOfRepetitions = numberOfRepetitions;
     }
 
     public int getNumberOfSeries() {
         return numberOfSeries;
     }
 
-    public void setNumberOfSeries(int numberOfSeries) {
-        this.numberOfSeries = numberOfSeries;
-    }
-
     public DayOfTheWeek getDayOfTheWeek() {
         return dayOfTheWeek;
     }
-
-    public void setDayOfTheWeek(DayOfTheWeek dayOfTheWeek) {
-        this.dayOfTheWeek = dayOfTheWeek;
-    }
-
 }

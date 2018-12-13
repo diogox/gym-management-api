@@ -2,20 +2,22 @@ package com.example.ricardo.gymmobile.Retrofit.Entities;
 
 import java.util.Date;
 
+/**
+ * Resposta da API
+ */
 public class LoginResponse {
+
 
     private String token;
     private Date expiration;
     private String userType;
     private long userTypeId;
-    private String string;
 
-    public LoginResponse(String token, Date expiration, String userType, long userTypeId, String string) {
+    public LoginResponse(String token, Date expiration, String userType, long userTypeId) {
         this.token = token;
         this.expiration = expiration;
         this.userType = userType;
         this.userTypeId = userTypeId;
-        this.string = string;
     }
 
     public String getToken() {
@@ -34,10 +36,6 @@ public class LoginResponse {
         return userTypeId;
     }
 
-    public String getString() {
-        return string;
-    }
-
     @Override
     public String toString() {
         return "LoginResponse{" +
@@ -45,7 +43,6 @@ public class LoginResponse {
                 ", expiration=" + expiration +
                 ", userType='" + userType + '\'' +
                 ", userTypeId=" + userTypeId +
-                ", string='" + string + '\'' +
                 '}';
     }
 }
