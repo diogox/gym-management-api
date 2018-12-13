@@ -17,32 +17,14 @@
     <td><a href="" class="btn btn-success" role="button" ng-click="openTicket()" ng-hide="open">Abrir ticket</a></td>
     -->
 
-    <!-- Alerta de resposta enviada com sucesso -->
-    <div class="alert alert-success alert-dismissible fade show" style="width:100%" ng-hide="nova_resposta_sucesso">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Success!</strong> Resposta enviada com sucesso, Se não for redirecionado em breve clique <a href="#!suporte">aqui</a>.
-    </div>
-
-    <!-- Alerta de resposta enviada sem sucesso -->
-    <div class="alert alert-danger alert-dismissible fade show" style="width:100%" ng-hide="nova_resposta_sem_sucesso">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Alert!</strong> Resposta enviada sem sucesso.
-    </div>
-
-    <!-- Alerta de adicionar resposta insucesso  -->
-    <div class="alert alert-warning alert-dismissible fade show" style="width:100%" ng-hide="nova_resposta_sem_sucesso_dados">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Warning!</strong> Formulário preenchido incorretamente.
-    </div>
-
     <!-- Adicionar resposta ao ticket -->
     <h2>Adicionar resposta</h2>
-    <form>
+    <form ng-submit="addAnswer()">
         <div class="form-group">
           <label for="comment">Comment:</label>
-          <textarea class="form-control" rows="5" id="comment" name="text" ng-model="answer" ng-disabled="message" required></textarea>
+          <textarea id="newmessage" class="form-control" rows="5" id="comment" name="text" ng-model="answer" ng-disabled="message" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" ng-click="addAnswer()" ng-disabled="disableSubmit">Submit</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="disableSubmit">Submit</button>
     </form>
 
 </div>
