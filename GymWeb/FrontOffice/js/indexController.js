@@ -128,4 +128,76 @@ app.controller('indexCtrl', function ($scope, $http) {
 
     }
 
+    function removeClassByPrefix(el, prefix) {
+        var regx = new RegExp('\\b' + prefix + '.*?\\b', 'g');
+        el.className = el.className.replace(regx, '');
+        return el;
+    }
+
+    /**
+     * Resize tamanho do menu lateral e do conteudo conforme o tamanho da janela
+     */
+    $(window).resize(function() {
+        let width = $( window ).width();
+
+        if(width < 500){
+
+            let menu = document.getElementById("menu");
+            let content = document.getElementById("content");
+
+            removeClassByPrefix(menu, "col");
+            menu.classList.add("col-6");
+
+            removeClassByPrefix(content, "col");
+            content.classList.add("col-6");
+
+        }else if(width < 600){
+
+            let menu = document.getElementById("menu");
+            let content = document.getElementById("content");
+
+            removeClassByPrefix(menu, "col");
+            menu.classList.add("col-5");
+
+            removeClassByPrefix(content, "col");
+            content.classList.add("col-7");
+
+        }else if(width < 800){
+
+            let menu = document.getElementById("menu");
+            let content = document.getElementById("content");
+
+            removeClassByPrefix(menu, "col");
+            menu.classList.add("col-4");
+
+            removeClassByPrefix(content, "col");
+            content.classList.add("col-8");
+
+        }else if(width < 1100){
+
+            let menu = document.getElementById("menu");
+            let content = document.getElementById("content");
+
+            removeClassByPrefix(menu, "col");
+            menu.classList.add("col-3");
+
+            removeClassByPrefix(content, "col");
+            content.classList.add("col-9");
+
+        }else{
+
+            let menu = document.getElementById("menu");
+            let content = document.getElementById("content");
+
+            removeClassByPrefix(menu, "col");
+            menu.classList.add("col-2");
+
+            removeClassByPrefix(content, "col");
+            content.classList.add("col-10");
+
+        }
+
+
+    });
+
 });

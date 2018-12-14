@@ -1,5 +1,5 @@
 import { getPlanosTreino, getexerciseById, getexercises, createPlan, getPlanosTreinoById, changePlan, deletePlan } from './pedidos.js'
-import { checkLogin } from './myutil.js'
+import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from './myutil.js'
 
 // Controller da  página planos de treino
 app.controller('planosCtrl', function ($scope, $http, $rootScope) {
@@ -9,11 +9,11 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
 
     if (!login) {
         window.location.href = "index.html#!login";
-    } else if(userType === "Client"){
+    } else if (userType === "Client") {
 
         window.location.href = "index.html#!403";
 
-    }else if(userType === "Staff" || userType==="Admin") {
+    } else if (userType === "Staff" || userType === "Admin") {
 
         // Obtem o id do utilizador que fez login
         let myId = login.userTypeId;
@@ -28,6 +28,15 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
 
         // Array que vai conter os planos
         let plans = [];
+
+        // Lista de equipamentos divididas em chuncks
+        let plansChuncks = [];
+
+        // Quantidade de equipamentos por chunck
+        let elementsPerChunck = 5;
+
+        // Página atual da lista de equipamentos
+        let currentPage = 0;
 
 
         // CRIAR PLANO
@@ -125,22 +134,28 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
                                     // Simula um click no botão de fechar o modal
                                     document.getElementById("closePlanModal").click();
 
-                                    for (let i = 0; i < $scope.plan.exerciseBlocks.length; i++) {
-                                        getexerciseById($http, $scope.plan.exerciseBlocks[i].exerciseId, (response2) => {
-                                            if (response2) {
-                                                $scope.plan.exerciseBlocks[i].exercise = response2.data;
-                                            } else {
+                                    // Se adicionou exercicios ao plano de treino
+                                    if ($scope.plan.exerciseBlocks) {
+                                        for (let i = 0; i < $scope.plan.exerciseBlocks.length; i++) {
+                                            getexerciseById($http, $scope.plan.exerciseBlocks[i].exerciseId, (response2) => {
+                                                if (response2) {
+                                                    $scope.plan.exerciseBlocks[i].exercise = response2.data;
+                                                } else {
 
-                                            }
+                                                }
 
-                                            // Coloca os dados do modal vazios
-                                            $scope.plan = {};
+                                                // Coloca os dados do modal vazios
+                                                $scope.plan = {};
 
-                                        });
+                                            });
+                                        }
+                                    } else {
+
                                     }
 
-                                    console.log($scope.plan)
-                                    plans.push($scope.plan)
+                                    plans.push($scope.plan);
+
+                                    atualizarPaginas();
 
                                 } else {
                                     bootbox.alert({
@@ -181,6 +196,16 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
 
                                             plans[i] = $scope.plan;
 
+                                            // Obter qual o chunck que se localiza o exercicio editado
+                                            let chunckNumber = Math.floor(i / elementsPerChunck);
+
+                                            // Dentro do chunck obter a posição onde se localiza o exercicio editado
+                                            let chunckPosition = i % elementsPerChunck;
+
+                                            // Alterar o exercicio dentro da lista de chuncks
+                                            plansChuncks[chunckNumber][chunckPosition] = $scope.plan;
+
+
                                         }
 
                                     }
@@ -217,7 +242,6 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
 
         $scope.delete = function (id) {
 
-
             bootbox.confirm({
                 message: "Você pretende remover este plano? Não pode voltar atrás!",
                 buttons: {
@@ -252,6 +276,7 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
 
                                     if (plans[i].id == $scope.plan.id) {
                                         plans.splice(i, 1);
+                                        atualizarPaginas();
                                     }
                                 }
                             } else {
@@ -284,13 +309,18 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
             // Obtem o plano
             getPlanosTreinoById($http, id, (response) => {
 
-                for (let i = 0; i < response.data.exerciseBlocks.length; i++) {
+                // Se o exercicio tiver planos vai buscalos
+                if (response.data.exerciseBlocks > 0 ) {
+                    for (let i = 0; i < response.data.exerciseBlocks.length; i++) {
 
-                    getexerciseById($http, response.data.exerciseBlocks[i].exerciseId, (response2) => {
-                        response.data.exerciseBlocks[i].exercise = response2.data;
-                        $scope.plan = response.data;
-                    });
+                        getexerciseById($http, response.data.exerciseBlocks[i].exerciseId, (response2) => {
+                            response.data.exerciseBlocks[i].exercise = response2.data;
 
+                        });
+
+                    }
+                } else {
+                    $scope.plan = response.data;
                 }
 
             });
@@ -335,9 +365,66 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
                 // Atualiza a vista do utilizador
                 $scope.plans = plans;
 
+                atualizarPaginas();
+
             } else {
 
             }
         });
+
+        // Quando clica no numero de uma página
+        $scope.setPage = function (page) {
+
+            // currentPage recebe a página selecionada
+            currentPage = page;
+
+            // Atualiza a vista com os equipamentos dessa página
+            $scope.plans = plansChuncks[page];
+
+            // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+            paginationSetPage(plansChuncks, page);
+
+        }
+
+        // Se clicar no botão de página anterior, vai buscar a página atual a decrementa um
+        $scope.previousPage = function () {
+            $scope.setPage(currentPage - 1);
+        }
+
+        // Se clicar no botão de próxima página, vai buscar a página atual a incrementa um
+        $scope.nextPage = function () {
+            $scope.setPage(currentPage + 1);
+        }
+
+        /**
+         * Atualizar a paginação, separar em chuncks e criar as páginas
+         */
+        function atualizarPaginas() {
+
+            // Divide o array de exercicios em chuncks e retorna um 
+            // objeto representativo de cada página(nº de chuncks)
+            let pagination = paginationSplitInChuncks(plans, elementsPerChunck);
+
+            // Define o array de chuncks
+            plansChuncks = pagination.arrayChuncks;
+
+            // Lista com tantos elementos quanto o numero de chuncks
+            $scope.numberPages = pagination.numberOfPages;
+
+            // Atualiza a vista
+            $scope.plans = plansChuncks[0];
+
+            // Quando a página estiver pronta, coloca a pagina 0 como selecionada
+            // e coloca a pagina anterior como disabled
+            $(document).ready(function () {
+
+                // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+                paginationOnDocumentReady(plansChuncks);
+
+            });
+
+        }
+
+
     }
 });

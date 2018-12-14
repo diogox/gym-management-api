@@ -11,33 +11,33 @@
     <div class="modal fade" id="editarCriarPlano">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-      
+
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Novo Plano</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-        
+
                 <!-- Modal body -->
                 <div class="modal-body">
 
                     <!-- Alerta de ticket enviado com sucesso -->
-                <div class="alert alert-success alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sucesso">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Success!</strong> Plano criado com sucesso.
-                </div>
-            
-                <!-- Alerta de ticket enviado sem sucesso -->
-                <div class="alert alert-danger alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sem_sucesso">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Alert!</strong> Plano criado sem sucesso.
-                </div>
+                    <div class="alert alert-success alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sucesso">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Success!</strong> Plano criado com sucesso.
+                    </div>
 
-                <!-- Alerta de ticket enviado sem sucesso -->
-                <div class="alert alert-warning alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sem_sucesso_dados">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Warning!</strong> Plano criado sem sucesso. Dados incompletos.
-                </div>
+                    <!-- Alerta de ticket enviado sem sucesso -->
+                    <div class="alert alert-danger alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sem_sucesso">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Alert!</strong> Plano criado sem sucesso.
+                    </div>
+
+                    <!-- Alerta de ticket enviado sem sucesso -->
+                    <div class="alert alert-warning alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sem_sucesso_dados">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Warning!</strong> Plano criado sem sucesso. Dados incompletos.
+                    </div>
 
                     <form ng-submit="submitPlan()">
                         <div class="form-group">
@@ -69,11 +69,13 @@
                                 </div>
 
                                 <div class="form-group custom-control-inline" style="width:150px">
-                                    <input type="number" min="0" class="form-control" id="numberOfRepetitions" name="numberOfRepetitions" placeholder="Repetitions" ng-model="x.numberOfRepetitions" required/>
+                                    <input type="number" min="0" class="form-control" id="numberOfRepetitions" name="numberOfRepetitions" placeholder="Repetitions"
+                                        ng-model="x.numberOfRepetitions" required/>
                                 </div>
 
                                 <div class="form-group custom-control-inline" style="width:150px">
-                                    <input type="number" min="0" class="form-control" id="numberOfSeries" name="numberOfSeries" placeholder="Series" ng-model="x.numberOfSeries" required/>
+                                    <input type="number" min="0" class="form-control" id="numberOfSeries" name="numberOfSeries" placeholder="Series" ng-model="x.numberOfSeries"
+                                        required/>
                                 </div>
                             </li>
                         </ul>
@@ -84,48 +86,68 @@
                         <button type="submit" class="btn btn-primary" ng-disabled="disableSubmit">Submit</button>
                     </form>
                 </div>
-        
+
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" id="closePlanModal" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
-      
+
             </div>
         </div>
     </div>
 
     <label for="fil">Filtre a sua pesquisa:</label>
-    <input id="fil" type="text" class="form-control" placeholder="Pesquise por nome do plano" ng-model="filtro_planos"/>
+    <input id="fil" type="text" class="form-control" placeholder="Pesquise por nome do plano" ng-model="filtro_planos" />
     <br/>
 
-    <div ng-repeat="x in plans | filter : filtro_planos">
+    <div ng-repeat="x in plans | filter : filtro_planos" style="overflow-x:auto;">
 
-        <p><b>Plano:</b> {{x.name}}
-            <a href="" ng-click="edit(x.id)" data-toggle="modal" data-target="#editarCriarPlano">Edit</a>
-            <a href="" ng-click="edit(x.id);delete(x.id)">Delete</a></p>
-        <p><b>Treinador:</b> {{x.supervisingTrainer.firstName}} {{x.supervisingTrainer.lastName}}</p>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Exercicio</th>
-                    <th>Dia</th>
-                    <th>Repetições</th>
-                    <th>Séries</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="y in x.exerciseBlocks | orderBy:'-dayOfTheWeek'">
-                    <td>{{y.exercise.name}}</td>
-                    <td>{{y.dayOfTheWeek}}</td>
-                    <td>{{y.numberOfRepetitions}}</td>
-                    <td>{{y.numberOfSeries}}</td>
-                    
-                </tr>
-            </tbody>
-        </table>
-        <br/>
-        <hr/>
-        <br/>
+        <div class="borderright">
+            <p>
+                <b>Plano:</b> {{x.name}}
+                <a href="" ng-click="edit(x.id)" data-toggle="modal" data-target="#editarCriarPlano">Edit</a>
+                <a href="" ng-click="edit(x.id);delete(x.id)">Delete</a>
+            </p>
+            <p>
+                <b>Treinador:</b> {{x.supervisingTrainer.firstName}} {{x.supervisingTrainer.lastName}}</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Exercicio</th>
+                        <th>Dia</th>
+                        <th>Repetições</th>
+                        <th>Séries</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="y in x.exerciseBlocks | orderBy:'-dayOfTheWeek'">
+                        <td>{{y.exercise.name}}</td>
+                        <td>{{y.dayOfTheWeek}}</td>
+                        <td>{{y.numberOfRepetitions}}</td>
+                        <td>{{y.numberOfSeries}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
     </div>
+    <hr/>
+    <br/>
+</div>
+
+<br/>
+<ul id="paginationHide" class="pagination justify-content-center">
+    <li id="pageback" class="page-item">
+        <a class="page-link disabled" href="" ng-click="previousPage()">Previous</a>
+    </li>
+
+    <li id="page{{x.index}}" class="page-item" ng-repeat="x in numberPages">
+        <a class="page-link" href="" ng-click="setPage(x.index)">{{x.index}}</a>
+    </li>
+
+    <li id="pagenext" class="page-item">
+        <a class="page-link" href="" ng-click="nextPage()">Next</a>
+    </li>
+</ul>
 
 </div>
