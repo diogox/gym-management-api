@@ -14,7 +14,16 @@ app.controller('loginCtrl', function ($scope, $http, $rootScope) {
 
     $scope.submitLogin = function() {
 
+        // Dialog indicando que estão a ocorrer operações em backgroud e o 
+        // utilizador deve aguardar
+        let dialog = bootbox.dialog({
+            message: '<p class="text-center">Por favor aguarde...</p>',
+            closeButton: false
+        });
+        
         loginUser($http, $scope.login, (response)=>{
+
+            
 
             if(response){
 
@@ -50,6 +59,12 @@ app.controller('loginCtrl', function ($scope, $http, $rootScope) {
                 });
 
             }
+
+            // Tempo de espera para fechar o modal de espera, se não buga e não fecha
+            setTimeout(function(){
+                // Fecha o modal de espera
+                dialog.modal('hide');
+            }, 100);
 
         });
 
