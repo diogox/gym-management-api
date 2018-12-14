@@ -1,5 +1,5 @@
 import { getEquipments, getEquipmentById, changeEquipment, createEquipment, deleteEquipment } from './pedidos.js'
-import { checkLogin } from './myutil.js'
+import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from './myutil.js'
 
 // Controller da página de equipamentos
 app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
@@ -17,6 +17,15 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
 
         let listaEquipment = [];
 
+        // Lista de equipamentos divididas em chuncks
+        let equipamentosChuncks = [];
+
+        // Quantidade de equipamentos por chunck
+        let elementsPerChunck = 5;
+
+        // Página atual da lista de equipamentos
+        let currentPage = 0;
+
         // Pede os equipamentos existentes à API
         getEquipments($http, (response) => {
 
@@ -28,11 +37,37 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
                 // Atribui o array de equipamentos para atualizar a vista
                 $scope.equipamentos = response.data;
 
+                atualizarPaginas();
+
                 // Se a API não respondeu da forma correta
             } else {
             }
 
         });
+
+        // Quando clica no numero de uma página
+        $scope.setPage = function (page) {
+
+            // currentPage recebe a página selecionada
+            currentPage = page;
+
+            // Atualiza a vista com os equipamentos dessa página
+            $scope.equipamentos = equipamentosChuncks[page];
+
+            // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+            paginationSetPage(equipamentosChuncks, page);
+
+        }
+
+        // Se clicar no botão de página anterior, vai buscar a página atual a decrementa um
+        $scope.previousPage = function () {
+            $scope.setPage(currentPage - 1);
+        }
+
+        // Se clicar no botão de próxima página, vai buscar a página atual a incrementa um
+        $scope.nextPage = function () {
+            $scope.setPage(currentPage + 1);
+        }
 
         // Função que executa quando clica em editar equipamento ou eliminar equipamento,
         // coloca as informações do equipamento numa variavel que é utilizado posteriormente
@@ -95,6 +130,16 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
 
                                     if (listaEquipment[i].id == $scope.editEquipment.id) {
                                         listaEquipment[i] = $scope.editEquipment;
+
+                                        // Obter qual o chunck que se localiza o exercicio editado
+                                        let chunckNumber = Math.floor(i / elementsPerChunck);
+
+                                        // Dentro do chunck obter a posição onde se localiza o exercicio editado
+                                        let chunckPosition = i % elementsPerChunck;
+
+                                        // Alterar o exercicio dentro da lista de chuncks
+                                        equipamentosChuncks[chunckNumber][chunckPosition] = $scope.editEquipment;
+                                    
                                     }
                                 }
 
@@ -135,6 +180,8 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
                                 $scope.editEquipment.id = result.data.id;
 
                                 listaEquipment.push($scope.editEquipment);
+
+                                atualizarPaginas();
                                 
                                 bootbox.alert({
                                     message: "Equipamento criado com sucesso!",
@@ -204,6 +251,9 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
 
                                     if (listaEquipment[i].id == $scope.editEquipment.id) {
                                         listaEquipment.splice(i, 1);
+
+                                        atualizarPaginas();
+
                                     }
                                 }
                             } else {
@@ -223,5 +273,35 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
                 }
             });
         }
+
+        /**
+         * Atualizar a paginação, separar em chuncks e criar as páginas
+         */
+        function atualizarPaginas() {
+
+            // Divide o array de exercicios em chuncks e retorna um 
+            // objeto representativo de cada página(nº de chuncks)
+            let pagination = paginationSplitInChuncks(listaEquipment, elementsPerChunck);
+
+            // Define o array de chuncks
+            equipamentosChuncks = pagination.arrayChuncks;
+
+            // Lista com tantos elementos quanto o numero de chuncks
+            $scope.numberPages = pagination.numberOfPages;
+
+            // Atualiza a vista
+            $scope.equipamentos = equipamentosChuncks[0];
+
+            // Quando a página estiver pronta, coloca a pagina 0 como selecionada
+            // e coloca a pagina anterior como disabled
+            $(document).ready(function () {
+
+                // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+                paginationOnDocumentReady(equipamentosChuncks);
+
+            });
+
+        }
+
     }
 });

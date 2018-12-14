@@ -17,13 +17,13 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
 
         let listaExercicios = [];
 
-        // Lista de notificações divididas em chuncks
+        // Lista de exercicios divididas em chuncks
         let exerciciosChuncks = [];
 
         // Quantidade de elementos por chunck
         let elementsPerChunck = 5;
 
-        // Página atual da lista de notificações
+        // Página atual da lista de exercicios
         let currentPage = 0;
 
         // Obtem lista de equipamentos e atualiza a vista para um select em editar e criar novo
@@ -86,7 +86,7 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
             // currentPage recebe a página selecionada
             currentPage = page;
 
-            // Atualiza a vista com as notificações dessa página
+            // Atualiza a vista com os exercicios dessa página
             $scope.exercicios = exerciciosChuncks[page];
 
             // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
@@ -253,23 +253,6 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
 
                                 listaExercicios.push($scope.editExercise);
 
-                                // Obtem a quantidade de elementos do ultimo chunck
-                                let nElementsLastChunck = exerciciosChuncks[exerciciosChuncks.length - 1].length;
-
-                                // Se o ultimo chunck tiver no seu limite maximo
-                                if (nElementsLastChunck == elementsPerChunck) {
-
-                                    // Cria um novo chunck com o exercicio
-                                    exerciciosChuncks.push([$scope.editExercise]);
-
-                                    // Se o ultimo chunck não tiver no seu limite maximo
-                                } else {
-
-                                    // Sdiciona o exercicio ao ultimo chunck
-                                    exerciciosChuncks[exerciciosChuncks.length - 1].push($scope.editExercise);
-
-                                }
-
                                 atualizarPaginas();
 
                                 bootbox.alert({
@@ -364,6 +347,9 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
             });
         }
 
+        /**
+         * Atualizar a paginação, separar em chuncks e criar as páginas
+         */
         function atualizarPaginas() {
 
             // Divide o array de exercicios em chuncks e retorna um 
