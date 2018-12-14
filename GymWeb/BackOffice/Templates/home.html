@@ -1,5 +1,21 @@
-<div class="container content" style="margin-left: 100px">
+<div class="container content" style="margin-left: 100px" ng-controller="homeCtrl">
+
+    <!--Alertas da API-->
+    <div ng-repeat="alert in alerts" ng-show="alert.show">
+        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong>
+            {{alert.msg}}</h3>
+    </div>
+    
     <h1>Bem vindo Administrador!</h1>
-    <h3>No backoffice o administrador terá acesso por completo à gestão de clientes, funcionários, equipamentos e
-        tickets de suporte.</h3>
+    <h2>Relatórios:</h2>
+
+    <h3 class="display-5" style="text-align: center">Calendário de entradas neste Ano</h3>
+    <div id="relatorio_entradas"></div>
+
+    <h3 class="display-5" style="text-align: center">Total de entradas por cliente</h3>
+    <div id="histograma_entradas"></div>
+
+    <h3 class="display-5" style="text-align: center">Total de entradas por ano</h3>
+    <div id="line_entradas"></div>
+
 </div>
