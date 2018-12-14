@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24d25f7-b236-4a4b-abfa-d78e00c2e83d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Tests/StaffControllerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/obj/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/obj/Debug/netcoreapp2.1/GymAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/obj/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/obj/Debug/netcoreapp2.1/GymAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/StaffControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/StaffControllerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/GymAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/GymAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/GymAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/GymAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.pdb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +37,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Dockerfile" value="5" />
-          <entry key="cs" value="70" />
+          <entry key="cs" value="71" />
           <entry key="csproj" value="4" />
           <entry key="targets" value="2" />
           <entry key="txt" value="1" />
@@ -37,7 +46,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="70" />
+          <entry key="C#" value="71" />
           <entry key="Csproj" value="4" />
           <entry key="Dockerfile" value="5" />
           <entry key="MsBuild targets file" value="2" />
@@ -48,14 +57,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Dockerfile" value="84" />
-          <entry key="cs" value="12792" />
+          <entry key="cs" value="13000" />
           <entry key="csproj" value="2" />
           <entry key="yml" value="172" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="12792" />
+          <entry key="C#" value="13000" />
           <entry key="Csproj" value="2" />
           <entry key="Dockerfile" value="84" />
           <entry key="YAML" value="172" />
@@ -185,42 +194,36 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Tests/StaffControllerTests.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="19" column="58" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
+            <state relative-caret-position="360">
+              <caret line="113" column="49" selection-start-line="113" selection-start-column="49" selection-end-line="113" selection-end-column="49" />
               <folding>
-                <marker date="1544815782698" expanded="false" signature="6:297" ph="..." />
-                <marker date="1544815782698" expanded="true" signature="314:8004" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="380:7997" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="528:690" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="768:1479" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="838:1237" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="1668:2150" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="1741:1823" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="1840:1911" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="2205:2634" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="2696:3172" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="3230:3701" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="3767:4300" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="4373:4991" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="5064:5738" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="5146:5256" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="5807:6324" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="6399:6818" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="6503:6545" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="6880:7440" ph="{...}" />
-                <marker date="1544815782698" expanded="true" signature="7505:7991" ph="{...}" />
+                <marker date="1544816719471" expanded="false" signature="6:297" ph="..." />
+                <marker date="1544816719471" expanded="true" signature="314:5577" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="380:5570" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="534:707" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="790:1559" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="865:1317" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="1744:2226" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="1817:1899" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="1916:1987" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="2279:2713" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="2785:3278" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="3342:3790" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="3858:4365" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="4432:5008" ph="{...}" />
+                <marker date="1544816719471" expanded="true" signature="5073:5564" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="-1746">
               <caret line="26" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <marker date="1544815829390" expanded="false" signature="6:277" ph="..." />
@@ -272,6 +275,7 @@
     <setting file="file://$PROJECT_DIR$/GymAPI.Web/DAOs/SignupClientDAO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GymAPI.Web/DAOs/LoginDAO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/TicketsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GymAPI.Web/DAOs/SignupStaffMemberDAO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GymAPI.Web/DAOs/ClientNotificationDAO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/AuthController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -316,8 +320,8 @@
         <option value="$PROJECT_DIR$/Tests/ClientsControllerTests.cs" />
         <option value="$PROJECT_DIR$/Tests/EquipmentControllerTests.cs" />
         <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/TicketsController.cs" />
-        <option value="$PROJECT_DIR$/Tests/StaffControllerTests.cs" />
         <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs" />
+        <option value="$PROJECT_DIR$/Tests/StaffControllerTests.cs" />
       </list>
     </option>
   </component>
@@ -356,6 +360,12 @@
               <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
               <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="GymAPI" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="DAOs" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
@@ -430,12 +440,12 @@
       <workItem from="1544557009622" duration="11029000" />
       <workItem from="1544611386066" duration="35967000" />
       <workItem from="1544701138390" duration="9213000" />
-      <workItem from="1544794486809" duration="8494000" />
+      <workItem from="1544794486809" duration="9384000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87100000" />
+    <option name="totallyTimeSpent" value="87990000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -450,7 +460,7 @@
     <frame x="0" y="-35" width="1440" height="845" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14892086" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14892086" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1019,39 +1029,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/StaffControllerTests.cs">
+    <entry file="file://$PROJECT_DIR$/GymAPI.Web/DAOs/SignupStaffMemberDAO.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="19" column="58" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
+        <state>
           <folding>
-            <marker date="1544815782698" expanded="false" signature="6:297" ph="..." />
-            <marker date="1544815782698" expanded="true" signature="314:8004" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="380:7997" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="528:690" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="768:1479" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="838:1237" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="1668:2150" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="1741:1823" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="1840:1911" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="2205:2634" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="2696:3172" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="3230:3701" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="3767:4300" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="4373:4991" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="5064:5738" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="5146:5256" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="5807:6324" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="6399:6818" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="6503:6545" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="6880:7440" ph="{...}" />
-            <marker date="1544815782698" expanded="true" signature="7505:7991" ph="{...}" />
+            <marker date="1543853705369" expanded="false" signature="6:113" ph="..." />
+            <marker date="1543853705369" expanded="true" signature="135:928" ph="{...}" />
+            <marker date="1543853705369" expanded="true" signature="175:926" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="-1746">
           <caret line="26" selection-start-line="26" selection-end-line="26" />
           <folding>
             <marker date="1544815829390" expanded="false" signature="6:277" ph="..." />
@@ -1075,6 +1066,30 @@
             <marker date="1544815829390" expanded="true" signature="4637:4712" ph="{...}" />
             <marker date="1544815829390" expanded="true" signature="4914:5123" ph="{...}" />
             <marker date="1544815829390" expanded="true" signature="5018:5081" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/StaffControllerTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="113" column="49" selection-start-line="113" selection-start-column="49" selection-end-line="113" selection-end-column="49" />
+          <folding>
+            <marker date="1544816719471" expanded="false" signature="6:297" ph="..." />
+            <marker date="1544816719471" expanded="true" signature="314:5577" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="380:5570" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="534:707" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="790:1559" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="865:1317" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="1744:2226" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="1817:1899" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="1916:1987" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="2279:2713" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="2785:3278" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="3342:3790" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="3858:4365" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="4432:5008" ph="{...}" />
+            <marker date="1544816719471" expanded="true" signature="5073:5564" ph="{...}" />
           </folding>
         </state>
       </provider>

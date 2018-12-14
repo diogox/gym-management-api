@@ -18,19 +18,19 @@ namespace Tests
     public class StaffControllerTests : ControllerTestBase
     {
         private readonly string API_ENDPOINT = "/api/staff/";
-        private readonly long CLIENT_ID;
+        private readonly long STAFF_MEMBER_ID;
 
         public StaffControllerTests()
         {
             base.LoadUsers();
 
-            var clientId = CreateClient("diogo", "diogo@qwerty.com").Result;
-            CLIENT_ID = clientId;
+            var memberId = CreateStaffMember("diogo", "diogo@qwerty.com").Result;
+            STAFF_MEMBER_ID = memberId;
         }
 
-        private async Task<long> CreateClient(string username, string email)
+        private async Task<long> CreateStaffMember(string username, string email)
         {
-            var client = new SignupClientDAO()
+            var member = new SignupStaffMemberDAO()
             {
                 Username = username,
                 Password = "Password123",
@@ -41,15 +41,16 @@ namespace Tests
                 FirstName = "Diogo",
                 LastName = "Pinto",
                 ImageUrl = "",
-                HeightInMeters = 1.8,
-                WeightInKg = 70
+                Rank = StaffMemberRank.Trainer,
+                Salary = 400,
+                HasBeenPaidThisMonth = false
             };
-            var res = await base.Admin.PostAsync(API_ENDPOINT, new StringContent(JsonConvert.SerializeObject(client), Encoding.UTF8, "application/json"));
+            var res = await base.Admin.PostAsync(API_ENDPOINT, new StringContent(JsonConvert.SerializeObject(member), Encoding.UTF8, "application/json"));
             return Convert.ToInt64( res.Headers.Location.Segments.Last() );
         }
 
-        [InlineData("", "")]     // "api/clients"
-        [InlineData("", "1")]    // "api/clients/1"
+        [InlineData("", "")]     // "api/staff"
+        [InlineData("", "1")]    // "api/staff/1"
         [Theory]
         public async Task GetWithoutAuth(string endpoint, string id)
         {
@@ -69,7 +70,7 @@ namespace Tests
         }
 
         [Fact]
-        public async Task GetClients()
+        public async Task GetStaff()
         {   
             // Should return 200 - Successful
             var response = await base.Admin.GetAsync(API_ENDPOINT);
@@ -77,140 +78,83 @@ namespace Tests
 
             // Should return an empty list
             var stringResponse = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<List<Client>>(stringResponse);
+            var result = JsonConvert.DeserializeObject<List<StaffMember>>(stringResponse);
             Assert.NotEmpty(result);
         }
 
         [Fact]
-        public async Task<Client> GetClient()
+        public async Task<StaffMember> GetStaffMember()
         {   
             // Should return 200 - Successful
-            var response = await base.Admin.GetAsync(API_ENDPOINT + CLIENT_ID);
+            var response = await base.Admin.GetAsync(API_ENDPOINT + STAFF_MEMBER_ID);
             response.EnsureSuccessStatusCode();
 
             // Should return an empty list
             var stringResponse = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject< Client >(stringResponse);
-            Assert.Equal(CLIENT_ID, result.Id);
+            var result = JsonConvert.DeserializeObject< StaffMember >(stringResponse);
+            Assert.Equal(STAFF_MEMBER_ID, result.Id);
 
             return result;
         }
-
+        
         [Fact]
-        public async Task ClientCheckIn()
+        public async Task GetTrainers()
         {   
             // Should return 200 - Successful
-            var response = await base.Admin.GetAsync(API_ENDPOINT + CLIENT_ID + "/check-in");
+            var response = await base.Admin.GetAsync(API_ENDPOINT + "trainers/");
             response.EnsureSuccessStatusCode();
 
-            // Should have a new check-in
+            // Should return an empty list
             var stringResponse = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject< Client >(stringResponse);
-            Assert.Equal(1, result.CheckInHistory.Count);
+            var result = JsonConvert.DeserializeObject<List<StaffMember>>(stringResponse);
+            Assert.NotEmpty(result);
         }
 
         [Fact]
-        public async Task GetClientNotification()
+        public async Task<StaffMember> GetTrainer()
         {   
             // Should return 200 - Successful
-            var response = await base.Admin.GetAsync(API_ENDPOINT + CLIENT_ID + "/notifications");
+            var response = await base.Admin.GetAsync(API_ENDPOINT + "trainers/" + STAFF_MEMBER_ID);
             response.EnsureSuccessStatusCode();
 
-            // Should have a new check-in
+            // Should return an empty list
             var stringResponse = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject< List<ClientNotification> >(stringResponse);
-            Assert.IsType< List<ClientNotification> >(result);
-            Assert.Empty(result);
-        }
+            var result = JsonConvert.DeserializeObject< StaffMember >(stringResponse);
+            Assert.Equal(STAFF_MEMBER_ID, result.Id);
 
-        [Fact]
-        public async Task MarkClientNotificationAsRead()
-        {   
-            // Add Notification
-            var notificationId = await PostClientNotification();
-            
-            // Should return 200 - Successful
-            var response = await base.Admin.GetAsync(API_ENDPOINT + CLIENT_ID + "/notifications/" + notificationId + "/read");
-            response.EnsureSuccessStatusCode();
-
-            // Should have a new check-in
-            var stringResponse = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject< ClientNotification >(stringResponse);
-            Assert.Equal(false, result.IsUnread);
-        }
-
-        [Fact]
-        public async Task<long> PostClientNotification()
-        {
-            var notification = new ClientNotificationDAO()
-            {
-                Title = "Notification Title",
-                Message = "Notification Message"
-            };
-            var response = await base.Admin.PostAsync(API_ENDPOINT + CLIENT_ID + "/notifications", new StringContent(JsonConvert.SerializeObject(notification), Encoding.UTF8, "application/json"));
-            response.EnsureSuccessStatusCode();
-            var notificationRes = await response.Content.ReadAsStringAsync();
-            var notificationResObj = JsonConvert.DeserializeObject<ClientNotification>(notificationRes);
-
-            return notificationResObj.Id;
+            return result;
         }
         
         [Fact]
-        public async Task GetClientTickets()
-        {   
-            // Should return 200 - Successful
-            var response = await base.Admin.GetAsync(API_ENDPOINT + CLIENT_ID + "/tickets");
-            response.EnsureSuccessStatusCode();
-
-            // Should have a new check-in
-            var stringResponse = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject< List<SupportTicket> >(stringResponse);
-            Assert.IsType< List<SupportTicket> >(result);
-            Assert.Empty(result);
-        }
-        
-        [Fact]
-        public async Task PostClientTrainingPlan()
-        {   
-            // Change plan
-            var notification = new SwitchPlanDAO()
-            {
-                PlanId = 0
-            };
-            var response = await base.Admin.PostAsync(API_ENDPOINT + CLIENT_ID + "/plan", new StringContent(JsonConvert.SerializeObject(notification), Encoding.UTF8, "application/json"));
-            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-        }
-        
-        [Fact]
-        public async Task PutClient()
+        public async Task PutStaffMember()
         {   
             // Get current client
-            var client = await GetClient();
+            var member = await GetStaffMember();
             
             // Update Client
-            var newClient = client;
-            newClient.Age = 2;
-            var response = await base.Admin.PutAsync(API_ENDPOINT + CLIENT_ID, new StringContent(JsonConvert.SerializeObject(newClient), Encoding.UTF8, "application/json"));
+            var newMember = member;
+            newMember.Age = 2;
+            var response = await base.Admin.PutAsync(API_ENDPOINT + STAFF_MEMBER_ID, new StringContent(JsonConvert.SerializeObject(newMember), Encoding.UTF8, "application/json"));
             
             // Get Client again
-            newClient = await GetClient();
+            newMember = await GetStaffMember();
             
             // Assert
-            Assert.Equal(newClient.Age, client.Age);
+            Assert.Equal(newMember.Age, member.Age);
         }
         
         [Fact]
         public async Task DeleteClient()
         {   
             // Create new client
-            var clientId = await CreateClient("pedro", "pedro@qwerty.com");
+            var memberId = await CreateStaffMember("pedro", "pedro@qwerty.com");
             
             // Delete client
-            var response = await base.Admin.DeleteAsync(API_ENDPOINT + clientId);
+            var response = await base.Admin.DeleteAsync(API_ENDPOINT + memberId);
             response.EnsureSuccessStatusCode();
             
             // Assert
-            response = await base.Admin.GetAsync(API_ENDPOINT + clientId);
+            response = await base.Admin.GetAsync(API_ENDPOINT + memberId);
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
         }
     }
