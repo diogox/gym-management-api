@@ -33,6 +33,8 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
         // CRIAR PLANO
 
         $scope.create = function () {
+
+            $scope.plan = {};
             // Tipo de ação a executar quando clicar em submit
             $scope.type = "create";
         }
