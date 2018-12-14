@@ -36,21 +36,9 @@ namespace GymAPI
 
         // GET api/plans/{id}
         [HttpGet("{id}", Name = "GetTrainingPlan")]
-        [AllowAnonymous]
-        public async Task<ActionResult<TrainingPlan>> GetTrainingPlan(long id)
+        [Authorize(Policy = "PreventOtherClients")]
+        public ActionResult<TrainingPlan> GetTrainingPlan(long id)
         {
-            var _isAdmin = _authService.CheckIfAdmin(User);
-            var _isStaff = _authService.CheckIfStaff(User);
-            var _isTrainer = _authService.CheckIfTrainer(User);
-
-            if ( !(_isAdmin || _isStaff || _isTrainer) )
-            {
-                if (! await _authService.CheckIfCurrentClientHasTrainingPlan(HttpContext, id))
-                {
-                    return Forbid();
-                }
-            }
-            
             var plan = _trainingPlansService.GetById(id);
             if (plan == null)
             {
@@ -137,7 +125,7 @@ namespace GymAPI
             return NoContent();
         }
         
-        // DELETE api/plans/{id}/exercises
+        // DELETE api/plans/{id}/exercises/{exerciseId}
         [HttpDelete("{id}/exercises/{exerciseId}")]
         public ActionResult DeleteExercise(long id, [FromBody] TrainingPlanBlock block)
         {

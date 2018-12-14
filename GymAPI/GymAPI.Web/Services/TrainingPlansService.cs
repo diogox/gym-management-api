@@ -34,7 +34,7 @@ namespace GymAPI.Services
 
         public TrainingPlan GetById(long id)
         {
-            return _IncludeAllInfo().Single(plan => plan.Id == id);
+            return _IncludeAllInfo().SingleOrDefault(plan => plan.Id == id);
         }
 
         public List<Exercise> GetExercises(TrainingPlan plan)
