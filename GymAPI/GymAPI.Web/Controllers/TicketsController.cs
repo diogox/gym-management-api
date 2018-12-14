@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GymAPI.Models;
+using GymAPI.Models.User;
 using GymAPI.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymAPI
@@ -13,13 +15,15 @@ namespace GymAPI
     public class TicketsController : Controller
     {
         private readonly ISupportTicketsService _supportTicketService;
+        private readonly UserManager<User> _userManager;
         private readonly IClientsService _clientsService;
         private readonly IAuthorizationsService _authService;
 
-        public TicketsController (ISupportTicketsService supportTicketService, IClientsService clientsService, IAuthorizationsService authService)
+        public TicketsController (ISupportTicketsService supportTicketService, UserManager<User> userManager, IClientsService clientsService, IAuthorizationsService authService)
         {
             _supportTicketService = supportTicketService;
             _clientsService = clientsService;
+            _userManager = userManager;
             _authService = authService;
         }
 
@@ -129,9 +133,18 @@ namespace GymAPI
         
         // POST api/tickets
         [HttpPost]
-        [Authorize(Policy = "PreventOtherClients")]
-        public ActionResult CreateTicket([FromBody] SupportTicket ticket)
+        public async Task<ActionResult> CreateTicket([FromBody] SupportTicket ticket)
         {
+            var isClient = User.IsInRole("Client");
+            if (isClient)
+            {
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                if (user.ClientId != ticket.ClientId)
+                {
+                    return BadRequest("Cannot create ticket for another client!");
+                }
+            }
+            
             _supportTicketService.Create(ticket);
             
             return CreatedAtRoute("GetSupportTicket", new { id = ticket.Id }, ticket);
