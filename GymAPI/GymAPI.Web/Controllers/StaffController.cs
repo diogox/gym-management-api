@@ -18,14 +18,12 @@ namespace GymAPI.Controllers
         private readonly IStaffService _staffService;
         private readonly UserManager<User> _userManager;
         private readonly ITrainersStaffService _trainersStaffService;
-        private readonly IAuthorizationsService _authService;
 
-        public StaffController(IStaffService staffService, ITrainersStaffService trainersStaffService, UserManager<User> userManager, IAuthorizationsService authService)
+        public StaffController(IStaffService staffService, ITrainersStaffService trainersStaffService, UserManager<User> userManager)
         {
             _userManager = userManager;
             _staffService = staffService;
             _trainersStaffService = trainersStaffService;
-            _authService = authService;
         }
 
         // GET api/staff
