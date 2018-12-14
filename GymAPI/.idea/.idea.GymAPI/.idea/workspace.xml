@@ -2,22 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24d25f7-b236-4a4b-abfa-d78e00c2e83d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Tests/EquipmentControllerTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/bin/Debug/netcoreapp2.1/GymAPI.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymAPI.Web/obj/GymAPI.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/obj/GymAPI.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymAPI.Web/obj/GymAPI.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/obj/GymAPI.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymAPI.Web/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/ClientsControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/ClientsControllerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.assets.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +32,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Dockerfile" value="5" />
-          <entry key="cs" value="63" />
+          <entry key="cs" value="65" />
           <entry key="csproj" value="4" />
           <entry key="targets" value="2" />
           <entry key="txt" value="1" />
@@ -49,7 +41,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="63" />
+          <entry key="C#" value="65" />
           <entry key="Csproj" value="4" />
           <entry key="Dockerfile" value="5" />
           <entry key="MsBuild targets file" value="2" />
@@ -60,14 +52,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Dockerfile" value="84" />
-          <entry key="cs" value="12211" />
+          <entry key="cs" value="12537" />
           <entry key="csproj" value="2" />
           <entry key="yml" value="172" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="12211" />
+          <entry key="C#" value="12537" />
           <entry key="Csproj" value="2" />
           <entry key="Dockerfile" value="84" />
           <entry key="YAML" value="172" />
@@ -77,11 +69,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tests/ClientsControllerTests.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="212" column="72" selection-start-line="212" selection-start-column="72" selection-end-line="212" selection-end-column="72" />
+            <state relative-caret-position="517">
+              <caret line="212" column="17" selection-start-line="212" selection-start-column="17" selection-end-line="212" selection-end-column="17" />
               <folding>
                 <marker date="1544799668240" expanded="false" signature="6:297" ph="..." />
                 <marker date="1544799668240" expanded="true" signature="314:8010" ph="{...}" />
@@ -109,168 +101,48 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6CFCCEBD-0B9A-498F-BF47-688690CA5A4E/8e/92502fd5/RuntimeType.cs">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Tests/EquipmentControllerTests.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="1981" column="6" selection-start-line="1981" selection-start-column="6" selection-end-line="1981" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6CFCCEBD-0B9A-498F-BF47-688690CA5A4E/4e/12850736/Activator.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="37" column="6" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18D5A60D-361A-4AFD-A431-F772FA87FCC3/fb/eb9de1d4/ReflectionAbstractionExtensions.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+            <state relative-caret-position="467">
+              <caret line="122" column="12" lean-forward="true" selection-start-line="122" selection-start-column="12" selection-end-line="122" selection-end-column="12" />
               <folding>
-                <marker date="1544632139821" expanded="true" signature="0:365" ph="/* Decompiled with JetBrains decompiler ... */" />
-                <marker date="1544632139821" expanded="false" signature="373:525" ph="..." />
-                <marker date="1544632139821" expanded="true" signature="527:670" ph="/// This class represents utility methods needed to supplement the ... " />
-                <marker date="1544632139821" expanded="true" signature="722:8200" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="727:1496" ph="/// Creates an instance of the test class for the given test case. Sends the &lt;see cref=&quot;T:Xunit.Abstractions.ITes ... " />
-                <marker date="1544632139821" expanded="true" signature="1698:2318" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="1837:1889" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="1898:2292" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="1914:2111" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="2125:2286" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="2322:2940" ph="/// Disposes the test class instance. Sends the &lt;see cref=&quot;T:Xunit.Abstractions.ITestClassDisposeStarting&quot; /&gt; and ... " />
-                <marker date="1544632139821" expanded="true" signature="3108:3631" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="3301:3353" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="3362:3627" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="3378:3451" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="3465:3621" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="3729:4091" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="3884:4055" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="4095:4381" ph="/// Gets methods in the target type that match the protection level of the supplied method ... " />
-                <marker date="1544632139821" expanded="true" signature="4479:4778" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="4634:4771" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="4782:5071" ph="/// Gets all the custom attributes for the given assembly. ... " />
-                <marker date="1544632139821" expanded="true" signature="5188:5278" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="5282:5583" ph="/// Gets all the custom attributes for the given attribute. ... " />
-                <marker date="1544632139821" expanded="true" signature="5702:5793" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="5797:6099" ph="/// Gets all the custom attributes for the method that are of the given type. ... " />
-                <marker date="1544632139821" expanded="true" signature="6212:6300" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="6304:6563" ph="///Gets all the custom attributes for the given type. ... " />
-                <marker date="1544632139821" expanded="true" signature="6672:6758" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="6762:7174" ph="/// Converts an &lt;see cref=&quot;T:Xunit.Abstractions.IMethodInfo&quot; /&gt; into a &lt;see cref=&quot;T:System.Reflection.MethodInfo&quot; ... " />
-                <marker date="1544632139821" expanded="true" signature="7246:7509" ph="{...}" />
-                <marker date="1544632139821" expanded="true" signature="7513:7899" ph="/// Converts an &lt;see cref=&quot;T:Xunit.Abstractions.ITypeInfo&quot; /&gt; into a &lt;see cref=&quot;T:System.Type&quot; /&gt;, if possible (f ... " />
-                <marker date="1544632139821" expanded="true" signature="7959:8198" ph="{...}" />
+                <marker date="1544800985766" expanded="false" signature="6:297" ph="..." />
+                <marker date="1544800985766" expanded="true" signature="314:4285" ph="{...}" />
+                <marker date="1544800985766" expanded="true" signature="384:4278" ph="{...}" />
+                <marker date="1544800985766" expanded="true" signature="543:644" ph="{...}" />
+                <marker date="1544800985766" expanded="true" signature="716:1267" ph="{...}" />
+                <marker date="1544800985766" expanded="true" signature="783:1022" ph="{...}" />
+                <marker date="1544800985766" expanded="true" signature="1460:1942" ph="{...}" />
+                <marker date="1544800985766" expanded="true" signature="1533:1615" ph="{...}" />
+                <marker date="1544800985766" expanded="true" signature="1632:1703" ph="{...}" />
+                <marker date="1544800985766" expanded="true" signature="2002:2490" ph="{...}" />
+                <marker date="1544800985766" expanded="true" signature="2558:3070" ph="{...}" />
+                <marker date="1544800985766" expanded="true" signature="3127:3735" ph="{...}" />
+                <marker date="1544800985766" expanded="true" signature="3803:4272" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18D5A60D-361A-4AFD-A431-F772FA87FCC3/9f/4318d113/TestInvoker`1.cs">
+        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/EquipmentController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="201" column="12" selection-start-line="201" selection-start-column="12" selection-end-line="201" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18D5A60D-361A-4AFD-A431-F772FA87FCC3/96/f2462ecd/ExecutionTimer.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
+            <state relative-caret-position="-527">
+              <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
               <folding>
-                <marker date="1544632130345" expanded="true" signature="0:358" ph="/* Decompiled with JetBrains decompiler ... */" />
-                <marker date="1544632130345" expanded="false" signature="366:429" ph="..." />
-                <marker date="1544632130345" expanded="true" signature="450:1865" ph="{...}" />
-                <marker date="1544632130345" expanded="true" signature="455:554" ph="/// Measures and aggregates execution time of one or more actions. ... " />
-                <marker date="1544632130345" expanded="true" signature="584:1863" ph="{...}" />
-                <marker date="1544632130345" expanded="true" signature="622:720" ph="/// Returns the total time aggregated across all the actions. ... " />
-                <marker date="1544632130345" expanded="true" signature="745:833" ph="{...}" />
-                <marker date="1544632130345" expanded="true" signature="761:827" ph="{...}" />
-                <marker date="1544632130345" expanded="true" signature="839:1002" ph="/// Executes an action and aggregates its run time into the total. ... " />
-                <marker date="1544632130345" expanded="true" signature="1043:1220" ph="{...}" />
-                <marker date="1544632130345" expanded="true" signature="1109:1143" ph="{...}" />
-                <marker date="1544632130345" expanded="true" signature="1157:1214" ph="{...}" />
-                <marker date="1544632130345" expanded="true" signature="1226:1407" ph="/// Executes an asynchronous action and aggregates its run time into the total. ... " />
-                <marker date="1544632130345" expanded="true" signature="1468:1656" ph="{...}" />
-                <marker date="1544632130345" expanded="true" signature="1534:1579" ph="{...}" />
-                <marker date="1544632130345" expanded="true" signature="1593:1650" ph="{...}" />
-                <marker date="1544632130345" expanded="true" signature="1662:1780" ph="///Aggregates a time span into the total time. ... " />
-                <marker date="1544632130345" expanded="true" signature="1821:1859" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6CFCCEBD-0B9A-498F-BF47-688690CA5A4E/f8/94b3f798/Task`1.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="171" column="8" selection-start-line="171" selection-start-column="8" selection-end-line="171" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="211" column="64" selection-start-line="211" selection-start-column="64" selection-end-line="211" selection-end-column="64" />
-              <folding>
-                <marker date="1544701736233" expanded="false" signature="6:277" ph="..." />
-                <marker date="1544701736233" expanded="true" signature="295:7944" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="397:7942" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="713:859" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="1017:1086" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="1272:1472" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="1368:1431" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="1523:1620" ph="/// Checks-in the client. Can only be done once day. ... " />
-                <marker date="1544701736233" expanded="true" signature="1766:2159" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="1862:1925" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="2011:2118" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="2394:2624" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="2493:2556" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="3002:3387" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="3098:3161" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="3604:3851" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="3700:3763" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="4024:5627" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="4182:4273" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="4370:4769" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="4893:5135" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="5271:5446" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="5877:6145" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="5973:6036" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="6363:7061" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="6543:6604" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="6703:6766" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="6872:6935" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="6952:7051" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="7248:7510" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="7349:7412" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="7678:7936" ph="{...}" />
-                <marker date="1544701736233" expanded="true" signature="7774:7837" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GymAPI.Web/DAOs/ClientNotificationDAO.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-              <folding>
-                <marker date="1544126214943" expanded="false" signature="6:36" ph="..." />
-                <marker date="1544126214943" expanded="true" signature="61:202" ph="{...}" />
-                <marker date="1544126214943" expanded="true" signature="102:200" ph="{...}" />
+                <marker date="1544384035513" expanded="false" signature="6:165" ph="..." />
+                <marker date="1544384035513" expanded="true" signature="183:2366" ph="{...}" />
+                <marker date="1544384035513" expanded="true" signature="287:2364" ph="{...}" />
+                <marker date="1544384035513" expanded="true" signature="427:497" ph="{...}" />
+                <marker date="1544384035513" expanded="true" signature="628:699" ph="{...}" />
+                <marker date="1544384035513" expanded="true" signature="864:1075" ph="{...}" />
+                <marker date="1544384035513" expanded="true" signature="968:1031" ph="{...}" />
+                <marker date="1544384035513" expanded="true" signature="1256:1427" ph="{...}" />
+                <marker date="1544384035513" expanded="true" signature="1624:1915" ph="{...}" />
+                <marker date="1544384035513" expanded="true" signature="1734:1797" ph="{...}" />
+                <marker date="1544384035513" expanded="true" signature="2087:2358" ph="{...}" />
+                <marker date="1544384035513" expanded="true" signature="2191:2254" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -306,6 +178,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Tests/EquipmentControllerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GymAPI.Web/Services/ClientsService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18D5A60D-361A-4AFD-A431-F772FA87FCC3/96/f2462ecd/ExecutionTimer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
@@ -358,6 +231,7 @@
         <option value="$PROJECT_DIR$/GymAPI.Web/Dockerfile" />
         <option value="$PROJECT_DIR$/Tests/Dockerfile" />
         <option value="$PROJECT_DIR$/Tests/ClientsControllerTests.cs" />
+        <option value="$PROJECT_DIR$/Tests/EquipmentControllerTests.cs" />
       </list>
     </option>
   </component>
@@ -470,12 +344,12 @@
       <workItem from="1544557009622" duration="11029000" />
       <workItem from="1544611386066" duration="35967000" />
       <workItem from="1544701138390" duration="9213000" />
-      <workItem from="1544794486809" duration="5178000" />
+      <workItem from="1544794486809" duration="6629000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83784000" />
+    <option name="totallyTimeSpent" value="85235000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -488,7 +362,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-35" width="1920" height="1115" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11069519" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -622,9 +495,6 @@
           <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/EquipmentController.cs">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/ExercisesController.cs">
       <provider selected="true" editor-type-id="text-editor">
@@ -990,10 +860,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/EquipmentController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-527">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding>
+            <marker date="1544384035513" expanded="false" signature="6:165" ph="..." />
+            <marker date="1544384035513" expanded="true" signature="183:2366" ph="{...}" />
+            <marker date="1544384035513" expanded="true" signature="287:2364" ph="{...}" />
+            <marker date="1544384035513" expanded="true" signature="427:497" ph="{...}" />
+            <marker date="1544384035513" expanded="true" signature="628:699" ph="{...}" />
+            <marker date="1544384035513" expanded="true" signature="864:1075" ph="{...}" />
+            <marker date="1544384035513" expanded="true" signature="968:1031" ph="{...}" />
+            <marker date="1544384035513" expanded="true" signature="1256:1427" ph="{...}" />
+            <marker date="1544384035513" expanded="true" signature="1624:1915" ph="{...}" />
+            <marker date="1544384035513" expanded="true" signature="1734:1797" ph="{...}" />
+            <marker date="1544384035513" expanded="true" signature="2087:2358" ph="{...}" />
+            <marker date="1544384035513" expanded="true" signature="2191:2254" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/ClientsControllerTests.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="212" column="72" selection-start-line="212" selection-start-column="72" selection-end-line="212" selection-end-column="72" />
+        <state relative-caret-position="517">
+          <caret line="212" column="17" selection-start-line="212" selection-start-column="17" selection-end-line="212" selection-end-column="17" />
           <folding>
             <marker date="1544799668240" expanded="false" signature="6:297" ph="..." />
             <marker date="1544799668240" expanded="true" signature="314:8010" ph="{...}" />
@@ -1016,6 +907,28 @@
             <marker date="1544799668240" expanded="true" signature="6509:6551" ph="{...}" />
             <marker date="1544799668240" expanded="true" signature="6886:7446" ph="{...}" />
             <marker date="1544799668240" expanded="true" signature="7511:7997" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/EquipmentControllerTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="122" column="12" lean-forward="true" selection-start-line="122" selection-start-column="12" selection-end-line="122" selection-end-column="12" />
+          <folding>
+            <marker date="1544800985766" expanded="false" signature="6:297" ph="..." />
+            <marker date="1544800985766" expanded="true" signature="314:4285" ph="{...}" />
+            <marker date="1544800985766" expanded="true" signature="384:4278" ph="{...}" />
+            <marker date="1544800985766" expanded="true" signature="543:644" ph="{...}" />
+            <marker date="1544800985766" expanded="true" signature="716:1267" ph="{...}" />
+            <marker date="1544800985766" expanded="true" signature="783:1022" ph="{...}" />
+            <marker date="1544800985766" expanded="true" signature="1460:1942" ph="{...}" />
+            <marker date="1544800985766" expanded="true" signature="1533:1615" ph="{...}" />
+            <marker date="1544800985766" expanded="true" signature="1632:1703" ph="{...}" />
+            <marker date="1544800985766" expanded="true" signature="2002:2490" ph="{...}" />
+            <marker date="1544800985766" expanded="true" signature="2558:3070" ph="{...}" />
+            <marker date="1544800985766" expanded="true" signature="3127:3735" ph="{...}" />
+            <marker date="1544800985766" expanded="true" signature="3803:4272" ph="{...}" />
           </folding>
         </state>
       </provider>
