@@ -113,6 +113,7 @@
       <e p="Tests" t="IncludeRecursive">
         <e p="ClientsControllerTests.cs" t="Include" />
         <e p="EquipmentControllerTests.cs" t="Include" />
+        <e p="ExercisesControllerTests.cs" t="Include" />
         <e p="StaffControllerTests.cs" t="Include" />
         <e p="TestHttpClient.cs" t="Include" />
         <e p="TestStartup.cs" t="Include" />
