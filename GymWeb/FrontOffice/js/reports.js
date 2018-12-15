@@ -289,6 +289,11 @@ function prepareLineChart() {
  * Função que desenha o gráfico linear
  */
 function drawLineChart() {
+    
+    if(infosLine.length <= 1) {
+        infosLine.push([String((new Date).getFullYear()), 0]);
+    }
+
     var data = google.visualization.arrayToDataTable(infosLine);
 
     var options = {
@@ -363,6 +368,11 @@ function prepareLineChartClient() {
 }
 
 function drawLineChartClient() {
+
+    if(infosClientLine.length <= 1) {
+        infosClientLine.push([String((new Date).getFullYear()), 0]);
+    }
+
     var data = google.visualization.arrayToDataTable(infosClientLine);
 
     var options = {
