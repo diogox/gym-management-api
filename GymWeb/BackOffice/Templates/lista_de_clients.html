@@ -17,7 +17,7 @@
                 <th>Primeiro Nome</th>
                 <th>Último Nome</th>
                 <th>Idade</th>
-                <th>Data de Nascimento</th>
+                <th>DdN</th>
                 <th>NIF</th>
                 <th>Altura</th>
                 <th>Peso</th>
@@ -26,7 +26,7 @@
         <tbody>
             <tr ng-repeat="cliente in Clientes">
                 <td>{{cliente.id}}</td>
-                <td><img src="{{cliente.imageUrl}}" alt="Image not Loaded" width="30px"></img></td>
+                <td><img src="{{cliente.imageUrl}}" alt="Error" width="30px"></img></td>
                 <td>{{cliente.firstName}}</td>
                 <td>{{cliente.lastName}}</td>
                 <td>{{cliente.age}}</td>
@@ -37,16 +37,30 @@
                 <td>
                     <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"
                         data-target="#removercliente" ng-click="removeClient(cliente.id)">
-                        Remover
                     </button>
                     <button type="button" class="edt btn btn-success glyphicon glyphicon-pencil" data-toggle="modal"
                         data-target="#editarClient" ng-click="edCliente(cliente.id)">
-                        Editar
                     </button>
                 </td>
             </tr>
+
         </tbody>
     </table>
+
+    
+    <!--Pagination-->
+    <ul id="paginationHide" class="pagination justify-content-center">
+        <li id="pageback" class="page-item">
+            <a class="page-link disabled" href="" ng-click="previousPage()">Previous</a>
+        </li>
+        <li id="page{{x.index}}" class="page-item" ng-repeat="x in numberPages">
+            <a class="page-link" href="" ng-click="setPage(x.index)">{{x.index}}</a>
+        </li>
+        <li id="pagenext" class="page-item">
+            <a class="page-link" href="" ng-click="nextPage()">Next</a>
+        </li>
+    </ul>
+
 
     <!--Modal Remover Cliente-->
     <modal class="modal fade" id="removercliente" role="dialog">
@@ -106,23 +120,26 @@
                         <!--Email do Cliente-->
                         <div class="form-group">
                             <lable for="email">Email:</lable>
-                            <input class="form-control" type="email" ng-model="user.email" name="email" id="email" required />
+                            <input class="form-control" type="email" ng-model="user.email" name="email" id="email"
+                                required />
                         </div>
 
 
                         <!--Password do Cliente-->
                         <div class="form-group">
                             <lable for="psw">Password:</lable>
-                            <input class="form-control" type="password" min-length="8" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/" ng-model="user.password" name="psw" id="psw" 
-                                required />
-                            <span ng-show="!myForm.psw.$error.required &&  myForm.psw.$error.pattern && myForm.psw.$dirty">Tem de conter um lower e uppercase letra, um  numero ou simbolo e min 8 characters</span>
+                            <input class="form-control" type="password" min-length="8" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/"
+                                ng-model="user.password" name="psw" id="psw" required />
+                            <span ng-show="!myForm.psw.$error.required &&  myForm.psw.$error.pattern && myForm.psw.$dirty">Tem
+                                de conter um lower e uppercase letra, um numero ou simbolo e min 8 characters</span>
                         </div>
 
 
                         <!--Confirm Password do Cliente-->
                         <div class="form-group">
                             <label for="cpsw">Confirm Password:</label>
-                            <input name="cpsw" type="password" class="form-control" ng-model="user.confirmPassword" ng-pattern="user.password" required />
+                            <input name="cpsw" type="password" class="form-control" ng-model="user.confirmPassword"
+                                ng-pattern="user.password" required />
                             <span ng-show="user.password != user.confirmPassword">As passwords devem ser iguais.</span>
                         </div>
 
