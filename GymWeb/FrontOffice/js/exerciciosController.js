@@ -1,5 +1,5 @@
 import { getexercises, getEquipmentById, getexerciseById, getEquipments, changeExercise, createExercise, deleteExercise } from './pedidos.js';
-import { checkLogin } from './myutil.js'
+import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from './myutil.js'
 
 // Controller da página de exercicios
 app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
@@ -16,6 +16,15 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
         $rootScope.$broadcast('show-window', 'true');
 
         let listaExercicios = [];
+
+        // Lista de exercicios divididas em chuncks
+        let exerciciosChuncks = [];
+
+        // Quantidade de elementos por chunck
+        let elementsPerChunck = 5;
+
+        // Página atual da lista de exercicios
+        let currentPage = 0;
 
         // Obtem lista de equipamentos e atualiza a vista para um select em editar e criar novo
         getEquipments($http, (response) => {
@@ -51,7 +60,7 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
 
                             }
                         });
-                    } else{
+                    } else {
                         response.data[i].equipment = {};
                     }
                 }
@@ -61,11 +70,39 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
                 // Atribui o array de exercicios para atualizar a vista
                 $scope.exercicios = listaExercicios;
 
+
+                atualizarPaginas();
+
+
                 // Se a API não respondeu da forma correta
             } else {
             }
 
         });
+
+        // Quando clica no numero de uma página
+        $scope.setPage = function (page) {
+
+            // currentPage recebe a página selecionada
+            currentPage = page;
+
+            // Atualiza a vista com os exercicios dessa página
+            $scope.exercicios = exerciciosChuncks[page];
+
+            // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+            paginationSetPage(exerciciosChuncks, page);
+
+        }
+
+        // Se clicar no botão de página anterior, vai buscar a página atual a decrementa um
+        $scope.previousPage = function () {
+            $scope.setPage(currentPage - 1);
+        }
+
+        // Se clicar no botão de próxima página, vai buscar a página atual a incrementa um
+        $scope.nextPage = function () {
+            $scope.setPage(currentPage + 1);
+        }
 
         // Função que executa quando clica em editar exercicio ou eliminar exercicio,
         // coloca as informações do exercicio numa variavel que é utilizado posteriormente
@@ -152,9 +189,18 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
                                                 }
 
                                             });
-                                        } 
+                                        }
 
                                         listaExercicios[i] = $scope.editExercise;
+
+                                        // Obter qual o chunck que se localiza o exercicio editado
+                                        let chunckNumber = Math.floor(i / elementsPerChunck);
+
+                                        // Dentro do chunck obter a posição onde se localiza o exercicio editado
+                                        let chunckPosition = i % elementsPerChunck;
+
+                                        // Alterar o exercicio dentro da lista de chuncks
+                                        exerciciosChuncks[chunckNumber][chunckPosition] = $scope.editExercise;
                                     }
                                 }
 
@@ -206,6 +252,8 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
                                 }
 
                                 listaExercicios.push($scope.editExercise);
+
+                                atualizarPaginas();
 
                                 bootbox.alert({
                                     message: "Exercício criado com sucesso!",
@@ -275,6 +323,10 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
 
                                     if (listaExercicios[i].id == $scope.editExercise.id) {
                                         listaExercicios.splice(i, 1);
+
+                                        atualizarPaginas();
+
+
                                     }
                                 }
                             } else {
@@ -294,5 +346,36 @@ app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
                 }
             });
         }
+
+        /**
+         * Atualizar a paginação, separar em chuncks e criar as páginas
+         */
+        function atualizarPaginas() {
+
+            // Divide o array de exercicios em chuncks e retorna um 
+            // objeto representativo de cada página(nº de chuncks)
+            let pagination = paginationSplitInChuncks(listaExercicios, elementsPerChunck);
+
+            // Define o array de chuncks
+            exerciciosChuncks = pagination.arrayChuncks;
+
+            // Lista com tantos elementos quanto o numero de chuncks
+            $scope.numberPages = pagination.numberOfPages;
+
+            // Atualiza a vista
+            $scope.exercicios = exerciciosChuncks[0];
+
+            // Quando a página estiver pronta, coloca a pagina 0 como selecionada
+            // e coloca a pagina anterior como disabled
+            $(document).ready(function () {
+
+                // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+                paginationOnDocumentReady(exerciciosChuncks);
+
+            });
+
+        }
+
     }
+
 });

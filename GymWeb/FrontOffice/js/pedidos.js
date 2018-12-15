@@ -1,7 +1,7 @@
 import { checkLogin } from './myutil.js'
 
-const domain = "https://gym-lds.herokuapp.com/";  // -> Para usar a API na nuvem
-//const domain = "https://localhost:5001/";       // -> Para usar a API local
+//const domain = "https://gym-lds.herokuapp.com/";  // -> Para usar a API na nuvem
+const domain = "https://localhost:5001/";       // -> Para usar a API local
 
 // GET REQUESTS
 

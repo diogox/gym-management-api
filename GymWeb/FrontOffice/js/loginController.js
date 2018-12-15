@@ -7,13 +7,20 @@ app.controller('loginCtrl', function ($scope, $http, $rootScope) {
     let login = checkLogin();
     if (login) {
         window.location.href = "index.html#!";
-    }
+    }else{
     
     // Indicar ao controler da página principal que o menu lateral deve ser oculto
     $rootScope.$broadcast('show-window', 'false');
 
     $scope.submitLogin = function() {
 
+        // Dialog indicando que estão a ocorrer operações em backgroud e o 
+        // utilizador deve aguardar
+        let dialog = bootbox.dialog({
+            message: '<p class="text-center">Por favor aguarde...</p>',
+            closeButton: false
+        });
+        
         loginUser($http, $scope.login, (response)=>{
 
             if(response){
@@ -26,13 +33,13 @@ app.controller('loginCtrl', function ($scope, $http, $rootScope) {
                 newLogin(userType, token, userTypeId, expiration, ()=>{
 
                     if(userType === "Client"){
-                        window.location.href = "index.html#!";
-
-                        // Comjunto de ações a serem executadas apos efetuar login
-                        $rootScope.$broadcast("after-login", "true");
+                        window.location.href = "index.html#!";  
                     }else{
                         window.location.href = "index.html#!planos";
                     }
+
+                    // Comjunto de ações a serem executadas apos efetuar login
+                    $rootScope.$broadcast("after-login", "true");
 
                 });
 
@@ -51,8 +58,14 @@ app.controller('loginCtrl', function ($scope, $http, $rootScope) {
 
             }
 
+            // Tempo de espera para fechar o modal de espera, se não buga e não fecha
+            setTimeout(function(){
+                // Fecha o modal de espera
+                dialog.modal('hide');
+            }, 300);
+
         });
 
-    }
+        }    }
 
 });

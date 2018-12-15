@@ -93,8 +93,8 @@
         <li class="list-group-item" ng-repeat="x in exercicios | filter : filtro_exercicios">
 
             <p class="pointer" data-toggle="collapse" data-target="#ex{{x.id}}">{{x.name}} 
-                <a ng-hide="hideStaff" href="" ng-click="edit(x.id)" data-toggle="modal" data-target="#editarCriarExercicio">Edit</a>
-                <a ng-hide="hideStaff" href="" ng-click="edit(x.id);delete(x.id)">Delete</a>
+                <a id="edit{{x.id}}" ng-hide="hideStaff" href="" ng-click="edit(x.id)" data-toggle="modal" data-target="#editarCriarExercicio">Edit</a>
+                <a id="delete{{x.id}}" ng-hide="hideStaff" href="" ng-click="edit(x.id);delete(x.id)">Delete</a>
             </p>
 
             <div id="ex{{x.id}}" class="collapse">
@@ -122,5 +122,20 @@
         </li>
 
     </ul> 
+
+    <br/>
+    <ul id="paginationHide" class="pagination justify-content-center">
+        <li id="pageback" class="page-item">
+            <a class="page-link disabled" href="" ng-click="previousPage()">Previous</a>
+        </li>
+
+        <li id="page{{x.index}}" class="page-item" ng-repeat="x in numberPages">
+            <a class="page-link" href="" ng-click="setPage(x.index)">{{x.index}}</a>
+        </li>
+
+        <li id="pagenext" class="page-item">
+            <a class="page-link" href="" ng-click="nextPage()">Next</a>
+        </li>
+    </ul>
 
 </div>
