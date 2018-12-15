@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24d25f7-b236-4a4b-abfa-d78e00c2e83d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GymAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymAPI.Web/Controllers/TicketsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/Controllers/TicketsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymAPI.Web/gym.db" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/gym.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,34 +27,34 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Dockerfile" value="6" />
-          <entry key="cs" value="91" />
+          <entry key="cs" value="95" />
           <entry key="csproj" value="4" />
           <entry key="targets" value="2" />
-          <entry key="txt" value="4" />
+          <entry key="txt" value="5" />
           <entry key="yml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="91" />
+          <entry key="C#" value="95" />
           <entry key="Csproj" value="4" />
           <entry key="Dockerfile" value="6" />
           <entry key="MsBuild targets file" value="2" />
-          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="PLAIN_TEXT" value="5" />
           <entry key="YAML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Dockerfile" value="105" />
-          <entry key="cs" value="13981" />
+          <entry key="cs" value="14046" />
           <entry key="csproj" value="2" />
           <entry key="yml" value="172" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="13981" />
+          <entry key="C#" value="14046" />
           <entry key="Csproj" value="2" />
           <entry key="Dockerfile" value="105" />
           <entry key="YAML" value="172" />
@@ -66,11 +64,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/TicketsController.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
-              <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+              <caret line="146" selection-start-line="146" selection-end-line="146" />
               <folding>
                 <marker date="1544891029089" expanded="false" signature="6:258" ph="..." />
                 <marker date="1544891029089" expanded="true" signature="276:7469" ph="{...}" />
@@ -104,6 +102,144 @@
                 <marker date="1544891029089" expanded="true" signature="6844:6907" ph="{...}" />
                 <marker date="1544891029089" expanded="true" signature="7191:7461" ph="{...}" />
                 <marker date="1544891029089" expanded="true" signature="7293:7356" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Models/Client/TestClientJSON.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Models/Client/Client.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1543331513623" expanded="false" signature="6:70" ph="..." />
+                <marker date="1543331513623" expanded="true" signature="95:1310" ph="{...}" />
+                <marker date="1543331513623" expanded="true" signature="121:1308" ph="{...}" />
+                <marker date="1543331513623" expanded="true" signature="665:782" ph="/// Contains a list of times and dates the client checked-in at the gym. ... " />
+                <marker date="1543331513623" expanded="true" signature="885:980" ph="/// Contains a list of notifications for the user. ... " />
+                <marker date="1543331513623" expanded="true" signature="1100:1209" ph="/// Contains a list of support tickets associated with the user. ... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Services/ClientsService.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="756">
+              <caret line="120" column="90" selection-start-line="120" selection-start-column="90" selection-end-line="120" selection-end-column="90" />
+              <folding>
+                <marker date="1544568286337" expanded="false" signature="6:124" ph="..." />
+                <marker date="1544568286337" expanded="true" signature="151:5338" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="190:758" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="813:5336" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="916:968" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="1007:1091" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="1131:1249" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="1303:1531" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="1575:2188" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="1635:1726" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="1872:2004" ph="/* Check if the client has checked-in today ... */" />
+                <marker date="1544568286337" expanded="true" signature="2060:2151" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="2234:2512" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="2334:2392" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="2600:3035" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="2697:2933" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="3112:3211" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="3271:3945" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="3389:3908" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="3599:3806" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="4013:4132" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="4176:4444" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="4505:5048" ph="{...}" />
+                <marker date="1544568286337" expanded="true" signature="5091:5330" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="127" column="26" selection-start-line="127" selection-start-column="26" selection-end-line="127" selection-end-column="26" />
+              <folding>
+                <marker date="1544891460542" expanded="false" signature="6:277" ph="..." />
+                <marker date="1544891460542" expanded="true" signature="295:8187" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="397:8185" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="713:859" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="1017:1086" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="1272:1472" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="1368:1431" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="1523:1620" ph="/// Checks-in the client. Can only be done once day. ... " />
+                <marker date="1544891460542" expanded="true" signature="1766:2159" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="1862:1925" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="2011:2118" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="2394:2624" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="2493:2556" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="3002:3387" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="3098:3161" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="3604:3851" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="3700:3763" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="4024:5870" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="4182:4273" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="4425:4516" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="4613:5012" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="5136:5378" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="5514:5689" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="6120:6388" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="6216:6279" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="6606:7304" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="6786:6847" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="6946:7009" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="7115:7178" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="7195:7294" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="7491:7753" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="7592:7655" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="7921:8179" ph="{...}" />
+                <marker date="1544891460542" expanded="true" signature="8017:8080" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="636">
+              <caret line="111" column="29" lean-forward="true" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
+              <folding>
+                <marker date="1544891519322" expanded="false" signature="6:277" ph="..." />
+                <marker date="1544891519322" expanded="true" signature="307:5385" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="411:5383" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="733:893" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="1033:1100" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="1305:1503" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="1399:1462" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="1690:3815" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="1848:1939" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="2091:2179" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="2287:2772" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="2914:3121" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="3257:3438" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="3507:3606" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="3611:3708" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="4021:4292" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="4121:4184" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="4473:4727" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="4567:4630" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="4891:4966" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="5168:5377" ph="{...}" />
+                <marker date="1544891519322" expanded="true" signature="5272:5335" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -209,62 +345,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Models/SupportTicket/TestSupportTicketJSON.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Models/SupportTicket/SupportTicketMessageSender.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <marker date="1543162729208" expanded="true" signature="23:112" ph="{...}" />
-                <marker date="1543162729208" expanded="true" signature="68:110" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Models/SupportTicket/TicketState.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <marker date="1543090380212" expanded="true" signature="23:116" ph="{...}" />
-                <marker date="1543090380212" expanded="true" signature="53:114" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GymAPI.Web/Models/SupportTicket/SupportTicketMessage.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-              <folding>
-                <marker date="1543330468325" expanded="false" signature="6:36" ph="..." />
-                <marker date="1543330468325" expanded="true" signature="61:537" ph="{...}" />
-                <marker date="1543330468325" expanded="true" signature="101:535" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -307,6 +387,7 @@
     <setting file="file://$PROJECT_DIR$/GymAPI.Web/Models/Model.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/TestStartup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GymAPI.Web/Models/User/User.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GymAPI.Web/Models/Client/Client.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6CFCCEBD-0B9A-498F-BF47-688690CA5A4E/f8/94b3f798/Task`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6CFCCEBD-0B9A-498F-BF47-688690CA5A4E/8e/92502fd5/RuntimeType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6CFCCEBD-0B9A-498F-BF47-688690CA5A4E/4e/12850736/Activator.cs" root0="SKIP_HIGHLIGHTING" />
@@ -335,13 +416,11 @@
         <option value="$PROJECT_DIR$/GymAPI.Web/Startup.cs" />
         <option value="$PROJECT_DIR$/Tests/TestStartup.cs" />
         <option value="$PROJECT_DIR$/Tests/TestHttpClient.cs" />
-        <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs" />
         <option value="$PROJECT_DIR$/../.gitlab-ci.yml" />
         <option value="$PROJECT_DIR$/GymAPI.Web/Dockerfile" />
         <option value="$PROJECT_DIR$/Tests/Dockerfile" />
         <option value="$PROJECT_DIR$/Tests/ClientsControllerTests.cs" />
         <option value="$PROJECT_DIR$/Tests/EquipmentControllerTests.cs" />
-        <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs" />
         <option value="$PROJECT_DIR$/Tests/ExercisesControllerTests.cs" />
         <option value="$PROJECT_DIR$/Tests/StaffControllerTests.cs" />
         <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/TrainingPlansController.cs" />
@@ -352,6 +431,8 @@
         <option value="$PROJECT_DIR$/GymAPI.Web/Services/SupportTicketsService.cs" />
         <option value="$PROJECT_DIR$/Dockerfile" />
         <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/TicketsController.cs" />
+        <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs" />
+        <option value="$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs" />
       </list>
     </option>
   </component>
@@ -509,12 +590,12 @@
       <workItem from="1544611386066" duration="35967000" />
       <workItem from="1544701138390" duration="9213000" />
       <workItem from="1544794486809" duration="14995000" />
-      <workItem from="1544883729076" duration="4843000" />
+      <workItem from="1544883729076" duration="5315000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98444000" />
+    <option name="totallyTimeSpent" value="98916000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -608,20 +689,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/share/dotnet/sdk/2.1.500/Microsoft.Common.CurrentVersion.targets">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="4364" column="4" selection-start-line="4364" selection-start-column="4" selection-end-line="4364" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Services/ClientsService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="120" column="90" selection-start-line="120" selection-start-column="90" selection-end-line="120" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/Utils/IdentityMocking.cs" />
     <entry file="file://$PROJECT_DIR$/GymAPI.Web/Models/StaffMember/TestStaffMemberJSON.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -702,13 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
           <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="211" column="64" selection-start-line="211" selection-start-column="64" selection-end-line="211" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -841,13 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1746">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/TrainingPlansControllerTests.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -897,13 +950,6 @@
             <marker date="1544822626612" expanded="true" signature="4243:4526" ph="{...}" />
             <marker date="1544822626612" expanded="true" signature="4341:4404" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Models/Client/TestClientJSON.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1048,7 +1094,7 @@
     <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/TicketsController.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
-          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+          <caret line="146" selection-start-line="146" selection-end-line="146" />
           <folding>
             <marker date="1544891029089" expanded="false" signature="6:258" ph="..." />
             <marker date="1544891029089" expanded="true" signature="276:7469" ph="{...}" />
@@ -1082,6 +1128,134 @@
             <marker date="1544891029089" expanded="true" signature="6844:6907" ph="{...}" />
             <marker date="1544891029089" expanded="true" signature="7191:7461" ph="{...}" />
             <marker date="1544891029089" expanded="true" signature="7293:7356" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Models/Client/TestClientJSON.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Models/Client/Client.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1543331513623" expanded="false" signature="6:70" ph="..." />
+            <marker date="1543331513623" expanded="true" signature="95:1310" ph="{...}" />
+            <marker date="1543331513623" expanded="true" signature="121:1308" ph="{...}" />
+            <marker date="1543331513623" expanded="true" signature="665:782" ph="/// Contains a list of times and dates the client checked-in at the gym. ... " />
+            <marker date="1543331513623" expanded="true" signature="885:980" ph="/// Contains a list of notifications for the user. ... " />
+            <marker date="1543331513623" expanded="true" signature="1100:1209" ph="/// Contains a list of support tickets associated with the user. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Services/ClientsService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="120" column="90" selection-start-line="120" selection-start-column="90" selection-end-line="120" selection-end-column="90" />
+          <folding>
+            <marker date="1544568286337" expanded="false" signature="6:124" ph="..." />
+            <marker date="1544568286337" expanded="true" signature="151:5338" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="190:758" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="813:5336" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="916:968" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="1007:1091" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="1131:1249" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="1303:1531" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="1575:2188" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="1635:1726" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="1872:2004" ph="/* Check if the client has checked-in today ... */" />
+            <marker date="1544568286337" expanded="true" signature="2060:2151" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="2234:2512" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="2334:2392" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="2600:3035" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="2697:2933" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="3112:3211" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="3271:3945" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="3389:3908" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="3599:3806" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="4013:4132" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="4176:4444" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="4505:5048" ph="{...}" />
+            <marker date="1544568286337" expanded="true" signature="5091:5330" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/ClientsController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="127" column="26" selection-start-line="127" selection-start-column="26" selection-end-line="127" selection-end-column="26" />
+          <folding>
+            <marker date="1544891460542" expanded="false" signature="6:277" ph="..." />
+            <marker date="1544891460542" expanded="true" signature="295:8187" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="397:8185" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="713:859" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="1017:1086" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="1272:1472" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="1368:1431" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="1523:1620" ph="/// Checks-in the client. Can only be done once day. ... " />
+            <marker date="1544891460542" expanded="true" signature="1766:2159" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="1862:1925" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="2011:2118" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="2394:2624" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="2493:2556" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="3002:3387" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="3098:3161" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="3604:3851" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="3700:3763" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="4024:5870" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="4182:4273" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="4425:4516" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="4613:5012" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="5136:5378" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="5514:5689" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="6120:6388" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="6216:6279" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="6606:7304" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="6786:6847" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="6946:7009" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="7115:7178" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="7195:7294" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="7491:7753" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="7592:7655" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="7921:8179" ph="{...}" />
+            <marker date="1544891460542" expanded="true" signature="8017:8080" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GymAPI.Web/Controllers/StaffController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="111" column="29" lean-forward="true" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
+          <folding>
+            <marker date="1544891519322" expanded="false" signature="6:277" ph="..." />
+            <marker date="1544891519322" expanded="true" signature="307:5385" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="411:5383" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="733:893" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="1033:1100" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="1305:1503" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="1399:1462" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="1690:3815" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="1848:1939" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="2091:2179" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="2287:2772" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="2914:3121" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="3257:3438" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="3507:3606" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="3611:3708" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="4021:4292" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="4121:4184" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="4473:4727" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="4567:4630" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="4891:4966" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="5168:5377" ph="{...}" />
+            <marker date="1544891519322" expanded="true" signature="5272:5335" ph="{...}" />
           </folding>
         </state>
       </provider>

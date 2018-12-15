@@ -124,6 +124,13 @@ namespace GymAPI
             {
                 return BadRequest("Username already exists!");
             }
+            
+            // Check email overlap
+            user = await _userManager.FindByEmailAsync(signupInfo.Email);
+            if (user != null)
+            {
+                return BadRequest("Username already exists!");
+            }
                 
             // Create client
             var client = new Client()

@@ -58,8 +58,15 @@ namespace GymAPI.Controllers
             {
                 return BadRequest("Username already exists!");
             }
+            
+            // Check email overlap
+            user = await _userManager.FindByEmailAsync(signupInfo.Email);
+            if (user != null)
+            {
+                return BadRequest("Email already exists!");
+            }
                 
-            // Create client
+            // Create staff member
             var member = new StaffMember()
             {
                 Nif = signupInfo.Nif,
@@ -75,7 +82,7 @@ namespace GymAPI.Controllers
             };
             _staffService.Create(member);
             
-            // Create user
+            // Create staff member
             User newUser = new User()
             {
                 UserName = signupInfo.Username,
