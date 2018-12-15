@@ -12,3 +12,17 @@
 /home/diogox/Desktop/gym-management/GymAPI/obj/Release/netcoreapp2.1/GymAPI.RazorTargetAssemblyInfo.cache
 /home/diogox/Desktop/gym-management/GymAPI/obj/Release/netcoreapp2.1/GymAPI.dll
 /home/diogox/Desktop/gym-management/GymAPI/obj/Release/netcoreapp2.1/GymAPI.pdb
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/bin/Release/netcoreapp2.1/GymAPI.deps.json
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/bin/Release/netcoreapp2.1/GymAPI.runtimeconfig.json
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/bin/Release/netcoreapp2.1/GymAPI.runtimeconfig.dev.json
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/bin/Release/netcoreapp2.1/GymAPI.dll
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/bin/Release/netcoreapp2.1/GymAPI.pdb
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/obj/Release/netcoreapp2.1/GymAPI.csprojAssemblyReference.cache
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/obj/Release/netcoreapp2.1/GymAPI.csproj.CoreCompileInputs.cache
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/obj/Release/netcoreapp2.1/GymAPI.RazorAssemblyInfo.cache
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/obj/Release/netcoreapp2.1/GymAPI.RazorAssemblyInfo.cs
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/obj/Release/netcoreapp2.1/GymAPI.AssemblyInfoInputs.cache
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/obj/Release/netcoreapp2.1/GymAPI.AssemblyInfo.cs
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/obj/Release/netcoreapp2.1/GymAPI.RazorTargetAssemblyInfo.cache
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/obj/Release/netcoreapp2.1/GymAPI.dll
+/home/diogox/Desktop/gym-management/GymAPI/GymAPI.Web/obj/Release/netcoreapp2.1/GymAPI.pdb
