@@ -21,15 +21,8 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window, $rootScope) {
         // Indicar ao controler da página principal que o menu lateral deve ser mostrado
         $rootScope.$broadcast('show-window', 'true');
 
-        // Ocultar alertas no topo da página
-        $scope.novo_ticket_sucesso = "y";
-        $scope.novo_ticket_sem_sucesso = "y";
-        $scope.novo_ticket_sem_sucesso_dados = "y";
-
-
         // Botão de submit é clicável
         $scope.disableSubmit = "";
-
 
         // Quando clica no botão de submit
         $scope.submitTicket = function () {
@@ -38,13 +31,19 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window, $rootScope) {
             if ($scope.assunto === "" || $scope.assunto === undefined || $scope.comentario === "" || $scope.comentario === undefined) {
 
                 // Mostra alerta de que os dados foram preenchidos sem sucesso
-                $scope.novo_ticket_sem_sucesso_dados = "";
+                bootbox.alert({
+                    message: "Mensagem enviada sem sucesso. Dados incorretamente preenchidos!",
+                    backdrop: true,
+                    buttons: {
+                        ok: {
+                            label: "OK!",
+                            className: 'btn-warning'
+                        }
+                    }
+                });
 
                 // Se o formulário estiver preenchido corretamente
             } else {
-
-                // Oculta warning de formulário preenchidos sem sucesso
-                $scope.novo_ticket_sem_sucesso_dados = "y";
 
                 // Disable do botão de submit para evitar enviar o mesmo ticket várias vezes
                 $scope.disableSubmit = "y";
@@ -68,7 +67,16 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window, $rootScope) {
                     if (response) {
 
                         // Mostra mensagem de sucesso
-                        $scope.novo_ticket_sucesso = "";
+                        bootbox.alert({
+                            message: "Mensagem enviada com sucesso",
+                            backdrop: true,
+                            buttons: {
+                                ok: {
+                                    label: "OK!",
+                                    className: 'btn-success'
+                                }
+                            }
+                        });
 
                         // Se ticket for enviado com sucesso, 
                         // é redireionado para a página de tickets em 2 segundos
@@ -80,7 +88,16 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window, $rootScope) {
                     } else {
 
                         // Mostra mensagem de insucesso
-                        $scope.novo_ticket_sem_sucesso = "";
+                        bootbox.alert({
+                            message: "Mensagem enviada sem sucesso",
+                            backdrop: true,
+                            buttons: {
+                                ok: {
+                                    label: "OK!",
+                                    className: 'btn-danger'
+                                }
+                            }
+                        });
 
                     }
 

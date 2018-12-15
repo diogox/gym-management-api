@@ -1,5 +1,6 @@
 import { getClients, removeClient, adicionarClient, editarClient } from './pedidos.js'
-import { setCookie, getCookie } from './cookies.js'
+import { getCookie } from './cookies.js'
+import { paginationSplitInChunks, paginationOnDocumentReady, paginationSetPage } from './pagination.js'
 
 //Format date to yyyy-mm-dd
 function formatDate(date) {
@@ -76,7 +77,7 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
     //Listar todos os Clientes
     //Executa a função para pedir os dados à API
     let token = getCookie('admin');
-    getClients($http,token, (response) => {
+    getClients($http, token, (response) => {
         if (response) {
 
             //Formata a BirthDate dos Clientes para yyyy-mm-dd
@@ -85,8 +86,13 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
                 //console.log(response.data[i].birthDate);
             }
 
+            Clientes = response.data;
+
             //Atualiza a Lista de Clientes
-            $scope.Clientes = response.data;
+            // $scope.Clientes = response.data;
+
+            atualizarPagina();
+
         } else {
             $scope.alerts[4].show = true;
         }
@@ -162,6 +168,25 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
             if (response) {
                 $scope.eduser = null;
 
+                // Procura no array o Cliente para o alterar na vista de forma dinamica
+                for (let i = 0; i < Clientes.length; i++) {
+
+                    if (Clientes[i].id == newClient.id) {
+                        Clientes[i] = newClient;
+
+                        // Obter qual o chunck que se localiza o Cliente editado
+                        let chunckNumber = Math.floor(i / elementsPerChunck);
+
+                        // Dentro do chunck obter a posição onde se localiza o Cliente editado
+                        let chunckPosition = i % elementsPerChunck;
+
+                        // Alterar o Cliente dentro da lista de chuncks
+                        clientesChuncks[chunckNumber][chunckPosition] = newClient;
+
+                    }
+                }
+
+
                 //Dá reset e close no Modal form
                 $('#editarClient form :input').val("");
                 $('#editarClient').modal('toggle');
@@ -186,9 +211,11 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
         removeClient($http, id, token, (response) => {
             if (response) {
 
-                $scope.Clientes = $.grep($scope.Clientes, function (e) {
+                Clientes = $.grep(Clientes, function (e) {
                     return e.id != id;
                 });
+
+                atualizarPagina();
 
                 //Dá close no Modal from
                 $('#removercliente').modal('toggle');
@@ -207,12 +234,97 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
         $scope.idclienteedit = id;
         oldClient = $scope.Clientes.find(x => x.id === $scope.idclienteedit);
         $scope.eduser = oldClient;
+        // $scope.eduser.birthDate = new Date(oldClient.birthDate);
     }
 
     //Abre um popup para confirmar a remoção do Cliente
     $scope.removeClient = function (id) {
         $scope.idclienteremove = id;
     }
+
+
+    //###########################################Pagination###################################
+
+
+    // Array que vai conter os Clientes
+    let Clientes = [];
+
+
+    // Lista de Clientes divididos em chuncks
+    let clientesChuncks = [];
+
+
+    // Quantidade de equipamentos por chunck
+    let elementsPerChunck = 6;
+
+
+    // Página atual da lista de Clientes
+    let currentPage = 0;
+
+
+    //Função que atualiza as páginas
+    function atualizarPagina() {
+
+        let pagination = paginationSplitInChunks(Clientes, elementsPerChunck);
+
+        clientesChuncks = pagination.arrayChuncks
+
+        //Lista de Paginação com os numeros de Páginas
+        $scope.numberPages = pagination.numberOfPages;
+
+        //Atualiza a vista
+        $scope.Clientes = clientesChuncks[0];
+
+        $(document).ready(function () {
+
+            // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+            paginationOnDocumentReady(clientesChuncks);
+
+        });
+    }
+
+
+    //Função que é ativada quando um número da paginação é carregado
+    $scope.setPage = function (page) {
+
+        // currentPage recebe a página selecionada
+        currentPage = page;
+
+        // Atualiza a vista com os clientes dessa página
+        $scope.Clientes = clientesChuncks[page];
+
+        // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+        paginationSetPage(clientesChuncks, page);
+
+    }
+
+
+    //Função que é ativada quando o botão previous é carregado
+    $scope.previousPage = function () {
+        if (currentPage > 0) {
+            $scope.setPage(currentPage - 1);
+        }
+    }
+
+
+    //Função que é ativada quando o botão next é carregado
+    $scope.nextPage = function () {
+        if (currentPage + 1 < clientesChuncks.length) {
+            $scope.setPage(currentPage + 1);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 });

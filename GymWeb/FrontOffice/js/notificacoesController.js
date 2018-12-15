@@ -1,5 +1,5 @@
 import { getClientNotifications, readNotification } from './pedidos.js'
-import { checkLogin } from './myutil.js'
+import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from './myutil.js'
 
 // Controller do notificacoes
 app.controller('notificacoesCtrl', function ($scope, $http, $rootScope) {
@@ -28,6 +28,9 @@ app.controller('notificacoesCtrl', function ($scope, $http, $rootScope) {
 
         // Lista de notificações divididas em chuncks
         let notificationChuncks = [];
+
+        // Quantidade de elementos por chunck
+        let elementsPerChunck = 5;
 
         // Página atual da lista de notificações
         let currentPage = 0;
@@ -66,23 +69,15 @@ app.controller('notificacoesCtrl', function ($scope, $http, $rootScope) {
                 // Reverte o array para as notificações mais recentes ficarem em primeiro lugar
                 notificacoes.reverse();
 
-                // Divide o array de notificações em chuncks para efeitos de paginação,
-                // onde a variavel chunck define o numero de itens por pagina
-                var i, j, temparray, chunk = 5;
-                for (i = 0, j = notificacoes.length; i < j; i += chunk) {
-                    temparray = notificacoes.slice(i, i + chunk);
-                    notificationChuncks.push(temparray);
-                }
+                // Divide o array de notificações em chuncks e retorna um 
+                // objeto representativo de cada página(nº de chuncks)
+                let pagination = paginationSplitInChuncks(notificacoes, elementsPerChunck);
 
-                // Obtem a quantidade de página de acordo com o numero de chuncks
-                let numberOfPages = [];
-                for (let i = 0; i < notificationChuncks.length; i++) {
-                    numberOfPages.push({ index: i });
-                }
+                // Define o array de chuncks
+                notificationChuncks = pagination.arrayChuncks;
 
                 // Lista com tantos elementos quanto o numero de chuncks
-                $scope.numberPages = numberOfPages;
-
+                $scope.numberPages = pagination.numberOfPages;
 
                 // Atualiza a vista
                 $scope.notificacoes = notificationChuncks[0];
@@ -91,30 +86,14 @@ app.controller('notificacoesCtrl', function ($scope, $http, $rootScope) {
                 // e coloca a pagina anterior como disabled
                 $(document).ready(function () {
 
-                    // se nao tiver notificações, a lista de paginas desaparece
-                    if (notificationChuncks.length == 0) {
-                        $scope.paginationHide = "y";
-                        document.getElementById("paginationHide").style.display = "none";
-                    } else {
-
-                        document.getElementById("page0").classList.add("active");
-                        document.getElementById("pageback").classList.add("disabled");
-
-                        // Se só existir uma página, então o botão de próxima página também fica disabled
-                        if (notificationChuncks.length == 1) {
-                            document.getElementById("pagenext").classList.add("disabled");
-                        }
-
-                    }
+                    // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+                    paginationOnDocumentReady(notificationChuncks);
 
                 });
             } else {
 
             }
         });
-
-
-
 
         // Quando clica no numero de uma página
         $scope.setPage = function (page) {
@@ -125,26 +104,8 @@ app.controller('notificacoesCtrl', function ($scope, $http, $rootScope) {
             // Atualiza a vista com as notificações dessa página
             $scope.notificacoes = notificationChuncks[page];
 
-            // Remove o estivo de ativa da página anteriormente ativa
-            document.getElementsByClassName("active")[0].classList.remove("active");
-
-            // Essa página fica com estilo de ativa
-            document.getElementById("page" + page).classList.add("active");
-
-            // Se só existir uma página, então não é preciso alterar estilos
-            if (notificationChuncks.length > 1) {
-                // Conforme o numero da página, define os estilos dos botões de pagina anterior e próxima
-                if (page == 0) {
-                    document.getElementById("pageback").classList.add("disabled");
-                    document.getElementById("pagenext").classList.remove("disabled");
-                } else if (page == notificationChuncks.length - 1) {
-                    document.getElementById("pageback").classList.remove("disabled");
-                    document.getElementById("pagenext").classList.add("disabled");
-                } else {
-                    document.getElementById("pageback").classList.remove("disabled");
-                    document.getElementById("pagenext").classList.remove("disabled");
-                }
-            }
+            // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+            paginationSetPage(notificationChuncks, page);
 
         }
 

@@ -17,7 +17,7 @@ export function login($http, data, callback) {
 //Clientes
 //Get all Clients
 export function getClients($http, token, callback) {
-    console.log(token);
+    //console.log(token); Debug
     $http({
         method: "GET",
         url: "https://gym-lds.herokuapp.com/api/clients/",

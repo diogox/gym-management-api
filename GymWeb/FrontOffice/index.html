@@ -61,7 +61,7 @@
     <div class="row" style="height:100vh">
 
         <!--This the side nav bar-->
-        <div class="left col-2" ng-hide="hideMenus">
+        <div id="menu" class="left col-2" ng-hide="hideMenus">
             <ul>
                 <img class="img" src="{{clientImage}}" alt=""/>
                 <a href="index.html" ng-hide="hideClient">
@@ -86,12 +86,12 @@
                 </a>
                 <a href="#!exercicios" ng-hide="hideBoth">
                     <li class="item-menu">
-                        <span class="menu">Lista de exercicios</span>
+                        <span class="menu">Exercicios</span>
                     </li>
                 </a>
                 <a href="#!equipamentos" ng-hide="hideBoth">
                     <li class="item-menu">
-                        <span class="menu">Lista de Equipamento</span>
+                        <span class="menu">Equipamento</span>
                     </li>
                 </a>
                 <a href="#!suporte" ng-hide="hideClient">
