@@ -15,8 +15,6 @@ app.controller('indexCtrl', function ($scope, $http) {
     // Faz update das notificações se fizer refresh à página e se for cliente
     if (login.userType == "Client") {
         updateNotifications();
-    }else if(login.userType == "Staff"){
-        updateStaffImage();
     }
 
     // Quando recebe um broadcast do tipo show-window, irá decidir que partes da página
@@ -71,8 +69,10 @@ app.controller('indexCtrl', function ($scope, $http) {
 
     // Após efetuar login
     $scope.$on('after-login', function (event, arg) {
-
+        
         updateNotifications();
+        updateImage();
+
 
     });
 
@@ -105,26 +105,54 @@ app.controller('indexCtrl', function ($scope, $http) {
                 // Atualiza a vista
                 $scope.numberNotifications = unRead;
 
-                $scope.clientImage = result.data.imageUrl;
-
             }
 
         });
     }
 
-    function updateStaffImage(){
+    // Atualiza a imagem quando faz refresh ao browser
+    updateImage();
+
+    /**
+     * Atualiza a imagem que é apresentado no menu lateral
+     */
+    function updateImage() {
+
         login = checkLogin();
         myId = login.userTypeId;
+        let userType = login.userType;
 
-        getStaff($http, myId, (result) => {
+        // Se for cliente, vai procurar pelo cliente com o id
+        if (userType === "Client") {
 
-            if (result) {
+            getClient($http, myId, (result) => {
 
-                $scope.clientImage = result.data.imageUrl;
+                if (result) {
 
-            }
+                    $scope.clientImage = result.data.imageUrl;
 
-        });
+                }
+
+            });
+
+        // Se for staff, vai procurar pelo staff com o id
+        } else if (userType === "Staff") {
+
+            getStaff($http, myId, (result) => {
+
+                if (result) {
+
+                    $scope.clientImage = result.data.imageUrl;
+
+                }
+
+            });
+
+        }else if (userType === "Admin") {
+            $scope.clientImage = "https://cdn3.iconfinder.com/data/icons/gray-user-toolbar/512/oficcial-512.png";
+        }else{
+            $scope.clientImage = "";
+        }
 
     }
 
@@ -137,10 +165,10 @@ app.controller('indexCtrl', function ($scope, $http) {
     /**
      * Resize tamanho do menu lateral e do conteudo conforme o tamanho da janela
      */
-    $(window).resize(function() {
-        let width = $( window ).width();
+    $(window).resize(function () {
+        let width = $(window).width();
 
-        if(width < 600){
+        if (width < 600) {
 
             let menu = document.getElementById("menu");
             let content = document.getElementById("content");
@@ -151,7 +179,7 @@ app.controller('indexCtrl', function ($scope, $http) {
             removeClassByPrefix(content, "col");
             content.classList.add("col-12");
 
-        }else if(width < 800){
+        } else if (width < 800) {
 
             let menu = document.getElementById("menu");
             let content = document.getElementById("content");
@@ -162,7 +190,7 @@ app.controller('indexCtrl', function ($scope, $http) {
             removeClassByPrefix(content, "col");
             content.classList.add("col-8");
 
-        }else if(width < 1100){
+        } else if (width < 1100) {
 
             let menu = document.getElementById("menu");
             let content = document.getElementById("content");
@@ -173,7 +201,7 @@ app.controller('indexCtrl', function ($scope, $http) {
             removeClassByPrefix(content, "col");
             content.classList.add("col-9");
 
-        }else{
+        } else {
 
             let menu = document.getElementById("menu");
             let content = document.getElementById("content");
