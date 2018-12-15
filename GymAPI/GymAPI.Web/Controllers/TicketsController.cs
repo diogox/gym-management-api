@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using GymAPI.Models;
 using GymAPI.Models.User;
@@ -138,7 +139,7 @@ namespace GymAPI
             var isClient = User.IsInRole("Client");
             if (isClient)
             {
-                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                var user = await _userManager.FindByNameAsync(User.FindFirst(ClaimTypes.NameIdentifier).Value);
                 if (user.ClientId != ticket.ClientId)
                 {
                     return BadRequest("Cannot create ticket for another client!");
