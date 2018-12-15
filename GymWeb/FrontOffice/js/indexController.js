@@ -140,27 +140,16 @@ app.controller('indexCtrl', function ($scope, $http) {
     $(window).resize(function() {
         let width = $( window ).width();
 
-        if(width < 500){
+        if(width < 600){
 
             let menu = document.getElementById("menu");
             let content = document.getElementById("content");
 
             removeClassByPrefix(menu, "col");
-            menu.classList.add("col-6");
+            menu.classList.add("col-12");
 
             removeClassByPrefix(content, "col");
-            content.classList.add("col-6");
-
-        }else if(width < 600){
-
-            let menu = document.getElementById("menu");
-            let content = document.getElementById("content");
-
-            removeClassByPrefix(menu, "col");
-            menu.classList.add("col-5");
-
-            removeClassByPrefix(content, "col");
-            content.classList.add("col-7");
+            content.classList.add("col-12");
 
         }else if(width < 800){
 

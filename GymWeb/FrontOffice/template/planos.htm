@@ -21,24 +21,6 @@
                 <!-- Modal body -->
                 <div class="modal-body">
 
-                    <!-- Alerta de ticket enviado com sucesso -->
-                    <div class="alert alert-success alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sucesso">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Success!</strong> Plano criado com sucesso.
-                    </div>
-
-                    <!-- Alerta de ticket enviado sem sucesso -->
-                    <div class="alert alert-danger alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sem_sucesso">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Alert!</strong> Plano criado sem sucesso.
-                    </div>
-
-                    <!-- Alerta de ticket enviado sem sucesso -->
-                    <div class="alert alert-warning alert-dismissible fade show" style="width:100%" ng-hide="novo_plano_sem_sucesso_dados">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Warning!</strong> Plano criado sem sucesso. Dados incompletos.
-                    </div>
-
                     <form ng-submit="submitPlan()">
                         <div class="form-group">
                             <label for="name">Name:</label>
