@@ -34,8 +34,8 @@
         <e p="Dockerfile (cópia)" t="Include" />
         <e p="GymAPI.csproj" t="IncludeRecursive" />
         <e p="Migrations" t="Include">
-          <e p="20181210155704_CreateEntities.Designer.cs" t="Include" />
-          <e p="20181210155704_CreateEntities.cs" t="Include" />
+          <e p="20181215151543_CreateEntities.Designer.cs" t="Include" />
+          <e p="20181215151543_CreateEntities.cs" t="Include" />
           <e p="GymContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">

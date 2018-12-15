@@ -144,7 +144,12 @@ namespace GymAPI
                     return BadRequest("Cannot create ticket for another client!");
                 }
             }
-            
+
+            var client = _clientsService.GetById(ticket.ClientId.Value);
+            if (client == null)
+            {
+                return BadRequest("Client doesn't exist!");
+            }
             _supportTicketService.Create(ticket);
             
             return CreatedAtRoute("GetSupportTicket", new { id = ticket.Id }, ticket);
@@ -174,7 +179,7 @@ namespace GymAPI
 
                 // If the current message is not from the client. Notify him.
                 if (message.From != SupportTicketMessageSender.Client )
-                {
+                {    
                     _clientsService.AddNotification(client, new ClientNotificationDAO()
                     {
                         Title = "Nova mensagem",
