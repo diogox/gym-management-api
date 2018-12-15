@@ -1,8 +1,4 @@
 {
     "title": "Abdominais",
-    "messages": [
-        "Uma das elipticas está estragada."
-    ],
-    "state": "Open",
     "clientId": 1
 }

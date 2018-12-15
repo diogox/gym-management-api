@@ -89,6 +89,8 @@ namespace GymAPI.Services
         {
             ticket.Client = null; // ClientId initializes this field
             ticket.OpenedAt = DateTime.Now;
+            ticket.State = TicketState.Open;
+            ticket.Messages = new List<SupportTicketMessage>();
             
             _context.SupportTickets.Add(ticket);
             _context.SaveChanges();

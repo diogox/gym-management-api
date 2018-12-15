@@ -167,16 +167,20 @@ namespace GymAPI
                 return BadRequest("Ticket is closed. Cannot add new messages!");
             }
 
-            var client = _clientsService.GetById(ticket.ClientId);
-            
-            // If the current message is not from the client. Notify him.
-            if (message.From != SupportTicketMessageSender.Client )
+            var clientId = ticket.ClientId;
+            if (clientId != null)
             {
-                _clientsService.AddNotification(client, new ClientNotificationDAO()
+                var client = _clientsService.GetById(clientId.Value);
+
+                // If the current message is not from the client. Notify him.
+                if (message.From != SupportTicketMessageSender.Client )
                 {
-                    Title = "Nova mensagem",
-                    Message = "Tem uma nova mensagem no seu ticket de suporte.",
-                });
+                    _clientsService.AddNotification(client, new ClientNotificationDAO()
+                    {
+                        Title = "Nova mensagem",
+                        Message = "Tem uma nova mensagem no seu ticket de suporte.",
+                    });
+                }
             }
             
             _supportTicketService.AddMessage(ticket, message);

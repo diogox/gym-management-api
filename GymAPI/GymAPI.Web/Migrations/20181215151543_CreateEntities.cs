@@ -273,7 +273,7 @@ namespace GymAPI.Migrations
                     Title = table.Column<string>(nullable: true),
                     OpenedAt = table.Column<DateTime>(nullable: false),
                     State = table.Column<int>(nullable: false),
-                    ClientId = table.Column<long>(nullable: false)
+                    ClientId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -283,7 +283,7 @@ namespace GymAPI.Migrations
                         column: x => x.ClientId,
                         principalTable: "Clients",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

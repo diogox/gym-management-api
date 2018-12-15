@@ -13,8 +13,7 @@ namespace GymAPI.Models
         public DateTime OpenedAt { get; set; }
         public TicketState State { get; set; }
         
-        [Required]
-        public long ClientId { get; set; }
+        public long? ClientId { get; set; }
         [JsonIgnore]
         public Client Client { get; set; }
     }
