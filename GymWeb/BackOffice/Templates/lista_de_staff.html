@@ -2,7 +2,8 @@
 
     <!--Alertas da API-->
     <div ng-repeat="alert in alerts" ng-show="alert.show">
-        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong> {{alert.msg}}</h3>
+        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong>
+            {{alert.msg}}</h3>
     </div>
 
     <!--Button Adicionar Funcionário-->
@@ -49,6 +50,21 @@
         </tbody>
     </table>
 
+
+    <!--Pagination-->
+    <ul id="paginationHide" class="pagination justify-content-center">
+        <li id="pageback" class="page-item">
+            <a class="page-link disabled" href="" ng-click="previousPage()">Previous</a>
+        </li>
+        <li id="page{{x.index}}" class="page-item" ng-repeat="x in numberPages">
+            <a class="page-link" href="" ng-click="setPage(x.index)">{{x.index}}</a>
+        </li>
+        <li id="pagenext" class="page-item">
+            <a class="page-link" href="" ng-click="nextPage()">Next</a>
+        </li>
+    </ul>
+
+
     <!--Modal Remover Staff-->
     <modal class="modal fade" id="removerfunc" role="dialog">
         <div class="modal-dialog">
@@ -56,7 +72,7 @@
                 <div class="modal-header">
                     <h3 class="modal-title" id="exampleModalLabel">Remover Funcionário {{idfuncremove}}</h3>
                 </div>
-                <div class="modal-body"> 
+                <div class="modal-body">
                     <h4>Pretende remover este funcionário?</h4>
                     <button type="button" class="rmv btn btn-danger glyphicon glyphicon-remove" ng-click="rmStaff(idfuncremove)">
                         Confirm
@@ -68,7 +84,7 @@
             </div>
         </div>
     </modal>
-    
+
     <!--Modal Adicionar Staff-->
     <modal class="modal fade" id="addFunc" role="dialog">
         <div class="modal-dialog">
@@ -78,28 +94,28 @@
                 </div>
                 <div class="modal-body">
                     <!--Form para adicionar um novo Funcionário-->
-                    <form name ="myForm" ng-submit="submitADD()">
+                    <form name="myForm" ng-submit="submitADD()">
                         <h4>Preenche os seguintes cabeçalhos:</h4>
 
 
                         <!--Primeiro Nome do Funcionário-->
                         <div class="form-group">
                             <label for="pnome">Primeiro Nome:</label>
-                            <input class="form-control"  ng-pattern="/^[a-zA-Z\s]*$/" type="text" ng-model="staff.firstName" name="pnome" id="pnome"
-                                required />
+                            <input class="form-control" ng-pattern="/^[a-zA-Z\s]*$/" type="text" ng-model="staff.firstName"
+                                name="pnome" id="pnome" required />
                         </div>
 
 
                         <!--Último Nome do Funcionário-->
                         <div class="form-group">
                             <lable for="unome">Ultimo Nome:</lable>
-                            <input class="form-control" ng-pattern="/^[a-zA-Z\s]*$/" type="text" ng-model="staff.lastName" name="unome" id="unome"
-                                required />
+                            <input class="form-control" ng-pattern="/^[a-zA-Z\s]*$/" type="text" ng-model="staff.lastName"
+                                name="unome" id="unome" required />
                         </div>
 
 
-                         <!--Username do Funcionário-->
-                         <div class="form-group">
+                        <!--Username do Funcionário-->
+                        <div class="form-group">
                             <lable for="un">Username(só letras):</lable>
                             <input class="form-control" ng-pattern="/^[a-zA-Z\s]*$/" type="text" ng-model="staff.username"
                                 name="un" id="un" required />
@@ -109,23 +125,26 @@
                         <!--Email do Funcionário-->
                         <div class="form-group">
                             <lable for="email">Email:</lable>
-                            <input class="form-control" type="email" ng-model="staff.email" name="email" id="email" required />
+                            <input class="form-control" type="email" ng-model="staff.email" name="email" id="email"
+                                required />
                         </div>
 
 
                         <!--Password do Funcionário-->
                         <div class="form-group">
                             <lable for="psw">Password:</lable>
-                            <input class="form-control" type="password" min-length="8" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/" ng-model="staff.password" name="psw" id="psw" 
-                                required />
-                            <span ng-show="!myForm.psw.$error.required &&  myForm.psw.$error.pattern && myForm.psw.$dirty">Tem de conter um lower e uppercase letra, um  numero ou simbolo e min 8 characters</span>
+                            <input class="form-control" type="password" min-length="8" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/"
+                                ng-model="staff.password" name="psw" id="psw" required />
+                            <span ng-show="!myForm.psw.$error.required &&  myForm.psw.$error.pattern && myForm.psw.$dirty">Tem
+                                de conter um lower e uppercase letra, um numero ou simbolo e min 8 characters</span>
                         </div>
 
 
                         <!--Confirm Password do Funcionário-->
                         <div class="form-group">
                             <label for="cpsw">Confirm Password:</label>
-                            <input name="cpsw" type="password" class="form-control" ng-model="staff.confirmPassword" ng-pattern="staff.password" required />
+                            <input name="cpsw" type="password" class="form-control" ng-model="staff.confirmPassword"
+                                ng-pattern="staff.password" required />
                             <span ng-show="staff.password != staff.confirmPassword">As passwords devem ser iguais.</span>
                         </div>
 
@@ -133,28 +152,29 @@
                         <!--Data de Nascimento yyyy-mm-dd-->
                         <div class="form-group">
                             <lable for="ddn">Data de Nascimento(yyyy-mm-dd):</lable>
-                            <input class="form-control" type="date" placeholder="yyyy-mm-dd" min="1900-12-31" max="2012-12-12" ng-model="staff.birthDate" name="ddn" id="ddn"
-                                required />
+                            <input class="form-control" type="date" placeholder="yyyy-mm-dd" min="1900-12-31" max="2012-12-12"
+                                ng-model="staff.birthDate" name="ddn" id="ddn" required />
                             <div role="alert">
                                 <span class="error" ng-show="myForm.ddn.$error.required">
                                     Required!</span>
                                 <span class="error" ng-show="myForm.ddn.$error.date">
                                     Idade Inválida!</span>
-                           </div>
+                            </div>
                         </div>
 
 
                         <!--NIF-->
                         <div class="form-group">
                             <lable for="nif">NIF:</lable>
-                            <input class="form-control" ng-pattern="/^\d{9}$/" type="text" ng-model="staff.nif" name="nif" id="nif" required />
+                            <input class="form-control" ng-pattern="/^\d{9}$/" type="text" ng-model="staff.nif" name="nif"
+                                id="nif" required />
                         </div>
 
 
                         <!--Rank do Funcionário-->
                         <div class="form-group">
                             <label for="sel1">Rank:</label>
-                            <select class="form-control" ng-model="staff.rank" >
+                            <select class="form-control" ng-model="staff.rank">
                                 <option ng-repeat="x in franks" value="{{x}}">{{x}}</option>
                             </select>
                         </div>
@@ -163,19 +183,22 @@
                         <!--Salário do Funcionário-->
                         <div class="form-group">
                             <lable for="salary">Salário(mês):</lable>
-                            <input class="form-control" type="number" step="0.01" ng-model="staff.salary" name="salary" id="salary" min="500" max="1000000" required />
+                            <input class="form-control" type="number" step="0.01" ng-model="staff.salary" name="salary"
+                                id="salary" min="500" max="1000000" required />
                         </div>
 
 
                         <!--URL da imagem de perfil-->
                         <div class="form-group">
-                                <lable for="imgurl">Imagem:(URL)</lable>
-                                <input class="form-control" type="url" ng-model="staff.imageUrl" name="imgurl" id="imgurl" required />
+                            <lable for="imgurl">Imagem:(URL)</lable>
+                            <input class="form-control" type="url" ng-model="staff.imageUrl" name="imgurl" id="imgurl"
+                                required />
                         </div>
 
 
                         <p></p>
-                        <button class="btn btn-default btn-block" ng-disabled="myForm.$invalid" type="submit" id="submit" value="Submit">Submit</button>
+                        <button class="btn btn-default btn-block" ng-disabled="myForm.$invalid" type="submit" id="submit"
+                            value="Submit">Submit</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -190,77 +213,84 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                        <h3 class="modal-title" id="exampleModalLabel">Editar Funcionário {{idstaffedit}}</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Editar Funcionário {{idstaffedit}}</h3>
                 </div>
                 <div class="modal-body">
                     <!--Form para Editar um Funcionário-->
                     <form name="myedForm" ng-submit="edsubmit()">
-                            <h4>Preenche os seguintes cabeçalhos:</h4>
+                        <h4>Preenche os seguintes cabeçalhos:</h4>
 
 
-                            <!--Primeiro Nome do Funcionário-->
-                            <div class="form-group">
-                                <label for="pnome">Primeiro Nome:</label>
-                                <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edstaff.firstName" name="pnome" id="pnome" required />
+                        <!--Primeiro Nome do Funcionário-->
+                        <div class="form-group">
+                            <label for="pnome">Primeiro Nome:</label>
+                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edstaff.firstName"
+                                name="pnome" id="pnome" required />
+                        </div>
+
+
+                        <!--Último Nome do Funcionário-->
+                        <div class="form-group">
+                            <lable for="unome">Ultimo Nome:</lable>
+                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edstaff.lastName"
+                                name="unome" id="unome" required />
+                        </div>
+
+
+                        <!--Data de Nascimento yyyy-mm-dd-->
+                        <div class="form-group">
+                            <lable for="ddn">Data de Nascimento(yyyy-mm-dd):</lable>
+                            <input class="form-control" type="date" placeholder="yyyy-mm-dd" min="1900-12-31" max="2012-12-12"
+                                ng-model="edstaff.birthDate" name="ddn" id="ddn" required />
+                            <div role="alert">
+                                <span class="error" ng-show="myForm.ddn.$error.required">
+                                    Required!</span>
+                                <span class="error" ng-show="myForm.ddn.$error.date">
+                                    Idade Inválida!</span>
                             </div>
+                        </div>
 
 
-                            <!--Último Nome do Funcionário-->
-                            <div class="form-group">
-                                <lable for="unome">Ultimo Nome:</lable>
-                                <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edstaff.lastName" name="unome" id="unome" required />
-                            </div>
+                        <!--NIF-->
+                        <div class="form-group">
+                            <lable for="nif">NIF:</lable>
+                            <input class="form-control" ng-pattern="/^\d{9}$/" type="text" ng-model="edstaff.nif" name="nif"
+                                id="nif" required />
+                        </div>
 
 
-                            <!--Data de Nascimento yyyy-mm-dd-->
-                            <div class="form-group">
-                                <lable for="ddn">Data de Nascimento(yyyy-mm-dd):</lable>
-                                <input class="form-control" type="date" placeholder="yyyy-mm-dd" min="1900-12-31" max="2012-12-12" ng-model="edstaff.birthDate" name="ddn" id="ddn" required />
-                                <div role="alert">
-                                    <span class="error" ng-show="myForm.ddn.$error.required">
-                                        Required!</span>
-                                    <span class="error" ng-show="myForm.ddn.$error.date">
-                                        Idade Inválida!</span>
-                               </div>
-                            </div>
+                        <!--Foi pago este mês-->
+                        <div class="form-group">
+                            <label for="sel1">Pago:</label>
+                            <select class="form-control" ng-model="edstaff.hasBeenPaidThisMonth">
+                                <option ng-repeat="x in paid" value="{{x}}">{{x}}</option>
+                            </select>
+                        </div>
 
 
-                            <!--NIF-->
-                            <div class="form-group">
-                                <lable for="nif">NIF:</lable>
-                                <input class="form-control" ng-pattern="/^\d{9}$/" type="text" ng-model="edstaff.nif" name="nif" id="nif" required />
-                            </div>
+                        <!--Salário do Funcionário-->
+                        <div class="form-group">
+                            <lable for="salary">Salário(mês):</lable>
+                            <input class="form-control" type="number" step="0.01" min="500" max="1000000" ng-model="edstaff.salary"
+                                name="salary" id="salary" min="0" required />
+                        </div>
 
 
-                            <!--Foi pago este mês-->
-                            <div class="form-group">
-                                <label for="sel1">Pago:</label>
-                                <select class="form-control" ng-model="edstaff.hasBeenPaidThisMonth" >
-                                    <option ng-repeat="x in paid" value="{{x}}">{{x}}</option>
-                                </select>
-                            </div>
-
-
-                            <!--Salário do Funcionário-->
-                            <div class="form-group">
-                                <lable for="salary">Salário(mês):</lable>
-                                <input class="form-control" type="number" step="0.01" min="500" max="1000000" ng-model="edstaff.salary" name="salary" id="salary" min="0" required />
-                            </div>
-
-
-                            <!--URL da imagem de perfil-->
-                            <div class="form-group">
-                                    <lable for="imgurl">Imagem:(URL)</lable>
-                                    <input class="form-control" type="url" ng-model="edstaff.imageUrl" name="imgurl" id="imgurl" required />
-                            </div>
+                        <!--URL da imagem de perfil-->
+                        <div class="form-group">
+                            <lable for="imgurl">Imagem:(URL)</lable>
+                            <input class="form-control" type="url" ng-model="edstaff.imageUrl" name="imgurl" id="imgurl"
+                                required />
+                        </div>
 
 
                         <p></p>
-                        <button class="btn btn-default btn-block" ng-disabled="myedForm.$invalid" type="submit" id="submit" value="Submit">Submit</button>
+                        <button class="btn btn-default btn-block" ng-disabled="myedForm.$invalid" type="submit" id="submit"
+                            value="Submit">Submit</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
