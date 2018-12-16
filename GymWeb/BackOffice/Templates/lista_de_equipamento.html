@@ -45,6 +45,21 @@
         </tbody>
     </table>
 
+
+    <!--Pagination-->
+    <ul id="paginationHide" class="pagination justify-content-center">
+        <li id="pageback" class="page-item">
+            <a class="page-link disabled" href="" ng-click="previousPage()">Previous</a>
+        </li>
+        <li id="page{{x.index}}" class="page-item" ng-repeat="x in numberPages">
+            <a class="page-link" href="" ng-click="setPage(x.index)">{{x.index}}</a>
+        </li>
+        <li id="pagenext" class="page-item">
+            <a class="page-link" href="" ng-click="nextPage()">Next</a>
+        </li>
+    </ul>
+
+
     <!--Modal Remover Equipamento-->
     <modal class="modal fade" id="removerEq" role="dialog">
         <div class="modal-dialog">
@@ -81,23 +96,24 @@
                         <!--Nome do Equipamento-->
                         <div class="form-group">
                             <label for="nome">Nome:</label>
-                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="eq.name" name="nome" id="nome" required />
+                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="eq.name"
+                                name="nome" id="nome" required />
                         </div>
 
 
                         <!--Marca do Equipamento-->
                         <div class="form-group">
                             <label for="brand">Marca:</label>
-                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="eq.brandName" name="brand" id="brand"
-                                required />
+                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="eq.brandName"
+                                name="brand" id="brand" required />
                         </div>
 
 
                         <!--Quantidade do Equipamento-->
                         <div class="form-group">
                             <label for="quantity">Quantidade:</label>
-                            <input class="form-control" type="number" min="1" max="1000" ng-model="eq.quantity" name="quantity" id="quantity"
-                                required />
+                            <input class="form-control" type="number" min="1" max="1000" ng-model="eq.quantity" name="quantity"
+                                id="quantity" required />
                         </div>
 
 
@@ -112,8 +128,8 @@
                         <!--Nome do Fornecedor-->
                         <div class="form-group">
                             <label for="supplier">Fornecedor:</label>
-                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="eq.supplierName" name="supplier" id="supplier"
-                                required />
+                            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="eq.supplierName"
+                                name="supplier" id="supplier" required />
                         </div>
 
 
@@ -125,7 +141,7 @@
                             <div role="alert">
                                 <span class="error" ng-show="myForm.description.$error.text">
                                     Atingiu o número máximo de letras!</span>
-                           </div>
+                            </div>
                         </div>
 
 
@@ -166,24 +182,24 @@
                             <!--Nome do Equipamento-->
                             <div class="form-group">
                                 <label for="nome">Nome:</label>
-                                <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edeq.name" name="nome" id="nome"
-                                    required />
+                                <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edeq.name"
+                                    name="nome" id="nome" required />
                             </div>
 
 
                             <!--Marca do Equipamento-->
                             <div class="form-group">
                                 <label for="brand">Marca:</label>
-                                <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edeq.brandName" name="brand" id="brand"
-                                    required />
+                                <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edeq.brandName"
+                                    name="brand" id="brand" required />
                             </div>
 
 
                             <!--Quantidade do Equipamento-->
                             <div class="form-group">
                                 <label for="quantity">Quantidade:</label>
-                                <input class="form-control" type="number" min="1" max="1000" ng-model="edeq.quantity" name="quantity"
-                                    id="quantity" required />
+                                <input class="form-control" type="number" min="1" max="1000" ng-model="edeq.quantity"
+                                    name="quantity" id="quantity" required />
                             </div>
 
 
@@ -198,8 +214,8 @@
                             <!--Nome do Fornecedor-->
                             <div class="form-group">
                                 <label for="supplier">Fornecedor:</label>
-                                <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edeq.supplierName" name="supplier" id="supplier"
-                                    required />
+                                <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="edeq.supplierName"
+                                    name="supplier" id="supplier" required />
                             </div>
 
 
@@ -211,7 +227,7 @@
                                 <div role="alert">
                                     <span class="error" ng-show="myedForm.description.$error.text">
                                         Atingiu o número máximo de letras!</span>
-                               </div>
+                                </div>
                             </div>
 
 
