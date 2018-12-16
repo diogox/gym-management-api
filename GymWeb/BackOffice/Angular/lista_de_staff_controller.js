@@ -1,5 +1,6 @@
 import { getStaff, removeStaff, adicionarStaff, editarStaff } from './pedidos.js'
-import { setCookie, getCookie } from './cookies.js'
+import { getCookie } from './cookies.js'
+import { paginationSplitInChunks, paginationOnDocumentReady, paginationSetPage } from './pagination.js'
 
 //Format date to yyyy-mm-dd
 function formatDate(date) {
@@ -76,7 +77,7 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
     //Listar todos os Funcionários
     //Executa a função para pedir os dados à API
     let token = getCookie('admin');
-    getStaff($http,token,(response) => {
+    getStaff($http, token, (response) => {
         if (response) {
             //console.log(response.data);
 
@@ -86,6 +87,11 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
                 //console.log(response.data[i].birthDate);
             }
 
+            func = response.data;
+            atualizarPagina();
+
+            //Atualiza a Lista de Funcionários
+            // $scope.Clientes = response.data;
             $scope.funcionarios = response.data;
         } else {
             $scope.alerts[4].show = true;
@@ -121,9 +127,8 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
                 resposta.birthDate = formatDate(resposta.birthDate);
 
                 //Atualiza a lista sem dar refresh na pagina
-                let list = $scope.funcionarios;
-                list.push(resposta);
-                $scope.funcionarios = list
+                func.push(resposta);
+                atualizarPagina();
 
                 //Dá reset e close no Modal form
                 $('#addFunc form :input').val("");
@@ -176,6 +181,24 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
             if (response) {
                 $scope.edstaff = null;
 
+                // Procura no array o Funcionario para o alterar na vista de forma dinamica
+                for (let i = 0; i < func.length; i++) {
+
+                    if (func[i].id == newStaff.id) {
+                        func[i] = newStaff;
+
+                        // Obter qual o chunck que se localiza o Funcionario editado
+                        let chunckNumber = Math.floor(i / elementsPerChunck);
+
+                        // Dentro do chunck obter a posição onde se localiza o Funcionario editado
+                        let chunckPosition = i % elementsPerChunck;
+
+                        // Alterar o Funcionario dentro da lista de chuncks
+                        funcChuncks[chunckNumber][chunckPosition] = newStaff;
+
+                    }
+                }
+
                 //Dá reset e close no Modal form
                 $('#editarStaff form :input').val("");
                 $('#editarStaff').modal('toggle');
@@ -201,9 +224,12 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
             if (response) {
 
                 //console.log("Removido com Sucesso!");
-                $scope.funcionarios = $.grep($scope.funcionarios, function (e) {
+                func = $.grep(func, function (e) {
                     return e.id != id;
                 });
+
+
+                atualizarPagina();
 
                 //Dá close no Modal from
                 $('#removerfunc').modal('toggle');
@@ -226,11 +252,83 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
         $scope.idstaffedit = id;
         oldStaff = $scope.funcionarios.find(x => x.id === $scope.idstaffedit);
         $scope.edstaff = oldStaff;
+        $scope.edstaff.birthDate = new Date(oldStaff.birthDate);
     }
 
     //Abre um popup para confirmar a remoção do Funcionário
     $scope.removeFunc = function (id) {
         $scope.idfuncremove = id;
+    }
+
+    //###########################################Pagination###################################
+
+
+    // Array que vai conter os Funcionários
+    let func = [];
+
+
+    // Lista de Funcionários divididos em chuncks
+    let funcChuncks = [];
+
+
+    // Quantidade de Funcionários por chunck
+    let elementsPerChunck = 5;
+
+
+    // Página atual da lista de Funcionários
+    let currentPage = 0;
+
+
+    //Função que atualiza as páginas
+    function atualizarPagina() {
+
+        let pagination = paginationSplitInChunks(func, elementsPerChunck);
+
+        funcChuncks = pagination.arrayChuncks
+
+        //Lista de Paginação com os numeros de Páginas
+        $scope.numberPages = pagination.numberOfPages;
+
+        //Atualiza a vista
+        $scope.funcionarios = funcChuncks[0];
+
+        $(document).ready(function () {
+
+            // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+            paginationOnDocumentReady(funcChuncks);
+
+        });
+    }
+
+
+    //Função que é ativada quando um número da paginação é carregado
+    $scope.setPage = function (page) {
+
+        // currentPage recebe a página selecionada
+        currentPage = page;
+
+        // Atualiza a vista com os clientes dessa página
+        $scope.funcionarios = funcChuncks[page];
+
+        // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+        paginationSetPage(funcChuncks, page);
+
+    }
+
+
+    //Função que é ativada quando o botão previous é carregado
+    $scope.previousPage = function () {
+        if (currentPage > 0) {
+            $scope.setPage(currentPage - 1);
+        }
+    }
+
+
+    //Função que é ativada quando o botão next é carregado
+    $scope.nextPage = function () {
+        if (currentPage + 1 < funcChuncks.length) {
+            $scope.setPage(currentPage + 1);
+        }
     }
 
 

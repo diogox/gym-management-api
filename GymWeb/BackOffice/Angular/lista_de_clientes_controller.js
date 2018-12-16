@@ -120,9 +120,8 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
                 resposta.birthDate = formatDate(resposta.birthDate);
 
                 //Atualiza a lista sem dar refresh na pagina
-                let list = $scope.Clientes;
-                list.push(resposta);
-                $scope.Clientes = list
+                Clientes.push(resposta);
+                atualizarPagina();
 
                 //Dá reset e close no Modal form
                 $('#addClient form :input').val("");
@@ -254,8 +253,8 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
     let clientesChuncks = [];
 
 
-    // Quantidade de equipamentos por chunck
-    let elementsPerChunck = 6;
+    // Quantidade de Clientes por chunck
+    let elementsPerChunck = 5;
 
 
     // Página atual da lista de Clientes
@@ -313,19 +312,6 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
             $scope.setPage(currentPage + 1);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
 
