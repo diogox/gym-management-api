@@ -1,5 +1,6 @@
 import { getPlanoTreinoByID, removeExercisePlanoTreinoByID, getExerciseByID, getExercises, editarPlanoTreino } from './pedidos.js'
-import { setCookie, getCookie } from './cookies.js'
+import { getCookie } from './cookies.js'
+import { paginationSplitInChunks, paginationOnDocumentReady, paginationSetPage } from './pagination.js'
 
 
 
@@ -58,7 +59,7 @@ app.controller('planoCtrl', function ($scope, $http, $routeParams, $rootScope) {
     let id = $routeParams.id;
 
     //Dias da Semana
-    $scope.diaSemana = ["Monday", "Tuesday", "Wednesday", "Thursdays", "Friday", "Saturday", "Sunday"];
+    $scope.diaSemana = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
     //Exercicios Disponiveis
     let token = getCookie('admin');
@@ -76,18 +77,19 @@ app.controller('planoCtrl', function ($scope, $http, $routeParams, $rootScope) {
         if (response) {
             $scope.Plano_nome = response.data.name;
             $scope.Plano_Treinador = response.data.supervisingTrainer;
-            $scope.Exercicios = response.data.exerciseBlocks;
+            planos = response.data.exerciseBlocks;
             for (let i = 0; i < response.data.exerciseBlocks.length; i++) {
                 //Receber o Exercicio
-                getExerciseByID($http, $scope.Exercicios[i].exerciseId, token, (response) => {
+                getExerciseByID($http, planos[i].exerciseId, token, (response) => {
                     if (response) {
-                        $scope.Exercicios[i].nome = response.data.name;
+                        planos[i].nome = response.data.name;
                     } else {
                         $scope.alerts[1].show = true;
-                        $scope.Exercicios[i].nome = "Erro ao Carregar o Nome!"
+                        planos[i].nome = "Erro ao Carregar o Nome!"
                     }
                 });
             }
+            atualizarPagina();
         } else {
             $scope.alerts[0].show = true;
         }
@@ -123,9 +125,8 @@ app.controller('planoCtrl', function ($scope, $http, $routeParams, $rootScope) {
                                 novoExercicio.nome = response.data.name;
 
                                 //Atualiza a lista sem dar refresh na pagina
-                                let list = $scope.Exercicios;
-                                list.push(novoExercicio);
-                                $scope.Exercicios = list
+                                planos.push(novoExercicio);
+                                atualizarPagina();
 
                             } else {
                                 $scope.alerts[1].show = true;
@@ -170,9 +171,8 @@ app.controller('planoCtrl', function ($scope, $http, $routeParams, $rootScope) {
                 editarPlanoTreino($http, currentPlano, id, token, (response) => {
                     if (response) {
                         //Atualiza a lista sem dar refresh na pagina
-                        let list = $scope.Exercicios;
-                        list.splice(index, 1);
-                        $scope.Exercicios = list
+                        planos.splice(index, 1);
+                        atualizarPagina();
                     }
                 });
                 //Dá reset e close no Modal form
@@ -196,21 +196,20 @@ app.controller('planoCtrl', function ($scope, $http, $routeParams, $rootScope) {
         let token = getCookie("admin");
         let currentPlano;
         let novoEx = $scope.edptex;
-        
+
         getPlanoTreinoByID($http, id, token, (response) => {
             if (response) {
                 currentPlano = response.data;
 
                 //Remover o Exercicio ao currentPlano
-                currentPlano.exerciseBlocks.splice(idExercicio, 1,novoEx);
+                currentPlano.exerciseBlocks.splice(idExercicio, 1, novoEx);
 
                 //Fazer um PUT do currentPlano
                 editarPlanoTreino($http, currentPlano, id, token, (response) => {
                     if (response) {
                         //Atualiza a lista sem dar refresh na pagina
-                        let list = $scope.Exercicios;
-                        list.splice(idExercicio, 1,novoEx);
-                        $scope.Exercicios = list
+                        planos.splice(idExercicio, 1, novoEx);
+                        atualizarPagina();
                     }
                 });
                 //Dá reset e close no Modal form
@@ -226,26 +225,6 @@ app.controller('planoCtrl', function ($scope, $http, $routeParams, $rootScope) {
         });
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     $scope.edPlanoEx = function (x) {
         $scope.idExed = x;
         oldEx = $scope.Exercicios[x];
@@ -256,4 +235,76 @@ app.controller('planoCtrl', function ($scope, $http, $routeParams, $rootScope) {
     $scope.removePlanoEx = function (x) {
         $scope.idExremove = x
     }
+
+    //###########################################Pagination###################################
+
+
+    // Array que vai conter os Exercicios
+    let planos = [];
+
+
+    // Lista de Exercicios divididos em chuncks
+    let planosChuncks = [];
+
+
+    // Quantidade de Exercicios por chunck
+    let elementsPerChunck = 5;
+
+
+    // Página atual da lista de Exercicios
+    let currentPage = 0;
+
+
+    //Função que atualiza as páginas
+    function atualizarPagina() {
+
+        let pagination = paginationSplitInChunks(planos, elementsPerChunck);
+
+        planosChuncks = pagination.arrayChuncks
+
+        //Lista de Paginação com os numeros de Páginas
+        $scope.numberPages = pagination.numberOfPages;
+
+        //Atualiza a vista
+        $scope.Exercicios = planosChuncks[0];
+
+        $(document).ready(function () {
+
+            // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+            paginationOnDocumentReady(planosChuncks);
+
+        });
+    }
+
+
+    //Função que é ativada quando um número da paginação é carregado
+    $scope.setPage = function (page) {
+
+        // currentPage recebe a página selecionada
+        currentPage = page;
+
+        // Atualiza a vista com os Exercicios dessa página
+        $scope.Exercicios = planosChuncks[page];
+
+        // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+        paginationSetPage(planosChuncks, page);
+
+    }
+
+
+    //Função que é ativada quando o botão previous é carregado
+    $scope.previousPage = function () {
+        if (currentPage > 0) {
+            $scope.setPage(currentPage - 1);
+        }
+    }
+
+
+    //Função que é ativada quando o botão next é carregado
+    $scope.nextPage = function () {
+        if (currentPage + 1 < planosChuncks.length) {
+            $scope.setPage(currentPage + 1);
+        }
+    }
+
 });
