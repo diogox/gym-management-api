@@ -1,5 +1,5 @@
-import { getTickets } from "./pedidos.js";
-import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from './myutil.js'
+import { getTickets } from "../js/pedidos.js";
+import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from '../js/myutil.js'
 
 // Controller da página de suporte
 app.controller('suporteCtrl', function ($scope, $http, $rootScope) {

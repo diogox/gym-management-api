@@ -1,5 +1,5 @@
-import { loginUser } from './pedidos.js'
-import { checkLogin, newLogin } from './myutil.js'
+import { loginUser } from '../js/pedidos.js'
+import { checkLogin, newLogin } from '../js/myutil.js'
 
 // Controller do login
 app.controller('loginCtrl', function ($scope, $http, $rootScope) {

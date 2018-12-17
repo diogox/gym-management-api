@@ -1,6 +1,6 @@
-import { getAllClients } from './pedidos.js'
-import { checkLogin } from './myutil.js'
-import { newCalendarChart, newHistogtramChart, newLineChart, newLineClientChart } from './reports.js'
+import { getAllClients } from '../js/pedidos.js'
+import { checkLogin } from '../js/myutil.js'
+import { newCalendarChart, newHistogtramChart, newLineChart, newLineClientChart } from '../js/reports.js'
 
 // Controller do notificacoes
 app.controller('relatoriosCtrl', function ($scope, $http, $rootScope) {
@@ -14,7 +14,7 @@ app.controller('relatoriosCtrl', function ($scope, $http, $rootScope) {
 
     } else {
 
-        // Indicar ao controler da página principal que o menu lateral deve ser oculto
+        // Indicar ao controler da página principal que o menu lateral deve ser mostrado
         $rootScope.$broadcast('show-window', 'true');
 
         // Obtem o id do utilizador que fez login

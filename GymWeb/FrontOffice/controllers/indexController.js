@@ -1,5 +1,5 @@
-import { checkLogin, logout } from './myutil.js'
-import { getAllClients, getPlanosTreinoById, getPlanosTreino, changeClientPlan, getClient, getStaff } from './pedidos.js'
+import { checkLogin, logout } from '../js/myutil.js'
+import { getAllClients, getPlanosTreinoById, getPlanosTreino, changeClientPlan, getClient, getStaff } from '../js/pedidos.js'
 
 // Controller do index
 app.controller('indexCtrl', function ($scope, $http) {

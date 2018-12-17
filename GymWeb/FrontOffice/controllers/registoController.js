@@ -1,5 +1,5 @@
-import { registerClient } from './pedidos.js'
-import { checkLogin } from './myutil.js'
+import { registerClient } from '../js/pedidos.js'
+import { checkLogin } from '../js/myutil.js'
 
 // Controller do registo
 app.controller('registoCtrl', function ($scope, $http, $rootScope) {

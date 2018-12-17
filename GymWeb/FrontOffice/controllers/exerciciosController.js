@@ -1,8 +1,8 @@
-import { getEquipments, getEquipmentById, changeEquipment, createEquipment, deleteEquipment } from './pedidos.js'
-import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from './myutil.js'
+import { getexercises, getEquipmentById, getexerciseById, getEquipments, changeExercise, createExercise, deleteExercise } from '../js/pedidos.js';
+import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from '../js/myutil.js'
 
-// Controller da página de equipamentos
-app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
+// Controller da página de exercicios
+app.controller('exerciciosCtrl', function ($scope, $http, $rootScope) {
 
     let login = checkLogin();
     if (!login) {
@@ -15,29 +15,64 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
         // Indicar ao controler da página principal que o menu lateral deve ser mostrado
         $rootScope.$broadcast('show-window', 'true');
 
-        let listaEquipment = [];
+        let listaExercicios = [];
 
-        // Lista de equipamentos divididas em chuncks
-        let equipamentosChuncks = [];
+        // Lista de exercicios divididas em chuncks
+        let exerciciosChuncks = [];
 
-        // Quantidade de equipamentos por chunck
+        // Quantidade de elementos por chunck
         let elementsPerChunck = 5;
 
-        // Página atual da lista de equipamentos
+        // Página atual da lista de exercicios
         let currentPage = 0;
 
-        // Pede os equipamentos existentes à API
+        // Obtem lista de equipamentos e atualiza a vista para um select em editar e criar novo
         getEquipments($http, (response) => {
+            $scope.equipmentList = response.data;
+        });
+
+        // Pede os exercícios existentes à API
+        getexercises($http, (response) => {
 
             // Se a API respondeu da forma correta
             if (response) {
 
-                listaEquipment = response.data;
+                // Tamanho do array de exercicios
+                let size = response.data.length;
 
-                // Atribui o array de equipamentos para atualizar a vista
-                $scope.equipamentos = response.data;
+
+                // Percorre o array de exercicios
+                for (let i = 0; i < size; i++) {
+
+                    if (response.data[i].equipmentId != null) {
+                        // Pede um exercicio especifico à API
+                        getEquipmentById($http, response.data[i].equipmentId, (response2) => {
+
+                            // Se a API respondeu da forma correta
+                            if (response2) {
+
+                                response.data[i].equipment = response2.data;
+
+                                // Se a API não respondeu da forma correta
+                            } else {
+
+                                response.data[i].equipment = {};
+
+                            }
+                        });
+                    } else {
+                        response.data[i].equipment = {};
+                    }
+                }
+
+                listaExercicios = response.data;
+
+                // Atribui o array de exercicios para atualizar a vista
+                $scope.exercicios = listaExercicios;
+
 
                 atualizarPaginas();
+
 
                 // Se a API não respondeu da forma correta
             } else {
@@ -51,11 +86,11 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
             // currentPage recebe a página selecionada
             currentPage = page;
 
-            // Atualiza a vista com os equipamentos dessa página
-            $scope.equipamentos = equipamentosChuncks[page];
+            // Atualiza a vista com os exercicios dessa página
+            $scope.exercicios = exerciciosChuncks[page];
 
             // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
-            paginationSetPage(equipamentosChuncks, page);
+            paginationSetPage(exerciciosChuncks, page);
 
         }
 
@@ -69,17 +104,28 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
             $scope.setPage(currentPage + 1);
         }
 
-        // Função que executa quando clica em editar equipamento ou eliminar equipamento,
-        // coloca as informações do equipamento numa variavel que é utilizado posteriormente
+        // Função que executa quando clica em editar exercicio ou eliminar exercicio,
+        // coloca as informações do exercicio numa variavel que é utilizado posteriormente
         // para preencher o modal(em caso de edição) ou para conseguir eliminar do array (em caso de
         // de remoção)
         $scope.edit = function (id) {
 
-            // Obtem o equipamento
-            getEquipmentById($http, id, (response) => {
+            // Obtem o exercicio
+            getexerciseById($http, id, (response) => {
+
+                if (response.data.equipmentId != null) {
+                    // Obtem o equipamento associado ao exercicio
+                    getEquipmentById($http, response.data.equipmentId, (response2) => {
+
+                        response.data.equipmentName = response2.data.name;
+
+                    });
+                }
 
                 // Atualiza a vista
-                $scope.editEquipment = response.data;
+                $scope.editExercise = response.data;
+
+
             });
 
             // Tipo de ação a executar quando clicar em submit
@@ -87,24 +133,24 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
 
         }
 
-        // Quando clica no botão de criar novo equipamento
+        // Quando clica no botão de criar novo exercicio
         $scope.create = function () {
 
             // Elimina as informações que existam armazenadas temporariamente 
             // para efeitos de edição ou remoção, caso contrário o modal
             // seria preenchido com essas informações
-            $scope.editEquipment = {};
+            $scope.editExercise = {};
 
             // Tipo de ação a executar quando clicar em submit
             $scope.type = "create";
 
         }
 
-        // Quando clica em submeter um equipamento novo ou editado
-        $scope.submitEquipment = function () {
+        // Quando clica em submeter um exercicio novo ou editado
+        $scope.submitExercise = function () {
 
             bootbox.confirm({
-                message: "Você pretende adicionar/editar este equipamento?",
+                message: "Você pretende adicionar/editar este exercício?",
                 buttons: {
                     cancel: {
                         label: '<i class="fa fa-times"></i> Cancel'
@@ -116,20 +162,36 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
                 callback: function (resultConfirm) {
 
                     // Dados a enviar no body do pedido
-                    let dataSend = $scope.editEquipment;
+                    let dataSend = $scope.editExercise;
 
-                    // Caso seja uma ação de editar um equipamento
+                    if (dataSend.equipmentId === undefined) {
+                        dataSend.equipmentId = null;
+                    }
+
+                    // Caso seja uma ação de editar um exercicio
                     if ($scope.type === "edit") {
 
-                        // Efetua o pedido de alterar um equipamento
-                        changeEquipment($http, $scope.editEquipment.id, $scope.editEquipment, (result) => {
+                        // Efetua o pedido de alterar um exercicio
+                        changeExercise($http, $scope.editExercise.id, $scope.editExercise, (result) => {
                             if (result) {
 
-                                // Procura no array o equipamento para o alterar na vista de forma dinamica
-                                for (let i = 0; i < listaEquipment.length; i++) {
+                                // Procura no array o exercicio para o alterar na vista de forma dinamica
+                                for (let i = 0; i < listaExercicios.length; i++) {
 
-                                    if (listaEquipment[i].id == $scope.editEquipment.id) {
-                                        listaEquipment[i] = $scope.editEquipment;
+                                    if (listaExercicios[i].id == $scope.editExercise.id) {
+
+                                        if ($scope.editExercise.equipmentId != null) {
+                                            // Vai buscar o objeto do equipmento associado a este exercicio
+                                            getEquipmentById($http, $scope.editExercise.equipmentId, (response2) => {
+
+                                                if (response2) {
+                                                    $scope.editExercise.equipment = response2.data;
+                                                }
+
+                                            });
+                                        }
+
+                                        listaExercicios[i] = $scope.editExercise;
 
                                         // Obter qual o chunck que se localiza o exercicio editado
                                         let chunckNumber = Math.floor(i / elementsPerChunck);
@@ -138,13 +200,12 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
                                         let chunckPosition = i % elementsPerChunck;
 
                                         // Alterar o exercicio dentro da lista de chuncks
-                                        equipamentosChuncks[chunckNumber][chunckPosition] = $scope.editEquipment;
-                                    
+                                        exerciciosChuncks[chunckNumber][chunckPosition] = $scope.editExercise;
                                     }
                                 }
 
                                 bootbox.alert({
-                                    message: "Equipamento editado com sucesso!",
+                                    message: "Exercício editado com sucesso!",
                                     backdrop: true,
                                     buttons: {
                                         ok: {
@@ -155,11 +216,11 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
                                 });
 
                                 // Simula um click no botão de fechar o modal
-                                document.getElementById("closeEquipmentModal").click();
+                                document.getElementById("closeExerciseModal").click();
 
                             } else {
                                 bootbox.alert({
-                                    message: "Equipamento editado sem sucesso!",
+                                    message: "Exercicio editado sem sucesso!",
                                     backdrop: true,
                                     buttons: {
                                         ok: {
@@ -171,20 +232,31 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
                             }
                         });
 
-                        // Caso seja uma ação de criar um equipamento
+                        // Caso seja uma ação de criar um exercicio
                     } else {
-                        createEquipment($http, dataSend, (result) => {
+                        createExercise($http, dataSend, (result) => {
 
                             if (result) {
+                                // Coloca o id do exercicio criado no objeto do exercicio
+                                $scope.editExercise.id = result.data.id;
 
-                                $scope.editEquipment.id = result.data.id;
+                                if ($scope.editExercise.equipmentId != null) {
+                                    // Vai buscar o objeto do equipmento associado a este exercicio
+                                    getEquipmentById($http, $scope.editExercise.equipmentId, (response2) => {
 
-                                listaEquipment.push($scope.editEquipment);
+                                        if (response2) {
+                                            $scope.editExercise.equipment = response2.data;
+                                        }
+
+                                    });
+                                }
+
+                                listaExercicios.push($scope.editExercise);
 
                                 atualizarPaginas();
-                                
+
                                 bootbox.alert({
-                                    message: "Equipamento criado com sucesso!",
+                                    message: "Exercício criado com sucesso!",
                                     backdrop: true,
                                     buttons: {
                                         ok: {
@@ -195,10 +267,10 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
                                 });
 
                                 // Simula um click no botão de fechar o modal
-                                document.getElementById("closeEquipmentModal").click();
+                                document.getElementById("closeExerciseModal").click();
                             } else {
                                 bootbox.alert({
-                                    message: "Equipamento criado sem sucesso!",
+                                    message: "Exercicio criado sem sucesso!",
                                     backdrop: true,
                                     buttons: {
                                         ok: {
@@ -214,11 +286,11 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
             });
         }
 
-        // Quando o utilizador clica em eliminar o equipamento
+        // Quando o utilizador clica em eliminar o exercicio
         $scope.delete = function (id) {
 
             bootbox.confirm({
-                message: "Você pretende remover este equipamento? Não pode voltar atrás!",
+                message: "Você pretende remover este exercício? Não pode voltar atrás!",
                 buttons: {
                     cancel: {
                         label: '<i class="fa fa-times"></i> Cancel'
@@ -231,12 +303,12 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
 
                     if (resultConfirm) {
                         // Efetua o pedido de remoção
-                        deleteEquipment($http, id, (result) => {
+                        deleteExercise($http, id, (result) => {
 
                             if (result) {
 
                                 bootbox.alert({
-                                    message: "Equipamento apagado!",
+                                    message: "Exercício apagado!",
                                     backdrop: true,
                                     buttons: {
                                         ok: {
@@ -246,19 +318,20 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
                                     }
                                 });
 
-                                // Procura o equipamento na lista de forma a remover da lista de forma dinamica
-                                for (let i = 0; i < listaEquipment.length; i++) {
+                                // Procura o exercicio na lista de forma a remover da lista de forma dinamica
+                                for (let i = 0; i < listaExercicios.length; i++) {
 
-                                    if (listaEquipment[i].id == $scope.editEquipment.id) {
-                                        listaEquipment.splice(i, 1);
+                                    if (listaExercicios[i].id == $scope.editExercise.id) {
+                                        listaExercicios.splice(i, 1);
 
                                         atualizarPaginas();
+
 
                                     }
                                 }
                             } else {
                                 bootbox.alert({
-                                    message: "Oops... O equipamento não foi apagado!",
+                                    message: "Oops... O exercício não foi apagado!",
                                     backdrop: true,
                                     buttons: {
                                         ok: {
@@ -281,27 +354,28 @@ app.controller('equipamentosCtrl', function ($scope, $http, $rootScope) {
 
             // Divide o array de exercicios em chuncks e retorna um 
             // objeto representativo de cada página(nº de chuncks)
-            let pagination = paginationSplitInChuncks(listaEquipment, elementsPerChunck);
+            let pagination = paginationSplitInChuncks(listaExercicios, elementsPerChunck);
 
             // Define o array de chuncks
-            equipamentosChuncks = pagination.arrayChuncks;
+            exerciciosChuncks = pagination.arrayChuncks;
 
             // Lista com tantos elementos quanto o numero de chuncks
             $scope.numberPages = pagination.numberOfPages;
 
             // Atualiza a vista
-            $scope.equipamentos = equipamentosChuncks[0];
+            $scope.exercicios = exerciciosChuncks[0];
 
             // Quando a página estiver pronta, coloca a pagina 0 como selecionada
             // e coloca a pagina anterior como disabled
             $(document).ready(function () {
 
                 // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
-                paginationOnDocumentReady(equipamentosChuncks);
+                paginationOnDocumentReady(exerciciosChuncks);
 
             });
 
         }
 
     }
+
 });

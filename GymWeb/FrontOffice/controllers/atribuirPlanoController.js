@@ -1,5 +1,5 @@
-import { getAllClients, getPlanosTreinoById, getPlanosTreino, changeClientPlan } from './pedidos.js'
-import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from './myutil.js'
+import { getAllClients, getPlanosTreinoById, getPlanosTreino, changeClientPlan } from '../js/pedidos.js'
+import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from '../js/myutil.js'
 
 // Controller da página de atribuir planos
 app.controller('atribuirPlanoCtrl', function ($scope, $http, $rootScope) {

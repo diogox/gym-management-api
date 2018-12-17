@@ -1,5 +1,5 @@
-import { getTicketById, addAnswerToTicket, getClient, openTicket, closeTicket } from "./pedidos.js";
-import { checkLogin } from './myutil.js'
+import { getTicketById, addAnswerToTicket, getClient, openTicket, closeTicket } from "../js/pedidos.js";
+import { checkLogin } from '../js/myutil.js'
 
 // Controller página de um ticket especifico
 app.controller('ticketCtrl', function ($scope, $http, $routeParams, $rootScope) {

@@ -30,35 +30,40 @@
                         <ul>
                             <li ng-repeat="x in plan.exerciseBlocks" style="list-style:none">
 
-                                <div class="form-group custom-control-inline" style="width:150px">
+                                <div class="form-group custom-control-inline" style="width:140px">
                                     <select name="exercise" class="custom-select" ng-model="x.exerciseId" required>
                                         <option value="" disabled selected>Exercicio</option>
                                         <option ng-repeat="y in exercisesList" value="{{y.exerciseId}}">{{y.exerciseName}}</option>
                                     </select>
                                 </div>
 
-                                <div class="form-group custom-control-inline" style="width:150px">
+                                <div class="form-group custom-control-inline" style="width:140px">
                                     <select name="day" class="custom-select" ng-model="x.dayOfTheWeek" required>
                                         <option value="" disabled selected>Dia</option>
-                                        <option value="Monday">Monday</option>
-                                        <option value="Tuesday">Tuesday</option>
-                                        <option value="Wednesday">Wednesday</option>
-                                        <option value="Thursday">Thursday</option>
-                                        <option value="Friday">Friday</option>
-                                        <option value="Saturday">Saturday</option>
-                                        <option value="Sunday">Sunday</option>
+                                        <option value="Monday">Segunda-Feira</option>
+                                        <option value="Tuesday">Terça-Feira</option>
+                                        <option value="Wednesday">Quarta-Feira</option>
+                                        <option value="Thursday">Quinta-Feira</option>
+                                        <option value="Friday">Sexta-Feira</option>
+                                        <option value="Saturday">Sábado</option>
+                                        <option value="Sunday">Domingo</option>
                                     </select>
                                 </div>
 
-                                <div class="form-group custom-control-inline" style="width:150px">
+                                <div class="form-group custom-control-inline" style="width:140px">
                                     <input type="number" min="0" class="form-control" id="numberOfRepetitions" name="numberOfRepetitions" placeholder="Repetitions"
                                         ng-model="x.numberOfRepetitions" required/>
                                 </div>
 
-                                <div class="form-group custom-control-inline" style="width:150px">
+                                <div class="form-group custom-control-inline" style="width:140px">
                                     <input type="number" min="0" class="form-control" id="numberOfSeries" name="numberOfSeries" placeholder="Series" ng-model="x.numberOfSeries"
                                         required/>
                                 </div>
+
+                                <div class="form-group custom-control-inline">
+                                    <button ng-click="removeExercise($index)" type="button" class="btn btn-danger">X</button>
+                                </div>
+
                             </li>
                         </ul>
 

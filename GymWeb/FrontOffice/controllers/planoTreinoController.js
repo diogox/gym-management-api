@@ -1,5 +1,5 @@
-import { getClient, getPlanExercisesById, getexerciseById } from "./pedidos.js";
-import { checkLogin } from './myutil.js'
+import { getClient, getPlanExercisesById, getexerciseById } from "../js/pedidos.js";
+import { checkLogin } from '../js/myutil.js'
 
 // Controller da página de plano de treino
 app.controller('planoTreinoCtrl', function ($scope, $http, $rootScope) {

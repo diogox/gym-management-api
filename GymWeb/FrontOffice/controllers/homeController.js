@@ -1,5 +1,5 @@
-import { getClient, checkin } from './pedidos.js';
-import { checkLogin } from './myutil.js'
+import { getClient, checkin } from '../js/pedidos.js';
+import { checkLogin } from '../js/myutil.js'
 
 // Controller da  página home
 app.controller('homeCtrl', function ($scope, $http, $rootScope) {
