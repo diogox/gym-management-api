@@ -1,5 +1,6 @@
 import { getExercises, getEquipmentByID, addExercises, getEquipment, removeExercise, editarExercise } from './pedidos.js'
-import { setCookie, getCookie } from './cookies.js'
+import { getCookie } from './cookies.js'
+import { paginationSplitInChunks, paginationOnDocumentReady, paginationSetPage } from './pagination.js'
 
 
 
@@ -93,7 +94,9 @@ app.controller("exercisesCtrl", function ($scope, $http, $rootScope) {
                 }
             }
 
-            $scope.exercicios = response.data;
+            ex = response.data;
+
+            atualizarPagina();
 
         } else {
             $scope.alerts[4].show = true;
@@ -131,9 +134,8 @@ app.controller("exercisesCtrl", function ($scope, $http, $rootScope) {
                 let resposta = response.data;
 
                 //Atualiza a lista sem dar refresh na pagina
-                let list = $scope.exercicios;
-                list.push(resposta);
-                $scope.exercicios = list
+                ex.push(resposta);
+                atualizarPagina();
 
                 //Dá reset e close no Modal form
                 $('#addEx form :input').val("");
@@ -159,9 +161,11 @@ app.controller("exercisesCtrl", function ($scope, $http, $rootScope) {
             if (response) {
 
                 //console.log("Removido com Sucesso!");
-                $scope.exercicios = $.grep($scope.exercicios, function (e) {
+                ex = $.grep(ex, function (e) {
                     return e.id != id;
                 });
+
+                atualizarPagina();
 
                 //Dá close no Modal from
                 $('#removerEx').modal('toggle');
@@ -201,6 +205,24 @@ app.controller("exercisesCtrl", function ($scope, $http, $rootScope) {
 
                 $scope.edex = null;
 
+                // Procura no array o Exercicio para o alterar na vista de forma dinamica
+                for (let i = 0; i < ex.length; i++) {
+
+                    if (ex[i].id == newEx.id) {
+                        ex[i] = newEx;
+
+                        // Obter qual o chunck que se localiza o Exercicio editado
+                        let chunckNumber = Math.floor(i / elementsPerChunck);
+
+                        // Dentro do chunck obter a posição onde se localiza o Exercicio editado
+                        let chunckPosition = i % elementsPerChunck;
+
+                        // Alterar o Exercicio dentro da lista de chuncks
+                        exChuncks[chunckNumber][chunckPosition] = newEx;
+
+                    }
+                }
+
                 //Dá reset e close no Modal form
                 $('#editarEx form :input').val("");
                 $('#editarEx').modal('toggle');
@@ -221,10 +243,11 @@ app.controller("exercisesCtrl", function ($scope, $http, $rootScope) {
         $scope.idExedit = id;
         oldEx = $scope.exercicios.find(x => x.id === $scope.idExedit);
         $scope.edex = oldEx;
+        $scope.edex.equipmentId = "";
         let token = getCookie("admin");
         getEquipment($http, token, (response) => {
             if (response) {
-                $scope.exEq = response.data;
+                $scope.edexEq = response.data;
             } else {
                 $scope.alerts[5].show = true;
             }
@@ -238,6 +261,75 @@ app.controller("exercisesCtrl", function ($scope, $http, $rootScope) {
         //console.log($scope.idExremove);
     }
 
+    //###########################################Pagination###################################
 
+
+    // Array que vai conter os Exercicios
+    let ex = [];
+
+
+    // Lista de Exercicios divididos em chuncks
+    let exChuncks = [];
+
+
+    // Quantidade de Exercicios por chunck
+    let elementsPerChunck = 5;
+
+
+    // Página atual da lista de Exercicios
+    let currentPage = 0;
+
+
+    //Função que atualiza as páginas
+    function atualizarPagina() {
+
+        let pagination = paginationSplitInChunks(ex, elementsPerChunck);
+
+        exChuncks = pagination.arrayChuncks
+
+        //Lista de Paginação com os numeros de Páginas
+        $scope.numberPages = pagination.numberOfPages;
+
+        //Atualiza a vista
+        $scope.exercicios = exChuncks[0];
+
+        $(document).ready(function () {
+
+            // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+            paginationOnDocumentReady(exChuncks);
+
+        });
+    }
+
+
+    //Função que é ativada quando um número da paginação é carregado
+    $scope.setPage = function (page) {
+
+        // currentPage recebe a página selecionada
+        currentPage = page;
+
+        // Atualiza a vista com os exercicios dessa página
+        $scope.exercicios = exChuncks[page];
+
+        // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+        paginationSetPage(exChuncks, page);
+
+    }
+
+
+    //Função que é ativada quando o botão previous é carregado
+    $scope.previousPage = function () {
+        if (currentPage > 0) {
+            $scope.setPage(currentPage - 1);
+        }
+    }
+
+
+    //Função que é ativada quando o botão next é carregado
+    $scope.nextPage = function () {
+        if (currentPage + 1 < exChuncks.length) {
+            $scope.setPage(currentPage + 1);
+        }
+    }
 
 });
