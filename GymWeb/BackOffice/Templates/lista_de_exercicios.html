@@ -38,12 +38,26 @@
                         data-target="#removerEx" ng-click="removeEx(ex.id)">
                     </button>
                     <button type="button" class="edt btn btn-success glyphicon glyphicon-pencil" data-toggle="modal"
-                        data-target="#editarEx" ng-click="edEx(ex.id)">
+                        data-target="#editarEx" ng-click="loadEq(); edEx(ex.id)">
                     </button>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <!--Pagination-->
+    <ul id="paginationHide" class="pagination justify-content-center">
+        <li id="pageback" class="page-item">
+            <a class="page-link disabled" href="" ng-click="previousPage()">Previous</a>
+        </li>
+        <li id="page{{x.index}}" class="page-item" ng-repeat="x in numberPages">
+            <a class="page-link" href="" ng-click="setPage(x.index)">{{x.index}}</a>
+        </li>
+        <li id="pagenext" class="page-item">
+            <a class="page-link" href="" ng-click="nextPage()">Next</a>
+        </li>
+    </ul>
+
 
     <!--Modal Remover Equipamento-->
     <modal class="modal fade" id="removerEx" role="dialog">
@@ -108,7 +122,7 @@
                         <!--Nome do Equipamento (Select com o nome dos equipamentos existentes)-->
                         <div class="form-group">
                             <label for="equipamento">Equipamento:</label>
-                            <select class="form-control" ng-model="ex.equipmentId" required>
+                            <select class="form-control" ng-model="ex.equipmentId">
                                 <option value="" selected>None</option>
                                 <option ng-repeat="x in exEq" value="{{x.id}}">{{x.name}}</option>
                             </select>
@@ -119,7 +133,8 @@
                         <div class="form-group">
                             <label for="description">Descrição(150 letras):</label>
                             <textarea class="form-control" type="text" onfocus="this.value=''" ng-model="ex.description"
-                                name="description" ng-minlength="1" ng-maxlength="150" id="description" required></textarea>
+                                name="description" ng-minlength="1" ng-maxlength="150" id="description" required>
+                            </textarea>
                             <div role="alert">
                                 <span class="error" ng-show="myForm.description.$error.text">
                                     Atingiu o número máximo de letras!</span>

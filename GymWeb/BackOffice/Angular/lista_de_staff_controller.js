@@ -307,7 +307,7 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
         // currentPage recebe a página selecionada
         currentPage = page;
 
-        // Atualiza a vista com os clientes dessa página
+        // Atualiza a vista com os Funcionários dessa página
         $scope.funcionarios = funcChuncks[page];
 
         // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)

@@ -1,5 +1,6 @@
 import { getEquipment, removeEquipment, adicionarEquipment, editarEquipment } from './pedidos.js'
-import { setCookie, getCookie } from './cookies.js'
+import { getCookie } from './cookies.js'
+import { paginationSplitInChunks, paginationOnDocumentReady, paginationSetPage } from './pagination.js'
 
 //Lista de Equipamentos
 app.controller("EqCtrl", function ($scope, $http, $rootScope) {
@@ -54,7 +55,8 @@ app.controller("EqCtrl", function ($scope, $http, $rootScope) {
         if (response) {
             //console.log(response.data);
 
-            $scope.equipamentos = response.data;
+            eq = response.data;
+            atualizarPagina();
 
         } else {
             $scope.alerts[4].show = true;
@@ -73,9 +75,8 @@ app.controller("EqCtrl", function ($scope, $http, $rootScope) {
                 let resposta = response.data;
 
                 //Atualiza a lista sem dar refresh na pagina
-                let list = $scope.equipamentos;
-                list.push(resposta);
-                $scope.equipamentos = list
+                eq.push(resposta);
+                atualizarPagina();
 
                 //Dá reset e close no Modal form
                 $('#addEq form :input').val("");
@@ -116,6 +117,25 @@ app.controller("EqCtrl", function ($scope, $http, $rootScope) {
         editarEquipment($http, newEq, $scope.idEqedit, token, (response) => {
             if (response) {
                 $scope.edeq = null;
+
+                // Procura no array o Equipamento para o alterar na vista de forma dinamica
+                for (let i = 0; i < eq.length; i++) {
+
+                    if (eq[i].id == newEq.id) {
+                        eq[i] = newEq;
+
+                        // Obter qual o chunck que se localiza o Equipamento editado
+                        let chunckNumber = Math.floor(i / elementsPerChunck);
+
+                        // Dentro do chunck obter a posição onde se localiza o Equipamento editado
+                        let chunckPosition = i % elementsPerChunck;
+
+                        // Alterar o Equipamento dentro da lista de chuncks
+                        eqChuncks[chunckNumber][chunckPosition] = newEq;
+
+                    }
+                }
+
                 //Dá reset e close no Modal form
                 $('#editarEq form :input').val("");
                 $('#editarEq').modal('toggle');
@@ -139,10 +159,13 @@ app.controller("EqCtrl", function ($scope, $http, $rootScope) {
         let token = getCookie('admin');
         removeEquipment($http, id, token, (response) => {
             if (response) {
-                $scope.equipamentos = $.grep($scope.equipamentos, function (e) {
+
+                //console.log("Removido com Sucesso!");
+                eq = $.grep(eq, function (e) {
                     return e.id != id;
                 });
 
+                atualizarPagina();
                 //Dá close no Modal from
                 $('#removerEq').modal('toggle');
             } else {
@@ -165,5 +188,75 @@ app.controller("EqCtrl", function ($scope, $http, $rootScope) {
         $scope.idEqremove = id;
     }
 
+    //###########################################Pagination###################################
+
+
+    // Array que vai conter os Equipamentos
+    let eq = [];
+
+
+    // Lista de Equipamentos divididos em chuncks
+    let eqChuncks = [];
+
+
+    // Quantidade de Equipamentos por chunck
+    let elementsPerChunck = 5;
+
+
+    // Página atual da lista de Equipamentos
+    let currentPage = 0;
+
+
+    //Função que atualiza as páginas
+    function atualizarPagina() {
+
+        let pagination = paginationSplitInChunks(eq, elementsPerChunck);
+
+        eqChuncks = pagination.arrayChuncks
+
+        //Lista de Paginação com os numeros de Páginas
+        $scope.numberPages = pagination.numberOfPages;
+
+        //Atualiza a vista
+        $scope.equipamentos = eqChuncks[0];
+
+        $(document).ready(function () {
+
+            // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+            paginationOnDocumentReady(eqChuncks);
+
+        });
+    }
+
+
+    //Função que é ativada quando um número da paginação é carregado
+    $scope.setPage = function (page) {
+
+        // currentPage recebe a página selecionada
+        currentPage = page;
+
+        // Atualiza a vista com os Equipamentos dessa página
+        $scope.equipamentos = eqChuncks[page];
+
+        // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+        paginationSetPage(eqChuncks, page);
+
+    }
+
+
+    //Função que é ativada quando o botão previous é carregado
+    $scope.previousPage = function () {
+        if (currentPage > 0) {
+            $scope.setPage(currentPage - 1);
+        }
+    }
+
+
+    //Função que é ativada quando o botão next é carregado
+    $scope.nextPage = function () {
+        if (currentPage + 1 < eqChuncks.length) {
+            $scope.setPage(currentPage + 1);
+        }
+    }
 
 });
