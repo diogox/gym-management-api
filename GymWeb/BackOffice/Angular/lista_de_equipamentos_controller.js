@@ -235,7 +235,7 @@ app.controller("EqCtrl", function ($scope, $http, $rootScope) {
         // currentPage recebe a página selecionada
         currentPage = page;
 
-        // Atualiza a vista com os clientes dessa página
+        // Atualiza a vista com os Equipamentos dessa página
         $scope.equipamentos = eqChuncks[page];
 
         // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
