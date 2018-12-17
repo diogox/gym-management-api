@@ -1,5 +1,5 @@
-import { getClientNotifications, readNotification } from './pedidos.js'
-import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from './myutil.js'
+import { getClientNotifications, readNotification } from '../js/pedidos.js'
+import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from '../js/myutil.js'
 
 // Controller do notificacoes
 app.controller('notificacoesCtrl', function ($scope, $http, $rootScope) {

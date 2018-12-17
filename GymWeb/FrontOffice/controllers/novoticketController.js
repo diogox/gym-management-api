@@ -1,5 +1,5 @@
-import { createTicket, addAnswerToTicket } from './pedidos.js'
-import { checkLogin } from './myutil.js'
+import { createTicket, addAnswerToTicket } from '../js/pedidos.js'
+import { checkLogin } from '../js/myutil.js'
 
 // Controller da página de um novo ticket
 app.controller('novoTicketCtrl', function ($scope, $http, $window, $rootScope) {
@@ -90,6 +90,12 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window, $rootScope) {
                                     }
                                 });
 
+                                 // Se ticket for enviado com sucesso, 
+                                // é redireionado para o ticket criado em 2 segundos
+                                setTimeout(function () {
+                                    window.location.href = "#!ticket/" + supportTicketId;
+                                }, 2000);
+
                                 // Se a API não respondeu da forma correta
                             } else {
 
@@ -110,11 +116,7 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window, $rootScope) {
 
 
 
-                        // Se ticket for enviado com sucesso, 
-                        // é redireionado para a página de tickets em 2 segundos
-                        setTimeout(function () {
-                            window.location.href = "#!suporte";
-                        }, 2000);
+                       
 
                         // Se a API não respondeu da forma correta
                     } else {

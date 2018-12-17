@@ -1,5 +1,5 @@
-import { getPlanosTreino, getexerciseById, getexercises, createPlan, getPlanosTreinoById, changePlan, deletePlan } from './pedidos.js'
-import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from './myutil.js'
+import { getPlanosTreino, getexerciseById, getexercises, createPlan, getPlanosTreinoById, changePlan, deletePlan } from '../js/pedidos.js'
+import { checkLogin, paginationSplitInChuncks, paginationOnDocumentReady, paginationSetPage } from '../js/myutil.js'
 
 // Controller da  página planos de treino
 app.controller('planosCtrl', function ($scope, $http, $rootScope) {

@@ -4,54 +4,54 @@ var app = angular.module('myApp', ["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "template/home.htm"
+        templateUrl : "views/home.htm"
     })
     .when("/registo", {
-        templateUrl : "template/registo.htm"
+        templateUrl : "views/registo.htm"
     })
     .when("/login", {
-        templateUrl : "template/login.htm"
+        templateUrl : "views/login.htm"
     })
     .when("/planos", {
-        templateUrl : "template/planos.htm"
+        templateUrl : "views/planos.htm"
     })
     .when("/atribuirPlano", {
-        templateUrl : "template/atribuirPlano.htm"
+        templateUrl : "views/atribuirPlano.htm"
     })
     .when("/exercicios", {
-        templateUrl : "template/exercicios.htm"
+        templateUrl : "views/exercicios.htm"
     })
     .when("/equipamentos", {
-        templateUrl : "template/equipamentos.htm"
+        templateUrl : "views/equipamentos.htm"
     })
     .when("/suporte", {
-        templateUrl : "template/suporte.htm"
+        templateUrl : "views/suporte.htm"
     })
     .when("/ticket/:id", {
-        templateUrl : "template/ticket.htm"
+        templateUrl : "views/ticket.htm"
     })
     .when('/novoticket', {
-        templateUrl : "template/novoTicket.htm"
+        templateUrl : "views/novoTicket.htm"
     })
     .when("/planotreino", {
-        templateUrl : "template/planoTreino.htm"
+        templateUrl : "views/planoTreino.htm"
     })
     .when('/relatorios', {
-        templateUrl : "template/relatorios.htm"
+        templateUrl : "views/relatorios.htm"
     })
     .when('/notificacoes', {
-        templateUrl : "template/notificacoes.htm"
+        templateUrl : "views/notificacoes.htm"
     })
     .when('/501', {
-        templateUrl : "template/501.htm"
+        templateUrl : "views/501.htm"
     })
     .when('/404',{
-        templateUrl : "template/404.htm"
+        templateUrl : "views/404.htm"
     })
     .when('/403', {
-        templateUrl : "template/403.htm"
+        templateUrl : "views/403.htm"
     })
     .otherwise({
-        templateUrl : "template/404.htm"
+        templateUrl : "views/404.htm"
     })
 });
