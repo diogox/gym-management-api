@@ -33,7 +33,6 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
         // Página atual da lista de equipamentos
         let currentPage = 0;
 
-
         // CRIAR PLANO
 
         $scope.create = function () {
@@ -45,6 +44,12 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
 
         // Lista de exercicios existentes
         let exercises = [];
+
+        $scope.removeExercise = function (index) {
+            console.log($scope.plan.exerciseBlocks)
+            $scope.plan.exerciseBlocks.splice(index, 1);
+            console.log($scope.plan.exerciseBlocks)
+        }
 
         // Obter lista de todos os exercicios
         getexercises($http, (response) => {
@@ -131,7 +136,10 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
 
                                     // Se adicionou exercicios ao plano de treino
                                     if ($scope.plan.exerciseBlocks) {
+
+
                                         for (let i = 0; i < $scope.plan.exerciseBlocks.length; i++) {
+
                                             getexerciseById($http, $scope.plan.exerciseBlocks[i].exerciseId, (response2) => {
                                                 if (response2) {
                                                     $scope.plan.exerciseBlocks[i].exercise = response2.data;
@@ -139,11 +147,10 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
 
                                                 }
 
-                                                // Coloca os dados do modal vazios
-                                                $scope.plan = {};
-
                                             });
+
                                         }
+
                                     } else {
 
                                     }
@@ -295,9 +302,6 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
 
         }
 
-
-
-
         // EDITAR PLANOS
 
         $scope.edit = function (id) {
@@ -305,7 +309,7 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
             getPlanosTreinoById($http, id, (response) => {
 
                 // Se o exercicio tiver planos vai buscalos
-                if (response.data.exerciseBlocks > 0 ) {
+                if (response.data.exerciseBlocks.length > 0) {
                     for (let i = 0; i < response.data.exerciseBlocks.length; i++) {
 
                         getexerciseById($http, response.data.exerciseBlocks[i].exerciseId, (response2) => {
@@ -314,9 +318,10 @@ app.controller('planosCtrl', function ($scope, $http, $rootScope) {
                         });
 
                     }
-                } else {
-                    $scope.plan = response.data;
+
                 }
+
+                $scope.plan = response.data;
 
             });
 

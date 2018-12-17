@@ -14,7 +14,7 @@ app.controller('relatoriosCtrl', function ($scope, $http, $rootScope) {
 
     } else {
 
-        // Indicar ao controler da página principal que o menu lateral deve ser oculto
+        // Indicar ao controler da página principal que o menu lateral deve ser mostrado
         $rootScope.$broadcast('show-window', 'true');
 
         // Obtem o id do utilizador que fez login
