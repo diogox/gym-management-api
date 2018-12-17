@@ -13,6 +13,7 @@ import com.example.ricardo.gymmobile.Entities.ClientNotification;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
 import com.example.ricardo.gymmobile.R;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder> {
@@ -35,14 +36,14 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
      */
     private OnItemClickListener onItemClickListener;
 
-    public static NotificationAdapter notificationAdapter;
+    public static NotificationAdapter na;
 
 
     public NotificationAdapter(Context context, List<ClientNotification> clientNotificationList, Activity activity) {
         this.context                = context;
         this.clientNotificationList = clientNotificationList;
         this.activity               = activity;
-        notificationAdapter         = this;
+        na                          = this;
     }
 
 
@@ -59,7 +60,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         /**
          * Mensagem da notificação
          */
-        public TextView notificationMessage;
+        public TextView notificationTitle;
 
 
         public NotificationViewHolder(View itemView) {
@@ -67,7 +68,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
             notificationDate     = itemView.findViewById(R.id.date_notification);
             notificationIsUnread = itemView.findViewById(R.id.image_isUnread);
-            notificationMessage  = itemView.findViewById(R.id.message_notification);
+            notificationTitle    = itemView.findViewById(R.id.title_notification);
 
             // Permite clicar num item da lista
             itemView.setOnClickListener(this);
@@ -111,7 +112,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
             // Dados da notificação
             TextView dateNotification = notificationViewHolder.notificationDate;
-            dateNotification.setText(clientNotification.getTimestamp().toString());
+            dateNotification.setText(
+                    new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(
+                            clientNotification.getTimestamp()
+                    )
+            );
 
             ImageView imageIsUnread = notificationViewHolder.notificationIsUnread;
             if (clientNotification.isUnread())
@@ -119,11 +124,21 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             else
                 imageIsUnread.setImageResource(R.drawable.read_message_icon);
 
-            TextView messageNotification = notificationViewHolder.notificationMessage;
-            messageNotification.setText(clientNotification.getMessage());
+            TextView messageNotification = notificationViewHolder.notificationTitle;
+            messageNotification.setText(clientNotification.getTitle());
 
         }
 
+    }
+
+    /**
+     * Alterar uma notificação da lista
+     *
+     * @param position posição da lista
+     * @param notification nova notificação
+     */
+    public void setNotificationList(int position, ClientNotification notification) {
+        clientNotificationList.set(position, notification);
     }
 
     @Override

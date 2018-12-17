@@ -24,14 +24,33 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Fragmento de login.
+ *
+ * Permite ao cliente autenticar-se na aplicação
+ */
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
+    /**
+     * Contexto
+     */
     private Context context;
-
+    /**
+     * Credenciais de login
+     */
     private TextView loginUsername;
     private TextView loginPassword;
+    /**
+     * Mensagem de erro em caso de as credenciais estarem erradas
+     */
     private TextView loginError;
+    /**
+     * Botão de login
+     */
     private Button loginButton;
+    /**
+     * Barra de progresso
+     */
     private ProgressBar progressBar;
 
     @Override
@@ -56,8 +75,29 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         return mContentView;
     }
 
+    @Override
+    public void onClick(View v) {
+
+        if (v.getId() == R.id.auth_login_button) {
+
+            String username = loginUsername.getText().toString();
+            String password = loginPassword.getText().toString();
+
+            loginUser(username, password);
+
+        }
+
+    }
+
+    /**
+     * Permite efetuar o login, enviando as credenciais de login para a API
+     *
+     * @param username username do cliente
+     * @param password password do cliente
+     */
     private void loginUser(String username, String password) {
 
+        /** <Se a mensagem de erro estiver visivel> */
         if (loginError.getVisibility() == View.VISIBLE)
             loginError.setVisibility(View.INVISIBLE);
 
@@ -75,6 +115,19 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             return;
         }
 
+        /** <Se a password não for válida> */
+        if (!password.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}")) {
+            loginPassword.setError("Password inválida. Deve conter pelo menos 8 caractéres, " +
+                    "um número e uma letra maiúscula.");
+            loginPassword.requestFocus();
+            return;
+        }
+
+        /**
+         * No momento de conecção com a API para efetuar o login a
+         * barra de progresso fica visível e o botão de login
+         * fica desailitado
+         */
         progressBar.setVisibility(View.VISIBLE);
         loginButton.setEnabled(false);
 
@@ -85,7 +138,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
             Call<LoginResponse> call = APIServices.authService().userLogin(credentials);
             call.enqueue(new Callback<LoginResponse>() {
-
                 @Override
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
@@ -93,11 +145,20 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
                         LoginResponse loginResponse = response.body();
 
-                        System.out.println("--------- USER: " + loginResponse.toString());
+                        if (!loginResponse.getUserType().equals("Client")) {
 
-                        Intent intent = new Intent(context, MainActivity.class);
-                        intent.putExtra("CURRENT_USER", new Gson().toJson(loginResponse));
-                        startActivity(intent);
+                            Toast.makeText(context, "Falha. Você não está registado como cliente", Toast.LENGTH_SHORT).show();
+
+                        } else {
+
+                            System.out.println("--------- USER: " + loginResponse.toString());
+
+                            // Iniciar a atividade principal
+                            Intent intent = new Intent(context, MainActivity.class);
+                            intent.putExtra("CURRENT_USER", new Gson().toJson(loginResponse));
+                            startActivity(intent);
+
+                        }
 
                     } else {
 
@@ -127,20 +188,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             Toast.makeText(context, "No internet connection.", Toast.LENGTH_SHORT).show();
             loginButton.setEnabled(true);
             progressBar.setVisibility(View.INVISIBLE);
-
-        }
-
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        if (v.getId() == R.id.auth_login_button) {
-
-            String username = loginUsername.getText().toString();
-            String password = loginPassword.getText().toString();
-
-            loginUser(username, password);
 
         }
 

@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.ricardo.gymmobile.Entities.Equipment;
-import com.example.ricardo.gymmobile.Fragments.LoadImages;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
 import com.example.ricardo.gymmobile.R;
 
@@ -116,7 +116,7 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.Equi
             String urlImage = equipment.getImageUrl();
 
             // Carregar as imagens
-            LoadImages loadImages = new LoadImages(activity, urlImage, imageView);
+            Glide.with(activity).load(urlImage).into(imageView);
 
         }
 

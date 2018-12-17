@@ -32,6 +32,7 @@ public class ClientNotification {
      */
     private long clientId;
 
+
     public ClientNotification(long id, String title, String message, Date timestamp, boolean isUnread, long clientId) {
         this.id        = id;
         this.title     = title;
@@ -40,6 +41,7 @@ public class ClientNotification {
         this.isUnread  = isUnread;
         this.clientId  = clientId;
     }
+
 
     public long getId() {
         return id;
@@ -59,6 +61,10 @@ public class ClientNotification {
 
     public boolean isUnread() {
         return isUnread;
+    }
+
+    public void setUnread(boolean unread) {
+        isUnread = unread;
     }
 
     public long getClientId() {
