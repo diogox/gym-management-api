@@ -1,4 +1,4 @@
-package com.example.ricardo.gymmobile.Fragments.Support;
+package com.example.ricardo.gymmobile.Fragments.Support.Tickets;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +14,7 @@ import com.example.ricardo.gymmobile.Entities.SupportTicket;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
 import com.example.ricardo.gymmobile.R;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class SupportAdapter extends RecyclerView.Adapter<SupportAdapter.SupportViewHolder> {
@@ -96,7 +97,9 @@ public class SupportAdapter extends RecyclerView.Adapter<SupportAdapter.SupportV
         LayoutInflater layoutInflater = LayoutInflater.from(context);
 
         // Inflate layout
-        View supportTicketView = layoutInflater.inflate(R.layout.item_recycler_view_support_ticket, viewGroup, false);
+        View supportTicketView = layoutInflater.inflate(
+                R.layout.item_recycler_view_support_ticket, viewGroup, false
+        );
 
         // Return a new holder instance
         return new SupportViewHolder(supportTicketView);
@@ -112,7 +115,11 @@ public class SupportAdapter extends RecyclerView.Adapter<SupportAdapter.SupportV
 
             // Dados do ticket de suporte
             TextView dateSupport = supportViewHolder.supportTicketDate;
-            dateSupport.setText(supportTicket.getOpenedAt().toString());
+            dateSupport.setText(
+                    new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(
+                            supportTicket.getOpenedAt()
+                    )
+            );
 
             TextView stateSupport = supportViewHolder.supportTicketState;
             if (supportTicket.getState() == TicketState.Open) {
@@ -131,6 +138,15 @@ public class SupportAdapter extends RecyclerView.Adapter<SupportAdapter.SupportV
 
         }
 
+    }
+
+    /**
+     * Adicionar um novo ticket na lista
+     *
+     * @param supportTicket novo ticket
+     */
+    public void addNewTicket(SupportTicket supportTicket) {
+        supportTicketList.add(supportTicket);
     }
 
     @Override

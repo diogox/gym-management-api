@@ -47,60 +47,38 @@ public class SupportTicketMessage {
         this.from            = from;
     }
 
+    public SupportTicketMessage(String message, long supportTicketId, SupportTicketMessageSender from) {
+        this.message = message;
+        this.supportTicketId = supportTicketId;
+        this.from = from;
+    }
+
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public Date getAt() {
         return at;
-    }
-
-    public void setAt(Date at) {
-        this.at = at;
     }
 
     public long getFromClientId() {
         return fromClientId;
     }
 
-    public void setFromClientId(long fromClientId) {
-        this.fromClientId = fromClientId;
-    }
-
     public long getFromStaffId() {
         return fromStaffId;
-    }
-
-    public void setFromStaffId(long fromStaffId) {
-        this.fromStaffId = fromStaffId;
     }
 
     public long getSupportTicketId() {
         return supportTicketId;
     }
 
-    public void setSupportTicketId(long supportTicketId) {
-        this.supportTicketId = supportTicketId;
-    }
-
     public SupportTicketMessageSender getFrom() {
         return from;
-    }
-
-    public void setFrom(SupportTicketMessageSender from) {
-        this.from = from;
     }
 }

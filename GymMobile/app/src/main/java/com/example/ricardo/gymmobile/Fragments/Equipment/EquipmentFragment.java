@@ -1,6 +1,7 @@
 package com.example.ricardo.gymmobile.Fragments.Equipment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -11,18 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.ricardo.gymmobile.Data.GymStore;
 import com.example.ricardo.gymmobile.Entities.Equipment;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
-import com.example.ricardo.gymmobile.Activities.MainActivity;
 import com.example.ricardo.gymmobile.R;
-import com.example.ricardo.gymmobile.Retrofit.APIServices;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Classe que representa um fragmento onde irá ser apresentado uma lista
@@ -84,58 +81,29 @@ public class EquipmentFragment extends Fragment implements OnItemClickListener {
     }
 
     /**
-     * Obter os exercicios da API e coloca-los na recycler view de equipamentos
+     * Obter a lista de equipamentos a adicionar à recycler view
      */
     private void getEquipments() {
 
-        // Token do cliente
-        final String token = MainActivity.loginDataResponse.getToken();
+        // Lista de equipamentos
+        List<Equipment> list = GymStore.equipmentList;
 
-        Call<List<Equipment>> call = APIServices.equipmentService().getEquipments("Bearer " + token);
-        call.enqueue(new Callback<List<Equipment>>() {
-            @Override
-            public void onResponse(Call<List<Equipment>> call, Response<List<Equipment>> response) {
+        if (list.isEmpty()) { // Se a lista estiver vazia
 
-                if (response.isSuccessful()) { // Resposta com sucesso
+            Toast.makeText(context, "Não existem equipamentos", Toast.LENGTH_SHORT).show();
 
-                    // Lista de equipamentos
-                    List<Equipment> list = response.body();
+        } else {
 
-                    if (list.isEmpty()) { // Se a lista não contiver exercicios
-
-                        Toast.makeText(context, "List is empty!!!", Toast.LENGTH_SHORT).show();
-
-                    } else {
-
-                        /**
-                         * Adicionar todos o equipamentos à lista de equipamentos
-                         * Notificar o adapter
-                         */
-                        for (int i = 0; i < list.size(); i++) {
-                            equipments.add(list.get(i));
-                            equipmentAdapter.notifyItemInserted(i);
-                        }
-
-                    }
-
-                } else {
-
-                    Toast.makeText(context, "Erro", Toast.LENGTH_SHORT).show();
-                    System.out.println("******* " + response.code() + " ********");
-
-                }
-
+            /**
+             * Adicionar os equipamentos à lista
+             * Notificar o adapter
+             */
+            for (int i = 0; i < list.size(); i++) {
+                equipments.add(list.get(i));
+                equipmentAdapter.notifyItemInserted(i);
             }
 
-            @Override
-            public void onFailure(Call<List<Equipment>> call, Throwable t) {
-
-                Toast.makeText(context, "No internet connection!!!", Toast.LENGTH_SHORT).show();
-                System.out.println("******** " + t.getMessage());
-                System.out.println("******** " + t.getCause());
-
-            }
-        });
+        }
 
     }
 
@@ -145,9 +113,14 @@ public class EquipmentFragment extends Fragment implements OnItemClickListener {
      */
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(context, "Position: " + position, Toast.LENGTH_SHORT).show();
+
+        // Equipamento
         Equipment equipment = equipments.get(position);
 
-
+        Intent intent = new Intent(context, EquipmentDetail.class);
+        intent.putExtra(
+                "CURRENT_EQUIPMENT", new Gson().toJson(equipment)
+        );
+        startActivity(intent);
     }
 }

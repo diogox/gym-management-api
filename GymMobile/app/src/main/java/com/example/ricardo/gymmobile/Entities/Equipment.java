@@ -1,5 +1,8 @@
 package com.example.ricardo.gymmobile.Entities;
 
+/**
+ * Representa um equipamento do ginásio
+ */
 public class Equipment {
 
     /**
@@ -36,68 +39,48 @@ public class Equipment {
     private String description;
 
 
-    public long getId() {
-        return id;
+    public Equipment(long id, String name, String brandName, String imageUrl, int quantity,
+                     float priceInEuro, String supplierName, String description) {
+        this.id           = id;
+        this.name         = name;
+        this.brandName    = brandName;
+        this.imageUrl     = imageUrl;
+        this.quantity     = quantity;
+        this.priceInEuro  = priceInEuro;
+        this.supplierName = supplierName;
+        this.description  = description;
     }
 
-    public void setId(long id) {
-        this.id = id;
+
+    public long getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getBrandName() {
         return brandName;
-    }
-
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public int getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public float getPriceInEuro() {
         return priceInEuro;
     }
 
-    public void setPriceInEuro(float priceInEuro) {
-        this.priceInEuro = priceInEuro;
-    }
-
     public String getSupplierName() {
         return supplierName;
-    }
-
-    public void setSupplierName(String supplierName) {
-        this.supplierName = supplierName;
     }
 
     public String getDescription() {
         return description;
     }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
 }

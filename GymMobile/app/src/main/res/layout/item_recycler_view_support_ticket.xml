@@ -12,27 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="3dp">
+        android:layout_margin="3dp"
+        android:weightSum="2">
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.6"
             android:padding="3dp"
-            android:text="State:"
+            android:text="Estado:"
             android:textAlignment="textEnd"
-            android:textSize="15dp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/state_support_ticket"
-            android:layout_width="240dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1.4"
             android:padding="3dp"
             android:text="TextView"
-            android:textSize="15dp" />
+            android:textSize="18dp" />
 
     </LinearLayout>
 
@@ -40,27 +42,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="3dp">
+        android:layout_margin="3dp"
+        android:weightSum="2">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.6"
             android:padding="3dp"
-            android:text="Open at:"
+            android:text="Abertura:"
             android:textAlignment="textEnd"
-            android:textSize="15dp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/date_open_support_ticket"
-            android:layout_width="240dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1.4"
             android:padding="3dp"
             android:text="TextView"
-            android:textSize="15dp" />
+            android:textSize="18dp" />
 
     </LinearLayout>
 
@@ -68,27 +72,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="3dp">
+        android:layout_margin="3dp"
+        android:weightSum="2">
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.6"
             android:padding="3dp"
-            android:text="Title:"
+            android:text="Titulo:"
             android:textAlignment="textEnd"
-            android:textSize="15dp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/title_support_ticket"
-            android:layout_width="240dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1.4"
             android:padding="3dp"
             android:text="TextView"
-            android:textSize="15dp" />
+            android:textSize="18dp" />
 
     </LinearLayout>
 

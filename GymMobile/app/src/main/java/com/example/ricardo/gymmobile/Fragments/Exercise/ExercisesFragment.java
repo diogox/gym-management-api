@@ -1,6 +1,7 @@
 package com.example.ricardo.gymmobile.Fragments.Exercise;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -11,19 +12,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.ricardo.gymmobile.Data.GymStore;
 import com.example.ricardo.gymmobile.Entities.Exercise;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
-import com.example.ricardo.gymmobile.Activities.MainActivity;
 import com.example.ricardo.gymmobile.R;
-import com.example.ricardo.gymmobile.Retrofit.APIServices;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
+/**
+ * Fragmento de exercicios
+ *
+ * Permite visualizar os exercicios disponíveis no ginásio
+ */
 public class ExercisesFragment extends Fragment implements OnItemClickListener {
 
     /**
@@ -79,57 +81,29 @@ public class ExercisesFragment extends Fragment implements OnItemClickListener {
     }
 
     /**
-     * Obter os exercicios da API e coloca-los na recycler view de exercicios
+     * Obter os exercicios da API e coloca-los na recycler view
      */
     private void getExercises() {
 
-        // Token do cliente
-        final String token = MainActivity.loginDataResponse.getToken();
+        // Lista de exercicios
+        List<Exercise> list = GymStore.exerciseList;
 
-        Call<List<Exercise>> call = APIServices.exerciseService().getExercises("Bearer " + token);
-        call.enqueue(new Callback<List<Exercise>>() {
-            @Override
-            public void onResponse(Call<List<Exercise>> call, Response<List<Exercise>> response) {
+        if (list.isEmpty()) { // Se a lista estiver vazia
 
-                if (response.isSuccessful()) { // Resposta com sucesso
+            Toast.makeText(context, "Não existem exercicios", Toast.LENGTH_SHORT).show();
 
-                    List<Exercise> list = response.body();
+        } else {
 
-                    if (list.isEmpty()) { // Se a lista não contiver exercicios
-
-                        Toast.makeText(context, "List is empty!!!", Toast.LENGTH_SHORT).show();
-
-                    } else {
-
-                        /**
-                         * Adicionar todos o exercicios à lista de exercicios
-                         * Notificar o adapter
-                         */
-                        for (int i = 0; i < list.size(); i++) {
-                            exercises.add(list.get(i));
-                            exerciseAdapter.notifyItemInserted(i);
-                        }
-
-                    }
-
-                } else {
-
-                    Toast.makeText(context, "Erro", Toast.LENGTH_SHORT).show();
-                    System.out.println("******* " + response.code() + " ********");
-
-                }
-
+            /**
+             * Adicionar os exercicios à lista
+             * Notificar o adapter
+             */
+            for (int i = 0; i < list.size(); i++) {
+                exercises.add(list.get(i));
+                exerciseAdapter.notifyItemInserted(i);
             }
 
-            @Override
-            public void onFailure(Call<List<Exercise>> call, Throwable t) {
-
-                Toast.makeText(context, "No internet connection!!!", Toast.LENGTH_SHORT).show();
-                System.out.println("******** " + t.getMessage());
-                System.out.println("******** " + t.getCause());
-
-            }
-        });
+        }
 
     }
 
@@ -139,7 +113,16 @@ public class ExercisesFragment extends Fragment implements OnItemClickListener {
      */
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(context, "Position -> " + position, Toast.LENGTH_SHORT).show();
+
+        // Exercicio
+        Exercise exercise = exercises.get(position);
+
+        // Visualizar os detalhes de um exercicio específico
+        Intent intent = new Intent(context, ExerciseDetail.class);
+        intent.putExtra(
+                "CURRENT_EXERCISE", new Gson().toJson(exercise)
+        );
+        startActivity(intent);
     }
 
 }

@@ -39,15 +39,17 @@ public class Exercise {
      */
     private Long equipmentId;
 
+
     public Exercise(long id, String name, String description, String imageUrl, MuscleGroups targetMuscleGroup, DifficultyLevels difficultyLevel, Long equipmentId) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.imageUrl = imageUrl;
+        this.id                = id;
+        this.name              = name;
+        this.description       = description;
+        this.imageUrl          = imageUrl;
         this.targetMuscleGroup = targetMuscleGroup;
-        this.difficultyLevel = difficultyLevel;
-        this.equipmentId = equipmentId;
+        this.difficultyLevel   = difficultyLevel;
+        this.equipmentId       = equipmentId;
     }
+
 
     public long getId() {
         return id;
