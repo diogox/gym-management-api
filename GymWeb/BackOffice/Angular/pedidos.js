@@ -1,9 +1,13 @@
+//const link = "http://gym-lds.herokuapp.com";
+const link = "https://localhost:5001";
+
+
 //Login
 export function login($http, data, callback) {
     $http({
         method: "POST",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/auth/login",
+        url: link + "/api/auth/login",
         headers: {
             'Content-Type': "application/json"
         }
@@ -20,7 +24,7 @@ export function getClients($http, token, callback) {
     //console.log(token); Debug
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/clients/",
+        url: link + "/api/clients/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -39,7 +43,7 @@ export function getClients($http, token, callback) {
 export function getClientsByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/clients/" + id,
+        url: link + "/api/clients/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -57,7 +61,7 @@ export function getClientsByID($http, id, token, callback) {
 export function removeClient($http, id, token, callback) {
     $http({
         method: "DELETE",
-        url: "https://gym-lds.herokuapp.com/api/clients/" + id,
+        url: link + "/api/clients/" + id,
         headers: {
             'authorization': "bearer " + token,
         }
@@ -75,7 +79,7 @@ export function adicionarClient($http, data, token, callback) {
     $http({
         method: "POST",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/clients/",
+        url: link + "/api/clients/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json"
@@ -94,7 +98,7 @@ export function editarClient($http, data, id, token, callback) {
     $http({
         method: "PUT",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/clients/" + id,
+        url: link + "/api/clients/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json"
@@ -128,7 +132,7 @@ export function editarClient($http, data, id, token, callback) {
 export function getStaff($http, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/staff/",
+        url: link + "/api/staff/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -146,7 +150,7 @@ export function getStaff($http, token, callback) {
 export function getStaffByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/staff/" + id,
+        url: link + "/api/staff/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -164,7 +168,7 @@ export function getStaffByID($http, id, token, callback) {
 export function removeStaff($http, id, token, callback) {
     $http({
         method: "DELETE",
-        url: "https://gym-lds.herokuapp.com/api/staff/" + id,
+        url: link + "/api/staff/" + id,
         headers: {
             'authorization': "bearer " + token,
         }
@@ -182,7 +186,7 @@ export function adicionarStaff($http, data, token, callback) {
     $http({
         method: "POST",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/staff/",
+        url: link + "/api/staff/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -201,7 +205,7 @@ export function editarStaff($http, data, id, token, callback) {
     $http({
         method: "PUT",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/staff/" + id,
+        url: link + "/api/staff/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -238,7 +242,7 @@ export function editarStaff($http, data, id, token, callback) {
 export function getEquipment($http, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/equipment/",
+        url: link + "/api/equipment/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -256,7 +260,7 @@ export function getEquipment($http, token, callback) {
 export function getEquipmentByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/equipment/" + id,
+        url: link + "/api/equipment/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -274,7 +278,7 @@ export function getEquipmentByID($http, id, token, callback) {
 export function removeEquipment($http, id, token, callback) {
     $http({
         method: "DELETE",
-        url: "https://gym-lds.herokuapp.com/api/equipment/" + id,
+        url: link + "/api/equipment/" + id,
         headers: {
             'authorization': "bearer " + token,
         }
@@ -292,7 +296,7 @@ export function adicionarEquipment($http, data, token, callback) {
     $http({
         method: "POST",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/equipment/",
+        url: link + "/api/equipment/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -311,7 +315,7 @@ export function editarEquipment($http, data, id, token, callback) {
     $http({
         method: "PUT",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/equipment/" + id,
+        url: link + "/api/equipment/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -348,7 +352,7 @@ export function editarEquipment($http, data, id, token, callback) {
 export function getTickets($http, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/tickets/",
+        url: link + "/api/tickets/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -366,7 +370,7 @@ export function getTickets($http, token, callback) {
 export function getTicketByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/tickets/" + id,
+        url: link + "/api/tickets/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -384,7 +388,7 @@ export function getTicketByID($http, id, token, callback) {
 export function removeTicket($http, id, token, callback) {
     $http({
         method: "DELETE",
-        url: "https://gym-lds.herokuapp.com/api/tickets/" + id,
+        url: link + "/api/tickets/" + id,
         headers: {
             'authorization': "bearer " + token,
         }
@@ -402,7 +406,7 @@ export function adicionarTicket($http, data, token, callback) {
     $http({
         method: "POST",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/tickets/",
+        url: link + "/api/tickets/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -421,7 +425,7 @@ export function editarTicket($http, data, id, token, callback) {
     $http({
         method: "PUT",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/tickets/" + id,
+        url: link + "/api/tickets/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -439,7 +443,7 @@ export function editarTicket($http, data, id, token, callback) {
 export function getMSGSTicket($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/tickets/" + id + "/messages",
+        url: link + "/api/tickets/" + id + "/messages",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -457,7 +461,7 @@ export function getMSGSTicket($http, id, token, callback) {
 export function getMSGTicket($http, id, messageid, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/tickets/" + id + "/messages/" + messageid,
+        url: link + "/api/tickets/" + id + "/messages/" + messageid,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -476,7 +480,7 @@ export function sendMSGTicket($http, data, id, token, callback) {
     $http({
         method: "POST",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/tickets/" + id + "/messages/",
+        url: link + "/api/tickets/" + id + "/messages/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -494,7 +498,7 @@ export function sendMSGTicket($http, data, id, token, callback) {
 export function openTicket($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/Tickets/" + id + "/open",
+        url: link + "/api/Tickets/" + id + "/open",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -512,7 +516,7 @@ export function openTicket($http, id, token, callback) {
 export function closeTicket($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/Tickets/" + id + "/close",
+        url: link + "/api/Tickets/" + id + "/close",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -530,7 +534,7 @@ export function closeTicket($http, id, token, callback) {
 export function suspendTicket($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/Tickets/" + id + "/suspend",
+        url: link + "/api/Tickets/" + id + "/suspend",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -574,7 +578,7 @@ export function suspendTicket($http, id, token, callback) {
 export function getExercises($http, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/exercises/",
+        url: link + "/api/exercises/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -592,7 +596,7 @@ export function getExercises($http, token, callback) {
 export function getExerciseByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/exercises/" + id,
+        url: link + "/api/exercises/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -607,11 +611,11 @@ export function getExerciseByID($http, id, token, callback) {
 }
 
 //Adicionar um Exercicio
-export function addExercises($http, data, token, callback){
+export function addExercises($http, data, token, callback) {
     $http({
         method: "POST",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/exercises/",
+        url: link + "/api/exercises/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -626,16 +630,16 @@ export function addExercises($http, data, token, callback){
 }
 
 //Remover um Exercicio
-export function removeExercise($http, id, token, callback){
+export function removeExercise($http, id, token, callback) {
     $http({
         method: "DELETE",
-        url: "https://gym-lds.herokuapp.com/api/exercises/" + id,
+        url: link + "/api/exercises/" + id,
         headers: {
             'authorization': "bearer " + token,
         }
-    }).then(function mySuccess(response){
-       //console.log(response)
-       callback(response)
+    }).then(function mySuccess(response) {
+        //console.log(response)
+        callback(response)
 
     }, function myError(response) {
         callback(false)
@@ -647,7 +651,7 @@ export function editarExercise($http, data, id, token, callback) {
     $http({
         method: "PUT",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/exercises/" + id,
+        url: link + "/api/exercises/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -677,7 +681,7 @@ export function editarExercise($http, data, id, token, callback) {
 export function getPlanosTreino($http, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/plans",
+        url: link + "/api/plans",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -692,11 +696,11 @@ export function getPlanosTreino($http, token, callback) {
 }
 
 //Adicionar um Plano de Treino
-export function addPlanoTreino($http, data, token, callback){
+export function addPlanoTreino($http, data, token, callback) {
     $http({
         method: "POST",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/plans/",
+        url: link + "/api/plans/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -711,16 +715,16 @@ export function addPlanoTreino($http, data, token, callback){
 }
 
 //Remover um Plano de Treino
-export function removePlanoTreino($http, id, token, callback){
+export function removePlanoTreino($http, id, token, callback) {
     $http({
         method: "DELETE",
-        url: "https://gym-lds.herokuapp.com/api/plans/" + id,
+        url: link + "/api/plans/" + id,
         headers: {
             'authorization': "bearer " + token,
         }
-    }).then(function mySuccess(response){
-       //console.log(response)
-       callback(response)
+    }).then(function mySuccess(response) {
+        //console.log(response)
+        callback(response)
 
     }, function myError(response) {
         callback(false)
@@ -732,7 +736,7 @@ export function editarPlanoTreino($http, data, id, token, callback) {
     $http({
         method: "PUT",
         data: data,
-        url: "https://gym-lds.herokuapp.com/api/plans/" + id,
+        url: link + "/api/plans/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -750,7 +754,7 @@ export function editarPlanoTreino($http, data, id, token, callback) {
 export function getPlanoTreinoByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/plans/" + id,
+        url: link + "/api/plans/" + id,
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -768,7 +772,7 @@ export function getPlanoTreinoByID($http, id, token, callback) {
 export function getExercisesPlanoTreinoByID($http, id, token, callback) {
     $http({
         method: "GET",
-        url: "https://gym-lds.herokuapp.com/api/plans/"+id+"/exercises/",
+        url: link + "/api/plans/" + id + "/exercises/",
         headers: {
             'authorization': "bearer " + token,
             'content-type': "application/json",
@@ -786,7 +790,7 @@ export function getExercisesPlanoTreinoByID($http, id, token, callback) {
 export function removeExercisePlanoTreinoByID($http, id, idExercise, token, callback) {
     $http({
         method: "DELETE",
-        url: "https://gym-lds.herokuapp.com/api/plans/"+id+"/exercises/"+idExercise,
+        url: link + "/api/plans/" + id + "/exercises/" + idExercise,
         headers: {
             'authorization': "bearer " + token,
         }
