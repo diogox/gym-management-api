@@ -6,14 +6,14 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window, $rootScope) {
 
     let login = checkLogin();
     let userType = login.userType;
-    
+
     if (!login) {
         window.location.href = "index.html#!login";
-    } else if(userType === "Staff"){
+    } else if (userType === "Staff") {
 
         window.location.href = "index.html#!403";
 
-    }else if(userType === "Client" || userType==="Admin") {
+    } else if (userType === "Client" || userType === "Admin") {
 
         // Obtem o id do utilizador que fez login
         let myId = login.userTypeId;
@@ -66,17 +66,49 @@ app.controller('novoTicketCtrl', function ($scope, $http, $window, $rootScope) {
                     // Se a API respondeu da forma correta
                     if (response) {
 
-                        // Mostra mensagem de sucesso
-                        bootbox.alert({
-                            message: "Mensagem enviada com sucesso",
-                            backdrop: true,
-                            buttons: {
-                                ok: {
-                                    label: "OK!",
-                                    className: 'btn-success'
-                                }
+                        let message = $scope.comentario;
+                        let supportTicketId = response.data.id;
+                        let from = "Client";
+
+                        let dataSend = { message, from, supportTicketId };
+
+                        // Pede à API para adicionar uma resposta ao ticket criado
+                        addAnswerToTicket($http, supportTicketId, dataSend, (response) => {
+
+                            // Se a API respondeu da forma correta
+                            if (response) {
+
+                                // Mostra mensagem de sucesso
+                                bootbox.alert({
+                                    message: "Mensagem enviada com sucesso",
+                                    backdrop: true,
+                                    buttons: {
+                                        ok: {
+                                            label: "OK!",
+                                            className: 'btn-success'
+                                        }
+                                    }
+                                });
+
+                                // Se a API não respondeu da forma correta
+                            } else {
+
+                                // Informa que a resposta foi enviada sem sucesso
+                                bootbox.alert({
+                                    message: "Mensagem enviada sem sucesso!",
+                                    backdrop: true,
+                                    buttons: {
+                                        ok: {
+                                            label: "OK!",
+                                            className: 'btn-danger'
+                                        }
+                                    }
+                                });
                             }
+
                         });
+
+
 
                         // Se ticket for enviado com sucesso, 
                         // é redireionado para a página de tickets em 2 segundos
