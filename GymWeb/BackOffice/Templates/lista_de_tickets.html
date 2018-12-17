@@ -1,8 +1,9 @@
 <div class="container" style="margin-left: 100px" ng-controller="ticketsCtrl">
-    
+
     <!--Alertas da API-->
     <div ng-repeat="alert in alerts" ng-show="alert.show">
-        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong> {{alert.msg}}</h3>
+        <h3 ng-style={{alert.style}} class="alert" role="alert" ng-click="closeAlert($index)"><strong>{{alert.type}}!</strong>
+            {{alert.msg}}</h3>
     </div>
 
     <h2 style="color: white">Tickets:</h2>
@@ -32,4 +33,19 @@
             </tr>
         </tbody>
     </table>
+
+
+    <!--Pagination-->
+    <ul id="paginationHide" class="pagination justify-content-center">
+        <li id="pageback" class="page-item">
+            <a class="page-link disabled" href="" ng-click="previousPage()">Previous</a>
+        </li>
+        <li id="page{{x.index}}" class="page-item" ng-repeat="x in numberPages">
+            <a class="page-link" href="" ng-click="setPage(x.index)">{{x.index}}</a>
+        </li>
+        <li id="pagenext" class="page-item">
+            <a class="page-link" href="" ng-click="nextPage()">Next</a>
+        </li>
+    </ul>
+
 </div>
