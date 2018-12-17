@@ -1,5 +1,5 @@
-//const link = "http://gym-lds.herokuapp.com";
-const link = "https://localhost:5001";
+const link = "http://gym-lds.herokuapp.com";
+//const link = "https://localhost:5001";
 
 
 //Login
