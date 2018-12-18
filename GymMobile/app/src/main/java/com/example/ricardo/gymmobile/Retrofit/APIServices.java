@@ -4,8 +4,13 @@ import com.example.ricardo.gymmobile.Retrofit.Interfaces.AuthService;
 import com.example.ricardo.gymmobile.Retrofit.Interfaces.ClientService;
 import com.example.ricardo.gymmobile.Retrofit.Interfaces.EquipmentService;
 import com.example.ricardo.gymmobile.Retrofit.Interfaces.ExerciseService;
+import com.example.ricardo.gymmobile.Retrofit.Interfaces.NotificationService;
+import com.example.ricardo.gymmobile.Retrofit.Interfaces.TicketService;
 import com.example.ricardo.gymmobile.Retrofit.Interfaces.WorkPlanService;
 
+/**
+ * Serviços da API com base na interfaces definidas
+ */
 public class APIServices {
 
     /**
@@ -47,10 +52,28 @@ public class APIServices {
     /**
      * Obter os serviços de planos de treino
      *
-     * @return planos de treino
+     * @return serviços de planos de treino
      */
     public static WorkPlanService workPlanService() {
         return RetrofitClient.getClient().create(WorkPlanService.class);
+    }
+
+    /**
+     * Obter os serviços de notificações
+     *
+     * @return serviços de notificações
+     */
+    public static NotificationService notificationService() {
+        return RetrofitClient.getClient().create(NotificationService.class);
+    }
+
+    /**
+     * Obter os serviços de tickets
+     *
+     * @return serviços de tickets
+     */
+    public static TicketService ticketService() {
+        return RetrofitClient.getClient().create(TicketService.class);
     }
 
 }

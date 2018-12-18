@@ -48,4 +48,14 @@ public class WorkPlan {
     public long getSupervisingTrainerId() {
         return supervisingTrainerId;
     }
+
+    @Override
+    public String toString() {
+        return "WorkPlan{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", exerciseBlocks=" + exerciseBlocks +
+                ", supervisingTrainerId=" + supervisingTrainerId +
+                '}';
+    }
 }

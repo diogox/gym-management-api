@@ -45,6 +45,11 @@ public class SupportTicket {
         this.clientId = clientId;
     }
 
+    public SupportTicket(String title, Long clientId) {
+        this.title    = title;
+        this.clientId = clientId;
+    }
+
 
     public long getId() {
         return id;
@@ -57,6 +62,7 @@ public class SupportTicket {
     public List<SupportTicketMessage> getMessages() {
         return messages;
     }
+
 
     public Date getOpenedAt() {
         return openedAt;

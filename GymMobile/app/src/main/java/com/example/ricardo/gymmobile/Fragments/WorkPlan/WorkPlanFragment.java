@@ -11,21 +11,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.ricardo.gymmobile.Activities.MainActivity;
-import com.example.ricardo.gymmobile.Entities.Enums.DayOfTheWeek;
+import com.example.ricardo.gymmobile.Data.Session;
 import com.example.ricardo.gymmobile.Entities.TrainingPlanBlock;
-import com.example.ricardo.gymmobile.Entities.WorkPlan;
-import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
 import com.example.ricardo.gymmobile.R;
 import com.example.ricardo.gymmobile.Retrofit.APIServices;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Fragemnto do plano de treino
+ *
+ * Permite visualizar o atual plano de treino definido para o cliente
+ */
 public class WorkPlanFragment extends Fragment {
 
     /**
@@ -33,9 +35,17 @@ public class WorkPlanFragment extends Fragment {
      */
     private Context context;
     /**
-     * Plano de treino
+     * RecyclerView que contém a listagem dos equipamentos
      */
-    private WorkPlan workPlan;
+    private RecyclerView recyclerView;
+    /**
+     * Exercise adapter
+     */
+    private TrainingPlanBlockAdapter planBlockAdapter;
+    /**
+     * Lista de blocos de treino a ser adicionada na RecyclerView
+     */
+    private List<TrainingPlanBlock> planBlockList = new LinkedList<>();
 
 
     @Override
@@ -55,6 +65,18 @@ public class WorkPlanFragment extends Fragment {
 
         final View mContentView = inflater.inflate(R.layout.fragment_work_plan, container, false);
 
+        planBlockAdapter = new TrainingPlanBlockAdapter(context, planBlockList);
+
+        recyclerView = mContentView.findViewById(R.id.recycler_view_training_plan_block_list);
+        recyclerView.setAdapter(planBlockAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(
+                context, DividerItemDecoration.VERTICAL
+        );
+
+        recyclerView.addItemDecoration(itemDecoration);
+
         getWorkPlanClient(); // Plano de treino
 
         return mContentView;
@@ -66,23 +88,38 @@ public class WorkPlanFragment extends Fragment {
     private void getWorkPlanClient() {
 
         // Número de identificação do plano de treino
-        Long workPlanId = MainActivity.clientLogged.getTrainingPlanId();
+        Long workPlanId = Session.client.getTrainingPlanId();
 
-        // Se o id do plano de treino não for null
-        // Significa que o cliente tem um plano de treino atribuído
+        /**
+         * Se o id do plano de treino não for null
+         * Significa que o cliente tem um plano de treino atribuído
+         */
         if (workPlanId != null) {
 
             // Token de autorização
-            String token = MainActivity.loginDataResponse.getToken();
+            String token = Session.dataLogin.getToken();
 
-            Call<WorkPlan> call = APIServices.workPlanService().getWorkPlan("Bearer " + token, workPlanId);
-            call.enqueue(new Callback<WorkPlan>() {
+            Call<List<TrainingPlanBlock>> call = APIServices.workPlanService().getWorkPlan(
+                    "Bearer " + token,
+                    workPlanId
+            );
+            call.enqueue(new Callback<List<TrainingPlanBlock>>() {
                 @Override
-                public void onResponse(Call<WorkPlan> call, Response<WorkPlan> response) {
+                public void onResponse(Call<List<TrainingPlanBlock>> call, Response<List<TrainingPlanBlock>> response) {
 
                     if (response.isSuccessful()) { // Resposta com sucesso
 
-                        workPlan = response.body();
+                        List<TrainingPlanBlock> list = response.body();
+                        System.out.println(">>>>>>>>>> WORKPLAN: " + list.toString());
+
+                        /**
+                         * Adicionar os exercicios à lista
+                         * Notificar o adapter
+                         */
+                        for (int i = 0; i < list.size(); i++) {
+                            planBlockList.add(list.get(i));
+                            planBlockAdapter.notifyItemInserted(i);
+                        }
 
                     } else {
 
@@ -94,13 +131,14 @@ public class WorkPlanFragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<WorkPlan> call, Throwable t) {
+                public void onFailure(Call<List<TrainingPlanBlock>> call, Throwable t) {
 
                     Toast.makeText(context, "No internet connection!!!", Toast.LENGTH_SHORT).show();
                     System.out.println("******** " + t.getMessage());
                     System.out.println("******** " + t.getCause());
 
                 }
+
             });
 
         } else {

@@ -11,13 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.ricardo.gymmobile.Activities.MainActivity;
+import com.example.ricardo.gymmobile.Data.Session;
 import com.example.ricardo.gymmobile.Entities.ClientCheckIn;
 import com.example.ricardo.gymmobile.R;
 
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Fragmento de check-in
+ *
+ * Permite visualizar a lista de check-ins de um cliente
+ */
 public class CheckInFragment extends Fragment {
 
     /**
@@ -76,7 +81,7 @@ public class CheckInFragment extends Fragment {
     private void getCheckInHistory() {
 
         // Lista de check-ins
-        List<ClientCheckIn> list = MainActivity.clientLogged.getCheckInHistory();
+        List<ClientCheckIn> list = Session.client.getCheckInHistory();
 
         if (list.isEmpty()) { // Se a lista estiver vazia
 

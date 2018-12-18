@@ -3,6 +3,9 @@ package com.example.ricardo.gymmobile.Entities;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Classe que representa um cliente de um ginásio
+ */
 public class Client {
 
     /**
@@ -57,6 +60,7 @@ public class Client {
      * Lista de tickets de suporte do cliente
      */
     private List<SupportTicket> supportTickets;
+
 
     public Client(long id, long nif, String firstName, String lastName, String imageUrl, Date birthDate, int age, double heightInMeters, float weightInKg, Long trainingPlanId, List<ClientCheckIn> checkInHistory, List<ClientNotification> notifications, List<SupportTicket> supportTickets) {
         this.id             = id;

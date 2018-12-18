@@ -1,5 +1,7 @@
 import { getStaff, getPlanosTreino, addPlanoTreino, removePlanoTreino, editarPlanoTreino, getPlanoTreinoByID, getStaffByID } from './pedidos.js'
-import { setCookie, getCookie } from './cookies.js'
+import { getCookie } from './cookies.js'
+import { paginationSplitInChunks, paginationOnDocumentReady, paginationSetPage } from './pagination.js'
+
 
 //Controller para a Lista de Planos de Treinos
 app.controller("planosTreinoCtrl", function ($scope, $http, $rootScope) {
@@ -58,8 +60,13 @@ app.controller("planosTreinoCtrl", function ($scope, $http, $rootScope) {
     getPlanosTreino($http, token, (response) => {
         if (response) {
 
+
+            pt = response.data;
+
             //Atualiza a Lista de Planos de Treino
-            $scope.pTreino = response.data;
+            //$scope.pTreino = response.data;
+
+            atualizarPagina();
 
         } else {
             $scope.alerts[0].show = true;
@@ -74,9 +81,11 @@ app.controller("planosTreinoCtrl", function ($scope, $http, $rootScope) {
         removePlanoTreino($http, id, token, (response) => {
             if (response) {
 
-                $scope.pTreino = $.grep($scope.pTreino, function (e) {
+                pt = $.grep(pt, function (e) {
                     return e.id != id;
                 });
+
+                atualizarPagina();
 
                 //Dá close no Modal from
                 $('#removerPlanoT').modal('toggle');
@@ -117,10 +126,8 @@ app.controller("planosTreinoCtrl", function ($scope, $http, $rootScope) {
                 });
 
                 //Atualiza a lista sem dar refresh na pagina
-                let list = $scope.pTreino;
-                list.push(resposta);
-                console.log(list);
-                $scope.pTreino = list
+                pt.push(resposta);
+                atualizarPagina();
 
                 //Dá reset e close no Modal form
                 $('#addPT form :input').val("");
@@ -165,6 +172,25 @@ app.controller("planosTreinoCtrl", function ($scope, $http, $rootScope) {
                 });
 
                 $scope.editarpt = null;
+
+                // Procura no array o Plano de Treino para o alterar na vista de forma dinamica
+                for (let i = 0; i < pt.length; i++) {
+
+                    if (pt[i].id == newPT.id) {
+                        pt[i] = newPT;
+
+                        // Obter qual o chunck que se localiza o Plano de Treino editado
+                        let chunckNumber = Math.floor(i / elementsPerChunck);
+
+                        // Dentro do chunck obter a posição onde se localiza o Plano de Treino editado
+                        let chunckPosition = i % elementsPerChunck;
+
+                        // Alterar o Plano de Treino dentro da lista de chuncks
+                        ptChuncks[chunckNumber][chunckPosition] = newPT;
+
+                    }
+                }
+
 
                 //Dá reset e close no Modal form
                 $('#edPT form :input').val("");
@@ -222,5 +248,77 @@ app.controller("planosTreinoCtrl", function ($scope, $http, $rootScope) {
         //console.log(ticket.id);
         window.location.href = '#!plano/' + plano.id;
     };
+
+
+    //###########################################Pagination###################################
+
+
+    // Array que vai conter os Planos de Treino
+    let pt = [];
+
+
+    // Lista de Planos de Treino divididos em chuncks
+    let ptChuncks = [];
+
+
+    // Quantidade de Planos de Treino por chunck
+    let elementsPerChunck = 5;
+
+
+    // Página atual da lista de Planos de Treino
+    let currentPage = 0;
+
+
+    //Função que atualiza as páginas
+    function atualizarPagina() {
+
+        let pagination = paginationSplitInChunks(pt, elementsPerChunck);
+
+        ptChuncks = pagination.arrayChuncks
+
+        //Lista de Paginação com os numeros de Páginas
+        $scope.numberPages = pagination.numberOfPages;
+
+        //Atualiza a vista
+        $scope.pTreino = ptChuncks[0];
+
+        $(document).ready(function () {
+
+            // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+            paginationOnDocumentReady(ptChuncks);
+
+        });
+    }
+
+
+    //Função que é ativada quando um número da paginação é carregado
+    $scope.setPage = function (page) {
+
+        // currentPage recebe a página selecionada
+        currentPage = page;
+
+        // Atualiza a vista com os Planos de Treino dessa página
+        $scope.pTreino = ptChuncks[page];
+
+        // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+        paginationSetPage(ptChuncks, page);
+
+    }
+
+
+    //Função que é ativada quando o botão previous é carregado
+    $scope.previousPage = function () {
+        if (currentPage > 0) {
+            $scope.setPage(currentPage - 1);
+        }
+    }
+
+
+    //Função que é ativada quando o botão next é carregado
+    $scope.nextPage = function () {
+        if (currentPage + 1 < ptChuncks.length) {
+            $scope.setPage(currentPage + 1);
+        }
+    }
 
 });

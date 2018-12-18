@@ -3,9 +3,6 @@ package com.example.ricardo.gymmobile.Fragments.Auth;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.icu.text.SimpleDateFormat;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -20,25 +17,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ricardo.gymmobile.Entities.Client;
+import com.example.ricardo.gymmobile.Entities.Connection;
 import com.example.ricardo.gymmobile.R;
 import com.example.ricardo.gymmobile.Retrofit.APIServices;
 import com.example.ricardo.gymmobile.Retrofit.Entities.UserSignIn;
 
-import org.json.JSONException;
-
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Fragmento de registo.
+ *
+ * Permite ao cliente registar-se na aplicação
+ */
 public class SignInFragment extends Fragment implements View.OnClickListener {
 
+    /**
+     * Contexto
+     */
     private Context context;
 
+    /**
+     * Credenciais de registo
+     */
     private TextView signInFirstName;
     private TextView signInLastName;
     private TextView signInUserName;
@@ -49,8 +54,13 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
     private TextView signInHeight;
     private TextView signInWeight;
     private Button signInBirthDate;
+    /**
+     * Botão de registo
+     */
     private Button signInButton;
-
+    /**
+     * Barra de progresso
+     */
     private ProgressBar progressBar;
 
 
@@ -92,7 +102,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
         if (id == R.id.auth_sign_in_button) { // Botão de registo
 
-                signInUser(); // Fazer o registo
+            signInUser(); // Fazer o registo
 
         } else if (id == R.id.auth_sign_in_birth_date) { // Botão da data de nascimento
 
@@ -103,6 +113,10 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    /**
+     * Fragmento que mostra um DateDialog para que seja possível definir a data de nascimento
+     * a ser introduzida no registo
+     */
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
         /**
@@ -129,11 +143,15 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
             calendar.set(Calendar.MONTH, month);
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
+            // Definir a data escolhida
             birthDate = calendar.getTime();
         }
 
     }
 
+    /**
+     * Permite fazer o registo de um novo cliente
+     */
     private void signInUser() {
 
         String firstName       = signInFirstName.getText().toString();
@@ -146,7 +164,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         String height          = signInHeight.getText().toString();
         String weight          = signInWeight.getText().toString();
 
-        // Se houver campos vazios
+        /** <Se houver campos vazios> */
         if (firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty() || email.isEmpty() ||
              password.isEmpty() || confirmPassword.isEmpty() || nif.isEmpty() || height.isEmpty() ||
              weight.isEmpty()) {
@@ -155,14 +173,14 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
             return;
         }
 
-        // Validação do email
+        /** <Validação do email> */
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             signInEmail.setError("Email not valid!!!");
             signInEmail.requestFocus();
             return;
         }
 
-        // Validação da password
+        /** <Validação da password> */
         if (!password.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}")) {
             signInPassword.setError("Password inválida. Deve conter pelo menos 8 caractéres, " +
                     "um número e uma letra maiúscula.");
@@ -170,31 +188,45 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
             return;
         }
 
-        // Se as passwords coincidirem
+        /** <Se a password e a confirmação da password coincidem> */
         if (!confirmPassword.equals(password)) {
             signInConfirmPassword.setError("Password does not match!!!");
             signInConfirmPassword.requestFocus();
             return;
         }
 
-        // O NIF tem de ter 9 caracteres
+        /** <O NIF tem de ter 9 caracteres> */
         if (nif.length() != 9) {
             signInNif.setError("O nif deve conter 9 números");
             signInNif.requestFocus();
             return;
         }
 
+        /**
+         * No momento de conecção com a API para efetuar o registo a
+         * barra de progresso fica visível e o botão de registo
+         * fica desailitado
+         */
         progressBar.setVisibility(View.VISIBLE);
         signInButton.setEnabled(false);
 
-        if (isConnected()) { // Verificar a conecção com a internet
+        if (Connection.isConnected(context)) { // Verificar a conecção com a internet
 
-            UserSignIn user = new UserSignIn(email, userName, password, Integer.parseInt(nif),
-                    firstName, lastName, null, DatePickerFragment.birthDate,
-                    Double.parseDouble(height), Float.parseFloat(weight));
+            // New user
+            UserSignIn user = new UserSignIn(
+                    email,
+                    userName,
+                    password,
+                    Integer.parseInt(nif),
+                    firstName,
+                    lastName,
+                    null,
+                    DatePickerFragment.birthDate,
+                    Double.parseDouble(height),
+                    Float.parseFloat(weight)
+            );
 
             Call<Client> call = APIServices.authService().userSignIn(user);
-            System.out.println(">>>>>>> USER: " + user.toString());
             call.enqueue(new Callback<Client>() {
                 @Override
                 public void onResponse(Call<Client> call, Response<Client> response) {
@@ -214,7 +246,6 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                     }
 
                     progressBar.setVisibility(View.INVISIBLE);
-
                 }
 
                 @Override
@@ -238,14 +269,6 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
         }
 
-    }
-
-    private boolean isConnected() {
-
-        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-
-        return networkInfo != null && networkInfo.isConnectedOrConnecting();
     }
 
 }

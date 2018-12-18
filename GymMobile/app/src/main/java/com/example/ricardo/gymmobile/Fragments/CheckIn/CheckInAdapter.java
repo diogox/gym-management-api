@@ -1,6 +1,5 @@
 package com.example.ricardo.gymmobile.Fragments.CheckIn;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -77,17 +76,16 @@ public class CheckInAdapter extends RecyclerView.Adapter<CheckInAdapter.CheckInV
 
             // Dados do equipamento
             TextView numberCheckIn = checkInViewHolder.numberCheckIn;
-            numberCheckIn.setText(position + ".");
+            numberCheckIn.setText((position + 1) + ".");
 
             TextView dateCheckIn = checkInViewHolder.dateCheckIn;
             dateCheckIn.setText(
-                    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(checkIn.getAt())
+                    new SimpleDateFormat("yyyy-MM-dd   HH:mm:ss").format(checkIn.getAt())
             );
 
         }
 
     }
-
 
     @Override
     public int getItemCount() {

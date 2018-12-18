@@ -4,6 +4,9 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+/**
+ * Classe que representa a conecção da aplicação com a internet
+ */
 public class Connection {
 
     /**

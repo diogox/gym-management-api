@@ -53,6 +53,10 @@
     <item android:title="Sessão">
         <menu>
             <item
+                android:id="@+id/nav_user_profile"
+                android:icon="@drawable/user_profile_icon"
+                android:title="O meu perfil" />
+            <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/logout_icon"
                 android:title="Sair" />

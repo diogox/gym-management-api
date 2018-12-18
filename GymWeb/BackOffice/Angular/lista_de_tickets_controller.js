@@ -1,5 +1,6 @@
 import { getTickets } from './pedidos.js'
-import { setCookie, getCookie } from './cookies.js'
+import { getCookie } from './cookies.js'
+import { paginationSplitInChunks, paginationOnDocumentReady, paginationSetPage } from './pagination.js'
 
 //Format date to yyyy-mm-dd hh:mm:ss
 function formatDate(date) {
@@ -60,11 +61,12 @@ app.controller("ticketsCtrl", function ($scope, $http, $rootScope) {
                 //console.log(response.data[i].birthDate);
             }
 
-            //TODO substituir o id do cliente pelo seu nome
-
+            tk = response.data;
 
             //Atualiza a Lista de Clientes
-            $scope.Tickets = response.data;
+            //$scope.Tickets = response.data;
+
+            atualizarPagina();
 
         } else {
             $scope.alerts[0].show = true;
@@ -76,4 +78,75 @@ app.controller("ticketsCtrl", function ($scope, $http, $rootScope) {
         //console.log(ticket.id);
         window.location.href = '#!ticket/' + ticket.id;
     };
+
+    //###########################################Pagination###################################
+
+
+    // Array que vai conter os Tickets
+    let tk = [];
+
+
+    // Lista de Tickets divididos em chuncks
+    let tkChuncks = [];
+
+
+    // Quantidade de Tickets por chunck
+    let elementsPerChunck = 8;
+
+
+    // Página atual da lista de Tickets
+    let currentPage = 0;
+
+
+    //Função que atualiza as páginas
+    function atualizarPagina() {
+
+        let pagination = paginationSplitInChunks(tk, elementsPerChunck);
+
+        tkChuncks = pagination.arrayChuncks
+
+        //Lista de Paginação com os numeros de Páginas
+        $scope.numberPages = pagination.numberOfPages;
+
+        //Atualiza a vista
+        $scope.Tickets = tkChuncks[0];
+
+        $(document).ready(function () {
+
+            // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+            paginationOnDocumentReady(tkChuncks);
+
+        });
+    }
+
+
+    //Função que é ativada quando um número da paginação é carregado
+    $scope.setPage = function (page) {
+
+        // currentPage recebe a página selecionada
+        currentPage = page;
+
+        // Atualiza a vista com os Tickets dessa página
+        $scope.Tickets = tkChuncks[page];
+
+        // Atualiza a vista dos botões da paginação (clicáveis, desativados, etc)
+        paginationSetPage(tkChuncks, page);
+
+    }
+
+
+    //Função que é ativada quando o botão previous é carregado
+    $scope.previousPage = function () {
+        if (currentPage > 0) {
+            $scope.setPage(currentPage - 1);
+        }
+    }
+
+
+    //Função que é ativada quando o botão next é carregado
+    $scope.nextPage = function () {
+        if (currentPage + 1 < tkChuncks.length) {
+            $scope.setPage(currentPage + 1);
+        }
+    }
 });

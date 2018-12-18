@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.ricardo.gymmobile.Entities.Exercise;
-import com.example.ricardo.gymmobile.Fragments.LoadImages;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
 import com.example.ricardo.gymmobile.R;
 
@@ -36,14 +36,11 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
      */
     private OnItemClickListener onItemClickListener;
 
-    public static ExerciseAdapter exerciseAdapter;
-
 
     public ExerciseAdapter(Context context, List<Exercise> exerciseList, Activity activity) {
         this.context      = context;
         this.exerciseList = exerciseList;
         this.activity     = activity;
-        exerciseAdapter   = this;
     }
 
 
@@ -116,7 +113,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
             String urlImage = exercise.getImageUrl();
 
             // Carregar as imagens
-            LoadImages loadImages = new LoadImages(activity, urlImage, imageView);
+            Glide.with(activity).load(urlImage).into(imageView);
 
         }
 
