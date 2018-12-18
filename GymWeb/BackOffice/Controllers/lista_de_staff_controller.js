@@ -16,19 +16,6 @@ function formatDate(date) {
 }
 
 
-//Age Function - Calcula a idade do user através da sua dob
-function getAge(DOB) {
-    let today = new Date();
-    let birthDate = new Date(DOB);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    let m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age = age - 1;
-    }
-    return age;
-}
-
-
 //Lista de Staff
 app.controller("staffCtrl", function ($scope, $http, $rootScope) {
 
@@ -105,11 +92,7 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
 
     //Adicionar Funcionário
     $scope.submitADD = function () {
-        //Formata a dob do staff
-        let date = new Date($scope.staff.birthDate);
         let staff = $scope.staff;
-        //Calcula a idade do staff através da sua dob
-        staff.age = getAge(date);
 
         //Set hasBeenPaidThisMonth para false pois quando o funcionário é adicionado não recebe
         staff.hasBeenPaidThisMonth = false;
@@ -163,11 +146,6 @@ app.controller("staffCtrl", function ($scope, $http, $rootScope) {
         newStaff.lastName = $scope.edstaff.lastName;
         newStaff.birthDate = formatDate($scope.edstaff.birthDate);
 
-        //Formata a dob do user
-        let date = new Date(newStaff.birthDate);
-
-        //Calcula a idade do user através da sua dob
-        newStaff.age = getAge(date);
 
         newStaff.nif = $scope.edstaff.nif;
         newStaff.email = $scope.edstaff.email;

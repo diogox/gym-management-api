@@ -15,17 +15,6 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-//Age Function - Calcula a idade do user através da sua dob
-function getAge(DOB) {
-    let today = new Date();
-    let birthDate = new Date(DOB);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    let m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age = age - 1;
-    }
-    return age;
-}
 
 //Controller da Gestão dos Clientes
 app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
@@ -101,11 +90,8 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
 
     //Adicionar Cliente á Base de Dados
     $scope.submitADD = function () {
-        //Formata a dob do user
-        let date = new Date($scope.user.birthDate);
         let user = $scope.user;
-        //Calcula a idade do user através da sua dob
-        user.age = getAge(date);
+        
 
         user.confirmPassword = null;
         let data = JSON.stringify(user);
@@ -152,10 +138,6 @@ app.controller("clientesCtrl", function ($scope, $http, $rootScope) {
         newClient.lastName = $scope.eduser.lastName;
         newClient.birthDate = formatDate($scope.eduser.birthDate);
 
-        //Formata a dob do user
-        let date = new Date(newClient.birthDate);
-        //Calcula a idade do user através da sua dob
-        newClient.age = getAge(date);
 
         newClient.nif = $scope.eduser.nif;
         newClient.heightInMeters = $scope.eduser.heightInMeters;
