@@ -75,7 +75,6 @@ namespace GymAPI.Controllers
                 Email = signupInfo.Email,
                 ImageUrl = signupInfo.ImageUrl,
                 BirthDate = signupInfo.BirthDate,
-                Age = signupInfo.Age,
                 Rank = signupInfo.Rank,
                 Salary = signupInfo.Salary,
                 HasBeenPaidThisMonth = signupInfo.HasBeenPaidThisMonth,

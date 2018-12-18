@@ -52,7 +52,6 @@ namespace Tests
                 LastName = "Pinto",
                 ImageUrl = "",
                 BirthDate = DateTime.Now,
-                Age = 0,
                 HeightInMeters = 1.8,
                 WeightInKg = 74,
             };
@@ -65,7 +64,6 @@ namespace Tests
                 LastName = "Pinheiro",
                 ImageUrl = "",
                 BirthDate = DateTime.Now,
-                Age = 0,
                 HeightInMeters = 1.6,
                 WeightInKg = 63,
             };
@@ -82,7 +80,6 @@ namespace Tests
                 FirstName = "Paulo",
                 LastName = "Coelho",
                 BirthDate = DateTime.Now,
-                Age = 0,
                 ImageUrl = "",
                 Salary = 500,
                 HasBeenPaidThisMonth = true,
@@ -95,7 +92,6 @@ namespace Tests
                 FirstName = "Ricardo",
                 LastName = "Fernandes",
                 BirthDate = DateTime.Now,
-                Age = 0,
                 ImageUrl = "",
                 Salary = 530,
                 HasBeenPaidThisMonth = true,

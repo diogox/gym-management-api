@@ -36,7 +36,6 @@ namespace Tests
                 Password = "Password123",
                 Email = email,
                 Nif = 123456789,
-                Age = 0,
                 BirthDate = DateTime.Now,
                 FirstName = "Diogo",
                 LastName = "Pinto",
@@ -189,14 +188,14 @@ namespace Tests
             
             // Update Client
             var newClient = client;
-            newClient.Age = 2;
+            newClient.Nif = 2;
             var response = await base.Admin.PutAsync(API_ENDPOINT + CLIENT_ID, new StringContent(JsonConvert.SerializeObject(newClient), Encoding.UTF8, "application/json"));
             
             // Get Client again
             newClient = await GetClient();
             
             // Assert
-            Assert.Equal(newClient.Age, client.Age);
+            Assert.Equal(newClient.Nif, client.Nif);
         }
         
         [Fact]

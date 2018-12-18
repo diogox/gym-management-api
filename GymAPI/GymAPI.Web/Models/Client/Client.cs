@@ -12,7 +12,6 @@ namespace GymAPI.Models
         public string LastName { get; set; }
         public string ImageUrl { get; set; }
         public DateTime BirthDate { get; set; }
-        public int Age { get; set; }
         public double HeightInMeters { get; set; }
         public float WeightInKg { get; set; }
         

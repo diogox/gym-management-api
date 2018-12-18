@@ -19,7 +19,6 @@ namespace GymAPI.DAOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ImageUrl { get; set; }
-        public int Age { get; set; }
         public DateTime BirthDate { get; set; }
         public StaffMemberRank Rank { get; set; }
         public float Salary { get; set; }

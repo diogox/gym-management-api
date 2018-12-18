@@ -151,7 +151,6 @@ namespace GymAPI.Services
             oldClient.LastName = client.LastName;
             oldClient.ImageUrl = client.ImageUrl;
             oldClient.BirthDate = client.BirthDate;
-            oldClient.Age = client.Age;
             oldClient.HeightInMeters = client.HeightInMeters;
             oldClient.WeightInKg = client.WeightInKg;
 

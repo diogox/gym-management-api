@@ -37,7 +37,6 @@ namespace Tests
                 Password = "Password123",
                 Email = email,
                 Nif = 123456789,
-                Age = 0,
                 BirthDate = DateTime.Now,
                 FirstName = "Diogo",
                 LastName = "Pinto",

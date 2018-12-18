@@ -140,7 +140,6 @@ namespace GymAPI
                 LastName = signupInfo.LastName,
                 ImageUrl = signupInfo.ImageUrl,
                 BirthDate = signupInfo.BirthDate,
-                Age = signupInfo.Age,
                 HeightInMeters = signupInfo.HeightInMeters,
                 WeightInKg = signupInfo.WeightInKg,
             };
