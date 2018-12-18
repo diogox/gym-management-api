@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymAPI.Migrations
 {
     [DbContext(typeof(GymContext))]
-    [Migration("20181215151543_CreateEntities")]
+    [Migration("20181218153826_CreateEntities")]
     partial class CreateEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,8 +22,6 @@ namespace GymAPI.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Age");
 
                     b.Property<DateTime>("BirthDate");
 
@@ -138,8 +136,6 @@ namespace GymAPI.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Age");
 
                     b.Property<DateTime>("BirthDate");
 

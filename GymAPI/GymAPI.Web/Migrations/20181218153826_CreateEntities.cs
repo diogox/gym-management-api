@@ -51,7 +51,6 @@ namespace GymAPI.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
-                    Age = table.Column<int>(nullable: false),
                     BirthDate = table.Column<DateTime>(nullable: false),
                     Rank = table.Column<int>(nullable: false),
                     Salary = table.Column<float>(nullable: false),
@@ -138,7 +137,6 @@ namespace GymAPI.Migrations
                     LastName = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
                     BirthDate = table.Column<DateTime>(nullable: false),
-                    Age = table.Column<int>(nullable: false),
                     HeightInMeters = table.Column<double>(nullable: false),
                     WeightInKg = table.Column<float>(nullable: false),
                     TrainingPlanId = table.Column<long>(nullable: true)

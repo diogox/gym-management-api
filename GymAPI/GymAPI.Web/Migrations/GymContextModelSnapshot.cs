@@ -21,8 +21,6 @@ namespace GymAPI.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Age");
-
                     b.Property<DateTime>("BirthDate");
 
                     b.Property<string>("FirstName");
@@ -136,8 +134,6 @@ namespace GymAPI.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Age");
 
                     b.Property<DateTime>("BirthDate");
 
