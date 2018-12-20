@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.ricardo.gymmobile.Activities.MainActivity;
 import com.example.ricardo.gymmobile.Data.GymStore;
 import com.example.ricardo.gymmobile.Entities.Exercise;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
@@ -62,6 +63,11 @@ public class ExercisesFragment extends Fragment implements OnItemClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View mContentView = inflater.inflate(R.layout.fragment_exercises, container, false);
+
+        /**
+         * Verificar se o houve alterações nos exercicios
+         */
+        MainActivity.instance.getExercises();
 
         exerciseAdapter = new ExerciseAdapter(context, exercises, getActivity());
 

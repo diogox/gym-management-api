@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ricardo.gymmobile.Activities.MainActivity;
 import com.example.ricardo.gymmobile.Data.Session;
 import com.example.ricardo.gymmobile.Entities.SupportTicket;
 import com.example.ricardo.gymmobile.Entities.SupportTicketMessage;
@@ -71,6 +72,11 @@ public class SupportTicketFragment extends Fragment implements OnItemClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View mContentView = inflater.inflate(R.layout.fragment_support_ticket, container, false);
+
+        /**
+         * Verificar se o houve alterações nos tickets
+         */
+        MainActivity.instance.getClientAccount();
 
         supportAdapter = new SupportAdapter(context, supportTickets, getActivity());
 

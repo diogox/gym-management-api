@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.ricardo.gymmobile.Activities.MainActivity;
 import com.example.ricardo.gymmobile.Data.Session;
 import com.example.ricardo.gymmobile.Entities.TrainingPlanBlock;
 import com.example.ricardo.gymmobile.R;
@@ -64,6 +65,11 @@ public class WorkPlanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View mContentView = inflater.inflate(R.layout.fragment_work_plan, container, false);
+
+        /**
+         * Verificar se o houve alterações do plano de treino
+         */
+        MainActivity.instance.getClientAccount();
 
         planBlockAdapter = new TrainingPlanBlockAdapter(context, planBlockList);
 
