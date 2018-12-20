@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.ricardo.gymmobile.Activities.MainActivity;
 import com.example.ricardo.gymmobile.Data.Session;
 import com.example.ricardo.gymmobile.Entities.Client;
 import com.example.ricardo.gymmobile.R;
@@ -41,6 +42,11 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View mContentView = inflater.inflate(R.layout.fragment_user_profile, container, false);
+
+        /**
+         * Verificar se o houve alterações nos dados do cliente
+         */
+        MainActivity.instance.getClientAccount();
 
         // Cliente atual
         client = Session.client;

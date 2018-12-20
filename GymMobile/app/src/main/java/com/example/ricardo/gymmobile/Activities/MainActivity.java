@@ -52,6 +52,8 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static MainActivity instance;
+
     /**
      * Toolbar
      */
@@ -68,6 +70,8 @@ public class MainActivity extends AppCompatActivity
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
 
+        instance = this;
+
 
         // Barra lateral
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -82,14 +86,19 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         final TextView username = headerView.findViewById(R.id.client_name);
         final TextView appName  = headerView.findViewById(R.id.drawer_app_name);
-        appName.setText("Home");
+        appName.setText("GYM MOBILE");
 
         // Obter o utilizador com a conta iniciada
         String jsonClient = getIntent().getStringExtra("CURRENT_USER");
         Session.dataLogin = new Gson().fromJson(jsonClient, LoginResponse.class);
 
+        // Nome do cliente
+        username.setText(
+                Session.client.getFirstName() + " " + Session.client.getLastName()
+        );
+
         //Dados
-        getClientAccount(username);
+        getClientAccount();
         getEquipments();
         getExercises();
 
@@ -99,9 +108,12 @@ public class MainActivity extends AppCompatActivity
             public void onRefresh() {
                 swipeRefreshLayout.setRefreshing(true);
 
-                getClientAccount(username);
+                getClientAccount();
                 getEquipments();
                 getExercises();
+                username.setText(
+                        Session.client.getFirstName() + " " + Session.client.getLastName()
+                );
 
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -250,9 +262,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * Obter os dados do cliente
+     * Permite obter os dados do cliente na sessão atual
      */
-    private void getClientAccount(final TextView username) {
+    public void getClientAccount() {
 
         if (Connection.isConnected(this)) { // Se houver conecção com internet
 
@@ -268,11 +280,7 @@ public class MainActivity extends AppCompatActivity
 
                         Session.client = response.body(); // Cliente obtido
 
-                        username.setText(
-                                Session.client.getFirstName() + " " + Session.client.getLastName()
-                        );
-
-                        System.out.println("CLIENT: " + Session.client.toString());
+                        System.out.println(">>>>>>CLIENT: " + Session.client.toString());
                         System.out.println("************** " + response.code() + " ************");
 
                     } else {
@@ -358,7 +366,7 @@ public class MainActivity extends AppCompatActivity
     /**
      * Obter os equipamentos da API e guardá-los numa lista
      */
-    private void getEquipments() {
+    public void getEquipments() {
 
         // Token do cliente
         final String token = Session.dataLogin.getToken();
@@ -396,7 +404,7 @@ public class MainActivity extends AppCompatActivity
     /**
      * Obter os exercicios da API e guardá-los numa lista
      */
-    private void getExercises() {
+    public void getExercises() {
 
         // Token do cliente
         final String token = Session.dataLogin.getToken();
@@ -439,7 +447,11 @@ public class MainActivity extends AppCompatActivity
         Session.dataLogin = null;
         Session.client    = null;
 
-        // Iniciar atividade de login
+        /**
+         * Iniciar atividade de login
+         * Limpar o histórico das atividades anteriores. Isto faz com que
+         * onBackPressed() não volte para esta atividade novamente
+         */
         Intent intent = new Intent(this, AuthActivity.class);
         intent.addFlags(
                 Intent.FLAG_ACTIVITY_CLEAR_TOP |

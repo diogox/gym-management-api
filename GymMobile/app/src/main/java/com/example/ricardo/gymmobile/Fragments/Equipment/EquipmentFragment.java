@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.ricardo.gymmobile.Activities.MainActivity;
 import com.example.ricardo.gymmobile.Data.GymStore;
 import com.example.ricardo.gymmobile.Entities.Equipment;
 import com.example.ricardo.gymmobile.Interfaces.OnItemClickListener;
@@ -62,6 +63,11 @@ public class EquipmentFragment extends Fragment implements OnItemClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View mContentView = inflater.inflate(R.layout.fragment_equipment, container, false);
+
+        /**
+         * Verificar se houve alteração na lista de equipamentos
+         */
+        MainActivity.instance.getEquipments();
 
         equipmentAdapter = new EquipmentAdapter(context, equipments, getActivity());
 
