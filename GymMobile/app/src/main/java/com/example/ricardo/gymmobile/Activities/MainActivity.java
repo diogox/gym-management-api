@@ -55,6 +55,11 @@ public class MainActivity extends AppCompatActivity
     public static MainActivity instance;
 
     /**
+     * Apresentar o nome do cliente
+     */
+    private TextView username;
+
+    /**
      * Toolbar
      */
     private Toolbar toolbar;
@@ -84,18 +89,13 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         View headerView = navigationView.getHeaderView(0);
-        final TextView username = headerView.findViewById(R.id.client_name);
+        username = headerView.findViewById(R.id.client_name);
         final TextView appName  = headerView.findViewById(R.id.drawer_app_name);
         appName.setText("GYM MOBILE");
 
         // Obter o utilizador com a conta iniciada
         String jsonClient = getIntent().getStringExtra("CURRENT_USER");
         Session.dataLogin = new Gson().fromJson(jsonClient, LoginResponse.class);
-
-        // Nome do cliente
-        username.setText(
-                Session.client.getFirstName() + " " + Session.client.getLastName()
-        );
 
         //Dados
         getClientAccount();
@@ -111,9 +111,6 @@ public class MainActivity extends AppCompatActivity
                 getClientAccount();
                 getEquipments();
                 getExercises();
-                username.setText(
-                        Session.client.getFirstName() + " " + Session.client.getLastName()
-                );
 
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -282,6 +279,10 @@ public class MainActivity extends AppCompatActivity
 
                         System.out.println(">>>>>>CLIENT: " + Session.client.toString());
                         System.out.println("************** " + response.code() + " ************");
+
+                        username.setText(
+                                Session.client.getFirstName() + " " + Session.client.getLastName()
+                        );
 
                     } else {
 
